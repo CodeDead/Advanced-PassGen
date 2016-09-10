@@ -104,6 +104,26 @@
                         <RowDefinition Height="Auto"></RowDefinition>
                     </Grid.RowDefinitions>
                     <ListView x:Name="LsvPasswordList">
+                        <ListView.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Copy">
+                                    <MenuItem.Icon>
+                                        <Image Width="16" Height="16" Source="../Resources/Images/copy.png" />
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                                <MenuItem Header="Remove">
+                                    <MenuItem.Icon>
+                                        <Image Width="16" Height="16" Source="../Resources/Images/remove.png" />
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                                <Separator></Separator>
+                                <MenuItem Header="Clear">
+                                    <MenuItem.Icon>
+                                        <Image Width="16" Height="16" Source="../Resources/Images/clear.png" />
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                            </ContextMenu>
+                        </ListView.ContextMenu>
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Password" DisplayMemberBinding="{Binding X}" />
