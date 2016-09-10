@@ -44,7 +44,7 @@ namespace Advanced_PassGen.Windows
                 ChbAutoUpdate.IsChecked = Properties.Settings.Default.AutoUpdate;
                 TxtCharacterSet.Text = Properties.Settings.Default.CharacterSet;
 
-                ChbStyle.SelectedItem = Properties.Settings.Default.VisualStyle;
+                ChbStyle.SelectedValue = Properties.Settings.Default.VisualStyle;
                 CpMetroBrush.Color = Properties.Settings.Default.MetroColor;
             }
             catch (Exception ex)
