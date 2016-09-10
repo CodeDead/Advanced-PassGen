@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Windows;
 using Advanced_PassGen.Classes;
 
@@ -31,6 +32,7 @@ namespace Advanced_PassGen.Windows
         /// </summary>
         private void LoadSettings()
         {
+            LblVersion.Content += Assembly.GetExecutingAssembly().GetName().Version.ToString();
             try
             {
                 if (Properties.Settings.Default.AutoUpdate)
