@@ -8,6 +8,7 @@ namespace Advanced_PassGen.Classes
     public class Update
     {
         #region XML_Update
+
         // ReSharper disable once UnassignedField.Global
         // ReSharper disable once MemberCanBePrivate.Global
         public int MajorVersion;
@@ -22,10 +23,13 @@ namespace Advanced_PassGen.Classes
         public int RevisionVersion;
         // ReSharper disable once UnassignedField.Global
         public string UpdateUrl;
+
         #endregion
 
         #region Assigned_Variables
+
         private readonly Version _version;
+
         #endregion
 
         /// <summary>

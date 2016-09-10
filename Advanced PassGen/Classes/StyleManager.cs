@@ -20,7 +20,7 @@ namespace Advanced_PassGen.Classes
             {
                 SkinStorage.SetVisualStyle(o, Properties.Settings.Default.VisualStyle);
                 SkinStorage.SetMetroBrush(o, new SolidColorBrush(Properties.Settings.Default.MetroColor));
-                ((Window) o).BorderThickness = new Thickness(Properties.Settings.Default.BorderThickness);
+                ((Window)o).BorderThickness = new Thickness(Properties.Settings.Default.BorderThickness);
             }
             catch (Exception ex)
             {

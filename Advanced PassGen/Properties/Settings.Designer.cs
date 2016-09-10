@@ -94,5 +94,41 @@ namespace Advanced_PassGen.Properties {
                 this["ShowPasswordStrength"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ExportLength {
+            get {
+                return ((bool)(this["ExportLength"]));
+            }
+            set {
+                this["ExportLength"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ExportStrength {
+            get {
+                return ((bool)(this["ExportStrength"]));
+            }
+            set {
+                this["ExportStrength"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(";")]
+        public string ExportDelimiter {
+            get {
+                return ((string)(this["ExportDelimiter"]));
+            }
+            set {
+                this["ExportDelimiter"] = value;
+            }
+        }
     }
 }

@@ -6,7 +6,7 @@
                              xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
                              mc:Ignorable="d"
                              AllowsTransparency="True"
-        Title="Advanced PassGen - Settings" Height="230" Width="350" WindowStartupLocation="CenterScreen" Icon="/Advanced PassGen;component/key.ico" TitleTextAlignment="Center">
+        Title="Advanced PassGen - Settings" Height="230" Width="400" WindowStartupLocation="CenterScreen" Icon="/Advanced PassGen;component/key.ico" TitleTextAlignment="Center">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
@@ -63,6 +63,25 @@
                     <syncfusion:ColorPicker x:Name="CpMetroBrush" Grid.Row="1" Grid.Column="1" />
                     <Label Grid.Row="2" Grid.Column="0">Border thickness:</Label>
                     <syncfusion:IntegerTextBox x:Name="TxtBorderThickness" Grid.Row="2" Grid.Column="1" MinValue="1"></syncfusion:IntegerTextBox>
+                </Grid>
+            </syncfusion:TabItemExt>
+            <syncfusion:TabItemExt Header="Advanced" Image="/Advanced PassGen;component/Resources/Images/advanced.png" ImageHeight="16" ImageWidth="16">
+                <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <CheckBox x:Name="ChbExportLength" Content="Export length field"></CheckBox>
+                    <CheckBox x:Name="ChbExportStrength" Grid.Row="1" Content="Export strength field"></CheckBox>
+                    <Grid Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Label Content="CSV delimiter:"></Label>
+                        <TextBox x:Name="TxtDelimiter" Grid.Row="0" Grid.Column="1" PreviewTextInput="TxtDelimiter_PreviewTextInput"></TextBox>
+                    </Grid>
                 </Grid>
             </syncfusion:TabItemExt>
             <syncfusion:TabItemExt Header="About" Image="/Advanced PassGen;component/Resources/Images/about.png" ImageHeight="16" ImageWidth="16">

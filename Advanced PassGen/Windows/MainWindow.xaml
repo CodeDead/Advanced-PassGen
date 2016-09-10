@@ -126,21 +126,21 @@
                         </ListView.ContextMenu>
                         <ListView.View>
                             <GridView x:Name="DynGrid">
-                                <GridViewColumn Header="Password" DisplayMemberBinding="{Binding X}" />
-                                <GridViewColumn Header="Length" DisplayMemberBinding="{Binding Y}" />
+                                <GridViewColumn Header="Password" DisplayMemberBinding="{Binding ActualPassword}" />
+                                <GridViewColumn Header="Length" DisplayMemberBinding="{Binding Length}" />
                                 <GridViewColumn x:Name="GvcStrength" Header="Strength">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
                                             <!-- ReSharper disable once Xaml.BindingWithContextNotResolved -->
                                             <!-- ReSharper disable once Xaml.BindingWithContextNotResolved -->
-                                            <ProgressBar Height="20" Width="100" Maximum="5" Value="{Binding Progress, Mode=OneWay}" />
+                                            <ProgressBar Height="20" Width="100" Maximum="5" Value="{Binding Strength, Mode=OneWay}" />
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
                             </GridView>
                         </ListView.View>
                     </ListView>
-                    <Button x:Name="BtnExport" Height="25" Grid.Row="1" Content=" Export" Margin="0" ></Button>
+                    <Button x:Name="BtnExport" Height="25" Grid.Row="1" Content=" Export" Margin="0" Click="BtnExport_Click" ></Button>
                 </Grid>
             </syncfusion:TabItemExt>
         </syncfusion:TabControlExt>

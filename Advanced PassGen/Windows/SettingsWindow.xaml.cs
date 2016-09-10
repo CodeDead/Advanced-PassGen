@@ -50,6 +50,10 @@ namespace Advanced_PassGen.Windows
                 ChbStyle.SelectedValue = Properties.Settings.Default.VisualStyle;
                 CpMetroBrush.Color = Properties.Settings.Default.MetroColor;
                 TxtBorderThickness.Value = Properties.Settings.Default.BorderThickness;
+
+                ChbExportLength.IsChecked = Properties.Settings.Default.ExportLength;
+                ChbExportStrength.IsChecked = Properties.Settings.Default.ExportStrength;
+                TxtDelimiter.Text = Properties.Settings.Default.ExportDelimiter.ToString();
             }
             catch (Exception ex)
             {
@@ -76,10 +80,15 @@ namespace Advanced_PassGen.Windows
                 if (ChbAutoUpdate.IsChecked != null) Properties.Settings.Default.AutoUpdate = ChbAutoUpdate.IsChecked.Value;
                 if (ChbPasswordStrength.IsChecked != null) Properties.Settings.Default.ShowPasswordStrength = ChbPasswordStrength.IsChecked.Value;
                 Properties.Settings.Default.CharacterSet = TxtCharacterSet.Text;
+                _mw.TxtCharacterSet.Text = TxtCharacterSet.Text;
 
                 Properties.Settings.Default.VisualStyle = ChbStyle.Text;
                 Properties.Settings.Default.MetroColor = CpMetroBrush.Color;
-                if (TxtBorderThickness.Value != null) Properties.Settings.Default.BorderThickness = (int) TxtBorderThickness.Value;
+                if (TxtBorderThickness.Value != null) Properties.Settings.Default.BorderThickness = (int)TxtBorderThickness.Value;
+
+                if (ChbExportLength.IsChecked != null) Properties.Settings.Default.ExportLength = ChbExportLength.IsChecked.Value;
+                if (ChbExportStrength.IsChecked != null) Properties.Settings.Default.ExportStrength = ChbExportStrength.IsChecked.Value;
+                Properties.Settings.Default.ExportDelimiter = TxtDelimiter.Text;
 
                 Properties.Settings.Default.Save();
 
@@ -120,6 +129,11 @@ namespace Advanced_PassGen.Windows
             {
                 MessageBox.Show(this, ex.Message, "Advanced PassGen", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        private void TxtDelimiter_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+            if (TxtDelimiter.Text.Length == 1) e.Handled = true;
         }
     }
 }

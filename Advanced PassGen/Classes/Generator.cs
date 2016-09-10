@@ -20,7 +20,7 @@ namespace Advanced_PassGen.Classes
 
         private readonly string _charSet;
 
-        private List<string> _passwordList;
+        private List<Password> _passwordList;
         private static Random _rnd = new Random();
 
         #endregion
@@ -46,9 +46,9 @@ namespace Advanced_PassGen.Classes
         /// Generate a list of passwords.
         /// </summary>
         /// <returns>A list of passwords.</returns>
-        internal async Task<List<string>> GeneratePasswords()
+        internal async Task<List<Password>> GeneratePasswords()
         {
-            _passwordList = new List<string>();
+            _passwordList = new List<Password>();
             _rnd = new Random(_seed);
             await Task.Run(() =>
             {
@@ -56,7 +56,13 @@ namespace Advanced_PassGen.Classes
                 {
                     var sub = _rnd.Next(_minLength, _maxLength);
                     string pwd = GetRandomString(sub, _charSet);
-                    _passwordList.Add(pwd);
+                    Password pass = new Password
+                    {
+                        ActualPassword = pwd,
+                        Length = pwd.Length,
+                        Strength = PasswordAdvisor.CheckStrength(pwd)
+                    };
+                    _passwordList.Add(pass);
                 }
             });
             return _passwordList;
