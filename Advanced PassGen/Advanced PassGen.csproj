@@ -70,9 +70,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Classes\Generator.cs" />
+    <Compile Include="Classes\PasswordGenerator.cs" />
     <Compile Include="Classes\Password.cs" />
-    <Compile Include="Classes\PasswordAdvisor.cs" />
     <Compile Include="Classes\StyleManager.cs" />
     <Compile Include="Classes\Update.cs" />
     <Compile Include="Classes\UpdateManager.cs" />

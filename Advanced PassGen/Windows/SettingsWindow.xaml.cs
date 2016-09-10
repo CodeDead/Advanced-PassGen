@@ -53,7 +53,7 @@ namespace Advanced_PassGen.Windows
 
                 ChbExportLength.IsChecked = Properties.Settings.Default.ExportLength;
                 ChbExportStrength.IsChecked = Properties.Settings.Default.ExportStrength;
-                TxtDelimiter.Text = Properties.Settings.Default.ExportDelimiter.ToString();
+                TxtDelimiter.Text = Properties.Settings.Default.ExportDelimiter;
             }
             catch (Exception ex)
             {
