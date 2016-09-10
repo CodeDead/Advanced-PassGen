@@ -81,7 +81,7 @@ namespace Advanced_PassGen.Windows
 
         private void BtnUpdate_Click(object sender, RoutedEventArgs e)
         {
-            _mw._updateManager.CheckForUpdate(true, true);
+            _mw.UpdateManager.CheckForUpdate(true, true);
         }
 
         private void BtnWebsite_Click(object sender, RoutedEventArgs e)

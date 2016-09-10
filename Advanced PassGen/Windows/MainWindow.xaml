@@ -6,12 +6,13 @@
                              xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
                              mc:Ignorable="d"
                              AllowsTransparency="True"
-                             Title="Advanced PassGen" WindowStartupLocation="CenterScreen" Icon="/Advanced PassGen;component/key.ico" Width="400" Height="200" TitleTextAlignment="Center">
+                             Title="Advanced PassGen" WindowStartupLocation="CenterScreen" Icon="/Advanced PassGen;component/key.ico" Width="400" Height="240" TitleTextAlignment="Center">
     <Grid>
         <syncfusion:TabControlExt SelectedIndex="-1" CloseButtonType="Hide" EnableLabelEdit="False" AllowDragDrop="False" DefaultContextMenuItemVisibility="Hidden">
             <syncfusion:TabItemExt Header="General" Image="../Resources/Images/general.png" ImageHeight="16" ImageWidth="16" >
                 <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
                     <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
                         <RowDefinition></RowDefinition>
                         <RowDefinition></RowDefinition>
                     </Grid.RowDefinitions>
@@ -45,6 +46,9 @@
                             <CheckBox x:Name="chbNumbers" Grid.Row="1" Grid.Column="1" Content="Numbers"></CheckBox>
                         </Grid>
                     </GroupBox>
+                    <TextBlock Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Hyperlink x:Name="HypSettings" Click="HypSettings_Click">Settings</Hyperlink>
+                    </TextBlock>
                 </Grid>
             </syncfusion:TabItemExt>
             <syncfusion:TabItemExt Header="Advanced" Image="../Resources/Images/advanced.png" ImageHeight="16" ImageWidth="16" >
