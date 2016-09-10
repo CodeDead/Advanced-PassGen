@@ -6,7 +6,7 @@
                              xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
                              mc:Ignorable="d"
                              AllowsTransparency="True"
-                             Title="Advanced PassGen" WindowStartupLocation="CenterScreen" Icon="/Advanced PassGen;component/key.ico" Width="400" Height="300" TitleTextAlignment="Center">
+                             Title="Advanced PassGen" WindowStartupLocation="CenterScreen" Icon="/Advanced PassGen;component/key.ico" Width="350" Height="250" TitleTextAlignment="Center">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
@@ -94,9 +94,6 @@
                     </GroupBox>
                 </Grid>
             </syncfusion:TabItemExt>
-            <syncfusion:TabItemExt Header="Generator" Image="../Resources/Images/generator.png" ImageHeight="16" ImageWidth="16" >
-                <Button x:Name="BtnGenerate" Width="100" Height="25" Content="Generate" Click="BtnGenerate_Click"></Button>
-            </syncfusion:TabItemExt>
             <syncfusion:TabItemExt Header="List" Image="../Resources/Images/list.png" ImageHeight="16" ImageWidth="16" >
                 <Grid>
                     <Grid.RowDefinitions>
@@ -140,7 +137,14 @@
                             </GridView>
                         </ListView.View>
                     </ListView>
-                    <Button x:Name="BtnExport" Height="25" Grid.Row="1" Content=" Export" Margin="0" Click="BtnExport_Click" ></Button>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="BtnGenerate" Content="Generate" Click="BtnGenerate_Click"></Button>
+                        <Button x:Name="BtnExport" Grid.Column="1" Content=" Export" Click="BtnExport_Click" ></Button>
+                    </Grid>
                 </Grid>
             </syncfusion:TabItemExt>
         </syncfusion:TabControlExt>

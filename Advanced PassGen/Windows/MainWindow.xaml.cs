@@ -168,7 +168,6 @@ namespace Advanced_PassGen.Windows
             {
                 LsvPasswordList.Items.Add(s);
             }
-            TceTabs.SelectedIndex = 3;
         }
 
         private void BtnExport_Click(object sender, RoutedEventArgs e)
@@ -180,6 +179,7 @@ namespace Advanced_PassGen.Windows
             if (res != true) return;
             try
             {
+                // ReSharper disable once SwitchStatementMissingSomeCases
                 switch (sfd.FilterIndex)
                 {
                     case 1:

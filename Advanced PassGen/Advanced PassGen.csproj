@@ -130,7 +130,6 @@
   <ItemGroup>
     <Resource Include="Resources\Images\advanced.png" />
     <Resource Include="Resources\Images\general.png" />
-    <Resource Include="Resources\Images\generator.png" />
     <Resource Include="Resources\Images\list.png" />
   </ItemGroup>
   <ItemGroup>
