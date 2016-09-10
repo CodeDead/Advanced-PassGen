@@ -44,6 +44,7 @@ namespace Advanced_PassGen.Windows
             try
             {
                 ChbAutoUpdate.IsChecked = Properties.Settings.Default.AutoUpdate;
+                ChbPasswordStrength.IsChecked = Properties.Settings.Default.ShowPasswordStrength;
                 TxtCharacterSet.Text = Properties.Settings.Default.CharacterSet;
 
                 ChbStyle.SelectedValue = Properties.Settings.Default.VisualStyle;
@@ -63,6 +64,8 @@ namespace Advanced_PassGen.Windows
             LoadSettings();
 
             _mw.ChangeVisualStyle();
+            _mw.LoadSettings();
+
             ChangeVisualStyle();
         }
 
@@ -71,6 +74,7 @@ namespace Advanced_PassGen.Windows
             try
             {
                 if (ChbAutoUpdate.IsChecked != null) Properties.Settings.Default.AutoUpdate = ChbAutoUpdate.IsChecked.Value;
+                if (ChbPasswordStrength.IsChecked != null) Properties.Settings.Default.ShowPasswordStrength = ChbPasswordStrength.IsChecked.Value;
                 Properties.Settings.Default.CharacterSet = TxtCharacterSet.Text;
 
                 Properties.Settings.Default.VisualStyle = ChbStyle.Text;
@@ -80,6 +84,7 @@ namespace Advanced_PassGen.Windows
                 Properties.Settings.Default.Save();
 
                 _mw.ChangeVisualStyle();
+                _mw.LoadSettings();
                 ChangeVisualStyle();
             }
             catch (Exception ex)

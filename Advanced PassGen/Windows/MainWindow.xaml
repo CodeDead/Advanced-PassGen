@@ -125,13 +125,15 @@
                             </ContextMenu>
                         </ListView.ContextMenu>
                         <ListView.View>
-                            <GridView>
+                            <GridView x:Name="DynGrid">
                                 <GridViewColumn Header="Password" DisplayMemberBinding="{Binding X}" />
                                 <GridViewColumn Header="Length" DisplayMemberBinding="{Binding Y}" />
-                                <GridViewColumn Header="Strength">
+                                <GridViewColumn x:Name="GvcStrength" Header="Strength">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
-                                            <ProgressBar Height="20" Width="100" Maximum="5" Value="{Binding Progress, Mode=OneWay}"/>
+                                            <!-- ReSharper disable once Xaml.BindingWithContextNotResolved -->
+                                            <!-- ReSharper disable once Xaml.BindingWithContextNotResolved -->
+                                            <ProgressBar Height="20" Width="100" Maximum="5" Value="{Binding Progress, Mode=OneWay}" />
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>

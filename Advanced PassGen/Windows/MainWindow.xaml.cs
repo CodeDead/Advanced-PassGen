@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Reflection;
 using System.Windows;
+using System.Windows.Controls;
 using Advanced_PassGen.Classes;
 
 namespace Advanced_PassGen.Windows
@@ -12,7 +13,10 @@ namespace Advanced_PassGen.Windows
     public partial class MainWindow
     {
         #region Variables
+
         internal readonly UpdateManager UpdateManager;
+        private readonly GridViewColumn _gvc;
+
         #endregion
 
         /// <summary>
@@ -25,22 +29,48 @@ namespace Advanced_PassGen.Windows
             InitializeComponent();
             ChangeVisualStyle();
             LoadSettings();
-        }
 
-        /// <summary>
-        /// Change the GUI to represent the current settings.
-        /// </summary>
-        private void LoadSettings()
-        {
-            LblVersion.Content += Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            _gvc = new GridViewColumn
+            {
+                CellTemplate = GvcStrength.CellTemplate,
+                CellTemplateSelector = GvcStrength.CellTemplateSelector,
+                Header = GvcStrength.Header,
+                DisplayMemberBinding = GvcStrength.DisplayMemberBinding,
+            };
+
             try
             {
                 if (Properties.Settings.Default.AutoUpdate)
                 {
                     UpdateManager.CheckForUpdate(false, false);
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, ex.Message, "Advanced PassGen", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
 
+        /// <summary>
+        /// Change the GUI to represent the current settings.
+        /// </summary>
+        internal void LoadSettings()
+        {
+            LblVersion.Content = "Version: " + Assembly.GetExecutingAssembly().GetName().Version;
+            try
+            {
                 TxtCharacterSet.Text = Properties.Settings.Default.CharacterSet;
+                if (!Properties.Settings.Default.ShowPasswordStrength)
+                {
+                    DynGrid.Columns.RemoveAt(2);
+                }
+                else
+                {
+                    if (DynGrid.Columns.Count == 2)
+                    {
+                        DynGrid.Columns.Add(_gvc);
+                    }
+                }
             }
             catch (Exception ex)
             {

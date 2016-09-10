@@ -82,5 +82,17 @@ namespace Advanced_PassGen.Properties {
                 this["BorderThickness"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ShowPasswordStrength {
+            get {
+                return ((bool)(this["ShowPasswordStrength"]));
+            }
+            set {
+                this["ShowPasswordStrength"] = value;
+            }
+        }
     }
 }
