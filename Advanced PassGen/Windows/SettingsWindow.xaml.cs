@@ -46,6 +46,7 @@ namespace Advanced_PassGen.Windows
 
                 ChbStyle.SelectedValue = Properties.Settings.Default.VisualStyle;
                 CpMetroBrush.Color = Properties.Settings.Default.MetroColor;
+                TxtBorderThickness.Value = Properties.Settings.Default.BorderThickness;
             }
             catch (Exception ex)
             {
@@ -72,6 +73,7 @@ namespace Advanced_PassGen.Windows
 
                 Properties.Settings.Default.VisualStyle = ChbStyle.Text;
                 Properties.Settings.Default.MetroColor = CpMetroBrush.Color;
+                if (TxtBorderThickness.Value != null) Properties.Settings.Default.BorderThickness = (int)TxtBorderThickness.Value;
 
                 Properties.Settings.Default.Save();
 

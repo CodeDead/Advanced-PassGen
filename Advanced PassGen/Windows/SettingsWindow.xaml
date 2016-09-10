@@ -35,6 +35,7 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"></RowDefinition>
                         <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"></ColumnDefinition>
@@ -58,6 +59,8 @@
                     </ComboBox>
                     <Label Grid.Row="1" Grid.Column="0" Content="Metro brush:"></Label>
                     <syncfusion:ColorPicker x:Name="CpMetroBrush" Grid.Row="1" Grid.Column="1" />
+                    <Label Grid.Row="2" Grid.Column="0">Border thickness:</Label>
+                    <syncfusion:IntegerTextBox x:Name="TxtBorderThickness" Grid.Row="2" Grid.Column="1" MinValue="1"></syncfusion:IntegerTextBox>
                 </Grid>
             </syncfusion:TabItemExt>
             <syncfusion:TabItemExt Header="About" Image="/Advanced PassGen;component/Resources/Images/about.png" ImageHeight="16" ImageWidth="16">

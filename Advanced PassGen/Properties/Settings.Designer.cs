@@ -70,5 +70,17 @@ namespace Advanced_PassGen.Properties {
                 this["CharacterSet"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("3")]
+        public int BorderThickness {
+            get {
+                return ((int)(this["BorderThickness"]));
+            }
+            set {
+                this["BorderThickness"] = value;
+            }
+        }
     }
 }
