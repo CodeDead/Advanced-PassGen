@@ -8,7 +8,7 @@
                              AllowsTransparency="True"
                              Title="Advanced PassGen" WindowStartupLocation="CenterScreen" Icon="/Advanced PassGen;component/key.ico" Width="400" Height="240" TitleTextAlignment="Center">
     <Grid>
-        <syncfusion:TabControlExt SelectedIndex="-1" CloseButtonType="Hide" EnableLabelEdit="False" AllowDragDrop="False" DefaultContextMenuItemVisibility="Hidden">
+        <syncfusion:TabControlExt x:Name="TceTabs" SelectedIndex="-1" CloseButtonType="Hide" EnableLabelEdit="False" AllowDragDrop="False" DefaultContextMenuItemVisibility="Hidden">
             <syncfusion:TabItemExt Header="General" Image="../Resources/Images/general.png" ImageHeight="16" ImageWidth="16" >
                 <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
                     <Grid.RowDefinitions>
@@ -95,14 +95,7 @@
                 </Grid>
             </syncfusion:TabItemExt>
             <syncfusion:TabItemExt Header="Generator" Image="../Resources/Images/generator.png" ImageHeight="16" ImageWidth="16" >
-                <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <Grid.RowDefinitions>
-                        <RowDefinition></RowDefinition>
-                        <RowDefinition></RowDefinition>
-                    </Grid.RowDefinitions>
-                    <ProgressBar Width="300"></ProgressBar>
-                    <Button x:Name="BtnGenerate" Grid.Row="1" Content="Generate"></Button>
-                </Grid>
+                <Button x:Name="BtnGenerate" Width="100" Height="25" Content="Generate" Click="BtnGenerate_Click"></Button>
             </syncfusion:TabItemExt>
             <syncfusion:TabItemExt Header="List" Image="../Resources/Images/list.png" ImageHeight="16" ImageWidth="16" >
                 <Grid>
@@ -113,8 +106,8 @@
                     <ListView x:Name="LsvPasswordList">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="Password" />
-                                <GridViewColumn Header="Length" />
+                                <GridViewColumn Header="Password" DisplayMemberBinding="{Binding X}" />
+                                <GridViewColumn Header="Length" DisplayMemberBinding="{Binding Y}" />
                             </GridView>
                         </ListView.View>
                     </ListView>
