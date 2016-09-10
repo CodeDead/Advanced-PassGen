@@ -9,8 +9,13 @@ namespace Advanced_PassGen.Windows
     /// </summary>
     public partial class MainWindow
     {
+        #region Variables
         internal readonly UpdateManager UpdateManager;
+        #endregion
 
+        /// <summary>
+        /// Initiate a new MainWindow.
+        /// </summary>
         public MainWindow()
         {
             UpdateManager = new UpdateManager("http://codedead.com/Software/Advanced%20PassGen/update.xml");
@@ -20,6 +25,9 @@ namespace Advanced_PassGen.Windows
             LoadSettings();
         }
 
+        /// <summary>
+        /// Change the GUI to represent the current settings.
+        /// </summary>
         private void LoadSettings()
         {
             try
@@ -29,7 +37,7 @@ namespace Advanced_PassGen.Windows
                     UpdateManager.CheckForUpdate(false, false);
                 }
 
-                txtCharacterSet.Text = Properties.Settings.Default.CharacterSet;
+                TxtCharacterSet.Text = Properties.Settings.Default.CharacterSet;
             }
             catch (Exception ex)
             {
@@ -47,9 +55,9 @@ namespace Advanced_PassGen.Windows
 
         private void chbUseAdvanced_Checked(object sender, RoutedEventArgs e)
         {
-            if (chbUseAdvanced.IsChecked == null) return;
-            grbAdvanced.IsEnabled = chbUseAdvanced.IsChecked.Value;
-            txtLength.IsEnabled = !chbUseAdvanced.IsChecked.Value;
+            if (ChbUseAdvanced.IsChecked == null) return;
+            GrbAdvanced.IsEnabled = ChbUseAdvanced.IsChecked.Value;
+            TxtLength.IsEnabled = !ChbUseAdvanced.IsChecked.Value;
         }
 
         private void HypSettings_Click(object sender, RoutedEventArgs e)

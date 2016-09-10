@@ -26,9 +26,9 @@
                             <ColumnDefinition></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <Label>Length:</Label>
-                        <syncfusion:IntegerTextBox x:Name="txtLength" Grid.Row="0" Grid.Column="1" MinValue="1"></syncfusion:IntegerTextBox>
+                        <syncfusion:IntegerTextBox x:Name="TxtLength" Grid.Row="0" Grid.Column="1" MinValue="1"></syncfusion:IntegerTextBox>
                         <Label Grid.Row="1" Grid.Column="0">Amount:</Label>
-                        <syncfusion:IntegerTextBox x:Name="txtAmount" Grid.Row="1" Grid.Column="1" MinValue="1"></syncfusion:IntegerTextBox>
+                        <syncfusion:IntegerTextBox x:Name="TxtAmount" Grid.Row="1" Grid.Column="1" MinValue="1"></syncfusion:IntegerTextBox>
                     </Grid>
                     <GroupBox Grid.Row="1" Header="Characters">
                         <Grid>
@@ -40,10 +40,10 @@
                                 <ColumnDefinition></ColumnDefinition>
                                 <ColumnDefinition></ColumnDefinition>
                             </Grid.ColumnDefinitions>
-                            <CheckBox x:Name="chbSmallLetters" Content="Small letters"></CheckBox>
-                            <CheckBox x:Name="chbCapitalLetters" Grid.Row="0" Grid.Column="1" Content="Capital letters"></CheckBox>
-                            <CheckBox x:Name="chbSpecialCharacters" Grid.Row="1" Grid.Column="0" Content="Special characters"></CheckBox>
-                            <CheckBox x:Name="chbNumbers" Grid.Row="1" Grid.Column="1" Content="Numbers"></CheckBox>
+                            <CheckBox x:Name="ChbSmallLetters" Content="Small letters"></CheckBox>
+                            <CheckBox x:Name="ChbCapitalLetters" Grid.Row="0" Grid.Column="1" Content="Capital letters"></CheckBox>
+                            <CheckBox x:Name="ChbSpecialCharacters" Grid.Row="1" Grid.Column="0" Content="Special characters"></CheckBox>
+                            <CheckBox x:Name="ChbNumbers" Grid.Row="1" Grid.Column="1" Content="Numbers"></CheckBox>
                         </Grid>
                     </GroupBox>
                     <TextBlock Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -57,8 +57,8 @@
                         <RowDefinition Height="Auto"></RowDefinition>
                         <RowDefinition Height="Auto"></RowDefinition>
                     </Grid.RowDefinitions>
-                    <CheckBox x:Name="chbUseAdvanced" Checked="chbUseAdvanced_Checked" Unchecked="chbUseAdvanced_Checked">Use advanced options</CheckBox>
-                    <GroupBox x:Name="grbAdvanced" IsEnabled="False" Grid.Row="1" Header="Advanced options">
+                    <CheckBox x:Name="ChbUseAdvanced" Checked="chbUseAdvanced_Checked" Unchecked="chbUseAdvanced_Checked">Use advanced options</CheckBox>
+                    <GroupBox x:Name="GrbAdvanced" IsEnabled="False" Grid.Row="1" Header="Advanced options">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto"></RowDefinition>
@@ -72,9 +72,9 @@
                                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
                                 <Label>Minimum length:</Label>
-                                <syncfusion:IntegerTextBox x:Name="txtMinLength" Grid.Column="1" MinValue="1"></syncfusion:IntegerTextBox>
+                                <syncfusion:IntegerTextBox x:Name="TxtMinLength" Grid.Column="1" MinValue="1"></syncfusion:IntegerTextBox>
                                 <Label Grid.Column="2">Maximum length:</Label>
-                                <syncfusion:IntegerTextBox x:Name="txtMaxLength" Grid.Column="3" MinValue="1"></syncfusion:IntegerTextBox>
+                                <syncfusion:IntegerTextBox x:Name="TxtMaxLength" Grid.Column="3" MinValue="1"></syncfusion:IntegerTextBox>
                             </Grid>
                             <Grid Grid.Row="1">
                                 <Grid.RowDefinitions>
@@ -86,9 +86,9 @@
                                     <ColumnDefinition></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
                                 <Label>Character set:</Label>
-                                <TextBox x:Name="txtCharacterSet" Grid.Row="0" Grid.Column="1"></TextBox>
+                                <TextBox x:Name="TxtCharacterSet" Grid.Row="0" Grid.Column="1"></TextBox>
                                 <Label Grid.Row="1" Grid.Column="0">Random seed:</Label>
-                                <syncfusion:IntegerTextBox x:Name="txtRandomSeed" Grid.Row="1" Grid.Column="1"></syncfusion:IntegerTextBox>
+                                <syncfusion:IntegerTextBox x:Name="TxtRandomSeed" Grid.Row="1" Grid.Column="1"></syncfusion:IntegerTextBox>
                             </Grid>
                         </Grid>
                     </GroupBox>
@@ -101,7 +101,7 @@
                         <RowDefinition></RowDefinition>
                     </Grid.RowDefinitions>
                     <ProgressBar Width="300"></ProgressBar>
-                    <Button x:Name="btnGenerate" Grid.Row="1" Content="Generate"></Button>
+                    <Button x:Name="BtnGenerate" Grid.Row="1" Content="Generate"></Button>
                 </Grid>
             </syncfusion:TabItemExt>
             <syncfusion:TabItemExt Header="List" Image="../Resources/Images/list.png" ImageHeight="16" ImageWidth="16" >
@@ -110,7 +110,7 @@
                         <RowDefinition></RowDefinition>
                         <RowDefinition Height="Auto"></RowDefinition>
                     </Grid.RowDefinitions>
-                    <ListView x:Name="lsvPasswordList">
+                    <ListView x:Name="LsvPasswordList">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Password" />
@@ -118,10 +118,9 @@
                             </GridView>
                         </ListView.View>
                     </ListView>
-                    <Button x:Name="btnExport" Height="25" Grid.Row="1" Content=" Export" Margin="0" ></Button>
+                    <Button x:Name="BtnExport" Height="25" Grid.Row="1" Content=" Export" Margin="0" ></Button>
                 </Grid>
             </syncfusion:TabItemExt>
         </syncfusion:TabControlExt>
     </Grid>
 </syncfusion:ChromelessWindow>
-

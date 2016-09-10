@@ -6,12 +6,21 @@ using System.Xml.Serialization;
 
 namespace Advanced_PassGen.Classes
 {
+    /// <summary>
+    /// The UpdateManager has the ability to check for software updates.
+    /// </summary>
     internal class UpdateManager
     {
+
+        #region Variables
         private readonly string _updateUrl;
         private Update _update;
+        #endregion
 
-
+        /// <summary>
+        /// Initiate a new UpdateManager object.
+        /// </summary>
+        /// <param name="updateUrl">The URL where your XML update file is located.</param>
         internal UpdateManager(string updateUrl)
         {
             _updateUrl = updateUrl;
@@ -19,8 +28,10 @@ namespace Advanced_PassGen.Classes
         }
 
         /// <summary>
-        /// Check if there are updates available for the program.
+        /// Check if there are updates available.
         /// </summary>
+        /// <param name="showErrors">Show a notification if an error occured.</param>
+        /// <param name="showNoUpdates">Show a notification if no updates are available.</param>
         internal async void CheckForUpdate(bool showErrors, bool showNoUpdates)
         {
             try
@@ -38,7 +49,6 @@ namespace Advanced_PassGen.Classes
                     _update = (Update)serializer.Deserialize(stream);
                     writer.Dispose();
                 }
-
 
                 if (_update.CheckForUpdate())
                 {

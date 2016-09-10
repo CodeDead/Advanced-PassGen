@@ -9,9 +9,14 @@ namespace Advanced_PassGen.Windows
     /// </summary>
     public partial class SettingsWindow
     {
+        #region Variables
         private readonly MainWindow _mw;
+        #endregion
 
-
+        /// <summary>
+        /// Initiate a new SettingsWindow.
+        /// </summary>
+        /// <param name="mw">The MainWindow.</param>
         public SettingsWindow(MainWindow mw)
         {
             _mw = mw;
