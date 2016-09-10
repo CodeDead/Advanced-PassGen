@@ -1,0 +1,98 @@
+﻿<syncfusion:ChromelessWindow x:Class="Advanced_PassGen.Windows.SettingsWindow"
+                             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                             xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+                             mc:Ignorable="d"
+                             AllowsTransparency="True"
+        Title="Advanced PassGen - Settings" Height="230" Width="300" WindowStartupLocation="CenterScreen" Icon="/Advanced PassGen;component/key.ico">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <syncfusion:TabControlExt CloseButtonType="Hide" DefaultContextMenuItemVisibility="Hidden" AllowDragDrop="False">
+            <syncfusion:TabItemExt Header="General" Image="/Advanced PassGen;component/Resources/Images/general.png" ImageHeight="16" ImageWidth="16">
+                <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <CheckBox x:Name="ChbAutoUpdate" Content="Automatically check for updates"></CheckBox>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Label Content="Character set:"></Label>
+                        <TextBox x:Name="TxtCharacterSet" Width="150" Grid.Column="1"></TextBox>
+                    </Grid>
+                </Grid>
+            </syncfusion:TabItemExt>
+            <syncfusion:TabItemExt Header="Theme" Image="/Advanced PassGen;component/Resources/Images/style.png" ImageHeight="16" ImageWidth="16">
+                <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Label Content="Style:"></Label>
+                    <ComboBox x:Name="ChbStyle" SelectedIndex="0" Grid.Row="0" Grid.Column="1" IsReadOnly="True">
+                        <ComboBoxItem>Metro</ComboBoxItem>
+                        <ComboBoxItem>Blend</ComboBoxItem>
+                        <ComboBoxItem>VS2010</ComboBoxItem>
+                        <ComboBoxItem>Office2010Blue</ComboBoxItem>
+                        <ComboBoxItem>Office2010Black</ComboBoxItem>
+                        <ComboBoxItem>Office2010Silver</ComboBoxItem>
+                    </ComboBox>
+                    <Label Grid.Row="1" Grid.Column="0" Content="Metro brush:"></Label>
+                    <syncfusion:ColorPicker x:Name="CpMetroBrush" Grid.Row="1" Grid.Column="1" />
+                </Grid>
+            </syncfusion:TabItemExt>
+            <syncfusion:TabItemExt Header="About" Image="/Advanced PassGen;component/Resources/Images/about.png" ImageHeight="16" ImageWidth="16">
+                <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Image Width="32" Height="32" Source="/Advanced PassGen;component/key.ico"></Image>
+                        <TextBlock Grid.Column="1">
+                            Advanced PassGen was created by DeadLine.<LineBreak />
+                            <LineBreak />
+                            Icons by: paomedia small-n-flat<LineBreak />
+                            Theme by: SyncFusion<LineBreak />
+                            <LineBreak />
+                            Copyright © CodeDead 2016
+                        </TextBlock>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="BtnUpdate" Content="Update" Click="BtnUpdate_Click"></Button>
+                        <Button x:Name="BtnWebsite" Grid.Column="1" Content="Website" Click="BtnWebsite_Click"></Button>
+                    </Grid>
+                </Grid>
+            </syncfusion:TabItemExt>
+        </syncfusion:TabControlExt>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="BtnReset" Content="Reset all settings" Click="btnReset_Click"></Button>
+            <Button x:Name="BtnSave" Grid.Column="1" Click="btnSave_Click">Save</Button>
+        </Grid>
+    </Grid>
+</syncfusion:ChromelessWindow>
+

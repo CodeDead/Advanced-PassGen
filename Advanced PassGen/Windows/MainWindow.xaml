@@ -1,0 +1,123 @@
+﻿<syncfusion:ChromelessWindow x:Class="Advanced_PassGen.Windows.MainWindow"
+                             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                             xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+                             mc:Ignorable="d"
+                             AllowsTransparency="True"
+                             Title="Advanced PassGen" WindowStartupLocation="CenterScreen" Icon="/Advanced PassGen;component/key.ico" Width="400" Height="200" TitleTextAlignment="Center">
+    <Grid>
+        <syncfusion:TabControlExt SelectedIndex="-1" CloseButtonType="Hide" EnableLabelEdit="False" AllowDragDrop="False" DefaultContextMenuItemVisibility="Hidden">
+            <syncfusion:TabItemExt Header="General" Image="../Resources/Images/general.png" ImageHeight="16" ImageWidth="16" >
+                <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Label>Length:</Label>
+                        <syncfusion:IntegerTextBox x:Name="txtLength" Grid.Row="0" Grid.Column="1" MinValue="1"></syncfusion:IntegerTextBox>
+                        <Label Grid.Row="1" Grid.Column="0">Amount:</Label>
+                        <syncfusion:IntegerTextBox x:Name="txtAmount" Grid.Row="1" Grid.Column="1" MinValue="1"></syncfusion:IntegerTextBox>
+                    </Grid>
+                    <GroupBox Grid.Row="1" Header="Characters">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <CheckBox x:Name="chbSmallLetters" Content="Small letters"></CheckBox>
+                            <CheckBox x:Name="chbCapitalLetters" Grid.Row="0" Grid.Column="1" Content="Capital letters"></CheckBox>
+                            <CheckBox x:Name="chbSpecialCharacters" Grid.Row="1" Grid.Column="0" Content="Special characters"></CheckBox>
+                            <CheckBox x:Name="chbNumbers" Grid.Row="1" Grid.Column="1" Content="Numbers"></CheckBox>
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+            </syncfusion:TabItemExt>
+            <syncfusion:TabItemExt Header="Advanced" Image="../Resources/Images/advanced.png" ImageHeight="16" ImageWidth="16" >
+                <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <CheckBox x:Name="chbUseAdvanced" Checked="chbUseAdvanced_Checked" Unchecked="chbUseAdvanced_Checked">Use advanced options</CheckBox>
+                    <GroupBox x:Name="grbAdvanced" IsEnabled="False" Grid.Row="1" Header="Advanced options">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Label>Minimum length:</Label>
+                                <syncfusion:IntegerTextBox x:Name="txtMinLength" Grid.Column="1" MinValue="1"></syncfusion:IntegerTextBox>
+                                <Label Grid.Column="2">Maximum length:</Label>
+                                <syncfusion:IntegerTextBox x:Name="txtMaxLength" Grid.Column="3" MinValue="1"></syncfusion:IntegerTextBox>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Label>Character set:</Label>
+                                <TextBox x:Name="txtCharacterSet" Grid.Row="0" Grid.Column="1"></TextBox>
+                                <Label Grid.Row="1" Grid.Column="0">Random seed:</Label>
+                                <syncfusion:IntegerTextBox x:Name="txtRandomSeed" Grid.Row="1" Grid.Column="1"></syncfusion:IntegerTextBox>
+                            </Grid>
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+            </syncfusion:TabItemExt>
+            <syncfusion:TabItemExt Header="Generator" Image="../Resources/Images/generator.png" ImageHeight="16" ImageWidth="16" >
+                <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <ProgressBar Width="300"></ProgressBar>
+                    <Button x:Name="btnGenerate" Grid.Row="1" Content="Generate"></Button>
+                </Grid>
+            </syncfusion:TabItemExt>
+            <syncfusion:TabItemExt Header="List" Image="../Resources/Images/list.png" ImageHeight="16" ImageWidth="16" >
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <ListView x:Name="lsvPasswordList">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Password" />
+                                <GridViewColumn Header="Length" />
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <Button x:Name="btnExport" Height="25" Grid.Row="1" Content=" Export" Margin="0" ></Button>
+                </Grid>
+            </syncfusion:TabItemExt>
+        </syncfusion:TabControlExt>
+    </Grid>
+</syncfusion:ChromelessWindow>
+
