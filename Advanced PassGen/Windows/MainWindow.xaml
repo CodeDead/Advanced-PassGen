@@ -128,6 +128,13 @@
                             <GridView>
                                 <GridViewColumn Header="Password" DisplayMemberBinding="{Binding X}" />
                                 <GridViewColumn Header="Length" DisplayMemberBinding="{Binding Y}" />
+                                <GridViewColumn Header="Strength">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <ProgressBar Height="20" Width="100" Maximum="5" Value="{Binding Progress, Mode=OneWay}"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
                             </GridView>
                         </ListView.View>
                     </ListView>

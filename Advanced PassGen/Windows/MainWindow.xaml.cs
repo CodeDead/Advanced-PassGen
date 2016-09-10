@@ -134,7 +134,7 @@ namespace Advanced_PassGen.Windows
 
             foreach (string s in passwords)
             {
-                LsvPasswordList.Items.Add(new { X = s, Y = s.Length.ToString() });
+                LsvPasswordList.Items.Add(new { X = s, Y = s.Length.ToString(), Progress = PasswordAdvisor.CheckStrength(s)});
             }
             TceTabs.SelectedIndex = 3;
         }
