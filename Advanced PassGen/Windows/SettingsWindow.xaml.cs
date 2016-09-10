@@ -10,7 +10,9 @@ namespace Advanced_PassGen.Windows
     public partial class SettingsWindow
     {
         #region Variables
+
         private readonly MainWindow _mw;
+
         #endregion
 
         /// <summary>
@@ -73,7 +75,7 @@ namespace Advanced_PassGen.Windows
 
                 Properties.Settings.Default.VisualStyle = ChbStyle.Text;
                 Properties.Settings.Default.MetroColor = CpMetroBrush.Color;
-                if (TxtBorderThickness.Value != null) Properties.Settings.Default.BorderThickness = (int)TxtBorderThickness.Value;
+                if (TxtBorderThickness.Value != null) Properties.Settings.Default.BorderThickness = (int) TxtBorderThickness.Value;
 
                 Properties.Settings.Default.Save();
 
@@ -96,6 +98,18 @@ namespace Advanced_PassGen.Windows
             try
             {
                 System.Diagnostics.Process.Start("http://codedead.com/");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, ex.Message, "Advanced PassGen", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void BtnLicense_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                System.Diagnostics.Process.Start("gpl.pdf");
             }
             catch (Exception ex)
             {

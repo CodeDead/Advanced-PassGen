@@ -12,7 +12,7 @@
             <RowDefinition></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
-        <syncfusion:TabControlExt CloseButtonType="Hide" DefaultContextMenuItemVisibility="Hidden" AllowDragDrop="False">
+        <syncfusion:TabControlExt CloseButtonType="Hide" DefaultContextMenuItemVisibility="Hidden" AllowDragDrop="False" EnableLabelEdit="False">
             <syncfusion:TabItemExt Header="General" Image="/Advanced PassGen;component/Resources/Images/general.png" ImageHeight="16" ImageWidth="16">
                 <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
                     <Grid.RowDefinitions>
@@ -88,9 +88,11 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition></ColumnDefinition>
                             <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <Button x:Name="BtnUpdate" Content="Update" Click="BtnUpdate_Click"></Button>
                         <Button x:Name="BtnWebsite" Grid.Column="1" Content="Website" Click="BtnWebsite_Click"></Button>
+                        <Button x:Name="BtnLicense" Grid.Column="2" Content="License" Click="BtnLicense_Click"></Button>
                     </Grid>
                 </Grid>
             </syncfusion:TabItemExt>
