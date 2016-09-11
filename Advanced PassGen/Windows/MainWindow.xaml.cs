@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Windows;
@@ -230,10 +229,7 @@ namespace Advanced_PassGen.Windows
         private void MiClear_Click(object sender, RoutedEventArgs e)
         {
             LsvPasswordList.Items.Clear();
-            if (_generator != null)
-            {
-                _generator.PasswordList.Clear();
-            }
+            _generator?.PasswordList.Clear();
         }
     }
 }
