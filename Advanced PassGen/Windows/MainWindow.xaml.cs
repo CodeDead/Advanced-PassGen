@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Windows;
@@ -197,6 +198,41 @@ namespace Advanced_PassGen.Windows
             catch (Exception ex)
             {
                 MessageBox.Show(this, ex.Message, "Advanced PassGen", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void MiCopy_Click(object sender, RoutedEventArgs e)
+        {
+            if (LsvPasswordList.SelectedItems.Count == 0) return;
+            Password pwd = LsvPasswordList.SelectedItem as Password;
+            if (pwd != null)
+            {
+                Clipboard.SetText(pwd.ActualPassword);
+            }
+        }
+
+        private void MiRemove_Click(object sender, RoutedEventArgs e)
+        {
+            if (LsvPasswordList.SelectedItems.Count == 0) return;
+            List<Password> passwords = new List<Password>();
+            foreach (Password t in LsvPasswordList.SelectedItems)
+            {
+                passwords.Add(t);
+            }
+
+            foreach (Password t in passwords)
+            {
+                _generator.PasswordList.Remove(t);
+                LsvPasswordList.Items.Remove(t);
+            }
+        }
+
+        private void MiClear_Click(object sender, RoutedEventArgs e)
+        {
+            LsvPasswordList.Items.Clear();
+            if (_generator != null)
+            {
+                _generator.PasswordList.Clear();
             }
         }
     }

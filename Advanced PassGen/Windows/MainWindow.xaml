@@ -103,18 +103,18 @@
                     <ListView x:Name="LsvPasswordList">
                         <ListView.ContextMenu>
                             <ContextMenu>
-                                <MenuItem Header="Copy">
+                                <MenuItem x:Name="MiCopy" Header="Copy" Click="MiCopy_Click">
                                     <MenuItem.Icon>
                                         <Image Width="16" Height="16" Source="../Resources/Images/copy.png" />
                                     </MenuItem.Icon>
                                 </MenuItem>
-                                <MenuItem Header="Remove">
+                                <MenuItem x:Name="MiRemove" Header="Remove" Click="MiRemove_Click">
                                     <MenuItem.Icon>
                                         <Image Width="16" Height="16" Source="../Resources/Images/remove.png" />
                                     </MenuItem.Icon>
                                 </MenuItem>
                                 <Separator></Separator>
-                                <MenuItem Header="Clear">
+                                <MenuItem x:Name="MiClear" Header="Clear" Click="MiClear_Click">
                                     <MenuItem.Icon>
                                         <Image Width="16" Height="16" Source="../Resources/Images/clear.png" />
                                     </MenuItem.Icon>
