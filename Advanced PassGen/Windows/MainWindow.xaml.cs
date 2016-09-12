@@ -238,5 +238,10 @@ namespace Advanced_PassGen.Windows
             Password pwd = new Password {ActualPassword = TxtPassword.Text};
             PgbStrength.Value = pwd.Strength;
         }
+
+        private void HypUpdate_Click(object sender, RoutedEventArgs e)
+        {
+            UpdateManager.CheckForUpdate(true, true);
+        }
     }
 }
