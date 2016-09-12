@@ -80,7 +80,7 @@
                             <ColumnDefinition></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <Label Content="CSV delimiter:"></Label>
-                        <TextBox x:Name="TxtDelimiter" Grid.Row="0" Grid.Column="1" PreviewTextInput="TxtDelimiter_PreviewTextInput"></TextBox>
+                        <TextBox x:Name="TxtDelimiter" Grid.Row="0" Grid.Column="1" CommandManager.PreviewCanExecute="HandleCanExecute" PreviewTextInput="TxtDelimiter_PreviewTextInput"></TextBox>
                     </Grid>
                 </Grid>
             </syncfusion:TabItemExt>

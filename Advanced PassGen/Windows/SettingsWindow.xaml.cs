@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows;
+using System.Windows.Input;
 using Advanced_PassGen.Classes;
 
 namespace Advanced_PassGen.Windows
@@ -131,9 +132,16 @@ namespace Advanced_PassGen.Windows
             }
         }
 
-        private void TxtDelimiter_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
+        private void TxtDelimiter_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             if (TxtDelimiter.Text.Length == 1) e.Handled = true;
+        }
+
+        private void HandleCanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            if (e.Command != ApplicationCommands.Paste) return;
+            e.CanExecute = false;
+            e.Handled = true;
         }
     }
 }

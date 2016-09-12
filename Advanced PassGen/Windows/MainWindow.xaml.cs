@@ -231,5 +231,12 @@ namespace Advanced_PassGen.Windows
             LsvPasswordList.Items.Clear();
             _generator?.PasswordList.Clear();
         }
+
+        private void BtnAdvise_Click(object sender, RoutedEventArgs e)
+        {
+            if (TxtPassword.Text.Length == 0) return;
+            Password pwd = new Password {ActualPassword = TxtPassword.Text};
+            PgbStrength.Value = pwd.Strength;
+        }
     }
 }
