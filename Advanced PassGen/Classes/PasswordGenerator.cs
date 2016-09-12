@@ -190,7 +190,6 @@ namespace Advanced_PassGen.Classes
             using (StreamWriter sw = new StreamWriter(path))
             {
                 sw.Write(text);
-                sw.Close();
             }
         }
     }
