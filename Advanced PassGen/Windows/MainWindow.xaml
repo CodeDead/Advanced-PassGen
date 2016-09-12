@@ -12,7 +12,7 @@
             <RowDefinition></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
-        <syncfusion:TabControlExt x:Name="TceTabs" SelectedIndex="-1" CloseButtonType="Hide" EnableLabelEdit="False" AllowDragDrop="False" DefaultContextMenuItemVisibility="Hidden">
+        <syncfusion:TabControlExt SelectedIndex="-1" CloseButtonType="Hide" EnableLabelEdit="False" AllowDragDrop="False" DefaultContextMenuItemVisibility="Hidden">
             <syncfusion:TabItemExt Header="General" Image="../Resources/Images/general.png" ImageHeight="16" ImageWidth="16" >
                 <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
                     <Grid.RowDefinitions>
@@ -103,18 +103,18 @@
                     <ListView x:Name="LsvPasswordList">
                         <ListView.ContextMenu>
                             <ContextMenu>
-                                <MenuItem x:Name="MiCopy" Header="Copy" Click="MiCopy_Click">
+                                <MenuItem Header="Copy" Click="MiCopy_Click">
                                     <MenuItem.Icon>
                                         <Image Width="16" Height="16" Source="../Resources/Images/copy.png" />
                                     </MenuItem.Icon>
                                 </MenuItem>
-                                <MenuItem x:Name="MiRemove" Header="Remove" Click="MiRemove_Click">
+                                <MenuItem Header="Remove" Click="MiRemove_Click">
                                     <MenuItem.Icon>
                                         <Image Width="16" Height="16" Source="../Resources/Images/remove.png" />
                                     </MenuItem.Icon>
                                 </MenuItem>
                                 <Separator></Separator>
-                                <MenuItem x:Name="MiClear" Header="Clear" Click="MiClear_Click">
+                                <MenuItem Header="Clear" Click="MiClear_Click">
                                     <MenuItem.Icon>
                                         <Image Width="16" Height="16" Source="../Resources/Images/clear.png" />
                                     </MenuItem.Icon>
@@ -142,8 +142,8 @@
                             <ColumnDefinition></ColumnDefinition>
                             <ColumnDefinition></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <Button x:Name="BtnGenerate" Content="Generate" Click="BtnGenerate_Click"></Button>
-                        <Button x:Name="BtnExport" Grid.Column="1" Content=" Export" Click="BtnExport_Click" ></Button>
+                        <Button Content="Generate" Click="BtnGenerate_Click"></Button>
+                        <Button Grid.Column="1" Content=" Export" Click="BtnExport_Click" ></Button>
                     </Grid>
                 </Grid>
             </syncfusion:TabItemExt>
@@ -167,7 +167,7 @@
                             <RowDefinition></RowDefinition>
                         </Grid.RowDefinitions>
                         <ProgressBar x:Name="PgbStrength" Grid.Row="0" Maximum="5" Height="20"></ProgressBar>
-                        <Button x:Name="BtnAdvise" Grid.Row="1" Content="Advise" Click="BtnAdvise_Click"></Button>
+                        <Button Grid.Row="1" Content="Advise" Click="BtnAdvise_Click"></Button>
                     </Grid>
                 </Grid>
             </syncfusion:TabItemExt>
@@ -175,9 +175,9 @@
         <StatusBar Grid.Row="1">
             <Label x:Name="LblVersion" Content="Version: "></Label>
             <Separator />
-            <Hyperlink x:Name="HypUpdate" Click="HypUpdate_Click">Check for updates</Hyperlink>
+            <Hyperlink Click="HypUpdate_Click">Check for updates</Hyperlink>
             <Separator />
-            <Hyperlink x:Name="HypSettings" Click="HypSettings_Click">Settings</Hyperlink>
+            <Hyperlink Click="HypSettings_Click">Settings</Hyperlink>
         </StatusBar>
     </Grid>
 </syncfusion:ChromelessWindow>
