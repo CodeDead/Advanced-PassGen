@@ -43,7 +43,7 @@
                                 <ColumnDefinition></ColumnDefinition>
                                 <ColumnDefinition></ColumnDefinition>
                             </Grid.ColumnDefinitions>
-                            <CheckBox x:Name="ChbSmallLetters" Content="Small letters (a-z)" Height="16" VerticalAlignment="Top"></CheckBox>
+                            <CheckBox x:Name="ChbSmallLetters" Content="Small letters (a-z)" Height="16"></CheckBox>
                             <CheckBox x:Name="ChbCapitalLetters" Grid.Row="0" Grid.Column="1" Content="Capital letters (A-Z)"></CheckBox>
                             <CheckBox x:Name="ChbSpecialCharacters" Grid.Row="1" Grid.Column="0" Content="Special characters (@,#!)"></CheckBox>
                             <CheckBox x:Name="ChbNumbers" Grid.Row="1" Grid.Column="1" Content="Numbers (0-9)"></CheckBox>
