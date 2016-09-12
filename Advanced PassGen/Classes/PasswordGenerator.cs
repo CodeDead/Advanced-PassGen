@@ -18,7 +18,6 @@ namespace Advanced_PassGen.Classes
         private readonly int _maxLength;
         private readonly int _amount;
         private readonly int _seed;
-
         private readonly string _charSet;
 
         internal List<Password> PasswordList;

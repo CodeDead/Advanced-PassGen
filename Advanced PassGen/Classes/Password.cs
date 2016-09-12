@@ -1,11 +1,19 @@
-﻿using System.Text.RegularExpressions;
+﻿using System;
+using System.Text.RegularExpressions;
 
 namespace Advanced_PassGen.Classes
 {
     public class Password
     {
+        #region Variables
+
         private string _actualPassword;
 
+        #endregion
+
+        /// <summary>
+        /// The actual password in plain text.
+        /// </summary>
         public string ActualPassword
         {
             get { return _actualPassword; }
@@ -17,12 +25,18 @@ namespace Advanced_PassGen.Classes
             }
         }
 
+        /// <summary>
+        /// The length of the password.
+        /// </summary>
         public int Length { get; private set; }
         
+        /// <summary>
+        /// The strength of a password, indicated by a number ranging from 0 to 5. The higher the score, the stronger the password.
+        /// </summary>
         public int Strength { get; private set; }
 
         /// <summary>
-        /// Check how a strong a password is. The higher the score, the safer the password.
+        /// Check how a strong a password is. The higher the score, the stronger the password.
         /// </summary>
         /// <param name="password">The password that needs to be evaluated.</param>
         /// <returns>Returns a password score.</returns>
