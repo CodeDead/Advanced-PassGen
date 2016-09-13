@@ -159,7 +159,7 @@
                             <ColumnDefinition Width="Auto"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <Label Content="Password:"></Label>
-                        <TextBox x:Name="TxtPassword" Grid.Column="1" Width="200"></TextBox>
+                        <PasswordBox x:Name="PwbPassword" Grid.Column="1" Width="200"></PasswordBox>
                     </Grid>
                     <Grid Grid.Row="1" Margin="0,5,0,0">
                         <Grid.RowDefinitions>

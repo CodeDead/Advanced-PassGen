@@ -234,8 +234,8 @@ namespace Advanced_PassGen.Windows
 
         private void BtnAdvise_Click(object sender, RoutedEventArgs e)
         {
-            if (TxtPassword.Text.Length == 0) return;
-            Password pwd = new Password {ActualPassword = TxtPassword.Text};
+            if (PwbPassword.Password.Length == 0) return;
+            Password pwd = new Password {ActualPassword = PwbPassword.Password};
             PgbStrength.Value = pwd.Strength;
         }
 

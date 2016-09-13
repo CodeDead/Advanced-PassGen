@@ -48,6 +48,7 @@
                         <ComboBoxItem>Metro</ComboBoxItem>
                         <ComboBoxItem>Blend</ComboBoxItem>
                         <ComboBoxItem>VS2010</ComboBoxItem>
+                        <ComboBoxItem>Office2003</ComboBoxItem>
                         <ComboBoxItem>Office2007Blue</ComboBoxItem>
                         <ComboBoxItem>Office2007Black</ComboBoxItem>
                         <ComboBoxItem>Office2007Silver</ComboBoxItem>
