@@ -127,7 +127,7 @@ namespace Advanced_PassGen.Windows
             }
             if (ChbSpecialCharacters.IsChecked != null && ChbSpecialCharacters.IsChecked.Value)
             {
-                charSet += "=+-<>(){}[]!?.,;:/%^*$€£&µ@#";
+                charSet += "=+-_<>(){}[]!?.,;:/%^*$€£&µ@#";
             }
             if (ChbNumbers.IsChecked != null && ChbNumbers.IsChecked.Value)
             {

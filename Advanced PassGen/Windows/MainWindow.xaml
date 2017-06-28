@@ -29,9 +29,17 @@
                             <ColumnDefinition></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <Label>Length:</Label>
-                        <syncfusion:IntegerTextBox x:Name="TxtLength" Grid.Row="0" Grid.Column="1" MinValue="1"></syncfusion:IntegerTextBox>
+                        <syncfusion:IntegerTextBox x:Name="TxtLength" Grid.Row="0" Grid.Column="1" MinValue="1">
+                            <syncfusion:IntegerTextBox.ToolTip>
+                                <ToolTip Content="The length of the password that needs to be generated."></ToolTip>
+                            </syncfusion:IntegerTextBox.ToolTip>
+                        </syncfusion:IntegerTextBox>
                         <Label Grid.Row="1" Grid.Column="0">Amount:</Label>
-                        <syncfusion:IntegerTextBox x:Name="TxtAmount" Grid.Row="1" Grid.Column="1" MinValue="1"></syncfusion:IntegerTextBox>
+                        <syncfusion:IntegerTextBox x:Name="TxtAmount" Grid.Row="1" Grid.Column="1" MinValue="1">
+                            <syncfusion:IntegerTextBox.ToolTip>
+                                <ToolTip Content="The amount of passwords that need to be generated."></ToolTip>
+                            </syncfusion:IntegerTextBox.ToolTip>
+                        </syncfusion:IntegerTextBox>
                     </Grid>
                     <GroupBox Grid.Row="1" Header="Characters">
                         <Grid>
@@ -43,10 +51,26 @@
                                 <ColumnDefinition></ColumnDefinition>
                                 <ColumnDefinition></ColumnDefinition>
                             </Grid.ColumnDefinitions>
-                            <CheckBox x:Name="ChbSmallLetters" Content="Small letters (a-z)" Height="16"></CheckBox>
-                            <CheckBox x:Name="ChbCapitalLetters" Grid.Row="0" Grid.Column="1" Content="Capital letters (A-Z)"></CheckBox>
-                            <CheckBox x:Name="ChbSpecialCharacters" Grid.Row="1" Grid.Column="0" Content="Special characters (@,#!)"></CheckBox>
-                            <CheckBox x:Name="ChbNumbers" Grid.Row="1" Grid.Column="1" Content="Numbers (0-9)"></CheckBox>
+                            <CheckBox Margin="2"  x:Name="ChbSmallLetters" Content="Small letters">
+                                <CheckBox.ToolTip>
+                                    <ToolTip Content="Example: a, b, c,..."></ToolTip>
+                                </CheckBox.ToolTip>
+                            </CheckBox>
+                            <CheckBox Margin="2" x:Name="ChbCapitalLetters" Grid.Row="0" Grid.Column="1" Content="Capital letters">
+                                <CheckBox.ToolTip>
+                                    <ToolTip Content="Example: A, B, C,..."></ToolTip>
+                                </CheckBox.ToolTip>
+                            </CheckBox>
+                            <CheckBox Margin="2" x:Name="ChbSpecialCharacters" Grid.Row="1" Grid.Column="0" Content="Special characters">
+                                <CheckBox.ToolTip>
+                                    <ToolTip Content="Example: @, #, !,..."></ToolTip>
+                                </CheckBox.ToolTip>
+                            </CheckBox>
+                            <CheckBox Margin="2" x:Name="ChbNumbers" Grid.Row="1" Grid.Column="1" Content="Numbers">
+                                <CheckBox.ToolTip>
+                                    <ToolTip Content="Example: 0, 1, 2,..."></ToolTip>
+                                </CheckBox.ToolTip>
+                            </CheckBox>
                         </Grid>
                     </GroupBox>
                 </Grid>
@@ -86,9 +110,17 @@
                                     <ColumnDefinition></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
                                 <Label>Character set:</Label>
-                                <TextBox x:Name="TxtCharacterSet" Grid.Row="0" Grid.Column="1"></TextBox>
+                                <TextBox x:Name="TxtCharacterSet" Grid.Row="0" Grid.Column="1">
+                                    <TextBox.ToolTip>
+                                        <ToolTip Content="The character set is a collection of characters that will be used to generate a password."></ToolTip>
+                                    </TextBox.ToolTip>
+                                </TextBox>
                                 <Label Grid.Row="1" Grid.Column="0">Random seed:</Label>
-                                <syncfusion:IntegerTextBox x:Name="TxtRandomSeed" Grid.Row="1" Grid.Column="1"></syncfusion:IntegerTextBox>
+                                <syncfusion:IntegerTextBox x:Name="TxtRandomSeed" Grid.Row="1" Grid.Column="1">
+                                    <syncfusion:IntegerTextBox.ToolTip>
+                                        <ToolTip Content="The seed is used to generate random passwords."></ToolTip>
+                                    </syncfusion:IntegerTextBox.ToolTip>
+                                </syncfusion:IntegerTextBox>
                             </Grid>
                         </Grid>
                     </GroupBox>
@@ -142,8 +174,8 @@
                             <ColumnDefinition></ColumnDefinition>
                             <ColumnDefinition></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <Button Content="Generate" Click="BtnGenerate_Click"></Button>
-                        <Button Grid.Column="1" Content=" Export" Click="BtnExport_Click" ></Button>
+                        <Button Margin="5" Content="Generate" Click="BtnGenerate_Click"></Button>
+                        <Button Margin="5" Grid.Column="1" Content=" Export" Click="BtnExport_Click" ></Button>
                     </Grid>
                 </Grid>
             </syncfusion:TabItemExt>
@@ -166,8 +198,8 @@
                             <RowDefinition></RowDefinition>
                             <RowDefinition></RowDefinition>
                         </Grid.RowDefinitions>
-                        <ProgressBar x:Name="PgbStrength" Grid.Row="0" Maximum="5" Height="20"></ProgressBar>
-                        <Button Grid.Row="1" Content="Advise" Click="BtnAdvise_Click"></Button>
+                        <ProgressBar Margin="5" x:Name="PgbStrength" Grid.Row="0" Maximum="5" Height="20"></ProgressBar>
+                        <Button Margin="5" Grid.Row="1" Content="Advise" Click="BtnAdvise_Click"></Button>
                     </Grid>
                 </Grid>
             </syncfusion:TabItemExt>
