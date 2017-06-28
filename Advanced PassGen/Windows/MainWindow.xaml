@@ -162,7 +162,7 @@
                                         <DataTemplate>
                                             <!-- ReSharper disable once Xaml.BindingWithContextNotResolved -->
                                             <!-- ReSharper disable once Xaml.BindingWithContextNotResolved -->
-                                            <ProgressBar Height="20" Width="100" Maximum="5" Value="{Binding Strength, Mode=OneWay}" />
+                                            <ProgressBar Height="20" Width="100" Maximum="6" Value="{Binding Strength, Mode=OneWay}" />
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
@@ -198,7 +198,7 @@
                             <RowDefinition></RowDefinition>
                             <RowDefinition></RowDefinition>
                         </Grid.RowDefinitions>
-                        <ProgressBar Margin="5" x:Name="PgbStrength" Grid.Row="0" Maximum="5" Height="20"></ProgressBar>
+                        <ProgressBar Margin="5" x:Name="PgbStrength" Grid.Row="0" Maximum="6" Height="20"></ProgressBar>
                         <Button Margin="5" Grid.Row="1" Content="Advise" Click="BtnAdvise_Click"></Button>
                     </Grid>
                 </Grid>

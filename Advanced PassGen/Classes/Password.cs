@@ -5,9 +5,7 @@ namespace Advanced_PassGen.Classes
     public class Password
     {
         #region Variables
-
         private string _actualPassword;
-
         #endregion
 
         /// <summary>
@@ -30,7 +28,7 @@ namespace Advanced_PassGen.Classes
         public int Length { get; private set; }
         
         /// <summary>
-        /// The strength of a password, indicated by a number ranging from 0 to 5. The higher the score, the stronger the password.
+        /// The strength of a password, indicated by a number ranging from 0 to 6. The higher the score, the stronger the password.
         /// </summary>
         public int Strength { get; private set; }
 
@@ -50,7 +48,7 @@ namespace Advanced_PassGen.Classes
             if (password.Length >= 10) score++;
             if (Regex.Match(password, @"\d", RegexOptions.ECMAScript).Success) score++;
             if (Regex.Match(password, @"[a-z]", RegexOptions.ECMAScript).Success && Regex.Match(password, @"[A-Z]", RegexOptions.ECMAScript).Success) score++;
-            if (Regex.Match(password, @"[!,@,#,$,%,^,&,*,?,_,~,-,£,(,)]", RegexOptions.ECMAScript).Success) score++;
+            if (Regex.Match(password, @"[:,µ,;,<,>,+,!,@,#,$,%,^,&,*,?,_,~,-,£,(,)]", RegexOptions.ECMAScript).Success) score++;
 
             return score;
         }
