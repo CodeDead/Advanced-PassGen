@@ -1,5 +1,4 @@
-﻿using System;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 
 namespace Advanced_PassGen.Classes
 {
@@ -16,7 +15,7 @@ namespace Advanced_PassGen.Classes
         /// </summary>
         public string ActualPassword
         {
-            get { return _actualPassword; }
+            get => _actualPassword;
             set
             {
                 _actualPassword = value;
@@ -42,10 +41,10 @@ namespace Advanced_PassGen.Classes
         /// <returns>Returns a password score.</returns>
         private static int CheckStrength(string password)
         {
-            int score = 0;
+            int score = 1;
 
             if (string.IsNullOrEmpty(password)) return 0;
-            if (password.Length < 1) return 0;
+            if (password.Length < 2) return 0;
             if (password.Length < 4) return 1;
             if (password.Length >= 8) score++;
             if (password.Length >= 10) score++;

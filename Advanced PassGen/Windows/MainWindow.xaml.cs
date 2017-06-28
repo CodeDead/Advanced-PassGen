@@ -14,11 +14,9 @@ namespace Advanced_PassGen.Windows
     public partial class MainWindow
     {
         #region Variables
-
-        internal readonly UpdateManager UpdateManager;
+        internal readonly UpdateManager.UpdateManager UpdateManager;
         private readonly GridViewColumn _gvc;
         private PasswordGenerator _generator;
-
         #endregion
 
         /// <summary>
@@ -26,7 +24,7 @@ namespace Advanced_PassGen.Windows
         /// </summary>
         public MainWindow()
         {
-            UpdateManager = new UpdateManager("http://codedead.com/Software/Advanced%20PassGen/update.xml");
+            UpdateManager = new UpdateManager.UpdateManager(Assembly.GetExecutingAssembly().GetName().Version, "https://codedead.com/Software/Advanced%20PassGen/update.xml", "Advanced PassGen");
 
             InitializeComponent();
             ChangeVisualStyle();
@@ -88,7 +86,7 @@ namespace Advanced_PassGen.Windows
             StyleManager.ChangeStyle(this);
         }
 
-        private void chbUseAdvanced_Checked(object sender, RoutedEventArgs e)
+        private void ChbUseAdvanced_Checked(object sender, RoutedEventArgs e)
         {
             if (ChbUseAdvanced.IsChecked == null) return;
             GrbAdvanced.IsEnabled = ChbUseAdvanced.IsChecked.Value;
@@ -108,7 +106,7 @@ namespace Advanced_PassGen.Windows
 
             if (ChbUseAdvanced.IsChecked != null && !ChbUseAdvanced.IsChecked.Value)
             {
-                if (ChbNumbers.IsChecked != null && (ChbSpecialCharacters.IsChecked != null && (ChbSmallLetters.IsChecked != null && (ChbCapitalLetters.IsChecked != null && (!ChbCapitalLetters.IsChecked.Value && !ChbSmallLetters.IsChecked.Value && !ChbSpecialCharacters.IsChecked.Value && !ChbNumbers.IsChecked.Value)))))
+                if (ChbNumbers.IsChecked != null && ChbSpecialCharacters.IsChecked != null && ChbSmallLetters.IsChecked != null && ChbCapitalLetters.IsChecked != null && !ChbCapitalLetters.IsChecked.Value && !ChbSmallLetters.IsChecked.Value && !ChbSpecialCharacters.IsChecked.Value && !ChbNumbers.IsChecked.Value)
                 {
                     MessageBox.Show(this, "Please select at least one option!", "Advanced PassGen", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                     return;
@@ -129,7 +127,7 @@ namespace Advanced_PassGen.Windows
             }
             if (ChbSpecialCharacters.IsChecked != null && ChbSpecialCharacters.IsChecked.Value)
             {
-                charSet += "=+-<>(){}[]!?.,:/%^*$€£&µ";
+                charSet += "=+-<>(){}[]!?.,;:/%^*$€£&µ@#";
             }
             if (ChbNumbers.IsChecked != null && ChbNumbers.IsChecked.Value)
             {

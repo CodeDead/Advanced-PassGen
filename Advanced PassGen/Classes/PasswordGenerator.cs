@@ -13,7 +13,6 @@ namespace Advanced_PassGen.Classes
     internal class PasswordGenerator
     {
         #region Variables
-
         private readonly int _minLength;
         private readonly int _maxLength;
         private readonly int _amount;
@@ -22,7 +21,6 @@ namespace Advanced_PassGen.Classes
 
         internal List<Password> PasswordList;
         private static Random _rnd = new Random();
-
         #endregion
 
         /// <summary>

@@ -57,7 +57,7 @@
                         <RowDefinition Height="Auto"></RowDefinition>
                         <RowDefinition Height="Auto"></RowDefinition>
                     </Grid.RowDefinitions>
-                    <CheckBox x:Name="ChbUseAdvanced" Checked="chbUseAdvanced_Checked" Unchecked="chbUseAdvanced_Checked">Use advanced options</CheckBox>
+                    <CheckBox x:Name="ChbUseAdvanced" Checked="ChbUseAdvanced_Checked" Unchecked="ChbUseAdvanced_Checked">Use advanced options</CheckBox>
                     <GroupBox x:Name="GrbAdvanced" IsEnabled="False" Grid.Row="1" Header="Advanced options">
                         <Grid>
                             <Grid.RowDefinitions>

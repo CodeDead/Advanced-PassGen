@@ -62,7 +62,7 @@ namespace Advanced_PassGen.Windows
             }
         }
 
-        private void btnReset_Click(object sender, RoutedEventArgs e)
+        private void BtnReset_Click(object sender, RoutedEventArgs e)
         {
             Properties.Settings.Default.Reset();
             Properties.Settings.Default.Save();
@@ -74,7 +74,7 @@ namespace Advanced_PassGen.Windows
             ChangeVisualStyle();
         }
 
-        private void btnSave_Click(object sender, RoutedEventArgs e)
+        private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -112,7 +112,7 @@ namespace Advanced_PassGen.Windows
         {
             try
             {
-                System.Diagnostics.Process.Start("http://codedead.com/");
+                System.Diagnostics.Process.Start("https://codedead.com/");
             }
             catch (Exception ex)
             {
@@ -124,7 +124,7 @@ namespace Advanced_PassGen.Windows
         {
             try
             {
-                System.Diagnostics.Process.Start("gpl.pdf");
+                System.Diagnostics.Process.Start(AppDomain.CurrentDomain.BaseDirectory + "\\gpl.pdf");
             }
             catch (Exception ex)
             {
