@@ -5,6 +5,7 @@
                              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                              xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
                              mc:Ignorable="d"
+                             UseLayoutRounding="True"
                              AllowsTransparency="True"
         Title="Advanced PassGen - Settings" Height="230" Width="400" WindowStartupLocation="CenterScreen" Icon="/Advanced PassGen;component/key.ico" TitleTextAlignment="Center">
     <Grid>
@@ -95,9 +96,11 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition></ColumnDefinition>
                             <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <Image Width="32" Height="32" Source="/Advanced PassGen;component/key.ico"></Image>
-                        <TextBlock Grid.Column="1">
+                        <Separator Margin="5" Grid.Column="1" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+                        <TextBlock Grid.Column="2">
                             Advanced PassGen was created by DeadLine.<LineBreak />
                             <LineBreak />
                             Images by: paomedia small-n-flat<LineBreak />

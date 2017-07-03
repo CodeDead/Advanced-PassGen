@@ -6,6 +6,7 @@
                              xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
                              mc:Ignorable="d"
                              AllowsTransparency="True"
+                             UseLayoutRounding="True"
                              Title="Advanced PassGen" WindowStartupLocation="CenterScreen" Icon="/Advanced PassGen;component/key.ico" Width="400" Height="250" TitleTextAlignment="Center">
     <Grid>
         <Grid.RowDefinitions>
