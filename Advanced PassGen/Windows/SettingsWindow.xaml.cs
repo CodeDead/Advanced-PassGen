@@ -5,19 +5,22 @@ using Advanced_PassGen.Classes;
 
 namespace Advanced_PassGen.Windows
 {
+    /// <inheritdoc cref="Syncfusion.Windows.Shared.ChromelessWindow" />
     /// <summary>
     /// Interaction logic for SettingsWindow.xaml
     /// </summary>
     public partial class SettingsWindow
     {
         #region Variables
-
+        /// <summary>
+        /// The Main window object
+        /// </summary>
         private readonly MainWindow _mw;
-
         #endregion
 
+        /// <inheritdoc />
         /// <summary>
-        /// Initiate a new SettingsWindow.
+        /// Initialize a new SettingsWindow
         /// </summary>
         /// <param name="mw">The MainWindow.</param>
         public SettingsWindow(MainWindow mw)
@@ -30,7 +33,7 @@ namespace Advanced_PassGen.Windows
         }
 
         /// <summary>
-        /// Change the visual style of the controls, depending on the settings.
+        /// Change the visual style of the controls, depending on the settings
         /// </summary>
         private void ChangeVisualStyle()
         {
@@ -38,7 +41,7 @@ namespace Advanced_PassGen.Windows
         }
 
         /// <summary>
-        /// Change the GUI to represent the current settings.
+        /// Change the GUI to represent the current settings
         /// </summary>
         private void LoadSettings()
         {
@@ -62,6 +65,11 @@ namespace Advanced_PassGen.Windows
             }
         }
 
+        /// <summary>
+        /// Method that will be called when the Reset button has been clicked
+        /// </summary>
+        /// <param name="sender">The object that called this method</param>
+        /// <param name="e">The routed event arguments</param>
         private void BtnReset_Click(object sender, RoutedEventArgs e)
         {
             Properties.Settings.Default.Reset();
@@ -74,6 +82,11 @@ namespace Advanced_PassGen.Windows
             ChangeVisualStyle();
         }
 
+        /// <summary>
+        /// Method that will be called when the Save button has been clicked
+        /// </summary>
+        /// <param name="sender">The object that called this method</param>
+        /// <param name="e">The routed event arguments</param>
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -103,11 +116,21 @@ namespace Advanced_PassGen.Windows
             }
         }
 
+        /// <summary>
+        /// Method that will be called when the Update button has been clicked
+        /// </summary>
+        /// <param name="sender">The object that called this method</param>
+        /// <param name="e">The routed event arguments</param>
         private void BtnUpdate_Click(object sender, RoutedEventArgs e)
         {
             _mw.UpdateManager.CheckForUpdate(true, true);
         }
 
+        /// <summary>
+        /// Method that will be called when the Website button has been clicked
+        /// </summary>
+        /// <param name="sender">The object that called this method</param>
+        /// <param name="e">The routed event arguments</param>
         private void BtnWebsite_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -120,6 +143,11 @@ namespace Advanced_PassGen.Windows
             }
         }
 
+        /// <summary>
+        /// Method that will be called when the License button has been clicked
+        /// </summary>
+        /// <param name="sender">The object that called this method</param>
+        /// <param name="e">The routed event arguments</param>
         private void BtnLicense_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -132,11 +160,21 @@ namespace Advanced_PassGen.Windows
             }
         }
 
+        /// <summary>
+        /// Method that will be called when the input of the Delimiter textbox is being changed
+        /// </summary>
+        /// <param name="sender">The object that called this method</param>
+        /// <param name="e">The text composition event arguments</param>
         private void TxtDelimiter_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             if (TxtDelimiter.Text.Length == 1) e.Handled = true;
         }
 
+        /// <summary>
+        /// Method that will be called when the can execute handle has been called
+        /// </summary>
+        /// <param name="sender">The object that called this method</param>
+        /// <param name="e">The routed event arguments</param>
         private void HandleCanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
             if (e.Command != ApplicationCommands.Paste) return;

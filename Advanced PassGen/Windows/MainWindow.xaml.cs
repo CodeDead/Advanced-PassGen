@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
@@ -8,19 +9,30 @@ using Microsoft.Win32;
 
 namespace Advanced_PassGen.Windows
 {
+    /// <inheritdoc cref="Syncfusion.Windows.Shared.ChromelessWindow" />
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow
     {
         #region Variables
+        /// <summary>
+        /// The UpdateManager object that can check for updates
+        /// </summary>
         internal readonly UpdateManager.UpdateManager UpdateManager;
+        /// <summary>
+        /// The GridViewColumn in which items can be displayed
+        /// </summary>
         private readonly GridViewColumn _gvc;
+        /// <summary>
+        /// The password generator that can be used to generate passwords
+        /// </summary>
         private PasswordGenerator _generator;
         #endregion
 
+        /// <inheritdoc />
         /// <summary>
-        /// Initiate a new MainWindow.
+        /// Initialize a new MainWindow
         /// </summary>
         public MainWindow()
         {
@@ -52,7 +64,7 @@ namespace Advanced_PassGen.Windows
         }
 
         /// <summary>
-        /// Change the GUI to represent the current settings.
+        /// Change the GUI to represent the current settings
         /// </summary>
         internal void LoadSettings()
         {
@@ -79,13 +91,18 @@ namespace Advanced_PassGen.Windows
         }
 
         /// <summary>
-        /// Change the visual style of the controls, depending on the settings.
+        /// Change the visual style of the controls, depending on the settings
         /// </summary>
         internal void ChangeVisualStyle()
         {
             StyleManager.ChangeStyle(this);
         }
 
+        /// <summary>
+        /// Method that will be called when the Advanced options checkbox has been checked or unchecked
+        /// </summary>
+        /// <param name="sender">The object that called this method</param>
+        /// <param name="e">The routed event arguments</param>
         private void ChbUseAdvanced_Checked(object sender, RoutedEventArgs e)
         {
             if (ChbUseAdvanced.IsChecked == null) return;
@@ -93,11 +110,21 @@ namespace Advanced_PassGen.Windows
             TxtLength.IsEnabled = !ChbUseAdvanced.IsChecked.Value;
         }
 
+        /// <summary>
+        /// Method that will be called when the Settings hyperlink has been clicked
+        /// </summary>
+        /// <param name="sender">The object that called this method</param>
+        /// <param name="e">The routed event arguments</param>
         private void HypSettings_Click(object sender, RoutedEventArgs e)
         {
             new SettingsWindow(this).ShowDialog();
         }
 
+        /// <summary>
+        /// Method that will be called when the user clicks on the Generate button
+        /// </summary>
+        /// <param name="sender">The object that called this method</param>
+        /// <param name="e">The routed event arguments</param>
         private async void BtnGenerate_Click(object sender, RoutedEventArgs e)
         {
             string charSet = "";
@@ -168,6 +195,11 @@ namespace Advanced_PassGen.Windows
             }
         }
 
+        /// <summary>
+        /// Method that will be called when the Export button has been clicked
+        /// </summary>
+        /// <param name="sender">The object that called this method</param>
+        /// <param name="e">The routed event arguments</param>
         private void BtnExport_Click(object sender, RoutedEventArgs e)
         {
             if (LsvPasswordList.Items.Count == 0) return;
@@ -177,10 +209,9 @@ namespace Advanced_PassGen.Windows
             if (res != true) return;
             try
             {
-                // ReSharper disable once SwitchStatementMissingSomeCases
                 switch (sfd.FilterIndex)
                 {
-                    case 1:
+                    default:
                         _generator.ExportText(sfd.FileName);
                         break;
                     case 2:
@@ -198,24 +229,29 @@ namespace Advanced_PassGen.Windows
             }
         }
 
+        /// <summary>
+        /// Method that will be called when the Copy menu item has been clicked
+        /// </summary>
+        /// <param name="sender">The object that called this method</param>
+        /// <param name="e">The routed event arguments</param>
         private void MiCopy_Click(object sender, RoutedEventArgs e)
         {
             if (LsvPasswordList.SelectedItems.Count == 0) return;
-            Password pwd = LsvPasswordList.SelectedItem as Password;
-            if (pwd != null)
+            if (LsvPasswordList.SelectedItem is Password pwd)
             {
                 Clipboard.SetText(pwd.ActualPassword);
             }
         }
 
+        /// <summary>
+        /// Method that will be called when the Remove menu item has been clicked
+        /// </summary>
+        /// <param name="sender">The object that called this method</param>
+        /// <param name="e">The routed event arguments</param>
         private void MiRemove_Click(object sender, RoutedEventArgs e)
         {
             if (LsvPasswordList.SelectedItems.Count == 0) return;
-            List<Password> passwords = new List<Password>();
-            foreach (Password t in LsvPasswordList.SelectedItems)
-            {
-                passwords.Add(t);
-            }
+            List<Password> passwords = LsvPasswordList.SelectedItems.Cast<Password>().ToList();
 
             foreach (Password t in passwords)
             {
@@ -224,12 +260,22 @@ namespace Advanced_PassGen.Windows
             }
         }
 
+        /// <summary>
+        /// Method that will be called when the Clear menu item has been clicked
+        /// </summary>
+        /// <param name="sender">The object that called this method</param>
+        /// <param name="e">The routed event arguments</param>
         private void MiClear_Click(object sender, RoutedEventArgs e)
         {
             LsvPasswordList.Items.Clear();
             _generator?.PasswordList.Clear();
         }
 
+        /// <summary>
+        /// Method that will be called when the Advise button has been clicked
+        /// </summary>
+        /// <param name="sender">The object that called this method</param>
+        /// <param name="e">The routed event arguments</param>
         private void BtnAdvise_Click(object sender, RoutedEventArgs e)
         {
             if (PwbPassword.Password.Length == 0) return;
@@ -237,6 +283,11 @@ namespace Advanced_PassGen.Windows
             PgbStrength.Value = pwd.Strength;
         }
 
+        /// <summary>
+        /// Method that will be called when the Update hyperlink has been clicked
+        /// </summary>
+        /// <param name="sender">The object that called this method</param>
+        /// <param name="e">The routed event arguments</param>
         private void HypUpdate_Click(object sender, RoutedEventArgs e)
         {
             UpdateManager.CheckForUpdate(true, true);

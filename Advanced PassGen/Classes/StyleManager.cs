@@ -6,14 +6,14 @@ using Syncfusion.Windows.Shared;
 namespace Advanced_PassGen.Classes
 {
     /// <summary>
-    /// Static class to change the style of an object.
+    /// Static class to change the style of an object
     /// </summary>
     internal static class StyleManager
     {
         /// <summary>
-        /// Change the visual style of an object.
+        /// Change the visual style of an object
         /// </summary>
-        /// <param name="o">The object that needs to have a style overhaul.</param>
+        /// <param name="o">The object that needs to have a style overhaul</param>
         internal static void ChangeStyle(DependencyObject o)
         {
             try

@@ -8,15 +8,30 @@ using System.Threading.Tasks;
 namespace Advanced_PassGen.Classes
 {
     /// <summary>
-    /// A class to generate random strings.
+    /// A class to generate random strings
     /// </summary>
-    internal class PasswordGenerator
+    internal sealed class PasswordGenerator
     {
         #region Variables
+        /// <summary>
+        /// The minimum length of a password
+        /// </summary>
         private readonly int _minLength;
+        /// <summary>
+        /// The maximum length of a password
+        /// </summary>
         private readonly int _maxLength;
+        /// <summary>
+        /// The amount of passwords that need to be generated
+        /// </summary>
         private readonly int _amount;
+        /// <summary>
+        /// The seed that will be used for the Random object
+        /// </summary>
         private readonly int _seed;
+        /// <summary>
+        /// The character set that can be used to generate passwords
+        /// </summary>
         private readonly string _charSet;
 
         internal List<Password> PasswordList;
@@ -24,13 +39,13 @@ namespace Advanced_PassGen.Classes
         #endregion
 
         /// <summary>
-        /// Initiate a new PasswordGenerator object.
+        /// Initiate a new PasswordGenerator object
         /// </summary>
-        /// <param name="charSet">The character set that can be used to generate passwords with.</param>
-        /// <param name="minLength">The minimum length of a password.</param>
-        /// <param name="maxLength">The maximum length of a password.</param>
-        /// <param name="amount">The amount of passwords that need to be generated.</param>
-        /// <param name="seed">The seed for the random number generator.</param>
+        /// <param name="charSet">The character set that can be used to generate passwords with</param>
+        /// <param name="minLength">The minimum length of a password</param>
+        /// <param name="maxLength">The maximum length of a password</param>
+        /// <param name="amount">The amount of passwords that need to be generated</param>
+        /// <param name="seed">The seed for the random number generator</param>
         internal PasswordGenerator(string charSet, int minLength, int maxLength, int amount, int seed)
         {
             _charSet = charSet;
@@ -41,9 +56,9 @@ namespace Advanced_PassGen.Classes
         }
 
         /// <summary>
-        /// Generate a list of passwords.
+        /// Generate a list of passwords
         /// </summary>
-        /// <returns>A list of passwords.</returns>
+        /// <returns>A list of passwords</returns>
         internal async Task<List<Password>> GeneratePasswords()
         {
             PasswordList = new List<Password>();
@@ -62,10 +77,10 @@ namespace Advanced_PassGen.Classes
         }
 
         /// <summary>
-        /// Generate a random string.
+        /// Generate a random string
         /// </summary>
-        /// <param name="length">The length of the string that needs to be generated.</param>
-        /// <param name="characterSet">The characterset that the generator can use.</param>
+        /// <param name="length">The length of the string that needs to be generated</param>
+        /// <param name="characterSet">The characterset that the generator can use</param>
         /// <returns></returns>
         private static string GetRandomString(int length, IEnumerable<char> characterSet)
         {
@@ -82,9 +97,9 @@ namespace Advanced_PassGen.Classes
         }
 
         /// <summary>
-        /// Export a password list as a text file.
+        /// Export a password list as a text file
         /// </summary>
-        /// <param name="path">The path where the text file should be stored.</param>
+        /// <param name="path">The path where the text file should be stored</param>
         internal void ExportText(string path)
         {
             if (PasswordList.Count < 1) return;
@@ -103,9 +118,9 @@ namespace Advanced_PassGen.Classes
         }
 
         /// <summary>
-        /// Export a password list as a HTML file.
+        /// Export a password list as a HTML file
         /// </summary>
-        /// <param name="path">The path where the HTML file should be stored.</param>
+        /// <param name="path">The path where the HTML file should be stored</param>
         internal void ExportHtml(string path)
         {
             if (PasswordList.Count < 1) return;
@@ -139,9 +154,9 @@ namespace Advanced_PassGen.Classes
         }
 
         /// <summary>
-        /// Export a password list as a CSV file.
+        /// Export a password list as a CSV file
         /// </summary>
-        /// <param name="path">The path where the CSV file should be stored.</param>
+        /// <param name="path">The path where the CSV file should be stored</param>
         internal void ExportCsv(string path)
         {
             if (PasswordList.Count < 1) return;
@@ -179,10 +194,10 @@ namespace Advanced_PassGen.Classes
         }
 
         /// <summary>
-        /// Write a string to a file.
+        /// Write a string to a file
         /// </summary>
-        /// <param name="path">The path where the string should be stored.</param>
-        /// <param name="text">The text that should be written to the file.</param>
+        /// <param name="path">The path where the string should be stored</param>
+        /// <param name="text">The text that should be written to the file</param>
         private static void FileWriter(string path, string text)
         {
             using (StreamWriter sw = new StreamWriter(path))
