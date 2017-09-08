@@ -292,5 +292,15 @@ namespace Advanced_PassGen.Windows
         {
             UpdateManager.CheckForUpdate(true, true);
         }
+
+        /// <summary>
+        /// Method that will be called when the Random seed generator button has been clicked
+        /// </summary>
+        /// <param name="sender">The object that called this method</param>
+        /// <param name="e">The routed event arguments</param>
+        private void BtnRandomSeed_Click(object sender, RoutedEventArgs e)
+        {
+            TxtRandomSeed.Text = Guid.NewGuid().GetHashCode().ToString();
+        }
     }
 }

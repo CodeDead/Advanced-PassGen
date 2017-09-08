@@ -8,7 +8,7 @@
     mc:Ignorable="d"
     UseLayoutRounding="True"
     AllowsTransparency="True"
-    Title="Advanced PassGen - Settings" Height="230" Width="400" WindowStartupLocation="CenterScreen" Icon="/Advanced PassGen;component/key.ico" TitleTextAlignment="Center">
+    Title="Advanced PassGen - Settings" Height="250" Width="400" WindowStartupLocation="CenterScreen" Icon="/Advanced PassGen;component/key.ico" TitleTextAlignment="Center">
     
     <Grid>
         <Grid.RowDefinitions>
@@ -30,7 +30,7 @@
                             <ColumnDefinition></ColumnDefinition>
                             <ColumnDefinition Width="Auto"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <Label Content="Character set:"></Label>
+                        <Label Content="Character set:" VerticalAlignment="Center"></Label>
                         <TextBox x:Name="TxtCharacterSet" Width="150" Grid.Column="1"></TextBox>
                     </Grid>
                 </Grid>
@@ -46,7 +46,7 @@
                         <ColumnDefinition Width="Auto"></ColumnDefinition>
                         <ColumnDefinition Width="Auto"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <Label Content="Style:"></Label>
+                    <Label Content="Style:" VerticalAlignment="Center"></Label>
                     <ComboBox Margin="2" x:Name="ChbStyle" SelectedValuePath="Content" Grid.Row="0" Grid.Column="1" IsReadOnly="True">
                         <ComboBoxItem>Metro</ComboBoxItem>
                         <ComboBoxItem>Blend</ComboBoxItem>
@@ -63,9 +63,9 @@
                         <ComboBoxItem>SyncOrange</ComboBoxItem>
                         <ComboBoxItem>Transparent</ComboBoxItem>
                     </ComboBox>
-                    <Label Grid.Row="1" Grid.Column="0" Content="Metro brush:"></Label>
+                    <Label Grid.Row="1" Grid.Column="0" Content="Metro brush:" VerticalAlignment="Center"></Label>
                     <syncfusion:ColorPicker Margin="2" x:Name="CpMetroBrush" Grid.Row="1" Grid.Column="1" />
-                    <Label Grid.Row="2" Grid.Column="0">Border thickness:</Label>
+                    <Label Grid.Row="2" Grid.Column="0" VerticalAlignment="Center">Border thickness:</Label>
                     <syncfusion:IntegerTextBox Margin="2" x:Name="TxtBorderThickness" Grid.Row="2" Grid.Column="1" MinValue="1"></syncfusion:IntegerTextBox>
                 </Grid>
             </syncfusion:TabItemExt>
@@ -83,7 +83,7 @@
                             <ColumnDefinition></ColumnDefinition>
                             <ColumnDefinition></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <Label Content="CSV delimiter:"></Label>
+                        <Label Content="CSV delimiter:" VerticalAlignment="Center"></Label>
                         <TextBox x:Name="TxtDelimiter" Grid.Row="0" Grid.Column="1" CommandManager.PreviewCanExecute="HandleCanExecute" PreviewTextInput="TxtDelimiter_PreviewTextInput"></TextBox>
                     </Grid>
                 </Grid>
@@ -129,8 +129,8 @@
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Button Margin="5" Content="Reset all settings" Click="BtnReset_Click" MinHeight="25"></Button>
-            <Button Margin="5" Grid.Column="1" Click="BtnSave_Click" MinHeight="25">Save</Button>
+            <Button Margin="5" Content="Reset all settings" Click="BtnReset_Click"></Button>
+            <Button Margin="5" Grid.Column="1" Click="BtnSave_Click">Save</Button>
         </Grid>
     </Grid>
 </syncfusion:ChromelessWindow>
