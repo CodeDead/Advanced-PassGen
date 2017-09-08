@@ -74,7 +74,10 @@ namespace Advanced_PassGen.Windows
                 TxtCharacterSet.Text = Properties.Settings.Default.CharacterSet;
                 if (!Properties.Settings.Default.ShowPasswordStrength)
                 {
-                    DynGrid.Columns.RemoveAt(2);
+                    if (DynGrid.Columns.Count == 3)
+                    {
+                        DynGrid.Columns.RemoveAt(2);
+                    }
                 }
                 else
                 {
