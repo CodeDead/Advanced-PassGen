@@ -189,6 +189,12 @@ namespace Advanced_PassGen.Windows
             if (TxtAmount.Value == null) return;
             if (TxtRandomSeed.Value == null) return;
 
+            if (charSet.Length == 0)
+            {
+                MessageBox.Show("Character set cannot be empty!", "Advanced PassGen", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
             _generator = new PasswordGenerator(charSet, minValue, maxValue + 1, (int) TxtAmount.Value, (int) TxtRandomSeed.Value);
             List<Password> passwords = await _generator.GeneratePasswords();
 
