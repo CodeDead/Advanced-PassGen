@@ -54,7 +54,7 @@ namespace Advanced_PassGen.Classes
             if (password.Length >= 10) score++;
             if (Regex.Match(password, @"\d", RegexOptions.ECMAScript).Success) score++;
             if (Regex.Match(password, @"[a-z]", RegexOptions.ECMAScript).Success && Regex.Match(password, @"[A-Z]", RegexOptions.ECMAScript).Success) score++;
-            if (Regex.Match(password, @"[:,µ,;,<,>,+,!,@,#,$,%,^,&,*,?,_,~,-,£,(,);\[,\],⟨,⟩]", RegexOptions.ECMAScript).Success) score++;
+            if (Regex.Match(password, @"[:,µ,;, ,<,>,+,!,@,#,$,%,^,&,*,?,_,~,-,£,(,);\[,\],⟨,⟩]", RegexOptions.ECMAScript).Success) score++;
 
             return score;
         }
