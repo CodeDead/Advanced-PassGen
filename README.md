@@ -6,7 +6,7 @@ You can export your passwords in TXT, HTML or CSV format!
 # Requirements for building
 * [Visual Studio](https://visualstudio.com)
 * [Syncfusion for WPF](https://syncfusion.com/)
-* [.NET Framework 4.7](https://www.microsoft.com/en-us/download/details.aspx?id=55167)
+* [.NET Framework 4.7.1](https://www.microsoft.com/en-us/download/details.aspx?id=56116)
 * [UpdateManager](https://github.com/CodeDead/UpdateManager)
 
 # Other
