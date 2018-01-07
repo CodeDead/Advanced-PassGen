@@ -49,6 +49,7 @@
                             <Grid.RowDefinitions>
                                 <RowDefinition></RowDefinition>
                                 <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition></ColumnDefinition>
@@ -74,6 +75,16 @@
                                     <ToolTip Content="Example: 0, 1, 2,..."></ToolTip>
                                 </CheckBox.ToolTip>
                             </CheckBox>
+                            <CheckBox Margin="3" x:Name="ChbSpaces" Grid.Row="2" Grid.Column="0" Content="Spaces">
+                                <CheckBox.ToolTip>
+                                    <ToolTip Content="Example: ' '"></ToolTip>
+                                </CheckBox.ToolTip>
+                            </CheckBox>
+                            <CheckBox Margin="3" x:Name="ChbBrackets" Grid.Row="2" Grid.Column="1" Content="Brackets">
+                                <CheckBox.ToolTip>
+                                    <ToolTip Content="Example: [, ], (, )"></ToolTip>
+                                </CheckBox.ToolTip>
+                            </CheckBox>
                         </Grid>
                     </GroupBox>
                 </Grid>
@@ -90,8 +101,10 @@
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto"></RowDefinition>
                                 <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
                             </Grid.RowDefinitions>
-                            <Grid>
+                            <CheckBox x:Name="ChbBase64" Margin="2" Content="Convert to base64"></CheckBox>
+                            <Grid Grid.Row="1">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                                     <ColumnDefinition Width="Auto"></ColumnDefinition>
@@ -103,7 +116,7 @@
                                 <Label Grid.Column="2" VerticalAlignment="Center">Maximum length:</Label>
                                 <syncfusion:IntegerTextBox x:Name="TxtMaxLength" Grid.Column="3" MinValue="1"></syncfusion:IntegerTextBox>
                             </Grid>
-                            <Grid Grid.Row="1">
+                            <Grid Grid.Row="2">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"></RowDefinition>
                                     <RowDefinition Height="Auto"></RowDefinition>

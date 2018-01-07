@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Advanced_PassGen.Classes
@@ -30,6 +31,10 @@ namespace Advanced_PassGen.Classes
         /// </summary>
         private readonly int _seed;
         /// <summary>
+        /// A boolean to indicate if the password should be converted into base64 format
+        /// </summary>
+        private readonly bool _base64;
+        /// <summary>
         /// The character set that can be used to generate passwords
         /// </summary>
         private readonly string _charSet;
@@ -46,13 +51,15 @@ namespace Advanced_PassGen.Classes
         /// <param name="maxLength">The maximum length of a password</param>
         /// <param name="amount">The amount of passwords that need to be generated</param>
         /// <param name="seed">The seed for the random number generator</param>
-        internal PasswordGenerator(string charSet, int minLength, int maxLength, int amount, int seed)
+        /// <param name="base64">A boolean to indicate whether the password should be converted into a base64 string</param>
+        internal PasswordGenerator(string charSet, int minLength, int maxLength, int amount, int seed, bool base64)
         {
             _charSet = charSet;
             _minLength = minLength;
             _maxLength = maxLength;
             _amount = amount;
             _seed = seed;
+            _base64 = base64;
         }
 
         /// <summary>
@@ -65,10 +72,17 @@ namespace Advanced_PassGen.Classes
             _rnd = new Random(_seed);
             await Task.Run(() =>
             {
+                Encoding encoding = Encoding.Default;
                 for (int i = 0; i < _amount; i++)
                 {
                     var sub = _rnd.Next(_minLength, _maxLength);
                     string pwd = GetRandomString(sub, _charSet);
+
+                    if (_base64)
+                    {
+                        pwd = Convert.ToBase64String(encoding.GetBytes(pwd));
+                    }
+
                     Password pass = new Password { ActualPassword = pwd };
                     PasswordList.Add(pass);
                 }

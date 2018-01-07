@@ -108,7 +108,7 @@
                             Images by: paomedia small-n-flat<LineBreak />
                             Theme by: Syncfusion<LineBreak />
                             <LineBreak />
-                            Copyright © CodeDead 2017
+                            Copyright © CodeDead 2018
                         </TextBlock>
                     </Grid>
                     <Grid Grid.Row="1">
@@ -129,8 +129,8 @@
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Button Margin="5" Content="Reset all settings" Click="BtnReset_Click"></Button>
-            <Button Margin="5" Grid.Column="1" Click="BtnSave_Click">Save</Button>
+            <Button Margin="5" MinHeight="25" Content="Reset all settings" Click="BtnReset_Click"></Button>
+            <Button Margin="5" MinHeight="25" Grid.Column="1" Click="BtnSave_Click">Save</Button>
         </Grid>
     </Grid>
 </syncfusion:ChromelessWindow>

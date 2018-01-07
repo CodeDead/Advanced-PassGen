@@ -121,7 +121,7 @@ namespace Advanced_PassGen.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute(";")]
+        [global::System.Configuration.DefaultSettingValueAttribute(",")]
         public string ExportDelimiter {
             get {
                 return ((string)(this["ExportDelimiter"]));

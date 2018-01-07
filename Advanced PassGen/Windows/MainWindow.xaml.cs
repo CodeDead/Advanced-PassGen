@@ -133,16 +133,28 @@ namespace Advanced_PassGen.Windows
             string charSet = "";
             int minValue = 1;
             int maxValue = 1;
+            bool base64 = false;
 
             if (ChbUseAdvanced.IsChecked != null && !ChbUseAdvanced.IsChecked.Value)
             {
-                if (ChbNumbers.IsChecked != null && ChbSpecialCharacters.IsChecked != null && ChbSmallLetters.IsChecked != null && ChbCapitalLetters.IsChecked != null && !ChbCapitalLetters.IsChecked.Value && !ChbSmallLetters.IsChecked.Value && !ChbSpecialCharacters.IsChecked.Value && !ChbNumbers.IsChecked.Value)
+                if (ChbNumbers.IsChecked != null 
+                    && ChbSpecialCharacters.IsChecked != null
+                    && ChbSmallLetters.IsChecked != null
+                    && ChbCapitalLetters.IsChecked != null
+                    && ChbBrackets.IsChecked != null
+                    && ChbSpaces.IsChecked != null
+                    && !ChbCapitalLetters.IsChecked.Value
+                    && !ChbSmallLetters.IsChecked.Value
+                    && !ChbSpecialCharacters.IsChecked.Value
+                    && !ChbNumbers.IsChecked.Value
+                    && !ChbBrackets.IsChecked.Value
+                    && !ChbSpaces.IsChecked.Value)
                 {
                     MessageBox.Show(this, "Please select at least one option!", "Advanced PassGen", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                     return;
                 }
             }
-            else
+            else if (ChbUseAdvanced.IsChecked != null && ChbUseAdvanced.IsChecked.Value)
             {
                 charSet += TxtCharacterSet.Text;
             }
@@ -157,11 +169,19 @@ namespace Advanced_PassGen.Windows
             }
             if (ChbSpecialCharacters.IsChecked != null && ChbSpecialCharacters.IsChecked.Value)
             {
-                charSet += "=+-_<>(){}[]!?.,;:/%^*$€£&µ@#";
+                charSet += "=+-_!?.,;:'\"/%^*$€£&µ@#";
             }
             if (ChbNumbers.IsChecked != null && ChbNumbers.IsChecked.Value)
             {
                 charSet += "0123456789";
+            }
+            if (ChbBrackets.IsChecked != null && ChbBrackets.IsChecked.Value)
+            {
+                charSet += "<>(){}[]⟨⟩";
+            }
+            if (ChbSpaces.IsChecked != null && ChbSpaces.IsChecked.Value)
+            {
+                charSet += " ";
             }
 
             LsvPasswordList.Items.Clear();
@@ -175,6 +195,10 @@ namespace Advanced_PassGen.Windows
                     {
                         maxValue = (int) TxtMaxLength.Value;
                     }
+                }
+                if (ChbBase64.IsChecked != null && ChbBase64.IsChecked.Value)
+                {
+                    base64 = ChbBase64.IsChecked.Value;
                 }
             }
             else
@@ -195,7 +219,7 @@ namespace Advanced_PassGen.Windows
                 return;
             }
 
-            _generator = new PasswordGenerator(charSet, minValue, maxValue + 1, (int) TxtAmount.Value, (int) TxtRandomSeed.Value);
+            _generator = new PasswordGenerator(charSet, minValue, maxValue + 1, (int) TxtAmount.Value, (int) TxtRandomSeed.Value, base64);
             List<Password> passwords = await _generator.GeneratePasswords();
 
             foreach (Password s in passwords)
