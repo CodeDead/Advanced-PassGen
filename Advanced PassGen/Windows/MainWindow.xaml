@@ -276,7 +276,7 @@
                             <RowDefinition />
                             <RowDefinition />
                         </Grid.RowDefinitions>
-                        <ProgressBar Margin="2" x:Name="PgbStrength" Grid.Row="0" Maximum="6" Height="20" />
+                        <ProgressBar Margin="2" x:Name="PgbStrength" Grid.Row="0" Maximum="7" Height="20" />
                         <Button Margin="2" Grid.Row="1" Content="Advise" Click="BtnAdvise_Click" />
                     </Grid>
                 </Grid>
