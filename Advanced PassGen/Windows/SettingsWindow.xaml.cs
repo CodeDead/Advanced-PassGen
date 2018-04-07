@@ -58,7 +58,6 @@ namespace Advanced_PassGen.Windows
 
                 ChbExportLength.IsChecked = Properties.Settings.Default.ExportLength;
                 ChbExportStrength.IsChecked = Properties.Settings.Default.ExportStrength;
-                TxtDelimiter.Text = Properties.Settings.Default.ExportDelimiter;
             }
             catch (Exception ex)
             {
@@ -103,7 +102,6 @@ namespace Advanced_PassGen.Windows
 
                 if (ChbExportLength.IsChecked != null) Properties.Settings.Default.ExportLength = ChbExportLength.IsChecked.Value;
                 if (ChbExportStrength.IsChecked != null) Properties.Settings.Default.ExportStrength = ChbExportStrength.IsChecked.Value;
-                Properties.Settings.Default.ExportDelimiter = TxtDelimiter.Text;
 
                 Properties.Settings.Default.Save();
 
@@ -115,16 +113,6 @@ namespace Advanced_PassGen.Windows
             {
                 MessageBox.Show(this, ex.Message, "Advanced PassGen", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-        }
-
-        /// <summary>
-        /// Method that will be called when the input of the Delimiter textbox is being changed
-        /// </summary>
-        /// <param name="sender">The object that called this method</param>
-        /// <param name="e">The text composition event arguments</param>
-        private void TxtDelimiter_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            if (TxtDelimiter.Text.Length == 1) e.Handled = true;
         }
 
         /// <summary>

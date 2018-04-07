@@ -70,21 +70,42 @@ namespace Advanced_PassGen.Classes.Export
         }
 
         /// <summary>
-        /// Export a password list as a CSV file
+        /// Export a list of Password objects as a CSV file
         /// </summary>
         /// <param name="path">The path where the CSV file should be stored</param>
         /// <param name="passwordList">The list of Password objects that need to be exported</param>
         internal static void ExportCsv(string path, List<Password> passwordList)
         {
+            ExportDelimiter(path, ",", passwordList);
+        }
+
+        /// <summary>
+        /// Export a list of Password objects as an Excel file
+        /// </summary>
+        /// <param name="path">The path where the Excel file should be stored</param>
+        /// <param name="passwordList">The list of Password objects that need to be exported</param>
+        internal static void ExportExcel(string path, List<Password> passwordList)
+        {
+            ExportDelimiter(path, ";", passwordList);
+        }
+
+        /// <summary>
+        /// Export a list of Password objects using a specific delimiter
+        /// </summary>
+        /// <param name="path">The path where the file should be stored</param>
+        /// <param name="delimiter">The delimiter that should be used for splitting the data</param>
+        /// <param name="passwordList">The list of Password objects that need to be exported</param>
+        private static void ExportDelimiter(string path, string delimiter, IReadOnlyList<Password> passwordList)
+        {
             if (passwordList.Count < 1) return;
             string items = "Password List - Advanced PassGen" + Environment.NewLine + "Password";
             if (Properties.Settings.Default.ExportLength)
             {
-                items += Properties.Settings.Default.ExportDelimiter + "Length";
+                items += delimiter + "Length";
             }
             if (Properties.Settings.Default.ExportStrength)
             {
-                items += Properties.Settings.Default.ExportDelimiter + "Strength";
+                items += delimiter + "Strength";
             }
             items += Environment.NewLine;
             for (int i = 0; i < passwordList.Count; i++)
@@ -95,11 +116,11 @@ namespace Advanced_PassGen.Classes.Export
                     items += pwd.ActualPassword;
                     if (Properties.Settings.Default.ExportLength)
                     {
-                        items += Properties.Settings.Default.ExportDelimiter + pwd.Length;
+                        items += delimiter + pwd.Length;
                     }
                     if (Properties.Settings.Default.ExportStrength)
                     {
-                        items += Properties.Settings.Default.ExportDelimiter + pwd.Strength;
+                        items += delimiter + pwd.Strength;
                     }
                 }
                 if (i != passwordList.Count - 1)

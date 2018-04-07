@@ -121,18 +121,6 @@ namespace Advanced_PassGen.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute(",")]
-        public string ExportDelimiter {
-            get {
-                return ((string)(this["ExportDelimiter"]));
-            }
-            set {
-                this["ExportDelimiter"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool WindowDragging {
             get {
