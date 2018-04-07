@@ -77,6 +77,8 @@ namespace Advanced_PassGen.Windows
                     ChbWindowDraggable.IsChecked = false;
                 }
 
+                ChbKeepOptions.IsChecked = Properties.Settings.Default.SaveOptions;
+
                 ChbStyle.SelectedValue = Properties.Settings.Default.VisualStyle;
                 CpMetroBrush.Color = Properties.Settings.Default.MetroColor;
                 SldBorderThickness.Value = Properties.Settings.Default.BorderThickness;
@@ -121,6 +123,7 @@ namespace Advanced_PassGen.Windows
                 if (ChbAutoUpdate.IsChecked != null) Properties.Settings.Default.AutoUpdate = ChbAutoUpdate.IsChecked.Value;
                 if (ChbPasswordStrength.IsChecked != null) Properties.Settings.Default.ShowPasswordStrength = ChbPasswordStrength.IsChecked.Value;
                 if (ChbWindowDraggable.IsChecked != null)Properties.Settings.Default.WindowDragging = ChbWindowDraggable.IsChecked.Value;
+                if (ChbKeepOptions.IsChecked != null) Properties.Settings.Default.SaveOptions = ChbKeepOptions.IsChecked.Value;
 
                 Properties.Settings.Default.CharacterSet = TxtCharacterSet.Text;
                 _mw.TxtCharacterSet.Text = TxtCharacterSet.Text;

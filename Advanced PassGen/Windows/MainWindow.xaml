@@ -91,13 +91,13 @@
                             <ColumnDefinition />
                         </Grid.ColumnDefinitions>
                         <Label VerticalAlignment="Center" Content="Length:" />
-                        <syncfusion:IntegerTextBox x:Name="TxtLength" Grid.Row="0" Grid.Column="1" MinValue="1">
+                        <syncfusion:IntegerTextBox x:Name="TxtLength" Grid.Row="0" Grid.Column="1" MinValue="1" ValueChanged="SetTextBox_OnValueChanged">
                             <syncfusion:IntegerTextBox.ToolTip>
                                 <ToolTip Content="The length of the password that needs to be generated." />
                             </syncfusion:IntegerTextBox.ToolTip>
                         </syncfusion:IntegerTextBox>
                         <Label Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Content="Amount:" />
-                        <syncfusion:IntegerTextBox x:Name="TxtAmount" Grid.Row="1" Grid.Column="1" MinValue="1">
+                        <syncfusion:IntegerTextBox x:Name="TxtAmount" Grid.Row="1" Grid.Column="1" MinValue="1" ValueChanged="SetTextBox_OnValueChanged">
                             <syncfusion:IntegerTextBox.ToolTip>
                                 <ToolTip Content="The amount of passwords that need to be generated." />
                             </syncfusion:IntegerTextBox.ToolTip>
@@ -114,32 +114,32 @@
                                 <ColumnDefinition />
                                 <ColumnDefinition />
                             </Grid.ColumnDefinitions>
-                            <CheckBox Margin="3"  x:Name="ChbSmallLetters" Content="Small letters">
+                            <CheckBox Margin="3"  x:Name="ChbSmallLetters" Content="Small letters" Checked="SetCheckBox_OnChecked" Unchecked="SetCheckBox_OnChecked">
                                 <CheckBox.ToolTip>
                                     <ToolTip Content="Example: a, b, c,..." />
                                 </CheckBox.ToolTip>
                             </CheckBox>
-                            <CheckBox Margin="3" x:Name="ChbCapitalLetters" Grid.Row="0" Grid.Column="1" Content="Capital letters">
+                            <CheckBox Margin="3" x:Name="ChbCapitalLetters" Grid.Row="0" Grid.Column="1" Content="Capital letters" Checked="SetCheckBox_OnChecked" Unchecked="SetCheckBox_OnChecked">
                                 <CheckBox.ToolTip>
                                     <ToolTip Content="Example: A, B, C,..." />
                                 </CheckBox.ToolTip>
                             </CheckBox>
-                            <CheckBox Margin="3" x:Name="ChbSpecialCharacters" Grid.Row="1" Grid.Column="0" Content="Special characters">
+                            <CheckBox Margin="3" x:Name="ChbSpecialCharacters" Grid.Row="1" Grid.Column="0" Content="Special characters" Checked="SetCheckBox_OnChecked" Unchecked="SetCheckBox_OnChecked">
                                 <CheckBox.ToolTip>
                                     <ToolTip Content="Example: @, #, !,..." />
                                 </CheckBox.ToolTip>
                             </CheckBox>
-                            <CheckBox Margin="3" x:Name="ChbNumbers" Grid.Row="1" Grid.Column="1" Content="Numbers">
+                            <CheckBox Margin="3" x:Name="ChbNumbers" Grid.Row="1" Grid.Column="1" Content="Numbers" Checked="SetCheckBox_OnChecked" Unchecked="SetCheckBox_OnChecked">
                                 <CheckBox.ToolTip>
                                     <ToolTip Content="Example: 0, 1, 2,..." />
                                 </CheckBox.ToolTip>
                             </CheckBox>
-                            <CheckBox Margin="3" x:Name="ChbSpaces" Grid.Row="2" Grid.Column="0" Content="Spaces">
+                            <CheckBox Margin="3" x:Name="ChbSpaces" Grid.Row="2" Grid.Column="0" Content="Spaces" Checked="SetCheckBox_OnChecked" Unchecked="SetCheckBox_OnChecked">
                                 <CheckBox.ToolTip>
                                     <ToolTip Content="Example: ' '" />
                                 </CheckBox.ToolTip>
                             </CheckBox>
-                            <CheckBox Margin="3" x:Name="ChbBrackets" Grid.Row="2" Grid.Column="1" Content="Brackets">
+                            <CheckBox Margin="3" x:Name="ChbBrackets" Grid.Row="2" Grid.Column="1" Content="Brackets" Checked="SetCheckBox_OnChecked" Unchecked="SetCheckBox_OnChecked">
                                 <CheckBox.ToolTip>
                                     <ToolTip Content="Example: [, ], (, )" />
                                 </CheckBox.ToolTip>
@@ -154,7 +154,7 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
-                    <CheckBox x:Name="ChbUseAdvanced" Checked="ChbUseAdvanced_Checked" Unchecked="ChbUseAdvanced_Checked" Content="Use advanced options" />
+                    <CheckBox x:Name="ChbUseAdvanced" Checked="ChbUseAdvanced_Checked" Unchecked="ChbUseAdvanced_Checked" Content="Use advanced options"  />
                     <GroupBox x:Name="GrbAdvanced" IsEnabled="False" Grid.Row="1" Header="Advanced options">
                         <Grid>
                             <Grid.RowDefinitions>
@@ -162,7 +162,7 @@
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
-                            <CheckBox x:Name="ChbBase64" Margin="2" Content="Convert to base64" />
+                            <CheckBox x:Name="ChbBase64" Margin="2" Content="Convert to base64" Checked="SetCheckBox_OnChecked" Unchecked="SetCheckBox_OnChecked"/>
                             <Grid Grid.Row="1">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
@@ -171,9 +171,9 @@
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
                                 <Label VerticalAlignment="Center" Content="Minimum length:" />
-                                <syncfusion:IntegerTextBox x:Name="TxtMinLength" Grid.Column="1" MinValue="1" />
+                                <syncfusion:IntegerTextBox x:Name="TxtMinLength" Grid.Column="1" MinValue="1" ValueChanged="SetTextBox_OnValueChanged" />
                                 <Label Grid.Column="2" VerticalAlignment="Center" Content="Maximum length:" />
-                                <syncfusion:IntegerTextBox x:Name="TxtMaxLength" Grid.Column="3" MinValue="1" />
+                                <syncfusion:IntegerTextBox x:Name="TxtMaxLength" Grid.Column="3" MinValue="1" ValueChanged="SetTextBox_OnValueChanged"/>
                             </Grid>
                             <Grid Grid.Row="2">
                                 <Grid.RowDefinitions>

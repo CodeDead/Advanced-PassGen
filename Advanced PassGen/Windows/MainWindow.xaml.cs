@@ -31,6 +31,10 @@ namespace Advanced_PassGen.Windows
         /// The password generator that can be used to generate passwords
         /// </summary>
         private PasswordController _generator;
+        /// <summary>
+        /// A boolean to indicate whether set settings are loading or not
+        /// </summary>
+        private bool _loadingSetSettings;
         #endregion
 
         /// <inheritdoc />
@@ -58,6 +62,11 @@ namespace Advanced_PassGen.Windows
                 if (Properties.Settings.Default.AutoUpdate)
                 {
                     UpdateManager.CheckForUpdate(false, false);
+                }
+
+                if (Properties.Settings.Default.SaveOptions)
+                {
+                    LoadSetSettings();
                 }
             }
             catch (Exception ex)
@@ -120,6 +129,58 @@ namespace Advanced_PassGen.Windows
         }
 
         /// <summary>
+        /// Save the options that the user has selected
+        /// </summary>
+        private void SaveSetSettings()
+        {
+            try
+            {
+                if (TxtLength.Value != null) Properties.Settings.Default.SetLength = (int) TxtLength.Value.Value;
+                if (TxtAmount.Value != null) Properties.Settings.Default.SetAmount = (int) TxtAmount.Value.Value;
+                if (ChbSmallLetters.IsChecked != null) Properties.Settings.Default.SetSmallLetters = ChbSmallLetters.IsChecked.Value;
+                if (ChbCapitalLetters.IsChecked != null) Properties.Settings.Default.SetCapitalLetters = ChbCapitalLetters.IsChecked.Value;
+                if (ChbSpecialCharacters.IsChecked != null) Properties.Settings.Default.SetSpecialCharacters = ChbSpecialCharacters.IsChecked.Value;
+                if (ChbNumbers.IsChecked != null) Properties.Settings.Default.SetNumbers = ChbNumbers.IsChecked.Value;
+                if (ChbSpaces.IsChecked != null) Properties.Settings.Default.SetSpaces = ChbSpaces.IsChecked.Value;
+                if (ChbBrackets.IsChecked != null) Properties.Settings.Default.SetBrackets = ChbBrackets.IsChecked.Value;
+
+                if (ChbUseAdvanced.IsChecked != null) Properties.Settings.Default.SetAdvancedOptions = ChbUseAdvanced.IsChecked.Value;
+                if (ChbBase64.IsChecked != null) Properties.Settings.Default.SetBase64 = ChbBase64.IsChecked.Value;
+                if (TxtMinLength.Value != null) Properties.Settings.Default.SetMinLength = (int) TxtMinLength.Value.Value;
+                if (TxtMaxLength.Value != null) Properties.Settings.Default.SetMaxLength = (int) TxtMaxLength.Value.Value;
+
+                Properties.Settings.Default.Save();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Advanced PassGen", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        /// <summary>
+        /// Load the options that the user has previously selected
+        /// </summary>
+        private void LoadSetSettings()
+        {
+            _loadingSetSettings = true;
+            TxtLength.Value = Properties.Settings.Default.SetLength;
+            TxtAmount.Value = Properties.Settings.Default.SetAmount;
+            MessageBox.Show(Properties.Settings.Default.SetSmallLetters.ToString());
+            ChbSmallLetters.IsChecked = Properties.Settings.Default.SetSmallLetters;
+            ChbCapitalLetters.IsChecked = Properties.Settings.Default.SetCapitalLetters;
+            ChbSpecialCharacters.IsChecked = Properties.Settings.Default.SetSpecialCharacters;
+            ChbNumbers.IsChecked = Properties.Settings.Default.SetNumbers;
+            ChbSpaces.IsChecked = Properties.Settings.Default.SetSpaces;
+            ChbBrackets.IsChecked = Properties.Settings.Default.SetBrackets;
+
+            ChbUseAdvanced.IsChecked = Properties.Settings.Default.SetAdvancedOptions;
+            ChbBase64.IsChecked = Properties.Settings.Default.SetBase64;
+            TxtMinLength.Value = Properties.Settings.Default.SetMinLength;
+            TxtMaxLength.Value = Properties.Settings.Default.SetMaxLength;
+            _loadingSetSettings = false;
+        }
+
+        /// <summary>
         /// Change the visual style of the controls, depending on the settings
         /// </summary>
         internal void ChangeVisualStyle()
@@ -134,6 +195,7 @@ namespace Advanced_PassGen.Windows
         /// <param name="e">The routed event arguments</param>
         private void ChbUseAdvanced_Checked(object sender, RoutedEventArgs e)
         {
+            if (!_loadingSetSettings) SaveSetSettings();
             if (ChbUseAdvanced.IsChecked == null) return;
             GrbAdvanced.IsEnabled = ChbUseAdvanced.IsChecked.Value;
             TxtLength.IsEnabled = !ChbUseAdvanced.IsChecked.Value;
@@ -451,6 +513,28 @@ namespace Advanced_PassGen.Windows
         private void ExitMenuItem_OnClick(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
+        }
+
+        /// <summary>
+        /// Method that is called when a integerTextBox value has changed
+        /// </summary>
+        /// <param name="d">The DependencyObject</param>
+        /// <param name="e">The DependencyPropertyChangedEventArgs</param>
+        private void SetTextBox_OnValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if (_loadingSetSettings) return;
+            SaveSetSettings();
+        }
+
+        /// <summary>
+        /// Method that is called when a CheckBox value has changed
+        /// </summary>
+        /// <param name="sender">The object that called this method</param>
+        /// <param name="e">The RoutedEventArgs</param>
+        private void SetCheckBox_OnChecked(object sender, RoutedEventArgs e)
+        {
+            if (_loadingSetSettings) return;
+            SaveSetSettings();
         }
     }
 }

@@ -25,11 +25,13 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
                     <CheckBox Margin="3" x:Name="ChbAutoUpdate" Content="Automatically check for updates" />
                     <CheckBox Margin="3" Grid.Row="1" x:Name="ChbPasswordStrength" Content="Show password strength" />
                     <CheckBox Margin="3" Grid.Row="2" x:Name="ChbWindowDraggable" Content="Window dragging" />
-                    <Grid Grid.Row="3" Margin="3">
+                    <CheckBox Margin="3" Grid.Row="3" x:Name="ChbKeepOptions" Content="Save all options" />
+                    <Grid Margin="3" Grid.Row="4">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition />
                             <ColumnDefinition Width="Auto" />

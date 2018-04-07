@@ -154,5 +154,161 @@ namespace Advanced_PassGen.Properties {
                 this["WindowResizeBorder"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool SaveOptions {
+            get {
+                return ((bool)(this["SaveOptions"]));
+            }
+            set {
+                this["SaveOptions"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public int SetLength {
+            get {
+                return ((int)(this["SetLength"]));
+            }
+            set {
+                this["SetLength"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public int SetAmount {
+            get {
+                return ((int)(this["SetAmount"]));
+            }
+            set {
+                this["SetAmount"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool SetSmallLetters {
+            get {
+                return ((bool)(this["SetSmallLetters"]));
+            }
+            set {
+                this["SetSmallLetters"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool SetCapitalLetters {
+            get {
+                return ((bool)(this["SetCapitalLetters"]));
+            }
+            set {
+                this["SetCapitalLetters"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool SetSpecialCharacters {
+            get {
+                return ((bool)(this["SetSpecialCharacters"]));
+            }
+            set {
+                this["SetSpecialCharacters"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool SetNumbers {
+            get {
+                return ((bool)(this["SetNumbers"]));
+            }
+            set {
+                this["SetNumbers"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool SetSpaces {
+            get {
+                return ((bool)(this["SetSpaces"]));
+            }
+            set {
+                this["SetSpaces"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool SetBrackets {
+            get {
+                return ((bool)(this["SetBrackets"]));
+            }
+            set {
+                this["SetBrackets"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool SetAdvancedOptions {
+            get {
+                return ((bool)(this["SetAdvancedOptions"]));
+            }
+            set {
+                this["SetAdvancedOptions"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool SetBase64 {
+            get {
+                return ((bool)(this["SetBase64"]));
+            }
+            set {
+                this["SetBase64"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public int SetMinLength {
+            get {
+                return ((int)(this["SetMinLength"]));
+            }
+            set {
+                this["SetMinLength"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public int SetMaxLength {
+            get {
+                return ((int)(this["SetMaxLength"]));
+            }
+            set {
+                this["SetMaxLength"] = value;
+            }
+        }
     }
 }
