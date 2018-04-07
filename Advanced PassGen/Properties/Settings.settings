@@ -14,7 +14,7 @@
     <Setting Name="CharacterSet" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="BorderThickness" Type="System.Int32" Scope="User">
+    <Setting Name="BorderThickness" Type="System.Double" Scope="User">
       <Value Profile="(Default)">1</Value>
     </Setting>
     <Setting Name="ShowPasswordStrength" Type="System.Boolean" Scope="User">

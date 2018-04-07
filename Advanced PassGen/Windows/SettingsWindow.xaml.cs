@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Input;
-using Advanced_PassGen.Classes;
 using Advanced_PassGen.Classes.GUI;
 
 namespace Advanced_PassGen.Windows
@@ -34,6 +33,19 @@ namespace Advanced_PassGen.Windows
         }
 
         /// <summary>
+        /// Method that is called when the Window should be dragged
+        /// </summary>
+        /// <param name="sender">The object that called this method</param>
+        /// <param name="e">The MouseButtonEventArgs</param>
+        private void OnMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left && e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
+        }
+
+        /// <summary>
         /// Change the visual style of the controls, depending on the settings
         /// </summary>
         private void ChangeVisualStyle()
@@ -52,9 +64,22 @@ namespace Advanced_PassGen.Windows
                 ChbPasswordStrength.IsChecked = Properties.Settings.Default.ShowPasswordStrength;
                 TxtCharacterSet.Text = Properties.Settings.Default.CharacterSet;
 
+                if (Properties.Settings.Default.WindowDragging)
+                {
+                    MouseDown += OnMouseDown;
+                    ChbWindowDraggable.IsChecked = true;
+                }
+                else
+                {
+                    MouseDown -= OnMouseDown;
+                    ChbWindowDraggable.IsChecked = false;
+                }
+
                 ChbStyle.SelectedValue = Properties.Settings.Default.VisualStyle;
                 CpMetroBrush.Color = Properties.Settings.Default.MetroColor;
-                TxtBorderThickness.Value = Properties.Settings.Default.BorderThickness;
+                SldBorderThickness.Value = Properties.Settings.Default.BorderThickness;
+                SldOpacity.Value = Properties.Settings.Default.WindowOpacity * 100;
+                SldWindowResize.Value = Properties.Settings.Default.WindowResizeBorder;
 
                 ChbExportLength.IsChecked = Properties.Settings.Default.ExportLength;
                 ChbExportStrength.IsChecked = Properties.Settings.Default.ExportStrength;
@@ -74,12 +99,12 @@ namespace Advanced_PassGen.Windows
         {
             Properties.Settings.Default.Reset();
             Properties.Settings.Default.Save();
+
             LoadSettings();
+            ChangeVisualStyle();
 
             _mw.ChangeVisualStyle();
             _mw.LoadSettings();
-
-            ChangeVisualStyle();
         }
 
         /// <summary>
@@ -93,21 +118,27 @@ namespace Advanced_PassGen.Windows
             {
                 if (ChbAutoUpdate.IsChecked != null) Properties.Settings.Default.AutoUpdate = ChbAutoUpdate.IsChecked.Value;
                 if (ChbPasswordStrength.IsChecked != null) Properties.Settings.Default.ShowPasswordStrength = ChbPasswordStrength.IsChecked.Value;
+                if (ChbWindowDraggable.IsChecked != null)Properties.Settings.Default.WindowDragging = ChbWindowDraggable.IsChecked.Value;
+
                 Properties.Settings.Default.CharacterSet = TxtCharacterSet.Text;
                 _mw.TxtCharacterSet.Text = TxtCharacterSet.Text;
 
                 Properties.Settings.Default.VisualStyle = ChbStyle.Text;
                 Properties.Settings.Default.MetroColor = CpMetroBrush.Color;
-                if (TxtBorderThickness.Value != null) Properties.Settings.Default.BorderThickness = (int)TxtBorderThickness.Value;
+                Properties.Settings.Default.BorderThickness = SldBorderThickness.Value;
+                Properties.Settings.Default.WindowOpacity = SldOpacity.Value / 100;
+                Properties.Settings.Default.WindowResizeBorder = SldWindowResize.Value;
 
                 if (ChbExportLength.IsChecked != null) Properties.Settings.Default.ExportLength = ChbExportLength.IsChecked.Value;
                 if (ChbExportStrength.IsChecked != null) Properties.Settings.Default.ExportStrength = ChbExportStrength.IsChecked.Value;
 
                 Properties.Settings.Default.Save();
 
+                LoadSettings();
+                ChangeVisualStyle();
+
                 _mw.ChangeVisualStyle();
                 _mw.LoadSettings();
-                ChangeVisualStyle();
             }
             catch (Exception ex)
             {
@@ -116,15 +147,33 @@ namespace Advanced_PassGen.Windows
         }
 
         /// <summary>
-        /// Method that will be called when the can execute handle has been called
+        /// Method that is called when the border thickness should change
         /// </summary>
         /// <param name="sender">The object that called this method</param>
-        /// <param name="e">The routed event arguments</param>
-        private void HandleCanExecute(object sender, CanExecuteRoutedEventArgs e)
+        /// <param name="e">The RoutedPropertyChangedEventArgs</param>
+        private void SldBorderThickness_OnValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            if (e.Command != ApplicationCommands.Paste) return;
-            e.CanExecute = false;
-            e.Handled = true;
+            BorderThickness = new Thickness(SldBorderThickness.Value);
+        }
+
+        /// <summary>
+        /// Method that is called when the opacity should change dynamically
+        /// </summary>
+        /// <param name="sender">The object that called this method</param>
+        /// <param name="e">The RoutedPropertyChangedEventArgs</param>
+        private void SldOpacity_OnValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            Opacity = SldOpacity.Value / 100;
+        }
+
+        /// <summary>
+        /// Method  that is called when the ResizeBorderThickness should change dynamically
+        /// </summary>
+        /// <param name="sender">The object that called this method</param>
+        /// <param name="e">The RoutedPropertyChangedEventArgs</param>
+        private void SldWindowResize_OnValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            ResizeBorderThickness = new Thickness(SldWindowResize.Value);
         }
     }
 }

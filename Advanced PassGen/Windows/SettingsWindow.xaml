@@ -8,7 +8,7 @@
     mc:Ignorable="d" UseLayoutRounding="True"
     AllowsTransparency="True" UseNativeChrome="True"
     Title="Advanced PassGen - Settings"
-    Height="250" Width="400" WindowStartupLocation="CenterScreen"
+    Height="300" Width="400" WindowStartupLocation="CenterScreen"
     Icon="/Advanced PassGen;component/Resources/Images/key.png"
     TitleTextAlignment="Center">
 
@@ -24,10 +24,12 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
-                    <CheckBox Margin="2" x:Name="ChbAutoUpdate" Content="Automatically check for updates" />
-                    <CheckBox Margin="2" Grid.Row="1" x:Name="ChbPasswordStrength" Content="Show password strength" />
-                    <Grid Grid.Row="2">
+                    <CheckBox Margin="3" x:Name="ChbAutoUpdate" Content="Automatically check for updates" />
+                    <CheckBox Margin="3" Grid.Row="1" x:Name="ChbPasswordStrength" Content="Show password strength" />
+                    <CheckBox Margin="3" Grid.Row="2" x:Name="ChbWindowDraggable" Content="Window dragging" />
+                    <Grid Grid.Row="3" Margin="3">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition />
                             <ColumnDefinition Width="Auto" />
@@ -50,6 +52,8 @@
             <syncfusion:TabItemExt Header="Theme" Image="/Advanced PassGen;component/Resources/Images/style.png" ImageHeight="16" ImageWidth="16">
                 <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
@@ -79,7 +83,11 @@
                     <Label Grid.Row="1" Grid.Column="0" Content="Metro brush:" VerticalAlignment="Center" />
                     <syncfusion:ColorPicker Margin="2" x:Name="CpMetroBrush" Grid.Row="1" Grid.Column="1" />
                     <Label Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Content="Border thickness:" />
-                    <syncfusion:IntegerTextBox Margin="2" x:Name="TxtBorderThickness" Grid.Row="2" Grid.Column="1" MinValue="1" />
+                    <Slider Grid.Row="2" Grid.Column="1" Margin="3" Minimum="1" Maximum="10" x:Name="SldBorderThickness" ValueChanged="SldBorderThickness_OnValueChanged" Width="180" />
+                    <Label Margin="3" Grid.Row="3" Grid.Column="0" Content="Window opacity:" />
+                    <Slider x:Name="SldOpacity" Margin="3" Grid.Row="3" Grid.Column="1" Minimum="30" Maximum="100" Width="180" ValueChanged="SldOpacity_OnValueChanged" />
+                    <Label Margin="3" Grid.Row="4" Grid.Column="0" Content="Resize border:" />
+                    <Slider x:Name="SldWindowResize" Margin="3" Grid.Row="4" Grid.Column="1" Minimum="1" Maximum="10" Width="180" ValueChanged="SldWindowResize_OnValueChanged" />
                 </Grid>
             </syncfusion:TabItemExt>
         </syncfusion:TabControlExt>
