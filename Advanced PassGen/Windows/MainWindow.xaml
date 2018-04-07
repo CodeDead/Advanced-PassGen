@@ -5,6 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+    xmlns:util="clr-namespace:Advanced_PassGen.Classes.UTIL"
     mc:Ignorable="d"
     AllowsTransparency="True"
     UseLayoutRounding="True"
@@ -208,7 +209,9 @@
                         <RowDefinition />
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
-                    <ListView x:Name="LsvPasswordList">
+                    <ListView x:Name="LsvPasswordList"
+                              IsSynchronizedWithCurrentItem="True"
+                              util:GridViewSort.Enabled="True">
                         <ListView.ContextMenu>
                             <ContextMenu>
                                 <MenuItem Header="Copy" Click="MiCopy_Click">
@@ -231,14 +234,14 @@
                         </ListView.ContextMenu>
                         <ListView.View>
                             <GridView x:Name="DynGrid">
-                                <GridViewColumn Header="Password" DisplayMemberBinding="{Binding ActualPassword}" />
-                                <GridViewColumn Header="Length" DisplayMemberBinding="{Binding Length}" />
-                                <GridViewColumn x:Name="GvcStrength" Header="Strength">
+                                <GridViewColumn Header="Password" DisplayMemberBinding="{Binding ActualPassword}" util:GridViewSort.PropertyName="ActualPassword" />
+                                <GridViewColumn Header="Length" DisplayMemberBinding="{Binding Length}" util:GridViewSort.PropertyName="Length" />
+                                <GridViewColumn x:Name="GvcStrength" Header="Strength" util:GridViewSort.PropertyName="Strength">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
                                             <!-- ReSharper disable once Xaml.BindingWithContextNotResolved -->
                                             <!-- ReSharper disable once Xaml.BindingWithContextNotResolved -->
-                                            <ProgressBar Height="20" Width="100" Maximum="7" Value="{Binding Strength, Mode=OneWay}" />
+                                            <ProgressBar Height="20" Width="150" Maximum="7" Value="{Binding Strength, Mode=OneWay}" />
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>

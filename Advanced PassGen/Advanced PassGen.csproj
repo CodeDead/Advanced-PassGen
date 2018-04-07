@@ -75,6 +75,7 @@
     <Compile Include="Classes\PASSWORD\PasswordController.cs" />
     <Compile Include="Classes\PASSWORD\Password.cs" />
     <Compile Include="Classes\GUI\StyleManager.cs" />
+    <Compile Include="Classes\UTIL\GridViewSort.cs" />
     <Compile Include="Windows\AboutWindow.xaml.cs">
       <DependentUpon>AboutWindow.xaml</DependentUpon>
     </Compile>
