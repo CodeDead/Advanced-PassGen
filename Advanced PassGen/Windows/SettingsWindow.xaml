@@ -96,8 +96,8 @@
                 <ColumnDefinition />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <Button Margin="5" MinHeight="25" Content="Reset" Click="BtnReset_Click" />
-            <Button Margin="5" MinHeight="25" Grid.Column="1" Click="BtnSave_Click" Content="Save" />
+            <Button Margin="5" Content="Reset" Click="BtnReset_Click" />
+            <Button Margin="5" Grid.Column="1" Click="BtnSave_Click" Content="Save" />
         </Grid>
     </Grid>
 </syncfusion:ChromelessWindow>

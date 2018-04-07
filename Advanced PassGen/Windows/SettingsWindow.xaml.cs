@@ -66,6 +66,8 @@ namespace Advanced_PassGen.Windows
 
                 if (Properties.Settings.Default.WindowDragging)
                 {
+                    // Remove previously set event handler if applicable
+                    MouseDown -= OnMouseDown;
                     MouseDown += OnMouseDown;
                     ChbWindowDraggable.IsChecked = true;
                 }

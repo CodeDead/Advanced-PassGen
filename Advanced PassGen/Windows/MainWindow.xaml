@@ -18,6 +18,12 @@
 
         <Menu IsMainMenu="True">
             <MenuItem Header="_File">
+                <MenuItem Header="Export" Click="BtnExport_Click">
+                    <MenuItem.Icon>
+                        <Image Width="16" Height="16" Source="/Advanced PassGen;component/Resources/Images/export.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <Separator />
                 <MenuItem Header="Exit" Click="ExitMenuItem_OnClick">
                     <MenuItem.Icon>
                         <Image Width="16" Height="16" Source="/Advanced PassGen;component/Resources/Images/clear.png" />
@@ -213,6 +219,12 @@
                               util:GridViewSort.Enabled="True">
                         <ListView.ContextMenu>
                             <ContextMenu>
+                                <MenuItem Header="Export" Click="BtnExport_Click">
+                                    <MenuItem.Icon>
+                                        <Image Width="16" Height="16" Source="/Advanced PassGen;component/Resources/Images/export.png" />
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                                <Separator />
                                 <MenuItem Header="Copy" Click="MiCopy_Click">
                                     <MenuItem.Icon>
                                         <Image Width="16" Height="16" Source="../Resources/Images/copy.png" />
@@ -223,7 +235,7 @@
                                         <Image Width="16" Height="16" Source="../Resources/Images/remove.png" />
                                     </MenuItem.Icon>
                                 </MenuItem>
-                                <Separator></Separator>
+                                <Separator />
                                 <MenuItem Header="Clear" Click="MiClear_Click">
                                     <MenuItem.Icon>
                                         <Image Width="16" Height="16" Source="../Resources/Images/clear.png" />
