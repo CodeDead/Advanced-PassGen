@@ -165,7 +165,6 @@ namespace Advanced_PassGen.Windows
             _loadingSetSettings = true;
             TxtLength.Value = Properties.Settings.Default.SetLength;
             TxtAmount.Value = Properties.Settings.Default.SetAmount;
-            MessageBox.Show(Properties.Settings.Default.SetSmallLetters.ToString());
             ChbSmallLetters.IsChecked = Properties.Settings.Default.SetSmallLetters;
             ChbCapitalLetters.IsChecked = Properties.Settings.Default.SetCapitalLetters;
             ChbSpecialCharacters.IsChecked = Properties.Settings.Default.SetSpecialCharacters;
