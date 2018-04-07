@@ -5,10 +5,12 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
-    mc:Ignorable="d"
-    UseLayoutRounding="True"
-    AllowsTransparency="True"
-    Title="Advanced PassGen - Settings" Height="250" Width="400" WindowStartupLocation="CenterScreen" Icon="/Advanced PassGen;component/key.ico" TitleTextAlignment="Center">
+    mc:Ignorable="d" UseLayoutRounding="True"
+    AllowsTransparency="True" UseNativeChrome="True"
+    Title="Advanced PassGen - Settings"
+    Height="250" Width="400" WindowStartupLocation="CenterScreen"
+    Icon="/Advanced PassGen;component/Resources/Images/key.png"
+    TitleTextAlignment="Center">
     
     <Grid>
         <Grid.RowDefinitions>
@@ -16,7 +18,7 @@
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
         <syncfusion:TabControlExt CloseButtonType="Hide" DefaultContextMenuItemVisibility="Hidden" AllowDragDrop="False" EnableLabelEdit="False">
-            <syncfusion:TabItemExt Header="General" Image="/Advanced PassGen;component/Resources/Images/general.png" ImageHeight="16" ImageWidth="16">
+            <syncfusion:TabItemExt Header="General" Image="/Advanced PassGen;component/Resources/Images/home.png" ImageHeight="16" ImageWidth="16">
                 <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"></RowDefinition>
@@ -62,6 +64,7 @@
                         <ComboBoxItem>ShinyBlue</ComboBoxItem>
                         <ComboBoxItem>SyncOrange</ComboBoxItem>
                         <ComboBoxItem>Transparent</ComboBoxItem>
+                        <ComboBoxItem>None</ComboBoxItem>
                     </ComboBox>
                     <Label Grid.Row="1" Grid.Column="0" Content="Metro brush:" VerticalAlignment="Center"></Label>
                     <syncfusion:ColorPicker Margin="2" x:Name="CpMetroBrush" Grid.Row="1" Grid.Column="1" />
@@ -85,41 +88,6 @@
                         </Grid.ColumnDefinitions>
                         <Label Content="CSV delimiter:" VerticalAlignment="Center"></Label>
                         <TextBox x:Name="TxtDelimiter" Grid.Row="0" Grid.Column="1" CommandManager.PreviewCanExecute="HandleCanExecute" PreviewTextInput="TxtDelimiter_PreviewTextInput"></TextBox>
-                    </Grid>
-                </Grid>
-            </syncfusion:TabItemExt>
-            <syncfusion:TabItemExt Header="About" Image="/Advanced PassGen;component/Resources/Images/about.png" ImageHeight="16" ImageWidth="16">
-                <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"></RowDefinition>
-                        <RowDefinition Height="Auto"></RowDefinition>
-                    </Grid.RowDefinitions>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition></ColumnDefinition>
-                            <ColumnDefinition Width="Auto"></ColumnDefinition>
-                            <ColumnDefinition Width="Auto"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <Image Width="32" Height="32" Source="/Advanced PassGen;component/key.ico"></Image>
-                        <Separator Margin="5" Grid.Column="1" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
-                        <TextBlock Grid.Column="2">
-                            Advanced PassGen was created by DeadLine.<LineBreak />
-                            <LineBreak />
-                            Images by: paomedia small-n-flat<LineBreak />
-                            Theme by: Syncfusion<LineBreak />
-                            <LineBreak />
-                            Copyright © CodeDead 2018
-                        </TextBlock>
-                    </Grid>
-                    <Grid Grid.Row="1">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition></ColumnDefinition>
-                            <ColumnDefinition></ColumnDefinition>
-                            <ColumnDefinition></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <Button Margin="3" Content="Update" Click="BtnUpdate_Click"></Button>
-                        <Button Margin="3" Grid.Column="1" Content="Website" Click="BtnWebsite_Click"></Button>
-                        <Button Margin="3" Grid.Column="2" Content="License" Click="BtnLicense_Click"></Button>
                     </Grid>
                 </Grid>
             </syncfusion:TabItemExt>

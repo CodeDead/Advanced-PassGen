@@ -71,9 +71,13 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Classes\PasswordGenerator.cs" />
-    <Compile Include="Classes\Password.cs" />
-    <Compile Include="Classes\StyleManager.cs" />
+    <Compile Include="Classes\Export\ExportController.cs" />
+    <Compile Include="Classes\PASSWORD\PasswordController.cs" />
+    <Compile Include="Classes\PASSWORD\Password.cs" />
+    <Compile Include="Classes\GUI\StyleManager.cs" />
+    <Compile Include="Windows\AboutWindow.xaml.cs">
+      <DependentUpon>AboutWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
@@ -110,10 +114,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\about.png" />
     <Resource Include="Resources\Images\style.png" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Windows\AboutWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -128,7 +135,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\advanced.png" />
-    <Resource Include="Resources\Images\general.png" />
     <Resource Include="Resources\Images\list.png" />
   </ItemGroup>
   <ItemGroup>
@@ -138,6 +144,20 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\advisor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\donate.png" />
+    <Resource Include="Resources\Images\help.png" />
+    <Resource Include="Resources\Images\home.png" />
+    <Resource Include="Resources\Images\pdf.png" />
+    <Resource Include="Resources\Images\settings.png" />
+    <Resource Include="Resources\Images\update.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\key.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\about.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

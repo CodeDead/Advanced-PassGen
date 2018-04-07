@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Input;
 using Advanced_PassGen.Classes;
+using Advanced_PassGen.Classes.GUI;
 
 namespace Advanced_PassGen.Windows
 {
@@ -109,50 +110,6 @@ namespace Advanced_PassGen.Windows
                 _mw.ChangeVisualStyle();
                 _mw.LoadSettings();
                 ChangeVisualStyle();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(this, ex.Message, "Advanced PassGen", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
-
-        /// <summary>
-        /// Method that will be called when the Update button has been clicked
-        /// </summary>
-        /// <param name="sender">The object that called this method</param>
-        /// <param name="e">The routed event arguments</param>
-        private void BtnUpdate_Click(object sender, RoutedEventArgs e)
-        {
-            _mw.UpdateManager.CheckForUpdate(true, true);
-        }
-
-        /// <summary>
-        /// Method that will be called when the Website button has been clicked
-        /// </summary>
-        /// <param name="sender">The object that called this method</param>
-        /// <param name="e">The routed event arguments</param>
-        private void BtnWebsite_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                System.Diagnostics.Process.Start("https://codedead.com/");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(this, ex.Message, "Advanced PassGen", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
-
-        /// <summary>
-        /// Method that will be called when the License button has been clicked
-        /// </summary>
-        /// <param name="sender">The object that called this method</param>
-        /// <param name="e">The routed event arguments</param>
-        private void BtnLicense_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                System.Diagnostics.Process.Start(AppDomain.CurrentDomain.BaseDirectory + "\\gpl.pdf");
             }
             catch (Exception ex)
             {

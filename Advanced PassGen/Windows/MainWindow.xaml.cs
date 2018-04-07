@@ -4,7 +4,10 @@ using System.Linq;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
-using Advanced_PassGen.Classes;
+using System.Windows.Input;
+using Advanced_PassGen.Classes.Export;
+using Advanced_PassGen.Classes.GUI;
+using Advanced_PassGen.Classes.PASSWORD;
 using Microsoft.Win32;
 
 namespace Advanced_PassGen.Windows
@@ -19,7 +22,7 @@ namespace Advanced_PassGen.Windows
         /// <summary>
         /// The UpdateManager object that can check for updates
         /// </summary>
-        internal readonly UpdateManager.UpdateManager UpdateManager;
+        internal readonly UpdateManager.Classes.UpdateManager UpdateManager;
         /// <summary>
         /// The GridViewColumn in which items can be displayed
         /// </summary>
@@ -27,7 +30,7 @@ namespace Advanced_PassGen.Windows
         /// <summary>
         /// The password generator that can be used to generate passwords
         /// </summary>
-        private PasswordGenerator _generator;
+        private PasswordController _generator;
         #endregion
 
         /// <inheritdoc />
@@ -36,7 +39,7 @@ namespace Advanced_PassGen.Windows
         /// </summary>
         public MainWindow()
         {
-            UpdateManager = new UpdateManager.UpdateManager(Assembly.GetExecutingAssembly().GetName().Version, "https://codedead.com/Software/Advanced%20PassGen/update.xml", "Advanced PassGen");
+            UpdateManager = new UpdateManager.Classes.UpdateManager(Assembly.GetExecutingAssembly().GetName().Version, "https://codedead.com/Software/Advanced%20PassGen/update.xml", "Advanced PassGen", "Information", "Cancel", "Download", "You are using the latest version.");
 
             InitializeComponent();
             ChangeVisualStyle();
@@ -64,11 +67,23 @@ namespace Advanced_PassGen.Windows
         }
 
         /// <summary>
+        /// Method that is called when the Window should be dragged
+        /// </summary>
+        /// <param name="sender">The object that called this method</param>
+        /// <param name="e">The MouseButtonEventArgs</param>
+        private void OnMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left && e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
+        }
+
+        /// <summary>
         /// Change the GUI to represent the current settings
         /// </summary>
         internal void LoadSettings()
         {
-            LblVersion.Content = "Version: " + Assembly.GetExecutingAssembly().GetName().Version;
             try
             {
                 TxtCharacterSet.Text = Properties.Settings.Default.CharacterSet;
@@ -85,6 +100,17 @@ namespace Advanced_PassGen.Windows
                     {
                         DynGrid.Columns.Add(_gvc);
                     }
+                }
+
+                if (Properties.Settings.Default.WindowDragging)
+                {
+                    // Delete event handler first to prevent duplicate handlers
+                    MouseDown -= OnMouseDown;
+                    MouseDown += OnMouseDown;
+                }
+                else
+                {
+                    MouseDown -= OnMouseDown;
                 }
             }
             catch (Exception ex)
@@ -111,16 +137,6 @@ namespace Advanced_PassGen.Windows
             if (ChbUseAdvanced.IsChecked == null) return;
             GrbAdvanced.IsEnabled = ChbUseAdvanced.IsChecked.Value;
             TxtLength.IsEnabled = !ChbUseAdvanced.IsChecked.Value;
-        }
-
-        /// <summary>
-        /// Method that will be called when the Settings hyperlink has been clicked
-        /// </summary>
-        /// <param name="sender">The object that called this method</param>
-        /// <param name="e">The routed event arguments</param>
-        private void HypSettings_Click(object sender, RoutedEventArgs e)
-        {
-            new SettingsWindow(this).ShowDialog();
         }
 
         /// <summary>
@@ -219,7 +235,7 @@ namespace Advanced_PassGen.Windows
                 return;
             }
 
-            _generator = new PasswordGenerator(charSet, minValue, maxValue + 1, (int) TxtAmount.Value, (int) TxtRandomSeed.Value, base64);
+            _generator = new PasswordController(charSet, minValue, maxValue + 1, (int) TxtAmount.Value, (int) TxtRandomSeed.Value, base64);
             List<Password> passwords = await _generator.GeneratePasswords();
 
             foreach (Password s in passwords)
@@ -245,13 +261,13 @@ namespace Advanced_PassGen.Windows
                 switch (sfd.FilterIndex)
                 {
                     default:
-                        _generator.ExportText(sfd.FileName);
+                        ExportController.ExportText(sfd.FileName, _generator.PasswordList);
                         break;
                     case 2:
-                        _generator.ExportHtml(sfd.FileName);
+                        ExportController.ExportHtml(sfd.FileName, _generator.PasswordList);
                         break;
                     case 3:
-                        _generator.ExportCsv(sfd.FileName);
+                        ExportController.ExportCsv(sfd.FileName, _generator.PasswordList);
                         break;
                 }
                 MessageBox.Show(this, "File exported!", "Advanced PassGen", MessageBoxButton.OK);
@@ -317,16 +333,6 @@ namespace Advanced_PassGen.Windows
         }
 
         /// <summary>
-        /// Method that will be called when the Update hyperlink has been clicked
-        /// </summary>
-        /// <param name="sender">The object that called this method</param>
-        /// <param name="e">The routed event arguments</param>
-        private void HypUpdate_Click(object sender, RoutedEventArgs e)
-        {
-            UpdateManager.CheckForUpdate(true, true);
-        }
-
-        /// <summary>
         /// Method that will be called when the Random seed generator button has been clicked
         /// </summary>
         /// <param name="sender">The object that called this method</param>
@@ -334,6 +340,114 @@ namespace Advanced_PassGen.Windows
         private void BtnRandomSeed_Click(object sender, RoutedEventArgs e)
         {
             TxtRandomSeed.Text = Guid.NewGuid().GetHashCode().ToString();
+        }
+
+        /// <summary>
+        /// Method that is called when the application should check for updates
+        /// </summary>
+        /// <param name="sender">The object that called this method</param>
+        /// <param name="e">The RoutedEventArgs</param>
+        private void UpdateMenuItem_OnClick(object sender, RoutedEventArgs e)
+        {
+            UpdateManager.CheckForUpdate(true, true);
+        }
+
+        /// <summary>
+        /// Method that is called when the CodeDead website should be opened
+        /// </summary>
+        /// <param name="sender">The object that called this method</param>
+        /// <param name="e">The RoutedEventArgs</param>
+        private void HomePageMenuItem_OnClick(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                System.Diagnostics.Process.Start("https://codedead.com/");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Advanced PassGen", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        /// <summary>
+        /// Open the file containing the license for Advanced PassGen
+        /// </summary>
+        /// <param name="sender">The object that has initialized the method</param>
+        /// <param name="e">The routed event arguments</param>
+        private void LicenseMenuItem_OnClick(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                System.Diagnostics.Process.Start(AppDomain.CurrentDomain.BaseDirectory + "\\gpl.pdf");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Advanced PassGen", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        /// <summary>
+        /// Open the file containing the help documentation for Advanced PassGen
+        /// </summary>
+        /// <param name="sender">The object that has initialized the method</param>
+        /// <param name="e">The routed event arguments</param>
+        private void HelpMenuItem_OnClick(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                System.Diagnostics.Process.Start(AppDomain.CurrentDomain.BaseDirectory + "\\help.pdf");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Advanced PassGen", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        /// <summary>
+        /// Method that is called when the CodeDead donation page should be displayed
+        /// </summary>
+        /// <param name="sender">The object that called this method</param>
+        /// <param name="e">The RoutedEventArgs</param>
+        private void DonateMenuItem_OnClick(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                System.Diagnostics.Process.Start("https://codedead.com/?page_id=302");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Advanced PassGen", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        /// <summary>
+        /// Method that is called when the about information should be displayed
+        /// </summary>
+        /// <param name="sender">The object that called this method</param>
+        /// <param name="e">The RoutedEventArgs</param>
+        private void AboutMenuItem_OnClick(object sender, RoutedEventArgs e)
+        {
+            new AboutWindow().ShowDialog();
+        }
+
+        /// <summary>
+        /// Method that is called when the Settings window should be opened
+        /// </summary>
+        /// <param name="sender">The object that called this method</param>
+        /// <param name="e">The RoutedEventArgs</param>
+        private void SettingsMenuItem_OnClick(object sender, RoutedEventArgs e)
+        {
+            new SettingsWindow(this).ShowDialog();
+        }
+
+        /// <summary>
+        /// Method that is called when the application should exit
+        /// </summary>
+        /// <param name="sender">The object that called this method</param>
+        /// <param name="e">The RoutedEventArgs</param>
+        private void ExitMenuItem_OnClick(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 }

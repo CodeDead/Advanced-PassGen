@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace Advanced_PassGen.Classes
+namespace Advanced_PassGen.Classes.PASSWORD
 {
     /// <summary>
     /// This class represents a password
@@ -14,6 +14,7 @@ namespace Advanced_PassGen.Classes
         private string _actualPassword;
         #endregion
 
+        #region Properties
         /// <summary>
         /// The actual password in plain text
         /// </summary>
@@ -37,21 +38,24 @@ namespace Advanced_PassGen.Classes
         /// The strength of a password, indicated by a number ranging from 0 to 6. The higher the score, the stronger the password
         /// </summary>
         public int Strength { get; private set; }
+        #endregion
 
         /// <summary>
         /// Check how a strong a password is. The higher the score, the stronger the password
         /// </summary>
         /// <param name="password">The password that needs to be evaluated</param>
-        /// <returns>Returns a password score</returns>
+        /// <returns>Returns the score of a password</returns>
         private static int CheckStrength(string password)
         {
             int score = 1;
 
             if (string.IsNullOrEmpty(password)) return 0;
             if (password.Length < 2) return 0;
-            if (password.Length < 4) return 1;
+            if (password.Length < 4) return score;
             if (password.Length >= 8) score++;
             if (password.Length >= 10) score++;
+            if (password.Length >= 14) score++;
+
             if (Regex.Match(password, @"\d", RegexOptions.ECMAScript).Success) score++;
             if (Regex.Match(password, @"[a-z]", RegexOptions.ECMAScript).Success && Regex.Match(password, @"[A-Z]", RegexOptions.ECMAScript).Success) score++;
             if (Regex.Match(password, @"[:,µ,;, ,<,>,+,!,@,#,$,%,^,&,*,?,_,~,-,£,(,);\[,\],⟨,⟩]", RegexOptions.ECMAScript).Success) score++;

@@ -8,15 +8,68 @@
     mc:Ignorable="d"
     AllowsTransparency="True"
     UseLayoutRounding="True"
-    Title="Advanced PassGen" WindowStartupLocation="CenterScreen" Icon="/Advanced PassGen;component/key.ico" Width="450" Height="300" TitleTextAlignment="Center">
+    Title="Advanced PassGen" WindowStartupLocation="CenterScreen" Icon="/Advanced PassGen;component/Resources/Images/key.png" Width="450" Height="300" TitleTextAlignment="Center">
     
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <syncfusion:TabControlExt SelectedIndex="-1" CloseButtonType="Hide" EnableLabelEdit="False" AllowDragDrop="False" DefaultContextMenuItemVisibility="Hidden">
-            <syncfusion:TabItemExt Header="General" Image="../Resources/Images/general.png" ImageHeight="16" ImageWidth="16" >
+
+        <Menu IsMainMenu="True">
+            <MenuItem Header="_File">
+                <MenuItem Header="Exit" Click="ExitMenuItem_OnClick">
+                    <MenuItem.Icon>
+                        <Image Width="16" Height="16" Source="/Advanced PassGen;component/Resources/Images/clear.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="_Tools">
+                <MenuItem Header="Settings" Click="SettingsMenuItem_OnClick">
+                    <MenuItem.Icon>
+                        <Image Width="16" Height="16" Source="/Advanced PassGen;component/Resources/Images/settings.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="_Help">
+                <MenuItem Header="Help" Click="HelpMenuItem_OnClick">
+                    <MenuItem.Icon>
+                        <Image Width="16" Height="16" Source="/Resources/Images/help.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <Separator />
+                <MenuItem Header="Check for updates" Click="UpdateMenuItem_OnClick">
+                    <MenuItem.Icon>
+                        <Image Width="16" Height="16" Source="/Resources/Images/update.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <Separator />
+                <MenuItem Header="Homepage" Click="HomePageMenuItem_OnClick">
+                    <MenuItem.Icon>
+                        <Image Width="16" Height="16" Source="/Resources/Images/home.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="License" Click="LicenseMenuItem_OnClick">
+                    <MenuItem.Icon>
+                        <Image Width="16" Height="16" Source="/Resources/Images/pdf.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <Separator />
+                <MenuItem Header="Donate" Click="DonateMenuItem_OnClick">
+                    <MenuItem.Icon>
+                        <Image Width="16" Height="16" Source="/Resources/Images/donate.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="About" Click="AboutMenuItem_OnClick">
+                    <MenuItem.Icon>
+                        <Image Width="16" Height="16" Source="/Resources/Images/about.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+        </Menu>
+
+        <syncfusion:TabControlExt Grid.Row="1" SelectedIndex="-1" CloseButtonType="Hide" EnableLabelEdit="False" AllowDragDrop="False" DefaultContextMenuItemVisibility="Hidden">
+            <syncfusion:TabItemExt Header="General" Image="../Resources/Images/home.png" ImageHeight="16" ImageWidth="16" >
                 <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
                     <Grid.RowDefinitions>
                         <RowDefinition></RowDefinition>
@@ -187,7 +240,7 @@
                                         <DataTemplate>
                                             <!-- ReSharper disable once Xaml.BindingWithContextNotResolved -->
                                             <!-- ReSharper disable once Xaml.BindingWithContextNotResolved -->
-                                            <ProgressBar Height="20" Width="100" Maximum="6" Value="{Binding Strength, Mode=OneWay}" />
+                                            <ProgressBar Height="20" Width="100" Maximum="7" Value="{Binding Strength, Mode=OneWay}" />
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
@@ -229,12 +282,5 @@
                 </Grid>
             </syncfusion:TabItemExt>
         </syncfusion:TabControlExt>
-        <StatusBar Grid.Row="1">
-            <Label x:Name="LblVersion" Content="Version: "></Label>
-            <Separator />
-            <Hyperlink Click="HypUpdate_Click">Check for updates</Hyperlink>
-            <Separator />
-            <Hyperlink Click="HypSettings_Click">Settings</Hyperlink>
-        </StatusBar>
     </Grid>
 </syncfusion:ChromelessWindow>

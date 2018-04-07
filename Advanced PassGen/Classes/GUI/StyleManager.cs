@@ -3,7 +3,7 @@ using System.Windows;
 using System.Windows.Media;
 using Syncfusion.Windows.Shared;
 
-namespace Advanced_PassGen.Classes
+namespace Advanced_PassGen.Classes.GUI
 {
     /// <summary>
     /// Static class to change the style of an object
@@ -20,7 +20,11 @@ namespace Advanced_PassGen.Classes
             {
                 SkinStorage.SetVisualStyle(o, Properties.Settings.Default.VisualStyle);
                 SkinStorage.SetMetroBrush(o, new SolidColorBrush(Properties.Settings.Default.MetroColor));
-                ((Window)o).BorderThickness = new Thickness(Properties.Settings.Default.BorderThickness);
+                if (!(o is ChromelessWindow window)) return;
+                window.BorderThickness = new Thickness(Properties.Settings.Default.BorderThickness);
+                window.CornerRadius = new CornerRadius(0, 0, 0, 0);
+                window.Opacity = Properties.Settings.Default.WindowOpacity;
+                window.ResizeBorderThickness = new Thickness(Properties.Settings.Default.WindowResizeBorder);
             }
             catch (Exception ex)
             {

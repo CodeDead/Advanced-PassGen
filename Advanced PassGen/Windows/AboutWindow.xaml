@@ -1,0 +1,47 @@
+﻿<syncfusion:ChromelessWindow x:Class="Advanced_PassGen.Windows.AboutWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+        mc:Ignorable="d"
+        TitleTextAlignment="Center"
+        WindowStartupLocation="CenterScreen"
+        UseLayoutRounding="True"
+        AllowsTransparency="True" UseNativeChrome="True"
+        Title="Advanced PassGen - About" Height="200" Width="350" Icon="/Advanced PassGen;component/Resources/Images/key.png">
+    <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Image Width="64" Height="64" Source="/Advanced PassGen;component/Resources/Images/key.png" />
+            <Separator Margin="5" Grid.Column="1" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+            <TextBlock Grid.Column="2">
+                Advanced PassGen was created by DeadLine.<LineBreak />
+                <LineBreak />
+                Images: small-n-flat by paomedia<LineBreak />
+                Theme: Syncfusion<LineBreak />
+                Version: 1.7.0.0<LineBreak />
+                <LineBreak />
+                Copyright © CodeDead 2018
+            </TextBlock>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Button Margin="5" x:Name="BtnClose" Content="Close" Click="BtnClose_OnClick" />
+            <Button Margin="5"  Grid.Column="1" x:Name="BtnLicense" Content="License" Click="BtnLicense_OnClick" />
+            <Button Margin="5" Grid.Column="2" x:Name="BtnCodeDead" Content="CodeDead" Click="BtnCodeDead_OnClick" />
+        </Grid>
+    </Grid>
+</syncfusion:ChromelessWindow>
