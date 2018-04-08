@@ -37,9 +37,18 @@ namespace Advanced_PassGen.Classes.PASSWORD
         /// The character set that can be used to generate passwords
         /// </summary>
         private readonly string _charSet;
-
+        /// <summary>
+        /// The list of passwords that were generated
+        /// </summary>
         internal List<Password> PasswordList;
+        /// <summary>
+        /// The Random that can be used to generate passwords
+        /// </summary>
         private static Random _rnd = new Random();
+        /// <summary>
+        /// A boolean to indicate whether to allow duplicate passwords or not
+        /// </summary>
+        private readonly bool _allowDuplicates;
         #endregion
 
         /// <summary>
@@ -51,7 +60,8 @@ namespace Advanced_PassGen.Classes.PASSWORD
         /// <param name="amount">The amount of passwords that need to be generated</param>
         /// <param name="seed">The seed for the random number generator</param>
         /// <param name="base64">A boolean to indicate whether the password should be converted into a base64 string</param>
-        internal PasswordController(string charSet, int minLength, int maxLength, int amount, int seed, bool base64)
+        /// <param name="allowDuplicates">A boolean to indicate whether duplicate passwords are allowed or not</param>
+        internal PasswordController(string charSet, int minLength, int maxLength, int amount, int seed, bool base64, bool allowDuplicates)
         {
             _charSet = charSet;
             _minLength = minLength;
@@ -59,6 +69,7 @@ namespace Advanced_PassGen.Classes.PASSWORD
             _amount = amount;
             _seed = seed;
             _base64 = base64;
+            _allowDuplicates = allowDuplicates;
         }
 
         /// <summary>
@@ -68,22 +79,62 @@ namespace Advanced_PassGen.Classes.PASSWORD
         internal async Task<List<Password>> GeneratePasswords()
         {
             PasswordList = new List<Password>();
+            List<string> duplicateCheck = new List<string>();
+
             _rnd = new Random(_seed);
             await Task.Run(() =>
             {
                 Encoding encoding = Encoding.Default;
+
+                //Calculate the maximum amount of possible permutations
+                double maxCount = 0;
+                if (!_allowDuplicates)
+                {
+                    int current = _minLength;
+                    while (current != _maxLength)
+                    {
+                        maxCount += Math.Pow(_charSet.Length, current);
+                        current++;
+                    }
+                }
+
                 for (int i = 0; i < _amount; i++)
                 {
-                    var sub = _rnd.Next(_minLength, _maxLength);
-                    string pwd = GetRandomString(sub, _charSet);
-
-                    if (_base64)
+                    bool cont = false;
+                    while (!cont)
                     {
-                        pwd = Convert.ToBase64String(encoding.GetBytes(pwd));
-                    }
+                        var sub = _rnd.Next(_minLength, _maxLength);
+                        string pwd = GetRandomString(sub, _charSet);
 
-                    Password pass = new Password { ActualPassword = pwd };
-                    PasswordList.Add(pass);
+                        if (_base64)
+                        {
+                            pwd = Convert.ToBase64String(encoding.GetBytes(pwd));
+                        }
+
+                        if (!_allowDuplicates)
+                        {
+                            if (!duplicateCheck.Contains(pwd))
+                            {
+                                Password pass = new Password { ActualPassword = pwd };
+                                PasswordList.Add(pass);
+                                duplicateCheck.Add(pwd);
+                                cont = true;
+                            }
+                        }
+                        else
+                        {
+                            Password pass = new Password { ActualPassword = pwd };
+                            PasswordList.Add(pass);
+                            cont = true;
+                        }
+
+                        // We've reached the end of the line. No need to keep generating, trust me
+                        // ReSharper disable once CompareOfFloatsByEqualityOperator
+                        if (!cont && !_allowDuplicates && PasswordList.Count == maxCount)
+                        {
+                            return;
+                        }
+                    }
                 }
             });
             return PasswordList;

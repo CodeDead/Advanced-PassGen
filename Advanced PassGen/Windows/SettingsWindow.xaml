@@ -47,8 +47,8 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
-                    <CheckBox Margin="2" x:Name="ChbExportLength" Grid.Row="0" Content="Export length field" />
-                    <CheckBox Margin="2" x:Name="ChbExportStrength" Grid.Row="1" Content="Export strength field" />
+                    <CheckBox Margin="3" x:Name="ChbExportLength" Grid.Row="0" Content="Export length field" />
+                    <CheckBox Margin="3" x:Name="ChbExportStrength" Grid.Row="1" Content="Export strength field" />
                 </Grid>
             </syncfusion:TabItemExt>
             <syncfusion:TabItemExt Header="Theme" Image="/Advanced PassGen;component/Resources/Images/style.png" ImageHeight="16" ImageWidth="16">
@@ -65,7 +65,7 @@
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
                     <Label Content="Style:" VerticalAlignment="Center" />
-                    <ComboBox Margin="2" x:Name="ChbStyle" SelectedValuePath="Content" Grid.Row="0" Grid.Column="1" IsReadOnly="True">
+                    <ComboBox Margin="3" x:Name="ChbStyle" SelectedValuePath="Content" Grid.Row="0" Grid.Column="1" IsReadOnly="True">
                         <ComboBoxItem>Metro</ComboBoxItem>
                         <ComboBoxItem>Blend</ComboBoxItem>
                         <ComboBoxItem>VS2010</ComboBoxItem>
@@ -83,7 +83,7 @@
                         <ComboBoxItem>None</ComboBoxItem>
                     </ComboBox>
                     <Label Grid.Row="1" Grid.Column="0" Content="Metro brush:" VerticalAlignment="Center" />
-                    <syncfusion:ColorPicker Margin="2" x:Name="CpMetroBrush" Grid.Row="1" Grid.Column="1" />
+                    <syncfusion:ColorPicker Margin="3" x:Name="CpMetroBrush" Grid.Row="1" Grid.Column="1" />
                     <Label Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Content="Border thickness:" />
                     <Slider Grid.Row="2" Grid.Column="1" Margin="3" Minimum="1" Maximum="10" x:Name="SldBorderThickness" ValueChanged="SldBorderThickness_OnValueChanged" Width="180" />
                     <Label Margin="3" Grid.Row="3" Grid.Column="0" Content="Window opacity:" />

@@ -296,7 +296,7 @@ namespace Advanced_PassGen.Windows
                 return;
             }
 
-            _generator = new PasswordController(charSet, minValue, maxValue + 1, (int) TxtAmount.Value, (int) TxtRandomSeed.Value, base64);
+            _generator = new PasswordController(charSet, minValue, maxValue + 1, (int) TxtAmount.Value, (int) TxtRandomSeed.Value, base64, ChbAllowDuplicates.IsChecked.Value);
             List<Password> passwords = await _generator.GeneratePasswords();
 
             foreach (Password s in passwords)

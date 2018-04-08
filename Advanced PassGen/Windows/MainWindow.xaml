@@ -153,16 +153,18 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
-                    <CheckBox x:Name="ChbUseAdvanced" Checked="ChbUseAdvanced_Checked" Unchecked="ChbUseAdvanced_Checked" Content="Use advanced options"  />
-                    <GroupBox x:Name="GrbAdvanced" IsEnabled="False" Grid.Row="1" Header="Advanced options">
+                    <CheckBox x:Name="ChbAllowDuplicates" Content="Allow duplicates" Margin="3"  />
+                    <CheckBox Grid.Row="1" x:Name="ChbUseAdvanced" Checked="ChbUseAdvanced_Checked" Unchecked="ChbUseAdvanced_Checked" Content="Use advanced options" Margin="3" />
+                    <GroupBox x:Name="GrbAdvanced" IsEnabled="False" Grid.Row="2" Header="Advanced options">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
-                            <CheckBox x:Name="ChbBase64" Margin="2" Content="Convert to base64" Checked="SetCheckBox_OnChecked" Unchecked="SetCheckBox_OnChecked"/>
+                            <CheckBox x:Name="ChbBase64" Margin="3" Content="Convert to base64" Checked="SetCheckBox_OnChecked" Unchecked="SetCheckBox_OnChecked"/>
                             <Grid Grid.Row="1">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
@@ -170,10 +172,10 @@
                                     <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
-                                <Label VerticalAlignment="Center" Content="Minimum length:" />
-                                <syncfusion:IntegerTextBox x:Name="TxtMinLength" Grid.Column="1" MinValue="1" ValueChanged="SetTextBox_OnValueChanged" />
+                                <Label VerticalAlignment="Center" Content="Minimum length:" Margin="3" />
+                                <syncfusion:IntegerTextBox x:Name="TxtMinLength" Grid.Column="1" MinValue="1" ValueChanged="SetTextBox_OnValueChanged" Margin="3" />
                                 <Label Grid.Column="2" VerticalAlignment="Center" Content="Maximum length:" />
-                                <syncfusion:IntegerTextBox x:Name="TxtMaxLength" Grid.Column="3" MinValue="1" ValueChanged="SetTextBox_OnValueChanged"/>
+                                <syncfusion:IntegerTextBox x:Name="TxtMaxLength" Grid.Column="3" MinValue="1" ValueChanged="SetTextBox_OnValueChanged" Margin="3" />
                             </Grid>
                             <Grid Grid.Row="2">
                                 <Grid.RowDefinitions>
@@ -185,19 +187,19 @@
                                     <ColumnDefinition />
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
-                                <Label Margin="2" VerticalAlignment="Center" Content="Character set:" />
-                                <TextBox Margin="2" x:Name="TxtCharacterSet" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Height="32">
+                                <Label Margin="3" VerticalAlignment="Center" Content="Character set:" />
+                                <TextBox Margin="3" x:Name="TxtCharacterSet" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Height="32">
                                     <TextBox.ToolTip>
                                         <ToolTip Content="The character set is a collection of characters that will be used to generate a password." />
                                     </TextBox.ToolTip>
                                 </TextBox>
-                                <Label Margin="2" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Content="Random seed:" />
-                                <syncfusion:IntegerTextBox Margin="2" x:Name="TxtRandomSeed" Grid.Row="1" Grid.Column="1" UndoLimit="10" Height="32">
+                                <Label Margin="3" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Content="Random seed:" />
+                                <syncfusion:IntegerTextBox Margin="3" x:Name="TxtRandomSeed" Grid.Row="1" Grid.Column="1" UndoLimit="10" Height="32">
                                     <syncfusion:IntegerTextBox.ToolTip>
                                         <ToolTip Content="The seed is used to generate random passwords." />
                                     </syncfusion:IntegerTextBox.ToolTip>
                                 </syncfusion:IntegerTextBox>
-                                <Button Width="32" Height="32" Margin="2" x:Name="BtnRandomSeed" Grid.Row="1" Grid.Column="2" Click="BtnRandomSeed_Click">
+                                <Button Width="32" Height="32" Margin="3" x:Name="BtnRandomSeed" Grid.Row="1" Grid.Column="2" Click="BtnRandomSeed_Click">
                                     <Button.ToolTip>
                                         <ToolTip Content="Generate a new random seed." />
                                     </Button.ToolTip>
@@ -280,16 +282,16 @@
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
-                        <Label Margin="2" Content="Password:" VerticalAlignment="Center" />
-                        <PasswordBox Margin="2" x:Name="PwbPassword" Grid.Column="1" Width="200" />
+                        <Label Margin="3" Content="Password:" VerticalAlignment="Center" />
+                        <PasswordBox Margin="3" x:Name="PwbPassword" Grid.Column="1" Width="200" />
                     </Grid>
                     <Grid Grid.Row="1" Margin="0,5,0,0">
                         <Grid.RowDefinitions>
                             <RowDefinition />
                             <RowDefinition />
                         </Grid.RowDefinitions>
-                        <ProgressBar Margin="2" x:Name="PgbStrength" Grid.Row="0" Maximum="7" Height="20" />
-                        <Button Margin="2" Grid.Row="1" Content="Advise" Click="BtnAdvise_Click" />
+                        <ProgressBar Margin="3" x:Name="PgbStrength" Grid.Row="0" Maximum="7" Height="20" />
+                        <Button Margin="3" Grid.Row="1" Content="Advise" Click="BtnAdvise_Click" />
                     </Grid>
                 </Grid>
             </syncfusion:TabItemExt>
