@@ -9,6 +9,7 @@ using Advanced_PassGen.Classes.Export;
 using Advanced_PassGen.Classes.GUI;
 using Advanced_PassGen.Classes.PASSWORD;
 using Microsoft.Win32;
+using UpdateManager.Classes;
 
 namespace Advanced_PassGen.Windows
 {
@@ -43,7 +44,17 @@ namespace Advanced_PassGen.Windows
         /// </summary>
         public MainWindow()
         {
-            UpdateManager = new UpdateManager.Classes.UpdateManager(Assembly.GetExecutingAssembly().GetName().Version, "https://codedead.com/Software/Advanced%20PassGen/update.xml", "Advanced PassGen", "Information", "Cancel", "Download", "You are using the latest version.");
+            StringVariables stringVariables = new StringVariables
+            {
+                CancelButtonText = "Cancel",
+                DownloadButtonText = "Download",
+                InformationButtonText = "Information",
+                NoNewVersionText = "You are running the latest version!",
+                TitleText = "Advanced PassGen",
+                UpdateNowText = "Would you like to update the application now?"
+            };
+
+            UpdateManager = new UpdateManager.Classes.UpdateManager(Assembly.GetExecutingAssembly().GetName().Version, "https://codedead.com/Software/Advanced%20PassGen/update.xml", stringVariables);
 
             InitializeComponent();
             ChangeVisualStyle();

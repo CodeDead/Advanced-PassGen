@@ -13,7 +13,6 @@ namespace Advanced_PassGen.Classes.UTIL
     internal class GridViewSort
     {
         #region Properties
-
         /// <summary>
         /// Check whether sorting is enabled or not
         /// </summary>
@@ -91,11 +90,9 @@ namespace Advanced_PassGen.Classes.UTIL
                 typeof(GridViewSort),
                 new UIPropertyMetadata(null)
             );
-
         #endregion
 
         #region ColumnHeader
-
         /// <summary>
         /// Method that is called when a ColumnHeader object is clicked
         /// </summary>
@@ -113,11 +110,9 @@ namespace Advanced_PassGen.Classes.UTIL
                 ApplySort(listView.Items, propertyName);
             }
         }
-
         #endregion
 
         #region Helpermethods
-
         /// <summary>
         /// Get the parent object of a DependencyObject
         /// </summary>
@@ -161,7 +156,6 @@ namespace Advanced_PassGen.Classes.UTIL
                 view.SortDescriptions.Add(new SortDescription(propertyName, direction));
             }
         }
-
         #endregion
     }
 }
