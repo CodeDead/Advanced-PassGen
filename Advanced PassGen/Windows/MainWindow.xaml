@@ -8,7 +8,7 @@
     xmlns:util="clr-namespace:Advanced_PassGen.Classes.UTIL"
     mc:Ignorable="d" AllowsTransparency="True"
     UseNativeChrome="True" UseLayoutRounding="True"
-    Title="Advanced PassGen" WindowStartupLocation="CenterScreen" Icon="/Advanced PassGen;component/Resources/Images/key.png" Width="450" Height="300" TitleTextAlignment="Center">
+    Title="Advanced PassGen" WindowStartupLocation="CenterScreen" Icon="/Advanced PassGen;component/Resources/Images/key.png" Width="450" Height="320" TitleTextAlignment="Center">
     
     <Grid>
         <Grid.RowDefinitions>
