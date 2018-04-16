@@ -93,7 +93,7 @@
                         <Label VerticalAlignment="Center" Content="Length:" />
                         <syncfusion:IntegerTextBox x:Name="TxtLength" Grid.Row="0" Grid.Column="1" MinValue="1" ValueChanged="SetTextBox_OnValueChanged">
                             <syncfusion:IntegerTextBox.ToolTip>
-                                <ToolTip Content="The length of the password that needs to be generated." />
+                                <ToolTip Content="The length of the password(s) that need(s) to be generated." />
                             </syncfusion:IntegerTextBox.ToolTip>
                         </syncfusion:IntegerTextBox>
                         <Label Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Content="Amount:" />
@@ -155,7 +155,11 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
-                    <CheckBox x:Name="ChbAllowDuplicates" Content="Allow duplicates" Margin="3"  />
+                    <CheckBox x:Name="ChbAllowDuplicates" Content="Allow duplicates" Margin="3">
+                        <CheckBox.ToolTip>
+                            <ToolTip Content="Allow duplicate passwords to be generated." />
+                        </CheckBox.ToolTip>
+                    </CheckBox>
                     <CheckBox Grid.Row="1" x:Name="ChbUseAdvanced" Checked="ChbUseAdvanced_Checked" Unchecked="ChbUseAdvanced_Checked" Content="Use advanced options" Margin="3" />
                     <GroupBox x:Name="GrbAdvanced" IsEnabled="False" Grid.Row="2" Header="Advanced options">
                         <Grid>
@@ -164,7 +168,11 @@
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
-                            <CheckBox x:Name="ChbBase64" Margin="3" Content="Convert to base64" Checked="SetCheckBox_OnChecked" Unchecked="SetCheckBox_OnChecked"/>
+                            <CheckBox x:Name="ChbBase64" Margin="3" Content="Convert to base64" Checked="SetCheckBox_OnChecked" Unchecked="SetCheckBox_OnChecked">
+                                <CheckBox.ToolTip>
+                                    <ToolTip Content="Convert the generated password into a base64 string." />
+                                </CheckBox.ToolTip>
+                            </CheckBox>
                             <Grid Grid.Row="1">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
@@ -173,9 +181,17 @@
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
                                 <Label VerticalAlignment="Center" Content="Minimum length:" Margin="3" />
-                                <syncfusion:IntegerTextBox x:Name="TxtMinLength" Grid.Column="1" MinValue="1" ValueChanged="SetTextBox_OnValueChanged" Margin="3" />
+                                <syncfusion:IntegerTextBox x:Name="TxtMinLength" Grid.Column="1" MinValue="1" ValueChanged="SetTextBox_OnValueChanged" Margin="3">
+                                    <syncfusion:IntegerTextBox.ToolTip>
+                                        <ToolTip Content="The minimum length for the password(s) that need(s) to be generated." />
+                                    </syncfusion:IntegerTextBox.ToolTip>
+                                </syncfusion:IntegerTextBox>
                                 <Label Grid.Column="2" VerticalAlignment="Center" Content="Maximum length:" />
-                                <syncfusion:IntegerTextBox x:Name="TxtMaxLength" Grid.Column="3" MinValue="1" ValueChanged="SetTextBox_OnValueChanged" Margin="3" />
+                                <syncfusion:IntegerTextBox x:Name="TxtMaxLength" Grid.Column="3" MinValue="1" ValueChanged="SetTextBox_OnValueChanged" Margin="3">
+                                    <syncfusion:IntegerTextBox.ToolTip>
+                                        <ToolTip Content="The maximum length for the password(s) that need(s) to be generated" />
+                                    </syncfusion:IntegerTextBox.ToolTip>
+                                </syncfusion:IntegerTextBox>
                             </Grid>
                             <Grid Grid.Row="2">
                                 <Grid.RowDefinitions>

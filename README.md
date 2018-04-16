@@ -7,7 +7,7 @@ You can export your passwords in TXT, HTML or CSV format!
 * [Syncfusion for WPF](https://syncfusion.com/)
 * [.NET Framework 4.7.1](https://www.microsoft.com/en-us/download/details.aspx?id=56116)
 * [UpdateManager](https://github.com/CodeDead/UpdateManager)
-* [Resharper](https://jetbrains.com/resharper) (Optional. We just really like resharper.)
+* [Resharper](https://jetbrains.com/resharper) (Optional, we just really like resharper)
 
 # Other
 If you have any questions, feel free to contact us:
