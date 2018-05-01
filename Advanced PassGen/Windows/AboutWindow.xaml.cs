@@ -1,7 +1,7 @@
 ﻿using System;
+using System.Reflection;
 using System.Windows;
 using System.Windows.Input;
-using Advanced_PassGen.Classes;
 using Advanced_PassGen.Classes.GUI;
 
 namespace Advanced_PassGen.Windows
@@ -17,6 +17,8 @@ namespace Advanced_PassGen.Windows
             InitializeComponent();
             LoadProperties();
             ChangeVisualStyle();
+
+            TxbInfo.Text = "Advanced PassGen was created by DeadLine.\n\nImages: small-n-flat by paomedia\nTheme: Syncfusion\nVersion: " + Assembly.GetExecutingAssembly().GetName().Version + "\n\nCopyright © CodeDead 2018";
         }
 
         /// <summary>
