@@ -5,7 +5,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Advanced_PassGen.Classes.PASSWORD
+namespace Advanced_PassGen.Classes.Password
 {
     /// <summary>
     /// A class to generate random strings
@@ -144,7 +144,7 @@ namespace Advanced_PassGen.Classes.PASSWORD
         /// Generate a random string
         /// </summary>
         /// <param name="length">The length of the string that needs to be generated</param>
-        /// <param name="characterSet">The characterset that the generator can use</param>
+        /// <param name="characterSet">The character set that the generator can use</param>
         /// <returns></returns>
         private static string GetRandomString(int length, IEnumerable<char> characterSet)
         {

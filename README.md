@@ -2,16 +2,17 @@
 Advanced PassGen is a free and open-source application that can help you generate passwords and export them.
 You can export your passwords in TXT, HTML or CSV format!
 
-# Requirements for building
+## Dependencies
 * [Visual Studio](https://visualstudio.com)
 * [Syncfusion for WPF](https://syncfusion.com/)
-* [.NET Framework 4.7.1](https://www.microsoft.com/en-us/download/details.aspx?id=56116)
+* [.NET Framework 4.8](https://dotnet.microsoft.com/download/dotnet-framework/net48)
 * [UpdateManager](https://github.com/CodeDead/UpdateManager)
-* [Resharper](https://jetbrains.com/resharper) (Optional, we just really like resharper)
 
-# Other
-If you have any questions, feel free to contact us:
-https://codedead.com/
+# About
+This library is maintained by CodeDead. You can find more about us using the following links:
+* [Website](https://codedead.com)
+* [Twitter](https://twitter.com/C0DEDEAD)
+* [Facebook](https://facebook.com/deadlinecodedead)
+* [Reddit](https://reddit.com/r/CodeDead/)
 
-# License
-This software is licensed under the [GPLv3](https://codedead.com/Software/Advanced%20PassGen/gpl.pdf).
+We would also like to thank JetBrains for the open source license that they granted us to work with wonderful tools such as [Rider](https://jetbrains.com/rider) and [Resharper](https://jetbrains.com/resharper).

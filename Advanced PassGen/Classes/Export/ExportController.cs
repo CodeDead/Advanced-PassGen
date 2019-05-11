@@ -1,27 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using Advanced_PassGen.Classes.PASSWORD;
 
 namespace Advanced_PassGen.Classes.Export
 {
     /// <summary>
-    /// Interal logic for exporting data
+    /// Internal logic for exporting data
     /// </summary>
-    internal sealed class ExportController
+    internal static class ExportController
     {
         /// <summary>
         /// Export a password list as a text file
         /// </summary>
         /// <param name="path">The path where the text file should be stored</param>
         /// <param name="passwordList">The list of Password objects that need to be exported</param>
-        internal static void ExportText(string path, List<Password> passwordList)
+        internal static void ExportText(string path, List<Password.Password> passwordList)
         {
             if (passwordList.Count < 1) return;
             string items = "Password List - Advanced PassGen" + Environment.NewLine;
             for (int i = 0; i < passwordList.Count; i++)
             {
-                Password pwd = passwordList[i];
+                Password.Password pwd = passwordList[i];
                 if (pwd == null) continue;
                 items += pwd.ActualPassword;
                 if (i != passwordList.Count - 1)
@@ -37,7 +36,7 @@ namespace Advanced_PassGen.Classes.Export
         /// </summary>
         /// <param name="path">The path where the HTML file should be stored</param>
         /// <param name="passwordList">The list of Password objects that need to be exported</param>
-        internal static void ExportHtml(string path, List<Password> passwordList)
+        internal static void ExportHtml(string path, List<Password.Password> passwordList)
         {
             if (passwordList.Count < 1) return;
             string items = "<html><body><h1>Password List - Advanced PassGen</h1><br /><table><tr><th>Password</th>";
@@ -51,7 +50,7 @@ namespace Advanced_PassGen.Classes.Export
             }
             items += "</tr>";
 
-            foreach (Password pwd in passwordList)
+            foreach (Password.Password pwd in passwordList)
             {
                 if (pwd == null) continue;
                 items += "<tr><td>" + pwd.ActualPassword + "</td>";
@@ -74,7 +73,7 @@ namespace Advanced_PassGen.Classes.Export
         /// </summary>
         /// <param name="path">The path where the CSV file should be stored</param>
         /// <param name="passwordList">The list of Password objects that need to be exported</param>
-        internal static void ExportCsv(string path, List<Password> passwordList)
+        internal static void ExportCsv(string path, List<Password.Password> passwordList)
         {
             ExportDelimiter(path, ",", passwordList);
         }
@@ -84,7 +83,7 @@ namespace Advanced_PassGen.Classes.Export
         /// </summary>
         /// <param name="path">The path where the Excel file should be stored</param>
         /// <param name="passwordList">The list of Password objects that need to be exported</param>
-        internal static void ExportExcel(string path, List<Password> passwordList)
+        internal static void ExportExcel(string path, List<Password.Password> passwordList)
         {
             ExportDelimiter(path, ";", passwordList);
         }
@@ -95,7 +94,7 @@ namespace Advanced_PassGen.Classes.Export
         /// <param name="path">The path where the file should be stored</param>
         /// <param name="delimiter">The delimiter that should be used for splitting the data</param>
         /// <param name="passwordList">The list of Password objects that need to be exported</param>
-        private static void ExportDelimiter(string path, string delimiter, IReadOnlyList<Password> passwordList)
+        private static void ExportDelimiter(string path, string delimiter, IReadOnlyList<Password.Password> passwordList)
         {
             if (passwordList.Count < 1) return;
             string items = "Password List - Advanced PassGen" + Environment.NewLine + "Password";
@@ -110,7 +109,7 @@ namespace Advanced_PassGen.Classes.Export
             items += Environment.NewLine;
             for (int i = 0; i < passwordList.Count; i++)
             {
-                Password pwd = passwordList[i];
+                Password.Password pwd = passwordList[i];
                 if (pwd != null)
                 {
                     items += pwd.ActualPassword;

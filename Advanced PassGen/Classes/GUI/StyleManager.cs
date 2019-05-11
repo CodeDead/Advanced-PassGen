@@ -23,7 +23,7 @@ namespace Advanced_PassGen.Classes.GUI
                 if (!(o is ChromelessWindow window)) return;
                 window.BorderThickness = new Thickness(Properties.Settings.Default.BorderThickness);
                 window.CornerRadius = new CornerRadius(0, 0, 0, 0);
-                window.Opacity = Properties.Settings.Default.WindowOpacity;
+                window.Opacity = Properties.Settings.Default.WindowOpacity / 100;
                 window.ResizeBorderThickness = new Thickness(Properties.Settings.Default.WindowResizeBorder);
             }
             catch (Exception ex)

@@ -6,6 +6,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
     xmlns:util="clr-namespace:Advanced_PassGen.Classes.UTIL"
+    xmlns:pwd="clr-namespace:Advanced_PassGen.Classes.Password"
     mc:Ignorable="d" AllowsTransparency="True"
     UseNativeChrome="True" UseLayoutRounding="True"
     Title="Advanced PassGen" WindowStartupLocation="CenterScreen" Icon="/Advanced PassGen;component/Resources/Images/key.png" Width="450" Height="320" TitleTextAlignment="Center">
@@ -215,7 +216,7 @@
                                         <ToolTip Content="The seed is used to generate random passwords." />
                                     </syncfusion:IntegerTextBox.ToolTip>
                                 </syncfusion:IntegerTextBox>
-                                <Button Width="32" Height="32" Margin="3" x:Name="BtnRandomSeed" Grid.Row="1" Grid.Column="2" Click="BtnRandomSeed_Click">
+                                <Button Width="32" Height="32" Margin="3" Grid.Row="1" Grid.Column="2" Click="BtnRandomSeed_Click">
                                     <Button.ToolTip>
                                         <ToolTip Content="Generate a new random seed." />
                                     </Button.ToolTip>
@@ -234,7 +235,7 @@
                     </Grid.RowDefinitions>
                     <ListView x:Name="LsvPasswordList"
                               IsSynchronizedWithCurrentItem="True"
-                              util:GridViewSort.Enabled="True">
+                              util:GridViewSort.Enabled="True" d:DataContext="{d:DesignInstance pwd:Password}">
                         <ListView.ContextMenu>
                             <ContextMenu>
                                 <MenuItem Header="Export" Click="BtnExport_Click">
@@ -268,8 +269,6 @@
                                 <GridViewColumn x:Name="GvcStrength" Header="Strength" util:GridViewSort.PropertyName="Strength">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
-                                            <!-- ReSharper disable once Xaml.BindingWithContextNotResolved -->
-                                            <!-- ReSharper disable once Xaml.BindingWithContextNotResolved -->
                                             <ProgressBar Height="20" Width="150" Maximum="7" Value="{Binding Strength, Mode=OneWay}" />
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
@@ -287,6 +286,7 @@
                     </Grid>
                 </Grid>
             </syncfusion:TabItemExt>
+            <!-- ReSharper disable once MarkupAttributeTypo -->
             <syncfusion:TabItemExt Header="Advisor" Image="../Resources/Images/advisor.png" ImageHeight="16" ImageWidth="16" >
                 <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
                     <Grid.RowDefinitions>

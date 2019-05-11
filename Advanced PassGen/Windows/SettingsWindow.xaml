@@ -5,11 +5,13 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+    xmlns:util="clr-namespace:Advanced_PassGen.Classes.UTIL"
     mc:Ignorable="d" UseLayoutRounding="True"
     AllowsTransparency="True" UseNativeChrome="True"
     Title="Advanced PassGen - Settings"
     Height="300" Width="400" WindowStartupLocation="CenterScreen"
     Icon="/Advanced PassGen;component/Resources/Images/key.png"
+    Closing="SettingsWindow_OnClosing"
     TitleTextAlignment="Center">
 
     <Grid>
@@ -27,10 +29,10 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
-                    <CheckBox Margin="3" x:Name="ChbAutoUpdate" Content="Automatically check for updates" />
-                    <CheckBox Margin="3" Grid.Row="1" x:Name="ChbPasswordStrength" Content="Show password strength" />
-                    <CheckBox Margin="3" Grid.Row="2" x:Name="ChbWindowDraggable" Content="Window dragging" />
-                    <CheckBox Margin="3" Grid.Row="3" x:Name="ChbKeepOptions" Content="Save all selected options" />
+                    <CheckBox Margin="3" Content="Automatically check for updates" IsChecked="{util:SettingsBinder AutoUpdate}" />
+                    <CheckBox Margin="3" Grid.Row="1" Content="Show password strength" IsChecked="{util:SettingsBinder ShowPasswordStrength}" />
+                    <CheckBox Margin="3" Grid.Row="2" Content="Window dragging" IsChecked="{util:SettingsBinder WindowDragging}" />
+                    <CheckBox Margin="3" Grid.Row="3" Content="Save all selected options" IsChecked="{util:SettingsBinder SaveOptions}" />
                     <Grid Margin="3" Grid.Row="4">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition />
@@ -47,8 +49,8 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
-                    <CheckBox Margin="3" x:Name="ChbExportLength" Grid.Row="0" Content="Export length field" />
-                    <CheckBox Margin="3" x:Name="ChbExportStrength" Grid.Row="1" Content="Export strength field" />
+                    <CheckBox Margin="3" Grid.Row="0" Content="Export length field" IsChecked="{util:SettingsBinder ExportLength}" />
+                    <CheckBox Margin="3" Grid.Row="1" Content="Export strength field" IsChecked="{util:SettingsBinder ExportStrength}" />
                 </Grid>
             </syncfusion:TabItemExt>
             <syncfusion:TabItemExt Header="Theme" Image="/Advanced PassGen;component/Resources/Images/style.png" ImageHeight="16" ImageWidth="16">
@@ -65,31 +67,31 @@
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
                     <Label Content="Style:" VerticalAlignment="Center" />
-                    <ComboBox Margin="3" x:Name="ChbStyle" SelectedValuePath="Content" Grid.Row="0" Grid.Column="1" IsReadOnly="True">
-                        <ComboBoxItem>Metro</ComboBoxItem>
-                        <ComboBoxItem>Blend</ComboBoxItem>
-                        <ComboBoxItem>VS2010</ComboBoxItem>
-                        <ComboBoxItem>Office2003</ComboBoxItem>
-                        <ComboBoxItem>Office2007Blue</ComboBoxItem>
-                        <ComboBoxItem>Office2007Black</ComboBoxItem>
-                        <ComboBoxItem>Office2007Silver</ComboBoxItem>
-                        <ComboBoxItem>Office2010Blue</ComboBoxItem>
-                        <ComboBoxItem>Office2010Black</ComboBoxItem>
-                        <ComboBoxItem>Office2010Silver</ComboBoxItem>
-                        <ComboBoxItem>ShinyRed</ComboBoxItem>
-                        <ComboBoxItem>ShinyBlue</ComboBoxItem>
-                        <ComboBoxItem>SyncOrange</ComboBoxItem>
-                        <ComboBoxItem>Transparent</ComboBoxItem>
-                        <ComboBoxItem>None</ComboBoxItem>
+                    <ComboBox Margin="3" SelectedValuePath="Content" Grid.Row="0" Grid.Column="1" IsReadOnly="True" SelectedValue="{util:SettingsBinder VisualStyle}" SelectionChanged="Selector_OnSelectionChanged">
+                        <ComboBoxItem Content="Metro" />
+                        <ComboBoxItem Content="Blend" />
+                        <ComboBoxItem Content="VS2010" />
+                        <ComboBoxItem Content="Office2003" />
+                        <ComboBoxItem Content="Office2007Blue" />
+                        <ComboBoxItem Content="Office2007Black" />
+                        <ComboBoxItem Content="Office2007Silver" />
+                        <ComboBoxItem Content="Office2010Blue" />
+                        <ComboBoxItem Content="Office2010Black" />
+                        <ComboBoxItem Content="Office2010Silver" />
+                        <ComboBoxItem Content="ShinyRed" />
+                        <ComboBoxItem Content="ShinyBlue" />
+                        <ComboBoxItem Content="SyncOrange" />
+                        <ComboBoxItem Content="Transparent" />
+                        <ComboBoxItem Content="None" />
                     </ComboBox>
                     <Label Grid.Row="1" Grid.Column="0" Content="Metro brush:" VerticalAlignment="Center" />
-                    <syncfusion:ColorPicker Margin="3" x:Name="CpMetroBrush" Grid.Row="1" Grid.Column="1" />
+                    <syncfusion:ColorPicker Margin="3" Grid.Row="1" Grid.Column="1" Color="{util:SettingsBinder MetroColor}" />
                     <Label Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Content="Border thickness:" />
-                    <Slider Grid.Row="2" Grid.Column="1" Margin="3" Minimum="1" Maximum="10" x:Name="SldBorderThickness" ValueChanged="SldBorderThickness_OnValueChanged" Width="180" />
+                    <Slider Grid.Row="2" Grid.Column="1" Margin="3" Minimum="1" Maximum="10" Value="{util:SettingsBinder BorderThickness}" ValueChanged="SldBorderThickness_OnValueChanged" Width="180" />
                     <Label Margin="3" Grid.Row="3" Grid.Column="0" Content="Window opacity:" />
-                    <Slider x:Name="SldOpacity" Margin="3" Grid.Row="3" Grid.Column="1" Minimum="30" Maximum="100" Width="180" ValueChanged="SldOpacity_OnValueChanged" />
+                    <Slider Margin="3" Grid.Row="3" Grid.Column="1" Minimum="30" Value="{util:SettingsBinder WindowOpacity}" Maximum="100" Width="180" ValueChanged="SldOpacity_OnValueChanged" />
                     <Label Margin="3" Grid.Row="4" Grid.Column="0" Content="Resize border:" />
-                    <Slider x:Name="SldWindowResize" Margin="3" Grid.Row="4" Grid.Column="1" Minimum="1" Maximum="10" Width="180" ValueChanged="SldWindowResize_OnValueChanged" />
+                    <Slider Margin="3" Grid.Row="4" Grid.Column="1" Minimum="1" Maximum="10" Width="180" Value="{util:SettingsBinder WindowResizeBorder}" ValueChanged="SldWindowResize_OnValueChanged" />
                 </Grid>
             </syncfusion:TabItemExt>
         </syncfusion:TabControlExt>

@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace Advanced_PassGen.Classes.PASSWORD
+namespace Advanced_PassGen.Classes.Password
 {
     /// <summary>
     /// This class represents a password

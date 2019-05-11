@@ -7,9 +7,9 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using Advanced_PassGen.Classes.Export;
 using Advanced_PassGen.Classes.GUI;
-using Advanced_PassGen.Classes.PASSWORD;
+using Advanced_PassGen.Classes.Password;
+using CodeDead.UpdateManager.Classes;
 using Microsoft.Win32;
-using UpdateManager.Classes;
 
 namespace Advanced_PassGen.Windows
 {
@@ -23,7 +23,7 @@ namespace Advanced_PassGen.Windows
         /// <summary>
         /// The UpdateManager object that can check for updates
         /// </summary>
-        internal readonly UpdateManager.Classes.UpdateManager UpdateManager;
+        private readonly UpdateManager _updateManager;
         /// <summary>
         /// The GridViewColumn in which items can be displayed
         /// </summary>
@@ -54,7 +54,7 @@ namespace Advanced_PassGen.Windows
                 UpdateNowText = "Would you like to update the application now?"
             };
 
-            UpdateManager = new UpdateManager.Classes.UpdateManager(Assembly.GetExecutingAssembly().GetName().Version, "https://codedead.com/Software/Advanced%20PassGen/update.xml", stringVariables);
+            _updateManager = new UpdateManager(Assembly.GetExecutingAssembly().GetName().Version, "https://codedead.com/Software/Advanced%20PassGen/update.xml", stringVariables);
 
             InitializeComponent();
             ChangeVisualStyle();
@@ -72,7 +72,7 @@ namespace Advanced_PassGen.Windows
             {
                 if (Properties.Settings.Default.AutoUpdate)
                 {
-                    UpdateManager.CheckForUpdate(false, false);
+                    _updateManager.CheckForUpdate(false, false);
                 }
 
                 if (Properties.Settings.Default.SaveOptions)
@@ -342,7 +342,7 @@ namespace Advanced_PassGen.Windows
                         ExportController.ExportCsv(sfd.FileName, _generator.PasswordList);
                         break;
                     case 4:
-                        ExportController.ExportCsv(sfd.FileName, _generator.PasswordList);
+                        ExportController.ExportExcel(sfd.FileName, _generator.PasswordList);
                         break;
                 }
                 MessageBox.Show(this, "File exported!", "Advanced PassGen", MessageBoxButton.OK);
@@ -424,7 +424,7 @@ namespace Advanced_PassGen.Windows
         /// <param name="e">The RoutedEventArgs</param>
         private void UpdateMenuItem_OnClick(object sender, RoutedEventArgs e)
         {
-            UpdateManager.CheckForUpdate(true, true);
+            _updateManager.CheckForUpdate(true, true);
         }
 
         /// <summary>

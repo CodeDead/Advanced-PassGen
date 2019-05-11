@@ -18,7 +18,7 @@ namespace Advanced_PassGen.Windows
             LoadProperties();
             ChangeVisualStyle();
 
-            TxbInfo.Text = "Advanced PassGen was created by DeadLine.\n\nImages: small-n-flat by paomedia\nTheme: Syncfusion\nVersion: " + Assembly.GetExecutingAssembly().GetName().Version + "\n\nCopyright © CodeDead 2018";
+            TxbInfo.Text = "Advanced PassGen was created by DeadLine.\n\nImages: small-n-flat by paomedia\nTheme: Syncfusion\nVersion: " + Assembly.GetExecutingAssembly().GetName().Version + "\n\nCopyright © 2019 CodeDead";
         }
 
         /// <summary>

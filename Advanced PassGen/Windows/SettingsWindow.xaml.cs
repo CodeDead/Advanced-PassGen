@@ -1,5 +1,7 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using Advanced_PassGen.Classes.GUI;
 
@@ -60,8 +62,6 @@ namespace Advanced_PassGen.Windows
         {
             try
             {
-                ChbAutoUpdate.IsChecked = Properties.Settings.Default.AutoUpdate;
-                ChbPasswordStrength.IsChecked = Properties.Settings.Default.ShowPasswordStrength;
                 TxtCharacterSet.Text = Properties.Settings.Default.CharacterSet;
 
                 if (Properties.Settings.Default.WindowDragging)
@@ -69,24 +69,11 @@ namespace Advanced_PassGen.Windows
                     // Remove previously set event handler if applicable
                     MouseDown -= OnMouseDown;
                     MouseDown += OnMouseDown;
-                    ChbWindowDraggable.IsChecked = true;
                 }
                 else
                 {
                     MouseDown -= OnMouseDown;
-                    ChbWindowDraggable.IsChecked = false;
                 }
-
-                ChbKeepOptions.IsChecked = Properties.Settings.Default.SaveOptions;
-
-                ChbStyle.SelectedValue = Properties.Settings.Default.VisualStyle;
-                CpMetroBrush.Color = Properties.Settings.Default.MetroColor;
-                SldBorderThickness.Value = Properties.Settings.Default.BorderThickness;
-                SldOpacity.Value = Properties.Settings.Default.WindowOpacity * 100;
-                SldWindowResize.Value = Properties.Settings.Default.WindowResizeBorder;
-
-                ChbExportLength.IsChecked = Properties.Settings.Default.ExportLength;
-                ChbExportStrength.IsChecked = Properties.Settings.Default.ExportStrength;
             }
             catch (Exception ex)
             {
@@ -120,22 +107,8 @@ namespace Advanced_PassGen.Windows
         {
             try
             {
-                if (ChbAutoUpdate.IsChecked != null) Properties.Settings.Default.AutoUpdate = ChbAutoUpdate.IsChecked.Value;
-                if (ChbPasswordStrength.IsChecked != null) Properties.Settings.Default.ShowPasswordStrength = ChbPasswordStrength.IsChecked.Value;
-                if (ChbWindowDraggable.IsChecked != null)Properties.Settings.Default.WindowDragging = ChbWindowDraggable.IsChecked.Value;
-                if (ChbKeepOptions.IsChecked != null) Properties.Settings.Default.SaveOptions = ChbKeepOptions.IsChecked.Value;
-
                 Properties.Settings.Default.CharacterSet = TxtCharacterSet.Text;
                 _mw.TxtCharacterSet.Text = TxtCharacterSet.Text;
-
-                Properties.Settings.Default.VisualStyle = ChbStyle.Text;
-                Properties.Settings.Default.MetroColor = CpMetroBrush.Color;
-                Properties.Settings.Default.BorderThickness = SldBorderThickness.Value;
-                Properties.Settings.Default.WindowOpacity = SldOpacity.Value / 100;
-                Properties.Settings.Default.WindowResizeBorder = SldWindowResize.Value;
-
-                if (ChbExportLength.IsChecked != null) Properties.Settings.Default.ExportLength = ChbExportLength.IsChecked.Value;
-                if (ChbExportStrength.IsChecked != null) Properties.Settings.Default.ExportStrength = ChbExportStrength.IsChecked.Value;
 
                 Properties.Settings.Default.Save();
 
@@ -158,7 +131,7 @@ namespace Advanced_PassGen.Windows
         /// <param name="e">The RoutedPropertyChangedEventArgs</param>
         private void SldBorderThickness_OnValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            BorderThickness = new Thickness(SldBorderThickness.Value);
+            BorderThickness = new Thickness(((Slider)sender).Value);
         }
 
         /// <summary>
@@ -168,7 +141,7 @@ namespace Advanced_PassGen.Windows
         /// <param name="e">The RoutedPropertyChangedEventArgs</param>
         private void SldOpacity_OnValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            Opacity = SldOpacity.Value / 100;
+            Opacity = ((Slider)sender).Value / 100;
         }
 
         /// <summary>
@@ -178,7 +151,34 @@ namespace Advanced_PassGen.Windows
         /// <param name="e">The RoutedPropertyChangedEventArgs</param>
         private void SldWindowResize_OnValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            ResizeBorderThickness = new Thickness(SldWindowResize.Value);
+            ResizeBorderThickness = new Thickness(((Slider)sender).Value);
+        }
+
+        /// <summary>
+        /// Method that is called when the theme should be previewed
+        /// </summary>
+        /// <param name="sender">The object that called this method</param>
+        /// <param name="e">The SelectionChangedEventArgs</param>
+        private void Selector_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ChangeVisualStyle();
+        }
+
+        /// <summary>
+        /// Method that is called when the SettingsWindow is closing
+        /// </summary>
+        /// <param name="sender">The object that called this method</param>
+        /// <param name="e"></param>
+        private void SettingsWindow_OnClosing(object sender, CancelEventArgs e)
+        {
+            try
+            {
+                Properties.Settings.Default.Reload();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Advanced PassGen", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }
