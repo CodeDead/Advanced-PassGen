@@ -159,6 +159,7 @@ namespace Advanced_PassGen.Windows
                 if (ChbBase64.IsChecked != null) Properties.Settings.Default.SetBase64 = ChbBase64.IsChecked.Value;
                 if (TxtMinLength.Value != null) Properties.Settings.Default.SetMinLength = (int) TxtMinLength.Value.Value;
                 if (TxtMaxLength.Value != null) Properties.Settings.Default.SetMaxLength = (int) TxtMaxLength.Value.Value;
+                if (ChbAllowDuplicates.IsChecked != null) Properties.Settings.Default.SetDuplicates = ChbAllowDuplicates.IsChecked.Value;
 
                 Properties.Settings.Default.Save();
             }
@@ -187,6 +188,7 @@ namespace Advanced_PassGen.Windows
             ChbBase64.IsChecked = Properties.Settings.Default.SetBase64;
             TxtMinLength.Value = Properties.Settings.Default.SetMinLength;
             TxtMaxLength.Value = Properties.Settings.Default.SetMaxLength;
+            ChbAllowDuplicates.IsChecked = Properties.Settings.Default.SetDuplicates;
             _loadingSetSettings = false;
         }
 

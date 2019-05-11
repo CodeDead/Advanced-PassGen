@@ -156,7 +156,7 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
-                    <CheckBox x:Name="ChbAllowDuplicates" Content="Allow duplicates" Margin="3">
+                    <CheckBox x:Name="ChbAllowDuplicates" Content="Allow duplicates" Margin="3" Checked="SetCheckBox_OnChecked" Unchecked="SetCheckBox_OnChecked">
                         <CheckBox.ToolTip>
                             <ToolTip Content="Allow duplicate passwords to be generated." />
                         </CheckBox.ToolTip>

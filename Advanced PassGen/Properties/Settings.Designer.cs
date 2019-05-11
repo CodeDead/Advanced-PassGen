@@ -310,5 +310,17 @@ namespace Advanced_PassGen.Properties {
                 this["SetMaxLength"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool SetDuplicates {
+            get {
+                return ((bool)(this["SetDuplicates"]));
+            }
+            set {
+                this["SetDuplicates"] = value;
+            }
+        }
     }
 }
