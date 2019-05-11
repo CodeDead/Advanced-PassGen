@@ -327,7 +327,7 @@ namespace Advanced_PassGen.Windows
         {
             if (LsvPasswordList.Items.Count == 0) return;
 
-            SaveFileDialog sfd = new SaveFileDialog {Filter = "Text file(*.txt)|*.txt|HTML file(*.html)|*.html|*CSV file(*.csv)|*.csv|Excel file (*.csv)|*.csv"};
+            SaveFileDialog sfd = new SaveFileDialog {Filter = "Text file(*.txt)|*.txt|HTML file(*.html)|*.html|CSV file(*.csv)|*.csv|Excel file (*.csv)|*.csv"};
             bool? res = sfd.ShowDialog();
             if (res != true) return;
             try
