@@ -42,9 +42,7 @@ namespace Advanced_PassGen.Classes.UTIL
                 false,
                 (o, e) =>
                 {
-                    // ReSharper disable once UsePatternMatching
-                    ListView listView = o as ListView;
-                    if (listView == null) return;
+                    if (!(o is ListView listView)) return;
                     bool oldValue = (bool) e.OldValue;
                     bool newValue = (bool) e.NewValue;
                     if (oldValue && !newValue)

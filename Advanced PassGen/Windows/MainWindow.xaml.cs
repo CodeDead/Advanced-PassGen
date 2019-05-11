@@ -249,10 +249,12 @@ namespace Advanced_PassGen.Windows
 
             if (ChbSmallLetters.IsChecked != null && ChbSmallLetters.IsChecked.Value)
             {
+                // ReSharper disable once StringLiteralTypo
                 charSet += "abcdefghijklmnopqrstuvwxyz";
             }
             if (ChbCapitalLetters.IsChecked != null && ChbCapitalLetters.IsChecked.Value)
             {
+                // ReSharper disable once StringLiteralTypo
                 charSet += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             }
             if (ChbSpecialCharacters.IsChecked != null && ChbSpecialCharacters.IsChecked.Value)
