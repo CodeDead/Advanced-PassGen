@@ -150,7 +150,9 @@ namespace Advanced_PassGen.Classes.Password
         {
             char[] characterArray = characterSet.Distinct().ToArray();
             byte[] bytes = new byte[length * 8];
-            new RNGCryptoServiceProvider().GetBytes(bytes);
+            RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider();
+            rng.GetBytes(bytes);
+            rng.Dispose();
             char[] result = new char[length];
             for (int i = 0; i < length; i++)
             {

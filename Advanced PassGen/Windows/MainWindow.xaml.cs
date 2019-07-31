@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -54,7 +55,7 @@ namespace Advanced_PassGen.Windows
                 UpdateNowText = "Would you like to update the application now?"
             };
 
-            _updateManager = new UpdateManager(Assembly.GetExecutingAssembly().GetName().Version, "https://codedead.com/Software/Advanced%20PassGen/update.xml", stringVariables);
+            _updateManager = new UpdateManager(Assembly.GetExecutingAssembly().GetName().Version, "https://codedead.com/Software/Advanced%20PassGen/update.json", stringVariables, DataType.Json);
 
             InitializeComponent();
             ChangeVisualStyle();
@@ -365,9 +366,24 @@ namespace Advanced_PassGen.Windows
         private void MiCopy_Click(object sender, RoutedEventArgs e)
         {
             if (LsvPasswordList.SelectedItems.Count == 0) return;
-            if (LsvPasswordList.SelectedItem is Password pwd)
+
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < LsvPasswordList.SelectedItems.Count; i++)
             {
-                Clipboard.SetText(pwd.ActualPassword);
+                if (!(LsvPasswordList.SelectedItems[i] is Password pwd)) continue;
+                if (i != LsvPasswordList.SelectedItems.Count -1)
+                {
+                    sb.AppendLine(pwd.ActualPassword);
+                }
+                else
+                {
+                    sb.Append(pwd.ActualPassword);
+                }
+            }
+
+            if (sb.Length > 0)
+            {
+                Clipboard.SetText(sb.ToString());
             }
         }
 
