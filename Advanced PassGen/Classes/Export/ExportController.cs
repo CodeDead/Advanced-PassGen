@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Web.Script.Serialization;
 
 namespace Advanced_PassGen.Classes.Export
 {
@@ -66,6 +67,17 @@ namespace Advanced_PassGen.Classes.Export
             }
             items += "</table></body></html>";
             FileWriter(path, items);
+        }
+
+        /// <summary>
+        /// Export a list of Password objects as a JSON file
+        /// </summary>
+        /// <param name="path">The path where the JSON file should be stored</param>
+        /// <param name="passwordList">The list of Password objects that need to be exported</param>
+        internal static void ExportJson(string path, List<Password.Password> passwordList)
+        {
+            if (passwordList.Count == 0) return;
+            FileWriter(path, new JavaScriptSerializer().Serialize(passwordList));
         }
 
         /// <summary>

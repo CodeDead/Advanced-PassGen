@@ -330,7 +330,7 @@ namespace Advanced_PassGen.Windows
         {
             if (LsvPasswordList.Items.Count == 0) return;
 
-            SaveFileDialog sfd = new SaveFileDialog {Filter = "Text file (*.txt)|*.txt|HTML file (*.html)|*.html|CSV file (*.csv)|*.csv|Excel file (*.csv)|*.csv"};
+            SaveFileDialog sfd = new SaveFileDialog {Filter = "Text file (*.txt)|*.txt|HTML file (*.html)|*.html|CSV file (*.csv)|*.csv|Excel file (*.csv)|*.csv|JSON (*.json)|*.json"};
             bool? res = sfd.ShowDialog();
             if (res != true) return;
             try
@@ -348,6 +348,9 @@ namespace Advanced_PassGen.Windows
                         break;
                     case 4:
                         ExportController.ExportExcel(sfd.FileName, _generator.PasswordList);
+                        break;
+                    case 5:
+                        ExportController.ExportJson(sfd.FileName, _generator.PasswordList);
                         break;
                 }
                 MessageBox.Show(this, "File exported!", "Advanced PassGen", MessageBoxButton.OK);
