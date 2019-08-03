@@ -2,16 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Runtime.InteropServices;
 using System.Text;
-using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using Advanced_PassGen.Classes.Export;
 using Advanced_PassGen.Classes.GUI;
 using Advanced_PassGen.Classes.Password;
-using Advanced_PassGen.Classes.UTIL;
 using CodeDead.UpdateManager.Classes;
 using Microsoft.Win32;
 
