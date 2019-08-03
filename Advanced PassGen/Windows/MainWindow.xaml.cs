@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using Advanced_PassGen.Classes.Export;
 using Advanced_PassGen.Classes.GUI;
 using Advanced_PassGen.Classes.Password;
+using Advanced_PassGen.Classes.UTIL;
 using CodeDead.UpdateManager.Classes;
 using Microsoft.Win32;
 
@@ -384,9 +387,15 @@ namespace Advanced_PassGen.Windows
                 }
             }
 
-            if (sb.Length > 0)
+            if (sb.Length <= 0) return;
+            try
             {
-                Clipboard.SetText(sb.ToString());
+                Clipboard.Clear();
+                Clipboard.SetDataObject(sb.ToString());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Advanced PassGen", MessageBoxButton.OK);
             }
         }
 
