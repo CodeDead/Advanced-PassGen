@@ -18,7 +18,7 @@ import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { MainContext } from '../../contexts/MainContextProvider';
 
-const drawerWidth = 240;
+const drawerWidth = 200;
 
 const ClippedDrawer = () => {
   const [state] = useContext(MainContext);

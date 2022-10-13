@@ -149,7 +149,7 @@ const Home = () => {
       <Button
         variant="contained"
         color="primary"
-        style={{ float: 'right' }}
+        style={{ float: 'left' }}
         sx={{ mt: 2 }}
         onClick={() => navigate('/advanced')}
       >

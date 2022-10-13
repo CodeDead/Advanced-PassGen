@@ -56,10 +56,10 @@
     "windows": [
       {
         "fullscreen": false,
-        "height": 600,
+        "height": 500,
         "resizable": true,
         "title": "Advanced PassGen",
-        "width": 800
+        "width": 950
       }
     ]
   }
