@@ -13,5 +13,10 @@
   "specialCharacters": "Speciale tekens",
   "numbers": "Cijfers",
   "spaces": "Spaties",
-  "brackets": "Haakjes"
+  "brackets": "Haakjes",
+  "minimumLength": "Minimale lengte",
+  "maximumLength": "Maximale lengte",
+  "characterSet": "Karakter set",
+  "generate": "Genereer",
+  "useAdvancedOptions": "Gebruik geavanceerde opties"
 }

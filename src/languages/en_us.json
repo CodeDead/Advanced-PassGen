@@ -13,5 +13,10 @@
   "specialCharacters": "Special characters",
   "numbers": "Numbers",
   "spaces": "Spaces",
-  "brackets": "Brackets"
+  "brackets": "Brackets",
+  "minimumLength": "Minimum length",
+  "maximumLength": "Maximum length",
+  "characterSet": "Character set",
+  "generate": "Generate",
+  "useAdvancedOptions": "Use advanced options"
 }

@@ -1,17 +1,31 @@
 import {
   SET_BRACKETS,
   SET_CAPITAL_LETTERS,
+  SET_CHARACTER_SET,
   SET_NUMBERS,
   SET_PASSWORD_AMOUNT,
   SET_PASSWORD_LENGTH,
+  SET_PASSWORD_LENGTH_MAX,
+  SET_PASSWORD_LENGTH_MIN,
   SET_SMALL_LETTERS,
   SET_SPACES,
   SET_SPECIAL_CHARACTERS,
+  SET_USE_ADVANCED,
 } from './actionTypes';
 
-export const setPasswordLength = (min, max) => ({
+export const setPasswordLength = (length) => ({
   type: SET_PASSWORD_LENGTH,
-  payload: { min, max },
+  payload: length,
+});
+
+export const setPasswordLengthMin = (min) => ({
+  type: SET_PASSWORD_LENGTH_MIN,
+  payload: min,
+});
+
+export const setPasswordLengthMax = (max) => ({
+  type: SET_PASSWORD_LENGTH_MAX,
+  payload: max,
 });
 
 export const setPasswordAmount = (amount) => ({
@@ -46,5 +60,15 @@ export const setSpecialCharacters = (value) => ({
 
 export const setBrackets = (value) => ({
   type: SET_BRACKETS,
+  payload: value,
+});
+
+export const setCharacterSet = (value) => ({
+  type: SET_CHARACTER_SET,
+  payload: value,
+});
+
+export const setUseAdvanced = (value) => ({
+  type: SET_USE_ADVANCED,
   payload: value,
 });

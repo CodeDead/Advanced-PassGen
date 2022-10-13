@@ -2,6 +2,7 @@ import React, { createContext, useReducer } from 'react';
 import PasswordReducer from '../../reducers/PasswordReducer';
 
 const initState = {
+  length: 1,
   min: 1,
   max: 1,
   amount: 1,
@@ -11,6 +12,8 @@ const initState = {
   specialCharacters: false,
   numbers: false,
   brackets: false,
+  characterSet: '',
+  useAdvanced: false,
 };
 
 export const PasswordContext = createContext(initState);

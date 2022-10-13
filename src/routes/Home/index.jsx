@@ -1,16 +1,26 @@
 import React, { useContext, useEffect } from 'react';
-import {
-  Card, CardContent, Checkbox, Container, FormControlLabel, FormGroup, Grid, TextField,
-} from '@mui/material';
+import Button from '@mui/material/Button';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Checkbox from '@mui/material/Checkbox';
+import Container from '@mui/material/Container';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormGroup from '@mui/material/FormGroup';
+import Grid from '@mui/material/Grid';
+import TextField from '@mui/material/TextField';
+import { useNavigate } from 'react-router-dom';
 import { MainContext } from '../../contexts/MainContextProvider';
 import { setPageIndex } from '../../reducers/MainReducer/Actions';
 import { PasswordContext } from '../../contexts/PasswordContextProvider';
 import {
   setBrackets,
-  setCapitalLetters, setNumbers,
+  setCapitalLetters,
+  setNumbers,
   setPasswordAmount,
-  setPasswordLength, setSmallLetters,
-  setSpaces, setSpecialCharacters,
+  setPasswordLength,
+  setSmallLetters,
+  setSpaces,
+  setSpecialCharacters,
 } from '../../reducers/PasswordReducer/Actions';
 
 const Home = () => {
@@ -21,8 +31,7 @@ const Home = () => {
   const language = state.languages[languageIndex];
 
   const {
-    min,
-    max,
+    length,
     amount,
     smallLetters,
     capitalLetters,
@@ -31,7 +40,8 @@ const Home = () => {
     numbers,
     brackets,
   } = state2;
-  const length = max - min + 1;
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     d1(setPageIndex(0));
@@ -47,7 +57,7 @@ const Home = () => {
                 type="number"
                 label={language.length}
                 value={length}
-                onChange={(e) => d2(setPasswordLength(1, e.target.value))}
+                onChange={(e) => d2(setPasswordLength(e.target.value))}
                 fullWidth
               />
             </Grid>
@@ -127,6 +137,24 @@ const Home = () => {
           </Grid>
         </CardContent>
       </Card>
+      <Button
+        variant="contained"
+        color="primary"
+        style={{ float: 'right' }}
+        sx={{ mt: 2, ml: 2 }}
+        onClick={() => navigate('/generate')}
+      >
+        {language.generate}
+      </Button>
+      <Button
+        variant="contained"
+        color="primary"
+        style={{ float: 'right' }}
+        sx={{ mt: 2 }}
+        onClick={() => navigate('/advanced')}
+      >
+        {language.advanced}
+      </Button>
     </Container>
   );
 };

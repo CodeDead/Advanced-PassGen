@@ -15,6 +15,7 @@ import LightbulbIcon from '@mui/icons-material/Lightbulb';
 import InfoIcon from '@mui/icons-material/Info';
 import SettingsIcon from '@mui/icons-material/Settings';
 import { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { MainContext } from '../../contexts/MainContextProvider';
 
 const drawerWidth = 240;
@@ -23,6 +24,7 @@ const ClippedDrawer = () => {
   const [state] = useContext(MainContext);
   const { languageIndex, pageIndex } = state;
   const language = state.languages[languageIndex];
+  const navigate = useNavigate();
 
   return (
     <Drawer
@@ -39,6 +41,7 @@ const ClippedDrawer = () => {
           <ListItem disablePadding>
             <ListItemButton
               selected={pageIndex === 0}
+              onClick={() => navigate('/')}
             >
               <ListItemIcon>
                 <HomeIcon />
@@ -49,6 +52,7 @@ const ClippedDrawer = () => {
           <ListItem disablePadding>
             <ListItemButton
               selected={pageIndex === 1}
+              onClick={() => navigate('/advanced')}
             >
               <ListItemIcon>
                 <BuildIcon />
@@ -59,6 +63,7 @@ const ClippedDrawer = () => {
           <ListItem disablePadding>
             <ListItemButton
               selected={pageIndex === 2}
+              onClick={() => navigate('/generate')}
             >
               <ListItemIcon>
                 <ListIcon />

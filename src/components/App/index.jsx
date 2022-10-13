@@ -9,6 +9,8 @@ import ThemeSelector from '../../utils/ThemeSelector';
 import TopBar from '../TopBar';
 import ClippedDrawer from '../ClippedDrawer';
 import Home from '../../routes/Home';
+import Advanced from '../../routes/Advanced';
+import Generate from '../../routes/Generate';
 
 const App = () => {
   const [state] = useContext(MainContext);
@@ -34,6 +36,8 @@ const App = () => {
             <Toolbar />
             <Routes>
               <Route exact path="/" element={<Home />} />
+              <Route exact path="/advanced" element={<Advanced />} />
+              <Route exact path="/generate" element={<Generate />} />
             </Routes>
           </Box>
         </Box>
