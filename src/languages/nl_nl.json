@@ -1,0 +1,17 @@
+{
+  "appName": "Advanced PassGen",
+  "general": "Algemeen",
+  "advanced": "Geavanceerd",
+  "list": "Lijst",
+  "advisor": "Adviseur",
+  "settings": "Instellingen",
+  "about": "Over",
+  "length": "Lengte",
+  "amount": "Aantal",
+  "smallLetters": "Kleine letters",
+  "capitalLetters": "Hoofdletters",
+  "specialCharacters": "Speciale tekens",
+  "numbers": "Cijfers",
+  "spaces": "Spaties",
+  "brackets": "Haakjes"
+}
