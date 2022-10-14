@@ -1,5 +1,6 @@
 import {
   RESET_STATE,
+  SET_AUTO_UPDATE,
   SET_LANGUAGE_INDEX,
   SET_PAGE_INDEX,
   SET_THEME_INDEX,
@@ -28,4 +29,9 @@ export const resetState = () => ({
 export const setPageIndex = (index) => ({
   type: SET_PAGE_INDEX,
   payload: index,
+});
+
+export const setAutoUpdate = (value) => ({
+  type: SET_AUTO_UPDATE,
+  payload: value,
 });

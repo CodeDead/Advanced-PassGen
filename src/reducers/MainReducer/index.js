@@ -1,6 +1,8 @@
 import {
   RESET_STATE,
-  SET_LANGUAGE_INDEX, SET_PAGE_INDEX,
+  SET_AUTO_UPDATE,
+  SET_LANGUAGE_INDEX,
+  SET_PAGE_INDEX,
   SET_THEME_INDEX,
   SET_THEME_TYPE,
 } from './Actions/actionTypes';
@@ -37,6 +39,13 @@ const MainReducer = (state, action) => {
         languageIndex: 0,
         themeIndex: 0,
         themeType: 'light',
+        autoUpdate: true,
+      };
+    case SET_AUTO_UPDATE:
+      localStorage.autoUpdate = action.payload;
+      return {
+        ...state,
+        autoUpdate: action.payload,
       };
     default:
       return state;

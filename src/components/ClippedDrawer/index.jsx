@@ -77,6 +77,7 @@ const ClippedDrawer = () => {
           <ListItem disablePadding>
             <ListItemButton
               selected={pageIndex === 3}
+              onClick={() => navigate('/advisor')}
             >
               <ListItemIcon>
                 <LightbulbIcon />
@@ -90,6 +91,7 @@ const ClippedDrawer = () => {
           <ListItem disablePadding>
             <ListItemButton
               selected={pageIndex === 4}
+              onClick={() => navigate('/settings')}
             >
               <ListItemIcon>
                 <SettingsIcon />
@@ -100,6 +102,7 @@ const ClippedDrawer = () => {
           <ListItem disablePadding>
             <ListItemButton
               selected={pageIndex === 5}
+              onClick={() => navigate('/about')}
             >
               <ListItemIcon>
                 <InfoIcon />

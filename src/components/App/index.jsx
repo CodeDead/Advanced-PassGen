@@ -11,6 +11,9 @@ import ClippedDrawer from '../ClippedDrawer';
 import Home from '../../routes/Home';
 import Advanced from '../../routes/Advanced';
 import Generate from '../../routes/Generate';
+import About from '../../routes/About';
+import Settings from '../../routes/Settings';
+import Advisor from '../../routes/Advisor';
 
 const App = () => {
   const [state] = useContext(MainContext);
@@ -38,6 +41,9 @@ const App = () => {
               <Route exact path="/" element={<Home />} />
               <Route exact path="/advanced" element={<Advanced />} />
               <Route exact path="/generate" element={<Generate />} />
+              <Route exact path="/advisor" element={<Advisor />} />
+              <Route exact path="/settings" element={<Settings />} />
+              <Route exact path="/about" element={<About />} />
             </Routes>
           </Box>
         </Box>

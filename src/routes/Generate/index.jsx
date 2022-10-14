@@ -5,6 +5,7 @@ import { setPageIndex } from '../../reducers/MainReducer/Actions';
 
 const Generate = () => {
   const [state1, d1] = useContext(MainContext);
+  // eslint-disable-next-line no-unused-vars
   const [state2, d2] = useContext(PasswordContext);
 
   const { languageIndex } = state1;
@@ -15,6 +16,7 @@ const Generate = () => {
   }, []);
 
   return (
+    // eslint-disable-next-line react/jsx-no-useless-fragment
     <>{language.generate}</>
   );
 };

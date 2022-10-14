@@ -2786,6 +2786,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tauri-apps/api@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "@tauri-apps/api@npm:1.1.0"
+  checksum: 0e8cc6b619f7ebc3671fbc0608adc61ddd6fd812f87e18322a4d683ee188629a9c738f77a7c2a56d31f938fe2f65be733a7b30ac39d5210d51a7f0db8418cc9b
+  languageName: node
+  linkType: hard
+
 "@tauri-apps/cli-darwin-arm64@npm:1.1.1":
   version: 1.1.1
   resolution: "@tauri-apps/cli-darwin-arm64@npm:1.1.1"
@@ -3798,6 +3805,7 @@ __metadata:
     "@fontsource/roboto": ^4.5.8
     "@mui/icons-material": ^5.10.9
     "@mui/material": ^5.10.9
+    "@tauri-apps/api": ^1.1.0
     "@tauri-apps/cli": ^1.1.1
     "@testing-library/jest-dom": ^5.16.5
     "@testing-library/react": ^13.4.0
