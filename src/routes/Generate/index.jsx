@@ -4,6 +4,7 @@ import Button from '@mui/material/Button';
 import { createWorkerFactory, useWorker } from '@shopify/react-web-worker';
 import { styled } from '@mui/material/styles';
 import { Paper } from '@mui/material';
+import { save } from '@tauri-apps/api/dialog';
 import { MainContext } from '../../contexts/MainContextProvider';
 import { PasswordContext } from '../../contexts/PasswordContextProvider';
 import { setPageIndex } from '../../reducers/MainReducer/Actions';
@@ -109,6 +110,36 @@ const Generate = () => {
       });
   };
 
+  /**
+   * Export the passwords to a file
+   */
+  const exportPasswords = async () => {
+    const filePath = await save({
+      multiple: true,
+      filters: [{
+        name: 'Text file',
+        extensions: ['txt'],
+      },
+      {
+        name: 'JSON',
+        extensions: ['json'],
+      },
+      {
+        name: 'CSV',
+        extensions: ['csv'],
+      }],
+    });
+
+    console.log(filePath);
+  };
+
+  /**
+   * Create a JSON object with the passwords and their strength
+   * @param password The password
+   * @param passwordLength The length of the password
+   * @param strength The strength of the password
+   * @returns {{password, strength: string, length}} The JSON object
+   */
   const createData = (password, passwordLength, strength) => (
     { password, length: passwordLength, strength: `${strength}%` }
   );
@@ -163,10 +194,19 @@ const Generate = () => {
         variant="contained"
         color="primary"
         onClick={() => generatePasswords()}
-        sx={{ mt: 2 }}
+        sx={{ mt: 2, ml: 2 }}
         style={{ float: 'right' }}
       >
         {language.generate}
+      </Button>
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={() => exportPasswords()}
+        sx={{ mt: 2 }}
+        style={{ float: 'right' }}
+      >
+        {language.export}
       </Button>
     </Container>
   );

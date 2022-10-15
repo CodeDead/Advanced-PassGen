@@ -20,8 +20,8 @@ const MuiVirtualizedTable = (props) => {
     });
   };
 
-  const cellRenderer = ({ cellData, columnIndex }) => {
-    const { columns, rowHeight, onRowClick } = props;
+  const cellRenderer = ({ cellData }) => {
+    const { rowHeight, onRowClick } = props;
     return (
       <TableCell
         component="div"
@@ -30,11 +30,7 @@ const MuiVirtualizedTable = (props) => {
         })}
         variant="body"
         style={{ height: rowHeight || 48 }}
-        align={
-          (columnIndex != null && columns[columnIndex].numeric) || false
-            ? 'right'
-            : 'left'
-        }
+        align="left"
       >
         {cellData}
       </TableCell>

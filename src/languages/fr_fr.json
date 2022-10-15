@@ -58,5 +58,8 @@
   "noResults": "Aucun résultat",
   "strength": "Force",
   "clear": "Effacer",
-  "allowDuplicates": "Autoriser les doublons"
+  "allowDuplicates": "Autoriser les doublons",
+  "export": "Exporter",
+  "checkPasswordStrength": "Vérifier la force du mot de passe",
+  "donate": "Faire un don"
 }

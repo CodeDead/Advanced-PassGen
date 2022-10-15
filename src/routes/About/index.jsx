@@ -33,6 +33,9 @@ const About = () => {
 
   return (
     <Container>
+      <Typography component="h2" variant="h5" color="primary" gutterBottom>
+        {language.about}
+      </Typography>
       <Card>
         <CardContent>
           <Typography style={{ whiteSpace: 'pre-wrap' }}>

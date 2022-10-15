@@ -4,6 +4,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
 import { MainContext } from '../../contexts/MainContextProvider';
 import LinearProgressWithLabel from '../../components/LinearProgressWithLabel';
 import PasswordStrength from '../../utils/PasswordStrength';
@@ -22,6 +23,9 @@ const Advisor = () => {
 
   return (
     <Container>
+      <Typography component="h2" variant="h5" color="primary" gutterBottom>
+        {language.checkPasswordStrength}
+      </Typography>
       <Card>
         <CardContent>
           <Grid container spacing={2}>

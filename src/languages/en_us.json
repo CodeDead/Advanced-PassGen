@@ -58,5 +58,8 @@
   "noResults": "No results",
   "strength": "Strength",
   "clear": "Clear",
-  "allowDuplicates": "Allow duplicates"
+  "allowDuplicates": "Allow duplicates",
+  "export": "Export",
+  "checkPasswordStrength": "Check password strength",
+  "donate": "Donate"
 }

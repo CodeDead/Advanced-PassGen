@@ -58,5 +58,8 @@
   "noResults": "Geen resultaten",
   "strength": "Sterkte",
   "clear": "Leegmaken",
-  "allowDuplicates": "Sta duplicaten toe"
+  "allowDuplicates": "Sta duplicaten toe",
+  "export": "Exporteren",
+  "checkPasswordStrength": "Controleer wachtwoord sterkte",
+  "donate": "Doneer"
 }
