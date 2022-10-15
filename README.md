@@ -20,6 +20,8 @@ You can build a web version of Advanced PassGen by running the following command
 yarn build
 ```
 
+For more information about building the web version, please read the `creact-react-app` documentation [here](https://create-react-app.dev/docs/production-build).
+
 ### Windows
 
 #### Installer
