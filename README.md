@@ -10,7 +10,15 @@ Advanced PassGen is a free and open-source application that can help you generat
 
 ## Building
 
-Advanced PassGen uses tauri to build the application. You can find more information about tauri [here](https://tauri.studio/en/docs/getting-started/intro).
+Advanced PassGen uses tauri to build the desktop application. You can find more information about tauri [here](https://tauri.studio/en/docs/getting-started/intro).
+
+### Web
+
+You can build a web version of Advanced PassGen by running the following command:
+
+```shell
+yarn build
+```
 
 ### Windows
 
