@@ -10,6 +10,8 @@ Advanced PassGen is a free and open-source application that can help you generat
 
 ## Building
 
+Advanced PassGen uses tauri to build the application. You can find more information about tauri [here](https://tauri.studio/en/docs/getting-started/intro).
+
 ### Windows
 
 #### Installer
@@ -27,7 +29,6 @@ You can create a .deb file, by running the `yarn tauri build` command on a Linux
 ```shell
 yarn tauri build
 ```
-*Do note that you will need the `rpm-build` package in order to create an RPM.*
 
 #### AppImage
 
