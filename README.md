@@ -59,7 +59,7 @@ This project uses [ReactJS](https://reactjs.org/) to create the user interface.
 
 ### Theme
 
-The theme used in this application is [MUI](https://mui).
+The theme used in this application is [MUI](https://mui.com/).
 
 ### Images
 
@@ -68,8 +68,8 @@ All images have been provided by [MUI](https://mui.com/).
 ## About
 
 This library is maintained by CodeDead. You can find more about us using the following links:
-* [Website](https://codedead.com)
-* [Twitter](https://twitter.com/C0DEDEAD)
-* [Facebook](https://facebook.com/deadlinecodedead)
+* [Website](https://codedead.com/)
+* [Twitter](https://twitter.com/C0DEDEAD/)
+* [Facebook](https://facebook.com/deadlinecodedead/)
 
 Copyright © 2022 CodeDead
