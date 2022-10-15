@@ -1460,7 +1460,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.10.2, @babel/runtime@npm:^7.11.2, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.16.3, @babel/runtime@npm:^7.18.3, @babel/runtime@npm:^7.18.9, @babel/runtime@npm:^7.19.0, @babel/runtime@npm:^7.5.5, @babel/runtime@npm:^7.8.4, @babel/runtime@npm:^7.8.7, @babel/runtime@npm:^7.9.2":
+"@babel/runtime@npm:^7.10.2, @babel/runtime@npm:^7.11.2, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.16.3, @babel/runtime@npm:^7.18.3, @babel/runtime@npm:^7.18.9, @babel/runtime@npm:^7.19.0, @babel/runtime@npm:^7.5.5, @babel/runtime@npm:^7.7.2, @babel/runtime@npm:^7.8.4, @babel/runtime@npm:^7.8.7, @babel/runtime@npm:^7.9.2":
   version: 7.19.4
   resolution: "@babel/runtime@npm:7.19.4"
   dependencies:
@@ -2553,6 +2553,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@remote-ui/rpc@npm:^1.2.5":
+  version: 1.3.4
+  resolution: "@remote-ui/rpc@npm:1.3.4"
+  checksum: 67e1155fb8c2ae6d3cc10d29803462438d79b8ac619ead43305a6a787f1f7537589bd751c40a50983f4603e29bc1186353c0259941f9a086ab347c9c2c1d8932
+  languageName: node
+  linkType: hard
+
 "@rollup/plugin-babel@npm:^5.2.0":
   version: 5.3.1
   resolution: "@rollup/plugin-babel@npm:5.3.1"
@@ -2615,6 +2622,56 @@ __metadata:
   version: 1.2.0
   resolution: "@rushstack/eslint-patch@npm:1.2.0"
   checksum: faa749faae0e83c26ae9eb00ad36a897ac78f3cf27da8e8ff21c00bcf7973b598d823d8f2b3957ef66079288bcf577f94df831eae2d65f3f68d8ca32f18b6aff
+  languageName: node
+  linkType: hard
+
+"@shopify/react-hooks@npm:^3.0.2":
+  version: 3.0.2
+  resolution: "@shopify/react-hooks@npm:3.0.2"
+  peerDependencies:
+    react: ">=16.8.0 <19.0.0"
+  checksum: ffa87eb6f735ffc19d468272863c8a2ae80fa2c4154e2c392718da3eb34f83515b8f1a8843b80853b80cb2a53e95296f3db4aee222ba181b43f5a3b82eec43c9
+  languageName: node
+  linkType: hard
+
+"@shopify/react-web-worker@npm:^5.0.6":
+  version: 5.0.6
+  resolution: "@shopify/react-web-worker@npm:5.0.6"
+  dependencies:
+    "@shopify/react-hooks": ^3.0.2
+    "@shopify/useful-types": ^5.1.1
+    "@shopify/web-worker": ^5.0.1
+  peerDependencies:
+    react: ">=16.8.0 <19.0.0"
+    react-dom: ">=16.8.0 <19.0.0"
+  checksum: 61582d89b338a7a3111c49e25d5afac9aa5752089fbca7649510ec6d27faebf186ce17de02646fac891c622659043d93277488688135c04ca65cc30b1ad485f7
+  languageName: node
+  linkType: hard
+
+"@shopify/useful-types@npm:^5.1.1":
+  version: 5.1.1
+  resolution: "@shopify/useful-types@npm:5.1.1"
+  checksum: 9b1139519366859f41a9c37aa5ca9f83247be41913b1f41c86a8bb482b4ecee1f1695b349e21baaaad6348ef5712259c19ea1922d99d5bc3b7af4748478efcb7
+  languageName: node
+  linkType: hard
+
+"@shopify/web-worker@npm:^5.0.1":
+  version: 5.0.1
+  resolution: "@shopify/web-worker@npm:5.0.1"
+  dependencies:
+    "@remote-ui/rpc": ^1.2.5
+  peerDependencies:
+    "@babel/core": ^7.0.0
+    webpack: ^5.38.0
+    webpack-virtual-modules: ^0.4.3
+  peerDependenciesMeta:
+    "@babel/core":
+      optional: true
+    webpack:
+      optional: true
+    webpack-virtual-modules:
+      optional: true
+  checksum: e13f32584f0cd6b42a4fe28eaba87eb2b6b5ad02f203216bf663ee1f2fe480b22732b4f72167782f193ae36b0e305e64511c722ed1523defff48c0bcc2309fc9
   languageName: node
   linkType: hard
 
@@ -3805,11 +3862,13 @@ __metadata:
     "@fontsource/roboto": ^4.5.8
     "@mui/icons-material": ^5.10.9
     "@mui/material": ^5.10.9
+    "@shopify/react-web-worker": ^5.0.6
     "@tauri-apps/api": ^1.1.0
     "@tauri-apps/cli": ^1.1.1
     "@testing-library/jest-dom": ^5.16.5
     "@testing-library/react": ^13.4.0
     "@testing-library/user-event": ^14.4.3
+    clsx: ^1.2.1
     cross-env: ^7.0.3
     eslint: ^8.25.0
     eslint-config-airbnb: ^19.0.4
@@ -3821,6 +3880,7 @@ __metadata:
     react-dom: ^18.2.0
     react-router-dom: ^6.4.2
     react-scripts: ^5.0.1
+    react-virtualized: ^9.22.3
     web-vitals: ^3.0.3
   languageName: unknown
   linkType: soft
@@ -4761,7 +4821,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"clsx@npm:^1.2.1":
+"clsx@npm:^1.0.4, clsx@npm:^1.2.1":
   version: 1.2.1
   resolution: "clsx@npm:1.2.1"
   checksum: 30befca8019b2eb7dbad38cff6266cf543091dae2825c856a62a8ccf2c3ab9c2907c4d12b288b73101196767f66812365400a227581484a05f968b0307cfaf12
@@ -5623,7 +5683,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dom-helpers@npm:^5.0.1":
+"dom-helpers@npm:^5.0.1, dom-helpers@npm:^5.1.3":
   version: 5.2.1
   resolution: "dom-helpers@npm:5.2.1"
   dependencies:
@@ -10691,7 +10751,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prop-types@npm:^15.6.2, prop-types@npm:^15.8.1":
+"prop-types@npm:^15.6.2, prop-types@npm:^15.7.2, prop-types@npm:^15.8.1":
   version: 15.8.1
   resolution: "prop-types@npm:15.8.1"
   dependencies:
@@ -10886,6 +10946,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-lifecycles-compat@npm:^3.0.4":
+  version: 3.0.4
+  resolution: "react-lifecycles-compat@npm:3.0.4"
+  checksum: a904b0fc0a8eeb15a148c9feb7bc17cec7ef96e71188280061fc340043fd6d8ee3ff233381f0e8f95c1cf926210b2c4a31f38182c8f35ac55057e453d6df204f
+  languageName: node
+  linkType: hard
+
 "react-refresh@npm:^0.11.0":
   version: 0.11.0
   resolution: "react-refresh@npm:0.11.0"
@@ -10996,6 +11063,23 @@ __metadata:
     react: ">=16.6.0"
     react-dom: ">=16.6.0"
   checksum: 75602840106aa9c6545149d6d7ae1502fb7b7abadcce70a6954c4b64a438ff1cd16fc77a0a1e5197cdd72da398f39eb929ea06f9005c45b132ed34e056ebdeb1
+  languageName: node
+  linkType: hard
+
+"react-virtualized@npm:^9.22.3":
+  version: 9.22.3
+  resolution: "react-virtualized@npm:9.22.3"
+  dependencies:
+    "@babel/runtime": ^7.7.2
+    clsx: ^1.0.4
+    dom-helpers: ^5.1.3
+    loose-envify: ^1.4.0
+    prop-types: ^15.7.2
+    react-lifecycles-compat: ^3.0.4
+  peerDependencies:
+    react: ^15.3.0 || ^16.0.0-alpha
+    react-dom: ^15.3.0 || ^16.0.0-alpha
+  checksum: 5e3b566592293bc0057bc6be4f6ee29c58c8931421d2882a3ef45ca9b24c6f3ea78bbc5a182c2916af6520845e5a90f569b3a63c9b5e89428720913e6d6239cc
   languageName: node
   linkType: hard
 

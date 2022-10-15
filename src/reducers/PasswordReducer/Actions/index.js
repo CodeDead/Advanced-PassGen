@@ -1,22 +1,18 @@
 import {
+  SET_ALLOW_DUPLICATES,
   SET_BRACKETS,
   SET_CAPITAL_LETTERS,
   SET_CHARACTER_SET,
   SET_NUMBERS,
   SET_PASSWORD_AMOUNT,
-  SET_PASSWORD_LENGTH,
   SET_PASSWORD_LENGTH_MAX,
   SET_PASSWORD_LENGTH_MIN,
+  SET_PASSWORDS,
   SET_SMALL_LETTERS,
   SET_SPACES,
   SET_SPECIAL_CHARACTERS,
   SET_USE_ADVANCED,
 } from './actionTypes';
-
-export const setPasswordLength = (length) => ({
-  type: SET_PASSWORD_LENGTH,
-  payload: length,
-});
 
 export const setPasswordLengthMin = (min) => ({
   type: SET_PASSWORD_LENGTH_MIN,
@@ -70,5 +66,15 @@ export const setCharacterSet = (value) => ({
 
 export const setUseAdvanced = (value) => ({
   type: SET_USE_ADVANCED,
+  payload: value,
+});
+
+export const setPasswords = (passwords) => ({
+  type: SET_PASSWORDS,
+  payload: passwords,
+});
+
+export const setAllowDuplicates = (value) => ({
+  type: SET_ALLOW_DUPLICATES,
   payload: value,
 });

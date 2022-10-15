@@ -18,7 +18,7 @@
   "maximumLength": "Longueur maximale",
   "characterSet": "Ensemble de caractères",
   "generate": "Générer",
-  "useAdvancedOptions": "Utiliser les options avancées",
+  "useCustomCharacterSet": "Utiliser un ensemble de caractères personnalisé",
   "aboutText": "Advanced PassGen a été créé par DeadLine\n\nThème : MUI\nLicence: GPLv3\nVersion: {x}\n\nCopyright © 2022 CodeDead",
   "website": "Site web",
   "license": "Licence",
@@ -54,5 +54,9 @@
   "checkForUpdates": "Vérifier les mises à jour",
   "reset": "Réinitialiser",
   "theme": "Thème",
-  "password": "Mot de passe"
+  "password": "Mot de passe",
+  "noResults": "Aucun résultat",
+  "strength": "Force",
+  "clear": "Effacer",
+  "allowDuplicates": "Autoriser les doublons"
 }

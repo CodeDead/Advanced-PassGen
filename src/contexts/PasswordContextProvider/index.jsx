@@ -1,6 +1,8 @@
 import React, { createContext, useReducer } from 'react';
 import PasswordReducer from '../../reducers/PasswordReducer';
 
+const characterSet = localStorage.characterSet ? localStorage.characterSet : '';
+
 const initState = {
   length: 1,
   min: 1,
@@ -12,8 +14,10 @@ const initState = {
   specialCharacters: false,
   numbers: false,
   brackets: false,
-  characterSet: '',
+  characterSet,
   useAdvanced: false,
+  passwords: null,
+  allowDuplicates: true,
 };
 
 export const PasswordContext = createContext(initState);

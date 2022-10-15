@@ -13,9 +13,8 @@ import { setPageIndex } from '../../reducers/MainReducer/Actions';
 import { MainContext } from '../../contexts/MainContextProvider';
 import { PasswordContext } from '../../contexts/PasswordContextProvider';
 import {
+  setAllowDuplicates,
   setCharacterSet,
-  setPasswordLengthMin,
-  setPasswordLengthMax,
   setUseAdvanced,
 } from '../../reducers/PasswordReducer/Actions';
 
@@ -24,9 +23,7 @@ const Advanced = () => {
   const [state2, d2] = useContext(PasswordContext);
 
   const { languageIndex } = state1;
-  const {
-    min, max, characterSet, useAdvanced,
-  } = state2;
+  const { characterSet, useAdvanced, allowDuplicates } = state2;
 
   const language = state1.languages[languageIndex];
   const navigate = useNavigate();
@@ -41,11 +38,20 @@ const Advanced = () => {
         <FormControlLabel
           control={(
             <Checkbox
+              checked={allowDuplicates}
+              onChange={(e) => d2(setAllowDuplicates(e.target.checked))}
+            />
+          )}
+          label={language.allowDuplicates}
+        />
+        <FormControlLabel
+          control={(
+            <Checkbox
               checked={useAdvanced}
               onChange={(e) => d2(setUseAdvanced(e.target.checked))}
             />
           )}
-          label={language.useAdvancedOptions}
+          label={language.useCustomCharacterSet}
         />
       </FormGroup>
       <Card
@@ -60,26 +66,6 @@ const Advanced = () => {
                 value={characterSet}
                 fullWidth
                 onChange={(e) => d2(setCharacterSet(e.target.value))}
-              />
-            </Grid>
-            <Grid item xs={12} md={12} lg={12}>
-              <TextField
-                label={language.minimumLength}
-                disabled={!useAdvanced}
-                type="number"
-                value={min}
-                fullWidth
-                onChange={(e) => d2(setPasswordLengthMin(e.target.value))}
-              />
-            </Grid>
-            <Grid item xs={12} md={12} lg={12}>
-              <TextField
-                label={language.maximumLength}
-                disabled={!useAdvanced}
-                type="number"
-                value={max}
-                fullWidth
-                onChange={(e) => d2(setPasswordLengthMax(e.target.value))}
               />
             </Grid>
           </Grid>

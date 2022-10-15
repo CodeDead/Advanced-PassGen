@@ -17,7 +17,8 @@ import {
   setCapitalLetters,
   setNumbers,
   setPasswordAmount,
-  setPasswordLength,
+  setPasswordLengthMax,
+  setPasswordLengthMin,
   setSmallLetters,
   setSpaces,
   setSpecialCharacters,
@@ -31,7 +32,8 @@ const Home = () => {
   const language = state.languages[languageIndex];
 
   const {
-    length,
+    min,
+    max,
     amount,
     smallLetters,
     capitalLetters,
@@ -39,6 +41,7 @@ const Home = () => {
     specialCharacters,
     numbers,
     brackets,
+    useAdvanced,
   } = state2;
 
   const navigate = useNavigate();
@@ -54,11 +57,20 @@ const Home = () => {
           <Grid container spacing={2}>
             <Grid item xs={12} md={12} lg={12}>
               <TextField
+                label={language.minimumLength}
                 type="number"
-                label={language.length}
-                value={length}
-                onChange={(e) => d2(setPasswordLength(e.target.value))}
+                value={min}
                 fullWidth
+                onChange={(e) => d2(setPasswordLengthMin(e.target.value))}
+              />
+            </Grid>
+            <Grid item xs={12} md={12} lg={12}>
+              <TextField
+                label={language.maximumLength}
+                type="number"
+                value={max}
+                fullWidth
+                onChange={(e) => d2(setPasswordLengthMax(e.target.value))}
               />
             </Grid>
             <Grid item xs={12} md={12} lg={12}>
@@ -78,6 +90,7 @@ const Home = () => {
                   control={(
                     <Checkbox
                       checked={smallLetters}
+                      disabled={useAdvanced}
                       onChange={(e) => d2(setSmallLetters(e.target.checked))}
                     />
                   )}
@@ -87,6 +100,7 @@ const Home = () => {
                   control={(
                     <Checkbox
                       checked={capitalLetters}
+                      disabled={useAdvanced}
                       onChange={(e) => d2(setCapitalLetters(e.target.checked))}
                     />
                   )}
@@ -96,6 +110,7 @@ const Home = () => {
                   control={(
                     <Checkbox
                       checked={spaces}
+                      disabled={useAdvanced}
                       onChange={(e) => d2(setSpaces(e.target.checked))}
                     />
                   )}
@@ -109,6 +124,7 @@ const Home = () => {
                   control={(
                     <Checkbox
                       checked={specialCharacters}
+                      disabled={useAdvanced}
                       onChange={(e) => d2(setSpecialCharacters(e.target.checked))}
                     />
                   )}
@@ -118,6 +134,7 @@ const Home = () => {
                   control={(
                     <Checkbox
                       checked={numbers}
+                      disabled={useAdvanced}
                       onChange={(e) => d2(setNumbers(e.target.checked))}
                     />
                   )}
@@ -127,6 +144,7 @@ const Home = () => {
                   control={(
                     <Checkbox
                       checked={brackets}
+                      disabled={useAdvanced}
                       onChange={(e) => d2(setBrackets(e.target.checked))}
                     />
                   )}
