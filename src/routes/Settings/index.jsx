@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import FormLabel from '@mui/material/FormLabel';
@@ -38,6 +38,7 @@ import {
   setThemeType,
 } from '../../reducers/MainReducer/Actions';
 import { MainContext } from '../../contexts/MainContextProvider';
+import AlertDialog from '../../components/AlertDialog';
 
 const Settings = () => {
   const [state, d1] = useContext(MainContext);
@@ -50,6 +51,8 @@ const Settings = () => {
   } = state;
 
   const language = state.languages[languageIndex];
+
+  const [resetDialogOpen, setResetDialogOpen] = useState(false);
 
   /**
    * Change the theme
@@ -96,16 +99,19 @@ const Settings = () => {
           <Card>
             <CardContent>
               <FormGroup>
-                <FormControlLabel
-                  control={(
-                    <Checkbox
-                      checked={autoUpdate}
-                      onChange={(e) => d1(setAutoUpdate(e.target.checked))}
-                      value="autoUpdate"
-                    />
-                      )}
-                  label={language.autoUpdate}
-                />
+                {/* eslint-disable-next-line no-underscore-dangle */}
+                {window.__TAURI__ ? (
+                  <FormControlLabel
+                    control={(
+                      <Checkbox
+                        checked={autoUpdate}
+                        onChange={(e) => d1(setAutoUpdate(e.target.checked))}
+                        value="autoUpdate"
+                      />
+                    )}
+                    label={language.autoUpdate}
+                  />
+                ) : null}
                 <FormControl variant="outlined" style={{ marginTop: 5 }}>
                   <InputLabel id="language-label">{language.language}</InputLabel>
                   <Select
@@ -226,19 +232,33 @@ const Settings = () => {
           </FormControl>
         </Grid>
       </Grid>
+      {/* eslint-disable-next-line no-underscore-dangle */}
+      {window.__TAURI__ ? (
+        <Button
+          variant="contained"
+          sx={{ mt: 2 }}
+        >
+          {language.checkForUpdates}
+        </Button>
+      ) : null}
       <Button
         variant="contained"
-        style={{ marginTop: 10 }}
-      >
-        {language.checkForUpdates}
-      </Button>
-      <Button
-        variant="contained"
-        style={{ marginTop: 10, float: 'right' }}
-        onClick={resetSettings}
+        sx={{ mt: 2 }}
+        style={{ float: 'right' }}
+        onClick={() => setResetDialogOpen(true)}
       >
         {language.reset}
       </Button>
+      <AlertDialog
+        open={resetDialogOpen}
+        title={language.confirmation}
+        content={language.confirmResetSettings}
+        onOk={() => resetSettings()}
+        onCancel={() => setResetDialogOpen(false)}
+        onClose={() => setResetDialogOpen(false)}
+        agreeLabel={language.yes}
+        cancelLabel={language.no}
+      />
     </Container>
   );
 };

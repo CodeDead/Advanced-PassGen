@@ -61,5 +61,9 @@
   "allowDuplicates": "Sta duplicaten toe",
   "export": "Exporteren",
   "checkPasswordStrength": "Controleer wachtwoord sterkte",
-  "donate": "Doneer"
+  "donate": "Doneer",
+  "yes": "Ja",
+  "no": "Nee",
+  "confirmation": "Bevestiging",
+  "confirmResetSettings": "Weet je zeker dat je de instellingen wilt resetten?"
 }

@@ -33,12 +33,16 @@ const ClippedDrawer = () => {
    * @param website The website that needs to be opened
    */
   const openWebsite = (website) => {
-    invoke('open_website', { website })
-      .catch((e) => {
-        // eslint-disable-next-line no-console
-        console.error(e);
-        window.open(website, '_blank'); // We're running in a browser
-      });
+    // eslint-disable-next-line no-underscore-dangle
+    if (window.__TAURI__) {
+      invoke('open_website', { website })
+        .catch((e) => {
+          // eslint-disable-next-line no-console
+          console.error(e);
+        });
+    } else {
+      window.open(website, '_blank'); // We're running in a browser
+    }
   };
 
   return (
@@ -119,7 +123,6 @@ const ClippedDrawer = () => {
         <List>
           <ListItem disablePadding>
             <ListItemButton
-              selected={pageIndex === 5}
               onClick={() => openWebsite('https://codedead.com/donate')}
             >
               <ListItemIcon>

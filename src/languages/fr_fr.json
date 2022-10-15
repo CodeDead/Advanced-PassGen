@@ -61,5 +61,9 @@
   "allowDuplicates": "Autoriser les doublons",
   "export": "Exporter",
   "checkPasswordStrength": "Vérifier la force du mot de passe",
-  "donate": "Faire un don"
+  "donate": "Faire un don",
+  "yes": "Oui",
+  "no": "Non",
+  "confirmation": "Confirmation",
+  "confirmResetSettings": "Êtes-vous sûr de vouloir réinitialiser les paramètres ?"
 }

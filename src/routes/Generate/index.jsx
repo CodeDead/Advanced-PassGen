@@ -4,7 +4,6 @@ import Button from '@mui/material/Button';
 import { createWorkerFactory, useWorker } from '@shopify/react-web-worker';
 import { styled } from '@mui/material/styles';
 import { Paper } from '@mui/material';
-import { save } from '@tauri-apps/api/dialog';
 import { MainContext } from '../../contexts/MainContextProvider';
 import { PasswordContext } from '../../contexts/PasswordContextProvider';
 import { setPageIndex } from '../../reducers/MainReducer/Actions';
@@ -100,7 +99,7 @@ const Generate = () => {
       }
     }
 
-    if (simpleCharacterSet.length === 0) {
+    if (simpleCharacterSet.length === 0 || min > max || max < min) {
       return;
     }
 
@@ -114,23 +113,7 @@ const Generate = () => {
    * Export the passwords to a file
    */
   const exportPasswords = async () => {
-    const filePath = await save({
-      multiple: true,
-      filters: [{
-        name: 'Text file',
-        extensions: ['txt'],
-      },
-      {
-        name: 'JSON',
-        extensions: ['json'],
-      },
-      {
-        name: 'CSV',
-        extensions: ['csv'],
-      }],
-    });
 
-    console.log(filePath);
   };
 
   /**
@@ -193,6 +176,7 @@ const Generate = () => {
       <Button
         variant="contained"
         color="primary"
+        disabled={min > max || max < min}
         onClick={() => generatePasswords()}
         sx={{ mt: 2, ml: 2 }}
         style={{ float: 'right' }}
@@ -204,6 +188,7 @@ const Generate = () => {
         color="primary"
         onClick={() => exportPasswords()}
         sx={{ mt: 2 }}
+        disabled={!passwords || passwords.length === 0}
         style={{ float: 'right' }}
       >
         {language.export}

@@ -60,6 +60,7 @@ const Home = () => {
                 label={language.minimumLength}
                 type="number"
                 value={min}
+                error={min > max}
                 fullWidth
                 onChange={(e) => d2(setPasswordLengthMin(e.target.value))}
               />
@@ -69,6 +70,7 @@ const Home = () => {
                 label={language.maximumLength}
                 type="number"
                 value={max}
+                error={max < min}
                 fullWidth
                 onChange={(e) => d2(setPasswordLengthMax(e.target.value))}
               />
