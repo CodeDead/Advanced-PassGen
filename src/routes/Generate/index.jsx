@@ -1,15 +1,18 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import { createWorkerFactory, useWorker } from '@shopify/react-web-worker';
 import { styled } from '@mui/material/styles';
 import { Paper } from '@mui/material';
+import { save } from '@tauri-apps/api/dialog';
+import { invoke } from '@tauri-apps/api/tauri';
 import { MainContext } from '../../contexts/MainContextProvider';
 import { PasswordContext } from '../../contexts/PasswordContextProvider';
 import { setError, setPageIndex } from '../../reducers/MainReducer/Actions';
 import PasswordStrength from '../../utils/PasswordStrength';
 import { setPasswords } from '../../reducers/PasswordReducer/Actions';
 import MuiVirtualizedTable from '../../components/MuiVirtualizedTable';
+import ExportDialog from '../../components/ExportDialog';
 
 const classes = {
   flexContainer: 'ReactVirtualizedDemo-flexContainer',
@@ -61,6 +64,8 @@ const Generate = () => {
   const { languageIndex } = state1;
   const language = state1.languages[languageIndex];
 
+  const [exportOpen, setExportOpen] = useState(false);
+
   const {
     min, max, amount, characterSet, passwords, useAdvanced, smallLetters,
     capitalLetters, spaces, specialCharacters, numbers, brackets, allowDuplicates,
@@ -72,13 +77,9 @@ const Generate = () => {
    * Generate passwords
    */
   const generatePasswords = () => {
-    let simpleCharacterSet = '';
-    if (useAdvanced) {
-      if (!characterSet || characterSet.length === 0) {
-        return;
-      }
-      simpleCharacterSet = characterSet;
-    } else {
+    let simpleCharacterSet = characterSet;
+    if (!useAdvanced) {
+      simpleCharacterSet = '';
       if (smallLetters) {
         simpleCharacterSet += 'abcdefghijklmnopqrstuvwxyz';
       }
@@ -99,7 +100,7 @@ const Generate = () => {
       }
     }
 
-    if (simpleCharacterSet.length === 0 || min > max || max < min) {
+    if (!simpleCharacterSet || simpleCharacterSet.length === 0 || min > max || max < min) {
       return;
     }
 
@@ -113,10 +114,113 @@ const Generate = () => {
   };
 
   /**
-   * Export the passwords to a file
+   * Get the export data
+   * @param passwordArray The array of passwords
+   * @param type The type of export
+   * @returns {string} The export data
    */
-  const exportPasswords = async () => {
+  const getExportData = (passwordArray, type) => {
+    let toExport = '';
+    if (type === 'text/plain') {
+      for (let i = 0; i < passwordArray.length; i += 1) {
+        toExport += `${passwordArray[i]}\n`;
+      }
+    } else if (type === 'application/json') {
+      toExport = JSON.stringify(passwordArray, null, 2);
+    } else if (type === 'text/csv') {
+      for (let i = 0; i < passwordArray.length; i += 1) {
+        toExport += `"${passwordArray[i].replace('"', '""')}",\n`;
+      }
+    }
+    return toExport;
+  };
 
+  /**
+   * Download a file
+   * @param data The data that needs to be saved
+   * @param type The file type
+   */
+  const downloadFile = (data, type) => {
+    let fileName = 'export';
+
+    if (type === 'text/plain') {
+      fileName += '.txt';
+    } else if (type === 'application/json') {
+      fileName += '.json';
+    } else if (type === 'text/csv') {
+      fileName += '.csv';
+    }
+
+    const blob = new Blob([getExportData(data, type)], { type });
+    const href = URL.createObjectURL(blob);
+
+    const link = document.createElement('a');
+    link.href = href;
+    link.download = fileName;
+    document.body.appendChild(link);
+    link.click();
+
+    document.body.removeChild(link);
+    URL.revokeObjectURL(href);
+  };
+
+  /**
+   * Open the export dialog
+   */
+  const openExportDialog = () => {
+    setExportOpen(true);
+  };
+
+  /**
+   * Close the export dialog
+   */
+  const closeExportDialog = () => {
+    setExportOpen(false);
+  };
+
+  /**
+   * Export the passwords
+   * @param type The export type
+   */
+  const onExport = (type) => {
+    // eslint-disable-next-line no-underscore-dangle
+    if (window.__TAURI__) {
+      let ext = '';
+      switch (type) {
+        case 'text/plain':
+          ext = 'txt';
+          break;
+        case 'application/json':
+          ext = 'json';
+          break;
+        default:
+          ext = 'csv';
+          break;
+      }
+      save({
+        multiple: false,
+        filters: [{
+          name: type,
+          extensions: [ext],
+        }],
+      })
+        .then((res) => {
+          if (res && res.length > 0) {
+            // eslint-disable-next-line no-bitwise
+            const resExt = res.slice((res.lastIndexOf('.') - 1 >>> 0) + 2);
+            const path = resExt && resExt.length > 0 ? res : `${res}.${ext}`;
+            invoke('save_string_to_disk', { content: getExportData(passwords, type), path })
+              .catch((e) => {
+                d1(setError(e));
+              });
+          }
+        })
+        .catch((e) => {
+          d1(setError(e));
+        });
+    } else {
+      downloadFile(passwords, type);
+    }
   };
 
   /**
@@ -180,7 +284,7 @@ const Generate = () => {
         variant="contained"
         color="primary"
         disabled={min > max || max < min}
-        onClick={() => generatePasswords()}
+        onClick={generatePasswords}
         sx={{ mt: 2, ml: 2 }}
         style={{ float: 'right' }}
       >
@@ -189,13 +293,25 @@ const Generate = () => {
       <Button
         variant="contained"
         color="primary"
-        onClick={() => exportPasswords()}
+        onClick={openExportDialog}
         sx={{ mt: 2 }}
         disabled={!passwords || passwords.length === 0}
         style={{ float: 'right' }}
       >
         {language.export}
       </Button>
+      <ExportDialog
+        open={exportOpen}
+        title={language.export}
+        content={language.exportType}
+        onCancel={closeExportDialog}
+        onExport={onExport}
+        onClose={closeExportDialog}
+        cancelLabel={language.cancel}
+        jsonLabel="JSON"
+        csvLabel="CSV"
+        plainTextLabel={language.plainText}
+      />
     </Container>
   );
 };
