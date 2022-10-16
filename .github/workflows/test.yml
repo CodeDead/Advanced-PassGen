@@ -7,6 +7,15 @@ on:
       - development
 
 jobs:
+  test-eslint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install modules
+        run: yarn
+      - name: run ESLint
+        run: eslint .
+
   test-tauri:
     strategy:
       fail-fast: false

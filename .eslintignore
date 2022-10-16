@@ -2,3 +2,7 @@ src/reportWebVitals.js
 src/setupTests.js
 src-tauri/
 src-tauri/*
+.github/*
+.yarn/*
+node_modules/*
+build/*
