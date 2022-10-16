@@ -6,7 +6,7 @@ import { styled } from '@mui/material/styles';
 import { Paper } from '@mui/material';
 import { MainContext } from '../../contexts/MainContextProvider';
 import { PasswordContext } from '../../contexts/PasswordContextProvider';
-import { setPageIndex } from '../../reducers/MainReducer/Actions';
+import { setError, setPageIndex } from '../../reducers/MainReducer/Actions';
 import PasswordStrength from '../../utils/PasswordStrength';
 import { setPasswords } from '../../reducers/PasswordReducer/Actions';
 import MuiVirtualizedTable from '../../components/MuiVirtualizedTable';
@@ -106,6 +106,9 @@ const Generate = () => {
     worker.PasswordGenerator(min, max, simpleCharacterSet, amount, allowDuplicates)
       .then((res) => {
         d2(setPasswords(res));
+      })
+      .catch((e) => {
+        d1(setError(e));
       });
   };
 
