@@ -4,6 +4,8 @@ import Button from '@mui/material/Button';
 import { createWorkerFactory, useWorker } from '@shopify/react-web-worker';
 import { styled } from '@mui/material/styles';
 import { Paper } from '@mui/material';
+import { save } from '@tauri-apps/api/dialog';
+import { invoke } from '@tauri-apps/api/tauri';
 import { MainContext } from '../../contexts/MainContextProvider';
 import { PasswordContext } from '../../contexts/PasswordContextProvider';
 import { setError, setPageIndex } from '../../reducers/MainReducer/Actions';
@@ -183,7 +185,39 @@ const Generate = () => {
   const onExport = (type) => {
     // eslint-disable-next-line no-underscore-dangle
     if (window.__TAURI__) {
-      // TODO document why this block is empty
+      let ext = '';
+      switch (type) {
+        case 'text/plain':
+          ext = 'txt';
+          break;
+        case 'application/json':
+          ext = 'json';
+          break;
+        default:
+          ext = 'csv';
+          break;
+      }
+      save({
+        multiple: false,
+        filters: [{
+          name: type,
+          extensions: [ext],
+        }],
+      })
+        .then((res) => {
+          if (res && res.length > 0) {
+            // eslint-disable-next-line no-bitwise
+            const resExt = res.slice((res.lastIndexOf('.') - 1 >>> 0) + 2);
+            const path = resExt && resExt.length > 0 ? res : `${res}.${ext}`;
+            invoke('save_string_to_disk', { content: getExportData(passwords, type), path })
+              .catch((e) => {
+                d1(setError(e));
+              });
+          }
+        })
+        .catch((e) => {
+          d1(setError(e));
+        });
     } else {
       downloadFile(passwords, type);
     }
