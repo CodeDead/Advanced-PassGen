@@ -1,70 +1,75 @@
-# Getting Started with Create React App
+# Advanced PassGen
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Advanced PassGen](https://i.imgur.com/bVTaGO7.png)
 
-## Available Scripts
+![GitHub](https://img.shields.io/badge/language-JavaScript+Rust-green)
+![GitHub](https://img.shields.io/github/license/CodeDead/Advanced-PassGen)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/CodeDead/Advanced-PassGen)
 
-In the project directory, you can run:
+Advanced PassGen is a free and open-source application that can help you generate passwords and export them. You can export your passwords in TXT, HTML, CSV, JSON or Excel format!
 
-### `npm start`
+## Building
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Advanced PassGen uses tauri to build the desktop application. You can find more information about tauri [here](https://tauri.app/v1/guides/getting-started/prerequisites).
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Web
 
-### `npm test`
+You can build a web version of Advanced PassGen by running the following command:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```shell
+yarn build
+```
 
-### `npm run build`
+For more information about building the web version, please read the `creact-react-app` documentation [here](https://create-react-app.dev/docs/production-build).
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Windows
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#### Installer
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+You can create an executable installer by running the `yarn tauri build` command on a Windows host:
+```shell
+yarn tauri build
+```
 
-### `npm run eject`
+### Linux
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+#### deb
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+You can create a .deb file, by running the `yarn tauri build` command on a Linux host:
+```shell
+yarn tauri build
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+#### AppImage
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+You can create an [AppImage](https://appimage.github.io/) by executing the `yarn tauri build` command on a Linux host:
+```shell
+yarn tauri build
+```
 
-## Learn More
+## Credits
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Tauri
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+This project uses [Tauri](https://tauri.app/) to create a cross-platform application.
 
-### Code Splitting
+### ReactJS
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+This project uses [ReactJS](https://reactjs.org/) to create the user interface.
 
-### Analyzing the Bundle Size
+### Theme
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+The theme used in this application is [MUI](https://mui.com/).
 
-### Making a Progressive Web App
+### Images
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+All images have been provided by [MUI](https://mui.com/).
 
-### Advanced Configuration
+## About
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+This library is maintained by CodeDead. You can find more about us using the following links:
+* [Website](https://codedead.com/)
+* [Twitter](https://twitter.com/C0DEDEAD/)
+* [Facebook](https://facebook.com/deadlinecodedead/)
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Copyright © 2022 CodeDead
