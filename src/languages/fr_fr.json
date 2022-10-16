@@ -71,5 +71,7 @@
   "information": "Information",
   "download": "Télécharger",
   "cancel": "Annuler",
-  "error": "Erreur"
+  "error": "Erreur",
+  "exportType": "S'il vous plaît sélectionner le type d'exportation",
+  "plainText": "Texte brut"
 }

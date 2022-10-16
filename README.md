@@ -6,7 +6,7 @@
 ![GitHub](https://img.shields.io/github/license/CodeDead/Advanced-PassGen)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/CodeDead/Advanced-PassGen)
 
-Advanced PassGen is a free and open-source application that can help you generate passwords and export them. You can export your passwords in TXT, HTML, CSV, JSON or Excel format!
+Advanced PassGen is a free and open-source application that can help you generate passwords and export them. You can export your passwords in plain text, CSV or JSON format!
 
 ## Building
 

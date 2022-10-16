@@ -71,5 +71,7 @@
   "information": "Informatie",
   "download": "Download",
   "cancel": "Annuleren",
-  "error": "Fout"
+  "error": "Fout",
+  "exportType": "Gelieve een export type te selecteren",
+  "plainText": "Tekst"
 }
