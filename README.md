@@ -1,18 +1,75 @@
 # Advanced PassGen
-Advanced PassGen is a free and open-source application that can help you generate passwords and export them.
-You can export your passwords in TXT, HTML, CSV, JSON or Excel format!
 
-## Dependencies
-* [Visual Studio](https://visualstudio.com)
-* [Syncfusion for WPF](https://syncfusion.com/)
-* [.NET Framework 4.8](https://dotnet.microsoft.com/download/dotnet-framework/net48)
-* [UpdateManager](https://github.com/CodeDead/UpdateManager)
+![Advanced PassGen](https://i.imgur.com/bVTaGO7.png)
 
-# About
+![GitHub](https://img.shields.io/badge/language-JavaScript+Rust-green)
+![GitHub](https://img.shields.io/github/license/CodeDead/Advanced-PassGen)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/CodeDead/Advanced-PassGen)
+
+Advanced PassGen is a free and open-source application that can help you generate passwords and export them. You can export your passwords in plain text, CSV or JSON format!
+
+## Building
+
+Advanced PassGen uses tauri to build the desktop application. You can find more information about tauri [here](https://tauri.app/v1/guides/getting-started/prerequisites).
+
+### Web
+
+You can build a web version of Advanced PassGen by running the following command:
+
+```shell
+yarn build
+```
+
+For more information about building the web version, please read the `creact-react-app` documentation [here](https://create-react-app.dev/docs/production-build).
+
+### Windows
+
+#### Installer
+
+You can create an executable installer by running the `yarn tauri build` command on a Windows host:
+```shell
+yarn tauri build
+```
+
+### Linux
+
+#### deb
+
+You can create a .deb file, by running the `yarn tauri build` command on a Linux host:
+```shell
+yarn tauri build
+```
+
+#### AppImage
+
+You can create an [AppImage](https://appimage.github.io/) by executing the `yarn tauri build` command on a Linux host:
+```shell
+yarn tauri build
+```
+
+## Credits
+
+### Tauri
+
+This project uses [Tauri](https://tauri.app/) to create a cross-platform application.
+
+### ReactJS
+
+This project uses [ReactJS](https://reactjs.org/) to create the user interface.
+
+### Theme
+
+The theme used in this application is [MUI](https://mui.com/).
+
+### Images
+
+All images have been provided by [MUI](https://mui.com/).
+
+## About
+
 This library is maintained by CodeDead. You can find more about us using the following links:
-* [Website](https://codedead.com)
-* [Twitter](https://twitter.com/C0DEDEAD)
-* [Facebook](https://facebook.com/deadlinecodedead)
-* [Reddit](https://reddit.com/r/CodeDead/)
+* [Website](https://codedead.com/)
+* [Twitter](https://twitter.com/C0DEDEAD/)
+* [Facebook](https://facebook.com/deadlinecodedead/)
 
-We would also like to thank JetBrains for the open source license that they granted us to work with wonderful tools such as [Rider](https://jetbrains.com/rider) and [Resharper](https://jetbrains.com/resharper).
+Copyright © 2022 CodeDead
