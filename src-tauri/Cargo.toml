@@ -1,10 +1,10 @@
 [package]
 name = "advanced-passgen"
 version = "0.1.0"
-description = "A Tauri App"
+description = "Advanced PassGen can be used to quickly generate thousands of passwords"
 authors = ["CodeDead <admin@codedead.com>"]
 license = "GPL-3.0-only"
-repository = ""
+repository = "https://github.com/CodeDead/Advanced-PassGen"
 default-run = "advanced-passgen"
 edition = "2021"
 rust-version = "1.64.0"

@@ -65,5 +65,11 @@
   "yes": "Yes",
   "no": "No",
   "confirmation": "Confirmation",
-  "confirmResetSettings": "Are you sure you want to reset all settings?"
+  "confirmResetSettings": "Are you sure you want to reset all settings?",
+  "updateAvailable": "Update available",
+  "newVersion": "Version {x} is available. Do you want to download it?",
+  "information": "Information",
+  "download": "Download",
+  "cancel": "Cancel",
+  "error": "Error"
 }

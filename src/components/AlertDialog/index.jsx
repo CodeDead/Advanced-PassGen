@@ -54,12 +54,16 @@ const AlertDialog = ({
         </DialogContentText>
       </DialogContent>
       <DialogActions>
-        <Button onClick={cancel}>
-          {cancelLabel}
-        </Button>
-        <Button onClick={agree} autoFocus>
-          {agreeLabel}
-        </Button>
+        {onCancel ? (
+          <Button onClick={cancel}>
+            {cancelLabel}
+          </Button>
+        ) : null}
+        {onOk ? (
+          <Button onClick={agree} autoFocus>
+            {agreeLabel}
+          </Button>
+        ) : null}
       </DialogActions>
     </Dialog>
   );

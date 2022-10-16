@@ -17,33 +17,16 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { invoke } from '@tauri-apps/api';
 import { MainContext } from '../../contexts/MainContextProvider';
+import { openWebSite } from '../../reducers/MainReducer/Actions';
 
 const drawerWidth = 220;
 
 const ClippedDrawer = () => {
-  const [state] = useContext(MainContext);
+  const [state, d1] = useContext(MainContext);
   const { languageIndex, pageIndex } = state;
   const language = state.languages[languageIndex];
   const navigate = useNavigate();
-
-  /**
-   * Open a website
-   * @param website The website that needs to be opened
-   */
-  const openWebsite = (website) => {
-    // eslint-disable-next-line no-underscore-dangle
-    if (window.__TAURI__) {
-      invoke('open_website', { website })
-        .catch((e) => {
-          // eslint-disable-next-line no-console
-          console.error(e);
-        });
-    } else {
-      window.open(website, '_blank'); // We're running in a browser
-    }
-  };
 
   return (
     <Drawer
@@ -123,7 +106,7 @@ const ClippedDrawer = () => {
         <List>
           <ListItem disablePadding>
             <ListItemButton
-              onClick={() => openWebsite('https://codedead.com/donate')}
+              onClick={() => d1(openWebSite('https://codedead.com/donate'))}
             >
               <ListItemIcon>
                 <AttachMoneyIcon />

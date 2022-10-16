@@ -27,18 +27,21 @@ import MenuItem from '@mui/material/MenuItem';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
+import { type } from '@tauri-apps/api/os';
 import Theme from '../../components/Theme';
 import GridList from '../../components/GridList';
 import {
   resetState,
-  setAutoUpdate,
+  setAutoUpdate, setError,
   setLanguageIndex,
   setPageIndex,
   setThemeIndex,
-  setThemeType,
+  setThemeType, setUpdate,
 } from '../../reducers/MainReducer/Actions';
 import { MainContext } from '../../contexts/MainContextProvider';
 import AlertDialog from '../../components/AlertDialog';
+import Updater from '../../utils/Updater';
+import packageJson from '../../../package.json';
 
 const Settings = () => {
   const [state, d1] = useContext(MainContext);
@@ -53,6 +56,7 @@ const Settings = () => {
   const language = state.languages[languageIndex];
 
   const [resetDialogOpen, setResetDialogOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   /**
    * Change the theme
@@ -83,6 +87,35 @@ const Settings = () => {
    */
   const resetSettings = () => {
     d1(resetState());
+  };
+
+  /**
+   * Check for updates
+   */
+  const checkForUpdates = () => {
+    if (loading) {
+      return;
+    }
+
+    d1(setUpdate(null));
+    d1(setError(null));
+
+    type()
+      .then((res) => {
+        Updater(res.toLowerCase(), packageJson.version)
+          .then((up) => {
+            d1(setUpdate(up));
+          })
+          .catch((error) => {
+            d1(setError(error));
+          });
+      })
+      .catch((e) => {
+        d1(setError(e));
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   useEffect(() => {
@@ -237,6 +270,7 @@ const Settings = () => {
         <Button
           variant="contained"
           sx={{ mt: 2 }}
+          onClick={checkForUpdates}
         >
           {language.checkForUpdates}
         </Button>

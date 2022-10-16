@@ -4,32 +4,14 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import { invoke } from '@tauri-apps/api';
 import { MainContext } from '../../contexts/MainContextProvider';
-import { setPageIndex } from '../../reducers/MainReducer/Actions';
+import { openWebSite, setPageIndex } from '../../reducers/MainReducer/Actions';
 import packageJson from '../../../package.json';
 
 const About = () => {
   const [state, d1] = useContext(MainContext);
   const { languageIndex } = state;
   const language = state.languages[languageIndex];
-
-  /**
-   * Open a website
-   * @param website The website that needs to be opened
-   */
-  const openWebsite = (website) => {
-    // eslint-disable-next-line no-underscore-dangle
-    if (window.__TAURI__) {
-      invoke('open_website', { website })
-        .catch((e) => {
-          // eslint-disable-next-line no-console
-          console.error(e);
-        });
-    } else {
-      window.open(website, '_blank');
-    }
-  };
 
   useEffect(() => {
     d1(setPageIndex(5));
@@ -51,7 +33,7 @@ const About = () => {
         variant="contained"
         style={{ float: 'left' }}
         sx={{ mt: 2 }}
-        onClick={() => openWebsite('https://codedead.com/Software/Advanced%20PassGen/gpl.pdf')}
+        onClick={() => d1(openWebSite('https://codedead.com/Software/Advanced%20PassGen/gpl.pdf'))}
       >
         {language.license}
       </Button>
@@ -59,7 +41,7 @@ const About = () => {
         variant="contained"
         style={{ float: 'right' }}
         sx={{ mt: 2 }}
-        onClick={() => openWebsite('https://codedead.com/')}
+        onClick={() => d1(openWebSite('https://codedead.com/'))}
       >
         {language.website}
       </Button>

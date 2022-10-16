@@ -1,13 +1,18 @@
 import {
   RESET_STATE,
   SET_AUTO_UPDATE,
+  SET_ERROR,
   SET_LANGUAGE_INDEX,
   SET_PAGE_INDEX,
   SET_THEME_INDEX,
   SET_THEME_TYPE,
+  SET_UPDATE,
 } from './Actions/actionTypes';
 
 const MainReducer = (state, action) => {
+  if (!action || !action.type) {
+    return state;
+  }
   switch (action.type) {
     case SET_LANGUAGE_INDEX:
       localStorage.languageIndex = action.payload;
@@ -46,6 +51,16 @@ const MainReducer = (state, action) => {
       return {
         ...state,
         autoUpdate: action.payload,
+      };
+    case SET_UPDATE:
+      return {
+        ...state,
+        update: action.payload,
+      };
+    case SET_ERROR:
+      return {
+        ...state,
+        error: action.payload,
       };
     default:
       return state;

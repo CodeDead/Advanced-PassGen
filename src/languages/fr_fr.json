@@ -65,5 +65,11 @@
   "yes": "Oui",
   "no": "Non",
   "confirmation": "Confirmation",
-  "confirmResetSettings": "Êtes-vous sûr de vouloir réinitialiser les paramètres ?"
+  "confirmResetSettings": "Êtes-vous sûr de vouloir réinitialiser les paramètres ?",
+  "updateAvailable": "Une mise à jour est disponible",
+  "newVersion": "Version {x} est disponible. Voulez-vous la télécharger maintenant ?",
+  "information": "Information",
+  "download": "Télécharger",
+  "cancel": "Annuler",
+  "error": "Erreur"
 }

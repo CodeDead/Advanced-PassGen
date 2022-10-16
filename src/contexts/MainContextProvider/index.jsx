@@ -20,6 +20,8 @@ const initState = {
   themeIndex,
   themeType,
   pageIndex: 0,
+  update: null,
+  error: null,
 };
 
 export const MainContext = createContext(initState);

@@ -65,5 +65,11 @@
   "yes": "Ja",
   "no": "Nee",
   "confirmation": "Bevestiging",
-  "confirmResetSettings": "Weet je zeker dat je de instellingen wilt resetten?"
+  "confirmResetSettings": "Weet je zeker dat je de instellingen wilt resetten?",
+  "updateAvailable": "Update beschikbaar",
+  "newVersion": "Versie {x} is nu beschikbaar. Wil je deze downloaden?",
+  "information": "Informatie",
+  "download": "Download",
+  "cancel": "Annuleren",
+  "error": "Fout"
 }
