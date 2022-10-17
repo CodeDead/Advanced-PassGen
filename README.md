@@ -12,7 +12,7 @@ Advanced PassGen is a free and open-source application that can help you generat
 
 ## Building
 
-Advanced PassGen uses tauri to build the desktop application. You can find more information about tauri [here](https://tauri.app/v1/guides/getting-started/prerequisites).
+Advanced PassGen uses tauri to build the desktop application. You can find more information about Tauri [here](https://tauri.app/v1/guides/getting-started/prerequisites).
 
 ### Web
 
@@ -65,7 +65,7 @@ The theme used in this application is [MUI](https://mui.com/).
 
 ### Images
 
-All images have been provided by [MUI](https://mui.com/).
+The application icon was provided by [RemixIcon](https://remixicon.com/).
 
 ## About
 
