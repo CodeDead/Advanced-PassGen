@@ -10,7 +10,7 @@
 
 Advanced PassGen is a free and open-source application that can help you generate passwords and export them. You can export your passwords in plain text, CSV or JSON format!
 
-For a live version of the application, visit [https://advanced-passgen.codedead.com](https://advanced-passgen.codedead.com).
+For a live version of the application, visit [https://advancedpassgen.codedead.com](https://advancedpassgen.codedead.com).
 
 ## Building
 
