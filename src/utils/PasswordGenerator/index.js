@@ -1,4 +1,16 @@
 /**
+ * Generate a random number between min and max
+ * @param min The minimum
+ * @param max The maximum
+ * @returns {number} The random number between min and max (inclusive)
+ */
+const getRandomInt = (min, max) => {
+  const newMin = Math.ceil(min);
+  const newMax = Math.floor(max);
+  return Math.floor(Math.random() * (newMax - newMin + 1)) + newMin;
+};
+
+/**
  * Generate an array of passwords
  * @param minLength The minimum length of the password
  * @param maxLength The maximum length of the password
@@ -14,8 +26,8 @@ export function PasswordGenerator(minLength, maxLength, characterSet, amount, al
 
   let maxCount = 0;
   if (!allowDuplicates) {
-    let current = minLength;
-    while (current <= maxLength) {
+    let current = parseInt(minLength, 10);
+    while (current <= parseInt(maxLength, 10)) {
       // eslint-disable-next-line no-restricted-properties,prefer-exponentiation-operator
       maxCount += Math.pow(characterSet.length, current);
       current += 1;
@@ -27,7 +39,7 @@ export function PasswordGenerator(minLength, maxLength, characterSet, amount, al
 
     while (!canContinue) {
       let password = '';
-      const length = Math.floor(Math.random() * (maxLength - minLength + 1)) + minLength;
+      const length = getRandomInt(minLength, maxLength);
       for (let j = 0; j < length; j += 1) {
         password += characterSet[Math.floor(Math.random() * characterSet.length)];
       }

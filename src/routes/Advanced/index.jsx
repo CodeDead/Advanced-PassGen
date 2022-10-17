@@ -9,24 +9,73 @@ import { useNavigate } from 'react-router-dom';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import FormGroup from '@mui/material/FormGroup';
-import { setPageIndex } from '../../reducers/MainReducer/Actions';
+import { createWorkerFactory, useWorker } from '@shopify/react-web-worker';
+import { setError, setPageIndex } from '../../reducers/MainReducer/Actions';
 import { MainContext } from '../../contexts/MainContextProvider';
 import { PasswordContext } from '../../contexts/PasswordContextProvider';
 import {
   setAllowDuplicates,
-  setCharacterSet,
+  setCharacterSet, setPasswords,
   setUseAdvanced,
 } from '../../reducers/PasswordReducer/Actions';
+
+const createWorker = createWorkerFactory(() => import('../../utils/PasswordGenerator/index'));
 
 const Advanced = () => {
   const [state1, d1] = useContext(MainContext);
   const [state2, d2] = useContext(PasswordContext);
 
   const { languageIndex } = state1;
-  const { characterSet, useAdvanced, allowDuplicates } = state2;
+  const {
+    characterSet, useAdvanced, allowDuplicates, smallLetters, capitalLetters, spaces,
+    specialCharacters, numbers, brackets, min, max, amount,
+  } = state2;
 
   const language = state1.languages[languageIndex];
+
   const navigate = useNavigate();
+  const worker = useWorker(createWorker);
+
+  /**
+   * Generate passwords
+   */
+  const generatePasswords = () => {
+    let simpleCharacterSet = characterSet;
+    if (!useAdvanced) {
+      simpleCharacterSet = '';
+      if (smallLetters) {
+        simpleCharacterSet += 'abcdefghijklmnopqrstuvwxyz';
+      }
+      if (capitalLetters) {
+        simpleCharacterSet += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      }
+      if (spaces) {
+        simpleCharacterSet += ' ';
+      }
+      if (specialCharacters) {
+        simpleCharacterSet += '=+-_!?.,;:\'\\"/%^*$€£&µ@#';
+      }
+      if (numbers) {
+        simpleCharacterSet += '0123456789';
+      }
+      if (brackets) {
+        simpleCharacterSet += '[]{}()<>';
+      }
+    }
+
+    if (!simpleCharacterSet || simpleCharacterSet.length === 0 || min > max || max < min) {
+      return;
+    }
+
+    worker.PasswordGenerator(min, max, simpleCharacterSet, amount, allowDuplicates)
+      .then((res) => {
+        d2(setPasswords(res));
+        navigate('/generate');
+      })
+      .catch((e) => {
+        d1(setError(e));
+      });
+  };
 
   useEffect(() => {
     d1(setPageIndex(1));
@@ -85,7 +134,7 @@ const Advanced = () => {
         color="primary"
         style={{ float: 'right' }}
         sx={{ mt: 2 }}
-        onClick={() => navigate('/generate')}
+        onClick={generatePasswords}
       >
         {language.generate}
       </Button>
