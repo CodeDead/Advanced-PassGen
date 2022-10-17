@@ -10,6 +10,8 @@
 
 Advanced PassGen is a free and open-source application that can help you generate passwords and export them. You can export your passwords in plain text, CSV or JSON format!
 
+For a live version of the application, visit [https://advanced-passgen.codedead.com](https://advanced-passgen.codedead.com).
+
 ## Building
 
 Advanced PassGen uses tauri to build the desktop application. You can find more information about Tauri [here](https://tauri.app/v1/guides/getting-started/prerequisites).
