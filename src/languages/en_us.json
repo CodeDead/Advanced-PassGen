@@ -73,5 +73,8 @@
   "cancel": "Cancel",
   "error": "Error",
   "exportType": "Please select the export type",
-  "plainText": "Plain text"
+  "plainText": "Plain text",
+  "notFound": "There's really nothing here except for some top secret stuff (maybe).",
+  "notFoundGoHome": "Would you like to go back to the home page?",
+  "home": "Home"
 }

@@ -34,31 +34,31 @@ const Advanced = () => {
 
   return (
     <Container>
-      <FormGroup>
-        <FormControlLabel
-          control={(
-            <Checkbox
-              checked={allowDuplicates}
-              onChange={(e) => d2(setAllowDuplicates(e.target.checked))}
-            />
-          )}
-          label={language.allowDuplicates}
-        />
-        <FormControlLabel
-          control={(
-            <Checkbox
-              checked={useAdvanced}
-              onChange={(e) => d2(setUseAdvanced(e.target.checked))}
-            />
-          )}
-          label={language.useCustomCharacterSet}
-        />
-      </FormGroup>
-      <Card
-        sx={{ mt: 2 }}
-      >
+      <Card>
         <CardContent>
           <Grid container spacing={2}>
+            <Grid item xs={12} md={12} lg={12}>
+              <FormGroup>
+                <FormControlLabel
+                  control={(
+                    <Checkbox
+                      checked={allowDuplicates}
+                      onChange={(e) => d2(setAllowDuplicates(e.target.checked))}
+                    />
+                  )}
+                  label={language.allowDuplicates}
+                />
+                <FormControlLabel
+                  control={(
+                    <Checkbox
+                      checked={useAdvanced}
+                      onChange={(e) => d2(setUseAdvanced(e.target.checked))}
+                    />
+                  )}
+                  label={language.useCustomCharacterSet}
+                />
+              </FormGroup>
+            </Grid>
             <Grid item xs={12} md={12} lg={12}>
               <TextField
                 label={language.characterSet}

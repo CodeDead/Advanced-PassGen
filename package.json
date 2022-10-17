@@ -25,6 +25,7 @@
     "start": "react-scripts start",
     "dev": "tauri dev",
     "build": "react-scripts build",
+    "desktop": "tauri build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
