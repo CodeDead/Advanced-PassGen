@@ -1,4 +1,6 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, {
+  useContext, useEffect, useState, lazy, Suspense,
+} from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Toolbar from '@mui/material/Toolbar';
@@ -9,17 +11,20 @@ import { MainContext } from '../../contexts/MainContextProvider';
 import ThemeSelector from '../../utils/ThemeSelector';
 import TopBar from '../TopBar';
 import ClippedDrawer from '../ClippedDrawer';
-import Home from '../../routes/Home';
-import Advanced from '../../routes/Advanced';
-import Generate from '../../routes/Generate';
-import About from '../../routes/About';
-import Settings from '../../routes/Settings';
-import Advisor from '../../routes/Advisor';
 import UpdateDialog from '../UpdateDialog';
 import { openWebSite, setError, setUpdate } from '../../reducers/MainReducer/Actions';
 import Updater from '../../utils/Updater';
 import AlertDialog from '../AlertDialog';
 import packageJson from '../../../package.json';
+import LoadingBar from '../LoadingBar';
+
+const Home = lazy(() => import('../../routes/Home'));
+const Advanced = lazy(() => import('../../routes/Advanced'));
+const Generate = lazy(() => import('../../routes/Generate'));
+const About = lazy(() => import('../../routes/About'));
+const Settings = lazy(() => import('../../routes/Settings'));
+const Advisor = lazy(() => import('../../routes/Advisor'));
+const NotFound = lazy(() => import('../../routes/NotFound'));
 
 const App = () => {
   const [state, d1] = useContext(MainContext);
@@ -92,14 +97,17 @@ const App = () => {
           <ClippedDrawer />
           <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
             <Toolbar />
-            <Routes>
-              <Route exact path="/" element={<Home />} />
-              <Route exact path="/advanced" element={<Advanced />} />
-              <Route exact path="/generate" element={<Generate />} />
-              <Route exact path="/advisor" element={<Advisor />} />
-              <Route exact path="/settings" element={<Settings />} />
-              <Route exact path="/about" element={<About />} />
-            </Routes>
+            <Suspense fallback={<LoadingBar />}>
+              <Routes>
+                <Route exact path="/" element={<Home />} />
+                <Route exact path="/advanced" element={<Advanced />} />
+                <Route exact path="/generate" element={<Generate />} />
+                <Route exact path="/advisor" element={<Advisor />} />
+                <Route exact path="/settings" element={<Settings />} />
+                <Route exact path="/about" element={<About />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </Suspense>
           </Box>
         </Box>
         {error && error.length > 0 ? (
