@@ -1,8 +1,7 @@
-import * as React from 'react';
+import React, { useContext } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import { useContext } from 'react';
 import IconButton from '@mui/material/IconButton';
 import Brightness5Icon from '@mui/icons-material/Brightness5';
 import Brightness7Icon from '@mui/icons-material/Brightness7';

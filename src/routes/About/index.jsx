@@ -10,6 +10,7 @@ import packageJson from '../../../package.json';
 
 const About = () => {
   const [state, d1] = useContext(MainContext);
+
   const { languageIndex } = state;
   const language = state.languages[languageIndex];
 

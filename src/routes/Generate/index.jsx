@@ -3,7 +3,7 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import { createWorkerFactory, useWorker } from '@shopify/react-web-worker';
 import { styled } from '@mui/material/styles';
-import { Paper } from '@mui/material';
+import Paper from '@mui/material/Paper';
 import { save } from '@tauri-apps/api/dialog';
 import { invoke } from '@tauri-apps/api/tauri';
 import { MainContext } from '../../contexts/MainContextProvider';

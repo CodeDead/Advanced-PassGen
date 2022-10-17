@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useContext } from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import Toolbar from '@mui/material/Toolbar';
@@ -15,7 +15,6 @@ import LightbulbIcon from '@mui/icons-material/Lightbulb';
 import InfoIcon from '@mui/icons-material/Info';
 import SettingsIcon from '@mui/icons-material/Settings';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
-import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { MainContext } from '../../contexts/MainContextProvider';
 import { openWebSite } from '../../reducers/MainReducer/Actions';

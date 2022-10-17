@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import clsx from 'clsx';
 import TableCell from '@mui/material/TableCell';
 import { AutoSizer, Column, Table } from 'react-virtualized';
