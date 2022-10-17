@@ -12,6 +12,7 @@ import { setPageIndex } from '../../reducers/MainReducer/Actions';
 
 const Advisor = () => {
   const [state, d1] = useContext(MainContext);
+
   const { languageIndex } = state;
   const language = state.languages[languageIndex];
 

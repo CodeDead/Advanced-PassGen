@@ -76,5 +76,6 @@
   "plainText": "Plain text",
   "notFound": "There's really nothing here except for some top secret stuff (maybe).",
   "notFoundGoHome": "Would you like to go back to the home page?",
-  "home": "Home"
+  "home": "Home",
+  "ok": "OK"
 }

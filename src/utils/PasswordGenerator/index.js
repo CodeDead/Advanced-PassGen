@@ -32,10 +32,7 @@ export function PasswordGenerator(minLength, maxLength, characterSet, amount, al
         password += characterSet[Math.floor(Math.random() * characterSet.length)];
       }
 
-      if (allowDuplicates === true) {
-        passwordArray.push(password);
-        canContinue = true;
-      } else if (!passwordArray.includes(password)) {
+      if (allowDuplicates === true || (!allowDuplicates && !passwordArray.includes(password))) {
         passwordArray.push(password);
         canContinue = true;
       }

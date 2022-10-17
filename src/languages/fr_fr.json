@@ -76,5 +76,6 @@
   "plainText": "Texte brut",
   "notFound": "Il n'y a rien ici",
   "notFoundGoHome": "Retour à l'accueil ?",
-  "home": "Accueil"
+  "home": "Accueil",
+  "ok": "OK"
 }

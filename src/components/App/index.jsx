@@ -81,6 +81,13 @@ const App = () => {
       });
   };
 
+  /**
+   * Close the alert dialog
+   */
+  const closeAlertDialog = () => {
+    d1(setError(null));
+  };
+
   useEffect(() => {
     // eslint-disable-next-line no-underscore-dangle
     if (autoUpdate && window.__TAURI__) {
@@ -116,8 +123,8 @@ const App = () => {
             title={language.error}
             content={error}
             agreeLabel={language.ok}
-            onOk={() => d1(setError(null))}
-            onClose={() => d1(setError(null))}
+            onOk={closeAlertDialog}
+            onClose={closeAlertDialog}
           />
         ) : null}
         {update && update.updateAvailable ? (

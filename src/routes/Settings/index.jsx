@@ -32,11 +32,13 @@ import Theme from '../../components/Theme';
 import GridList from '../../components/GridList';
 import {
   resetState,
-  setAutoUpdate, setError,
+  setAutoUpdate,
+  setError,
   setLanguageIndex,
   setPageIndex,
   setThemeIndex,
-  setThemeType, setUpdate,
+  setThemeType,
+  setUpdate,
 } from '../../reducers/MainReducer/Actions';
 import { MainContext } from '../../contexts/MainContextProvider';
 import AlertDialog from '../../components/AlertDialog';
