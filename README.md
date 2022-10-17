@@ -53,7 +53,16 @@ yarn tauri build
 
 ### macOS
 
-While we do not officially support macOS builds, you can create a macOS build by running the `yarn tauri build` command on a macOS host:
+#### DMG
+
+You can create a macOS build by running the `yarn tauri build` command on a macOS host:
+```shell
+yarn tauri build
+```
+
+#### Archive
+
+You can create a macOS build by running the `yarn tauri build` command on a macOS host:
 ```shell
 yarn tauri build
 ```
