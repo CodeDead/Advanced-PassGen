@@ -1,6 +1,7 @@
 import React, { createContext, useReducer } from 'react';
 import MainReducer from '../../reducers/MainReducer';
 import enUs from '../../languages/en_us.json';
+import deDe from '../../languages/de_de.json';
 import frFr from '../../languages/fr_fr.json';
 import nlNl from '../../languages/nl_nl.json';
 
