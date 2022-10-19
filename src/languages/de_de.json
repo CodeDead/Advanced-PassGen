@@ -19,7 +19,7 @@
   "characterSet": "Zeichensatz",
   "generate": "Generieren",
   "useCustomCharacterSet": "Benutzerdefinierten Zeichensatz verwenden",
-  "aboutText": "Advanced PassGen wurde von DeadLine erstellt.\n\nThema: MUI\nLizenz: GPLv3\nVersion: {x}\n\nCopyright © 2022 CodeDead",
+  "aboutText": "Advanced PassGen wurde von DeadLine erstellt.\n\nThema: MUI\nLizenz: GPLv3\nÜbersetzung: uDEV2019\nVersion: {x}\n\nCopyright © 2022 CodeDead",
   "website": "Webseite",
   "license": "Lizenz",
   "autoUpdate": "Automatisch auf Aktualisierungen prüfen",
@@ -75,7 +75,8 @@
   "exportType": "Bitte wählen Sie den Exporttyp aus",
   "plainText": "Klartext",
   "notFound": "Hier ist wirklich nichts außer ein paar streng geheimen Sachen (vielleicht).",
-  "notFoundGoHome": "Möchten Sie zur Startseite zurückkehren??",
+  "notFoundGoHome": "Möchten Sie zur Startseite zurückkehren?",
   "home": "Startseite",
-  "ok": "OK"
+  "ok": "OK",
+  "downloadApp": "Laden Sie die Desktop-Anwendung herunter"
 }

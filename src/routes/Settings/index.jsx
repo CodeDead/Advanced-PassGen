@@ -156,9 +156,10 @@ const Settings = () => {
                     labelId="language-label"
                     label={language.language}
                   >
-                    <MenuItem value={0}>English</MenuItem>
-                    <MenuItem value={1}>Français</MenuItem>
-                    <MenuItem value={2}>Nederlands</MenuItem>
+                    <MenuItem value={0}>Deutsch</MenuItem>
+                    <MenuItem value={1}>English</MenuItem>
+                    <MenuItem value={2}>Français</MenuItem>
+                    <MenuItem value={3}>Nederlands</MenuItem>
                   </Select>
                 </FormControl>
               </FormGroup>

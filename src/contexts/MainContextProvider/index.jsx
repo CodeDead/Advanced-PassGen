@@ -5,7 +5,7 @@ import deDe from '../../languages/de_de.json';
 import frFr from '../../languages/fr_fr.json';
 import nlNl from '../../languages/nl_nl.json';
 
-const languageIndex = localStorage.languageIndex ? parseFloat(localStorage.languageIndex) : 0;
+const languageIndex = localStorage.languageIndex ? parseFloat(localStorage.languageIndex) : 1;
 const themeIndex = localStorage.themeIndex ? parseFloat(localStorage.themeIndex) : 0;
 const themeType = localStorage.themeType ? localStorage.themeType : 'light';
 const autoUpdate = localStorage.autoUpdate ? (localStorage.autoUpdate === 'true') : true;
@@ -14,6 +14,7 @@ const initState = {
   autoUpdate,
   languageIndex,
   languages: [
+    deDe,
     enUs,
     frFr,
     nlNl,

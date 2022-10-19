@@ -41,7 +41,7 @@ const MainReducer = (state, action) => {
       localStorage.clear();
       return {
         ...state,
-        languageIndex: 0,
+        languageIndex: 1,
         themeIndex: 0,
         themeType: 'light',
         autoUpdate: true,
