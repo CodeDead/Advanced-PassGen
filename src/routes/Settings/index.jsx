@@ -35,6 +35,7 @@ import {
   setAutoUpdate,
   setError,
   setLanguageIndex,
+  setLanguageSelector,
   setPageIndex,
   setThemeIndex,
   setThemeType,
@@ -53,6 +54,7 @@ const Settings = () => {
     themeType,
     languageIndex,
     autoUpdate,
+    languageSelector,
   } = state;
 
   const language = state.languages[languageIndex];
@@ -147,7 +149,17 @@ const Settings = () => {
                     label={language.autoUpdate}
                   />
                 ) : null}
-                <FormControl variant="outlined" style={{ marginTop: 5 }}>
+                <FormControlLabel
+                  control={(
+                    <Checkbox
+                      checked={languageSelector}
+                      onChange={(e) => d1(setLanguageSelector(e.target.checked))}
+                      value="languageSelector"
+                    />
+                  )}
+                  label={language.languageSelector}
+                />
+                <FormControl variant="outlined" sx={{ mt: 2 }}>
                   <InputLabel id="language-label">{language.language}</InputLabel>
                   <Select
                     value={languageIndex}
