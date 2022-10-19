@@ -4,6 +4,7 @@ import {
   SET_AUTO_UPDATE,
   SET_ERROR,
   SET_LANGUAGE_INDEX,
+  SET_LANGUAGE_SELECTOR,
   SET_PAGE_INDEX,
   SET_THEME_INDEX,
   SET_THEME_TYPE,
@@ -60,4 +61,9 @@ export const setUpdate = (update) => ({
 export const setError = (error) => ({
   type: SET_ERROR,
   payload: error,
+});
+
+export const setLanguageSelector = (value) => ({
+  type: SET_LANGUAGE_SELECTOR,
+  payload: value,
 });

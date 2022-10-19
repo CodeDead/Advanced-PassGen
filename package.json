@@ -7,7 +7,7 @@
     "@emotion/styled": "^11.10.4",
     "@fontsource/roboto": "^4.5.8",
     "@mui/icons-material": "^5.10.9",
-    "@mui/material": "^5.10.9",
+    "@mui/material": "^5.10.10",
     "@shopify/react-web-worker": "^5.0.6",
     "@tauri-apps/api": "^1.1.0",
     "@testing-library/jest-dom": "^5.16.5",
@@ -19,7 +19,7 @@
     "react-router-dom": "^6.4.2",
     "react-scripts": "^5.0.1",
     "react-virtualized": "^9.22.3",
-    "web-vitals": "^3.0.3"
+    "web-vitals": "^3.0.4"
   },
   "scripts": {
     "start": "react-scripts start",

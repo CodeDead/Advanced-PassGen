@@ -78,5 +78,6 @@
   "notFoundGoHome": "Would you like to go back to the home page?",
   "home": "Home",
   "ok": "OK",
-  "downloadApp": "Download the desktop application"
+  "downloadApp": "Download the desktop application",
+  "languageSelector": "Language selector in the top bar"
 }

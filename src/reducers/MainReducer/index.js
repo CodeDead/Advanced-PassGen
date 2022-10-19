@@ -3,6 +3,7 @@ import {
   SET_AUTO_UPDATE,
   SET_ERROR,
   SET_LANGUAGE_INDEX,
+  SET_LANGUAGE_SELECTOR,
   SET_PAGE_INDEX,
   SET_THEME_INDEX,
   SET_THEME_TYPE,
@@ -45,6 +46,7 @@ const MainReducer = (state, action) => {
         themeIndex: 0,
         themeType: 'light',
         autoUpdate: true,
+        languageSelector: true,
       };
     case SET_AUTO_UPDATE:
       localStorage.autoUpdate = action.payload;
@@ -56,6 +58,12 @@ const MainReducer = (state, action) => {
       return {
         ...state,
         update: action.payload,
+      };
+    case SET_LANGUAGE_SELECTOR:
+      localStorage.languageSelector = action.payload;
+      return {
+        ...state,
+        languageSelector: action.payload,
       };
     case SET_ERROR:
       return {
