@@ -1,3 +1,4 @@
+import { invoke } from '@tauri-apps/api';
 import {
   SET_ALLOW_DUPLICATES,
   SET_BRACKETS,
@@ -78,3 +79,18 @@ export const setAllowDuplicates = (value) => ({
   type: SET_ALLOW_DUPLICATES,
   payload: value,
 });
+
+// eslint-disable-next-line max-len
+export const generatePasswordArray = (min, max, characterSet, amount, allowDuplicates, worker) => {
+  // eslint-disable-next-line no-underscore-dangle
+  if (window.__TAURI__) {
+    return invoke('generate_passwords', {
+      minLength: parseFloat(min),
+      maxLength: parseFloat(max),
+      characterSet,
+      amount: parseFloat(amount),
+      allowDuplicates,
+    });
+  }
+  return worker.PasswordGenerator(min, max, characterSet, amount, allowDuplicates);
+};

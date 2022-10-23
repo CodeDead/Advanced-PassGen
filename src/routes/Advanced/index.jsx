@@ -10,10 +10,11 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import FormGroup from '@mui/material/FormGroup';
 import { createWorkerFactory, useWorker } from '@shopify/react-web-worker';
-import { setError, setPageIndex } from '../../reducers/MainReducer/Actions';
+import { setError, setLoading, setPageIndex } from '../../reducers/MainReducer/Actions';
 import { MainContext } from '../../contexts/MainContextProvider';
 import { PasswordContext } from '../../contexts/PasswordContextProvider';
 import {
+  generatePasswordArray,
   setAllowDuplicates,
   setCharacterSet, setPasswords,
   setUseAdvanced,
@@ -67,13 +68,17 @@ const Advanced = () => {
       return;
     }
 
-    worker.PasswordGenerator(min, max, simpleCharacterSet, amount, allowDuplicates)
+    d1(setLoading(true));
+    generatePasswordArray(min, max, simpleCharacterSet, amount, allowDuplicates, worker)
       .then((res) => {
         d2(setPasswords(res));
         navigate('/generate');
       })
-      .catch((e) => {
-        d1(setError(e));
+      .catch((err) => {
+        d1(setError(err));
+      })
+      .finally(() => {
+        d1(setLoading(false));
       });
   };
 

@@ -5,6 +5,7 @@ import {
   SET_ERROR,
   SET_LANGUAGE_INDEX,
   SET_LANGUAGE_SELECTOR,
+  SET_LOADING,
   SET_PAGE_INDEX,
   SET_THEME_INDEX,
   SET_THEME_TYPE,
@@ -65,5 +66,10 @@ export const setError = (error) => ({
 
 export const setLanguageSelector = (value) => ({
   type: SET_LANGUAGE_SELECTOR,
+  payload: value,
+});
+
+export const setLoading = (value) => ({
+  type: SET_LOADING,
   payload: value,
 });
