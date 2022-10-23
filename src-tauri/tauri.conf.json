@@ -42,7 +42,7 @@
         "signingIdentity": null
       },
       "resources": [],
-      "shortDescription": "",
+      "shortDescription": "Generate passwords with ease",
       "targets": "all",
       "windows": {
         "certificateThumbprint": null,
@@ -62,7 +62,7 @@
         "height": 600,
         "resizable": true,
         "title": "Advanced PassGen",
-        "width": 950
+        "width": 1000
       }
     ]
   }
