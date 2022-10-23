@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import Toolbar from '@mui/material/Toolbar';
@@ -23,105 +23,184 @@ const drawerWidth = 220;
 
 const ClippedDrawer = () => {
   const [state, d1] = useContext(MainContext);
+
   const { languageIndex, pageIndex } = state;
   const language = state.languages[languageIndex];
+
+  const [textVisible, setTextVisible] = useState(false);
+
   const navigate = useNavigate();
 
   return (
     <Drawer
       variant="permanent"
       sx={{
-        width: drawerWidth,
+        width: textVisible ? drawerWidth : 50,
         flexShrink: 0,
-        '& .MuiDrawer-paper': { width: drawerWidth, boxSizing: 'border-box' },
+        whiteSpace: textVisible ? null : 'nowrap',
+        '& .MuiDrawer-paper': { width: textVisible ? drawerWidth : null, boxSizing: 'border-box' },
       }}
     >
       <Toolbar />
-      <Box sx={{ overflow: 'auto' }}>
+      <Box
+        sx={{ overflow: 'auto' }}
+        onMouseEnter={() => setTextVisible(true)}
+        onMouseLeave={() => setTextVisible(false)}
+      >
         <List>
-          <ListItem disablePadding>
+          <ListItem disablePadding sx={{ display: 'block' }}>
             <ListItemButton
               selected={pageIndex === 0}
               onClick={() => navigate('/')}
+              sx={{
+                minHeight: 48,
+                justifyContent: textVisible ? 'initial' : 'center',
+                px: 2.5,
+              }}
             >
-              <ListItemIcon>
+              <ListItemIcon
+                sx={{
+                  minWidth: textVisible ? null : 0,
+                  mr: textVisible ? null : 'auto',
+                }}
+              >
                 <HomeIcon />
               </ListItemIcon>
-              <ListItemText primary={language.general} />
+              {textVisible ? <ListItemText primary={language.general} /> : null}
             </ListItemButton>
           </ListItem>
-          <ListItem disablePadding>
+          <ListItem disablePadding sx={{ display: textVisible ? 'block' : null }}>
             <ListItemButton
               selected={pageIndex === 1}
               onClick={() => navigate('/advanced')}
+              sx={{
+                minHeight: 48,
+                justifyContent: textVisible ? 'initial' : 'center',
+                px: 2.5,
+              }}
             >
-              <ListItemIcon>
+              <ListItemIcon
+                sx={{
+                  minWidth: textVisible ? null : 0,
+                  mr: textVisible ? null : 'auto',
+                }}
+              >
                 <BuildIcon />
               </ListItemIcon>
-              <ListItemText primary={language.advanced} />
+              {textVisible ? <ListItemText primary={language.advanced} /> : null}
             </ListItemButton>
           </ListItem>
-          <ListItem disablePadding>
+          <ListItem disablePadding sx={{ display: textVisible ? 'block' : null }}>
             <ListItemButton
               selected={pageIndex === 2}
               onClick={() => navigate('/generate')}
+              sx={{
+                minHeight: 48,
+                justifyContent: textVisible ? 'initial' : 'center',
+                px: 2.5,
+              }}
             >
-              <ListItemIcon>
+              <ListItemIcon
+                sx={{
+                  minWidth: textVisible ? null : 0,
+                  mr: textVisible ? null : 'auto',
+                }}
+              >
                 <ListIcon />
               </ListItemIcon>
-              <ListItemText primary={language.list} />
+              {textVisible ? <ListItemText primary={language.list} /> : null}
             </ListItemButton>
           </ListItem>
         </List>
         <Divider />
         <List>
-          <ListItem disablePadding>
+          <ListItem disablePadding sx={{ display: textVisible ? 'block' : null }}>
             <ListItemButton
               selected={pageIndex === 3}
               onClick={() => navigate('/advisor')}
+              sx={{
+                minHeight: 48,
+                justifyContent: textVisible ? 'initial' : 'center',
+                px: 2.5,
+              }}
             >
-              <ListItemIcon>
+              <ListItemIcon
+                sx={{
+                  minWidth: textVisible ? null : 0,
+                  mr: textVisible ? null : 'auto',
+                }}
+              >
                 <LightbulbIcon />
               </ListItemIcon>
-              <ListItemText primary={language.advisor} />
+              {textVisible ? <ListItemText primary={language.advisor} /> : null}
             </ListItemButton>
           </ListItem>
         </List>
         <Divider />
         <List>
-          <ListItem disablePadding>
+          <ListItem disablePadding sx={{ display: textVisible ? 'block' : null }}>
             <ListItemButton
               selected={pageIndex === 4}
               onClick={() => navigate('/settings')}
+              sx={{
+                minHeight: 48,
+                justifyContent: textVisible ? 'initial' : 'center',
+                px: 2.5,
+              }}
             >
-              <ListItemIcon>
+              <ListItemIcon
+                sx={{
+                  minWidth: textVisible ? null : 0,
+                  mr: textVisible ? null : 'auto',
+                }}
+              >
                 <SettingsIcon />
               </ListItemIcon>
-              <ListItemText primary={language.settings} />
+              {textVisible ? <ListItemText primary={language.settings} /> : null}
             </ListItemButton>
           </ListItem>
         </List>
         <Divider />
         <List>
-          <ListItem disablePadding>
+          <ListItem disablePadding sx={{ display: textVisible ? 'block' : null }}>
             <ListItemButton
               onClick={() => d1(openWebSite('https://codedead.com/donate'))}
+              sx={{
+                minHeight: 48,
+                justifyContent: textVisible ? 'initial' : 'center',
+                px: 2.5,
+              }}
             >
-              <ListItemIcon>
+              <ListItemIcon
+                sx={{
+                  minWidth: textVisible ? null : 0,
+                  mr: textVisible ? null : 'auto',
+                }}
+              >
                 <AttachMoneyIcon />
               </ListItemIcon>
-              <ListItemText primary={language.donate} />
+              {textVisible ? <ListItemText primary={language.donate} /> : null}
             </ListItemButton>
           </ListItem>
-          <ListItem disablePadding>
+          <ListItem disablePadding sx={{ display: textVisible ? 'block' : null }}>
             <ListItemButton
               selected={pageIndex === 5}
               onClick={() => navigate('/about')}
+              sx={{
+                minHeight: 48,
+                justifyContent: textVisible ? 'initial' : 'center',
+                px: 2.5,
+              }}
             >
-              <ListItemIcon>
+              <ListItemIcon
+                sx={{
+                  minWidth: textVisible ? null : 0,
+                  mr: textVisible ? null : 'auto',
+                }}
+              >
                 <InfoIcon />
               </ListItemIcon>
-              <ListItemText primary={language.about} />
+              {textVisible ? <ListItemText primary={language.about} /> : null}
             </ListItemButton>
           </ListItem>
         </List>
