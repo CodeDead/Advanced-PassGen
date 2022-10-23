@@ -19,7 +19,7 @@
     },
     "bundle": {
       "active": true,
-      "category": "DeveloperTool",
+      "category": "Utility",
       "copyright": "Copyright © 2022 CodeDead",
       "deb": {
         "depends": []
@@ -33,7 +33,7 @@
         "icons/icon.ico"
       ],
       "identifier": "com.codedead.advancedpassgen",
-      "longDescription": "",
+      "longDescription": "Advanced PassGen is a free and open-source application that can help you generate passwords and export them",
       "macOS": {
         "entitlements": null,
         "exceptionDomain": "",
