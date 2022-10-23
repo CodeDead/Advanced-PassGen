@@ -15,6 +15,9 @@ import {
 } from './Actions/actionTypes';
 
 const PasswordReducer = (state, action) => {
+  if (!action || !action.type) {
+    return state;
+  }
   switch (action.type) {
     case SET_PASSWORD_LENGTH_MIN:
       if (parseFloat(action.payload) < 1) return state;

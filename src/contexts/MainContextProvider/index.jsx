@@ -28,6 +28,7 @@ const initState = {
   update: null,
   error: null,
   languageSelector,
+  loading: false,
 };
 
 export const MainContext = createContext(initState);

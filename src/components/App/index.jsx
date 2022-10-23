@@ -16,7 +16,9 @@ import ThemeSelector from '../../utils/ThemeSelector';
 import TopBar from '../TopBar';
 import ClippedDrawer from '../ClippedDrawer';
 import UpdateDialog from '../UpdateDialog';
-import { openWebSite, setError, setUpdate } from '../../reducers/MainReducer/Actions';
+import {
+  openWebSite, setError, setLoading, setUpdate,
+} from '../../reducers/MainReducer/Actions';
 import Updater from '../../utils/Updater';
 import AlertDialog from '../AlertDialog';
 import packageJson from '../../../package.json';
@@ -33,10 +35,9 @@ const NotFound = lazy(() => import('../../routes/NotFound'));
 const App = () => {
   const [state, d1] = useContext(MainContext);
   const {
-    themeIndex, themeType, update, languageIndex, autoUpdate, error,
+    themeIndex, themeType, update, languageIndex, autoUpdate, error, loading,
   } = state;
 
-  const [loading, setLoading] = useState(false);
   const [snackOpen, setSnackOpen] = useState(false);
   const language = state.languages[languageIndex];
 
@@ -82,7 +83,7 @@ const App = () => {
         d1(setError(e));
       })
       .finally(() => {
-        setLoading(false);
+        d1(setLoading(false));
       });
   };
 
@@ -121,15 +122,17 @@ const App = () => {
           <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
             <Toolbar />
             <Suspense fallback={<LoadingBar />}>
-              <Routes>
-                <Route exact path="/" element={<Home />} />
-                <Route exact path="/advanced" element={<Advanced />} />
-                <Route exact path="/generate" element={<Generate />} />
-                <Route exact path="/advisor" element={<Advisor />} />
-                <Route exact path="/settings" element={<Settings />} />
-                <Route exact path="/about" element={<About />} />
-                <Route path="*" element={<NotFound />} />
-              </Routes>
+              {loading ? <LoadingBar /> : (
+                <Routes>
+                  <Route exact path="/" element={<Home />} />
+                  <Route exact path="/advanced" element={<Advanced />} />
+                  <Route exact path="/generate" element={<Generate />} />
+                  <Route exact path="/advisor" element={<Advisor />} />
+                  <Route exact path="/settings" element={<Settings />} />
+                  <Route exact path="/about" element={<About />} />
+                  <Route path="*" element={<NotFound />} />
+                </Routes>
+              )}
             </Suspense>
           </Box>
         </Box>

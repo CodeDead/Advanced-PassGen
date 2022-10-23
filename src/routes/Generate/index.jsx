@@ -8,9 +8,9 @@ import { save } from '@tauri-apps/api/dialog';
 import { invoke } from '@tauri-apps/api/tauri';
 import { MainContext } from '../../contexts/MainContextProvider';
 import { PasswordContext } from '../../contexts/PasswordContextProvider';
-import { setError, setPageIndex } from '../../reducers/MainReducer/Actions';
+import { setError, setLoading, setPageIndex } from '../../reducers/MainReducer/Actions';
 import PasswordStrength from '../../utils/PasswordStrength';
-import { setPasswords } from '../../reducers/PasswordReducer/Actions';
+import { generatePasswordArray, setPasswords } from '../../reducers/PasswordReducer/Actions';
 import MuiVirtualizedTable from '../../components/MuiVirtualizedTable';
 import ExportDialog from '../../components/ExportDialog';
 
@@ -104,12 +104,16 @@ const Generate = () => {
       return;
     }
 
-    worker.PasswordGenerator(min, max, simpleCharacterSet, amount, allowDuplicates)
+    d1(setLoading(true));
+    generatePasswordArray(min, max, simpleCharacterSet, amount, allowDuplicates, worker)
       .then((res) => {
         d2(setPasswords(res));
       })
-      .catch((e) => {
-        d1(setError(e));
+      .catch((err) => {
+        d1(setError(err));
+      })
+      .finally(() => {
+        d1(setLoading(false));
       });
   };
 

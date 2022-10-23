@@ -52,7 +52,7 @@ export function PasswordGenerator(minLength, maxLength, characterSet, amount, al
       // We've reached the end of the line
       if (canContinue === false && allowDuplicates === false
         && passwordArray.length === maxCount) {
-        break;
+        return passwordArray;
       }
     }
   }
