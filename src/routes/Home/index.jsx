@@ -25,6 +25,7 @@ import {
   setSpaces,
   setSpecialCharacters,
 } from '../../reducers/PasswordReducer/Actions';
+import LoadingBar from '../../components/LoadingBar';
 
 const createWorker = createWorkerFactory(() => import('../../utils/PasswordGenerator/index'));
 
@@ -32,7 +33,7 @@ const Home = () => {
   const [state, d1] = useContext(MainContext);
   const [state2, d2] = useContext(PasswordContext);
 
-  const { languageIndex } = state;
+  const { languageIndex, loading } = state;
   const language = state.languages[languageIndex];
 
   const {
@@ -101,6 +102,12 @@ const Home = () => {
   useEffect(() => {
     d1(setPageIndex(0));
   }, []);
+
+  if (loading) {
+    return (
+      <LoadingBar />
+    );
+  }
 
   return (
     <Container>

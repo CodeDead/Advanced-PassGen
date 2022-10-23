@@ -19,6 +19,7 @@ import {
   setCharacterSet, setPasswords,
   setUseAdvanced,
 } from '../../reducers/PasswordReducer/Actions';
+import LoadingBar from '../../components/LoadingBar';
 
 const createWorker = createWorkerFactory(() => import('../../utils/PasswordGenerator/index'));
 
@@ -26,7 +27,7 @@ const Advanced = () => {
   const [state1, d1] = useContext(MainContext);
   const [state2, d2] = useContext(PasswordContext);
 
-  const { languageIndex } = state1;
+  const { languageIndex, loading } = state1;
   const {
     characterSet, useAdvanced, allowDuplicates, smallLetters, capitalLetters, spaces,
     specialCharacters, numbers, brackets, min, max, amount,
@@ -85,6 +86,12 @@ const Advanced = () => {
   useEffect(() => {
     d1(setPageIndex(1));
   }, []);
+
+  if (loading) {
+    return (
+      <LoadingBar />
+    );
+  }
 
   return (
     <Container>

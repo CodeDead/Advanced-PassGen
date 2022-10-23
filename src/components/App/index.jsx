@@ -122,17 +122,15 @@ const App = () => {
           <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
             <Toolbar />
             <Suspense fallback={<LoadingBar />}>
-              {loading ? <LoadingBar /> : (
-                <Routes>
-                  <Route exact path="/" element={<Home />} />
-                  <Route exact path="/advanced" element={<Advanced />} />
-                  <Route exact path="/generate" element={<Generate />} />
-                  <Route exact path="/advisor" element={<Advisor />} />
-                  <Route exact path="/settings" element={<Settings />} />
-                  <Route exact path="/about" element={<About />} />
-                  <Route path="*" element={<NotFound />} />
-                </Routes>
-              )}
+              <Routes>
+                <Route exact path="/" element={<Home />} />
+                <Route exact path="/advanced" element={<Advanced />} />
+                <Route exact path="/generate" element={<Generate />} />
+                <Route exact path="/advisor" element={<Advisor />} />
+                <Route exact path="/settings" element={<Settings />} />
+                <Route exact path="/about" element={<About />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
             </Suspense>
           </Box>
         </Box>

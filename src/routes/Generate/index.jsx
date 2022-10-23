@@ -13,6 +13,7 @@ import PasswordStrength from '../../utils/PasswordStrength';
 import { generatePasswordArray, setPasswords } from '../../reducers/PasswordReducer/Actions';
 import MuiVirtualizedTable from '../../components/MuiVirtualizedTable';
 import ExportDialog from '../../components/ExportDialog';
+import LoadingBar from '../../components/LoadingBar';
 
 const classes = {
   flexContainer: 'ReactVirtualizedDemo-flexContainer',
@@ -61,7 +62,7 @@ const Generate = () => {
   const [state1, d1] = useContext(MainContext);
   const [state2, d2] = useContext(PasswordContext);
 
-  const { languageIndex } = state1;
+  const { languageIndex, loading } = state1;
   const language = state1.languages[languageIndex];
 
   const [exportOpen, setExportOpen] = useState(false);
@@ -245,6 +246,12 @@ const Generate = () => {
   const passwordRows = [];
   if (passwords && passwords.length > 0) {
     passwords.forEach((e) => passwordRows.push(createData(e, e.length, PasswordStrength(e))));
+  }
+
+  if (loading) {
+    return (
+      <LoadingBar />
+    );
   }
 
   return (
