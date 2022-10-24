@@ -22,7 +22,7 @@ import { openWebSite } from '../../reducers/MainReducer/Actions';
 const drawerWidth = 220;
 
 const ClippedDrawer = () => {
-  const [state, d1] = useContext(MainContext);
+  const [state] = useContext(MainContext);
 
   const { languageIndex, pageIndex } = state;
   const language = state.languages[languageIndex];
@@ -164,7 +164,7 @@ const ClippedDrawer = () => {
         <List>
           <ListItem disablePadding sx={{ display: textVisible ? 'block' : null }}>
             <ListItemButton
-              onClick={() => d1(openWebSite('https://codedead.com/donate'))}
+              onClick={() => openWebSite('https://codedead.com/donate')}
               sx={{
                 minHeight: 48,
                 justifyContent: textVisible ? 'initial' : 'center',

@@ -34,7 +34,7 @@ const About = () => {
         variant="contained"
         style={{ float: 'left' }}
         sx={{ mt: 2 }}
-        onClick={() => d1(openWebSite('https://codedead.com/Software/Advanced%20PassGen/gpl.pdf'))}
+        onClick={() => openWebSite('https://codedead.com/Software/Advanced%20PassGen/gpl.pdf')}
       >
         {language.license}
       </Button>
@@ -42,7 +42,7 @@ const About = () => {
         variant="contained"
         style={{ float: 'right' }}
         sx={{ mt: 2 }}
-        onClick={() => d1(openWebSite('https://codedead.com/'))}
+        onClick={() => openWebSite('https://codedead.com/')}
       >
         {language.website}
       </Button>
