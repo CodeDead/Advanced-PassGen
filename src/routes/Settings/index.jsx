@@ -172,6 +172,7 @@ const Settings = () => {
                     <MenuItem value={1}>English</MenuItem>
                     <MenuItem value={2}>Français</MenuItem>
                     <MenuItem value={3}>Nederlands</MenuItem>
+                    <MenuItem value={4}>Русский</MenuItem>
                   </Select>
                 </FormControl>
               </FormGroup>

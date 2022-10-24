@@ -51,14 +51,6 @@ const App = () => {
   });
 
   /**
-   * Open a website
-   * @param website The website that needs to be opened
-   */
-  const openWebsite = (website) => {
-    d1(openWebSite(website));
-  };
-
-  /**
    * Check for updates
    */
   const checkForUpdates = () => {
@@ -148,7 +140,7 @@ const App = () => {
           <UpdateDialog
             downloadUrl={update.updateUrl}
             infoUrl={update.infoUrl}
-            openWebsite={openWebsite}
+            openWebsite={openWebSite}
             newVersion={update.version}
             onClose={() => d1(setUpdate(null))}
             updateAvailable={language.updateAvailable}

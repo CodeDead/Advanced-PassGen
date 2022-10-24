@@ -4,6 +4,7 @@ import enUs from '../../languages/en_us.json';
 import deDe from '../../languages/de_de.json';
 import frFr from '../../languages/fr_fr.json';
 import nlNl from '../../languages/nl_nl.json';
+import ruRu from '../../languages/ru_ru.json';
 
 const languageIndex = localStorage.languageIndex ? parseFloat(localStorage.languageIndex) : 1;
 const themeIndex = localStorage.themeIndex ? parseFloat(localStorage.themeIndex) : 0;
@@ -21,6 +22,7 @@ const initState = {
     enUs,
     frFr,
     nlNl,
+    ruRu,
   ],
   themeIndex,
   themeType,
