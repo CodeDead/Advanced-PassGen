@@ -3,6 +3,7 @@ import MainReducer from '../../reducers/MainReducer';
 import enUs from '../../languages/en_us.json';
 import deDe from '../../languages/de_de.json';
 import frFr from '../../languages/fr_fr.json';
+import jpJp from '../../languages/jp_jp.json';
 import nlNl from '../../languages/nl_nl.json';
 import ruRu from '../../languages/ru_ru.json';
 
@@ -21,6 +22,7 @@ const initState = {
     deDe,
     enUs,
     frFr,
+    jpJp,
     nlNl,
     ruRu,
   ],

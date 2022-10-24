@@ -106,11 +106,17 @@ const TopBar = () => {
                 onClick={() => changeLanguage(3)}
                 selected={languageIndex === 3}
               >
-                Nederlands
+                日本
               </MenuItem>
               <MenuItem
                 onClick={() => changeLanguage(4)}
                 selected={languageIndex === 4}
+              >
+                Nederlands
+              </MenuItem>
+              <MenuItem
+                onClick={() => changeLanguage(5)}
+                selected={languageIndex === 5}
               >
                 Русский
               </MenuItem>
