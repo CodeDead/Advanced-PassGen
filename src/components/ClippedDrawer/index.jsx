@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import Toolbar from '@mui/material/Toolbar';
@@ -24,12 +24,25 @@ const drawerWidth = 220;
 const ClippedDrawer = () => {
   const [state] = useContext(MainContext);
 
-  const { languageIndex, pageIndex } = state;
+  const { languageIndex, pageIndex, fixedMenu } = state;
   const language = state.languages[languageIndex];
 
-  const [textVisible, setTextVisible] = useState(false);
+  const [textVisible, setTextVisible] = useState(fixedMenu);
 
   const navigate = useNavigate();
+
+  /**
+   * Change the menu visibility
+   * @param visible True if the text should be visible, false otherwise
+   */
+  const changeTextMenuVisibility = (visible) => {
+    if (fixedMenu) return;
+    setTextVisible(visible);
+  };
+
+  useEffect(() => {
+    setTextVisible(fixedMenu);
+  }, [fixedMenu]);
 
   return (
     <Drawer
@@ -44,8 +57,8 @@ const ClippedDrawer = () => {
       <Toolbar />
       <Box
         sx={{ overflow: 'auto' }}
-        onMouseEnter={() => setTextVisible(true)}
-        onMouseLeave={() => setTextVisible(false)}
+        onMouseEnter={() => changeTextMenuVisibility(true)}
+        onMouseLeave={() => changeTextMenuVisibility(false)}
       >
         <List>
           <ListItem disablePadding sx={{ display: 'block' }}>
