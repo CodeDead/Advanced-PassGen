@@ -1,6 +1,6 @@
 # Advanced PassGen
 
-![Advanced PassGen](https://i.imgur.com/bVTaGO7.png)
+![Advanced PassGen](https://i.imgur.com/ci8x6rX.png)
 
 ![GitHub](https://img.shields.io/badge/language-JavaScript+Rust-green)
 ![GitHub](https://img.shields.io/github/license/CodeDead/Advanced-PassGen)
