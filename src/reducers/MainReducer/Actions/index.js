@@ -3,7 +3,10 @@ import {
   RESET_STATE,
   SET_AUTO_UPDATE,
   SET_ERROR,
+  SET_FIXED_MENU,
   SET_LANGUAGE_INDEX,
+  SET_LANGUAGE_SELECTOR,
+  SET_LOADING,
   SET_PAGE_INDEX,
   SET_THEME_INDEX,
   SET_THEME_TYPE,
@@ -60,4 +63,19 @@ export const setUpdate = (update) => ({
 export const setError = (error) => ({
   type: SET_ERROR,
   payload: error,
+});
+
+export const setLanguageSelector = (value) => ({
+  type: SET_LANGUAGE_SELECTOR,
+  payload: value,
+});
+
+export const setLoading = (value) => ({
+  type: SET_LOADING,
+  payload: value,
+});
+
+export const setFixedMenu = (value) => ({
+  type: SET_FIXED_MENU,
+  payload: value,
 });

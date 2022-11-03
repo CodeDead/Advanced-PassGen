@@ -77,5 +77,8 @@
   "notFound": "Il n'y a rien ici",
   "notFoundGoHome": "Retour à l'accueil ?",
   "home": "Accueil",
-  "ok": "OK"
+  "ok": "OK",
+  "downloadApp": "Télécharger l'application desktop",
+  "languageSelector": "Sélecteur de langue dans la barre du haut",
+  "fixedMenu": "Menu fixe"
 }

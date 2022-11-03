@@ -1,13 +1,13 @@
 {
   "name": "advanced-passgen",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "private": true,
   "dependencies": {
-    "@emotion/react": "^11.10.4",
-    "@emotion/styled": "^11.10.4",
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
     "@fontsource/roboto": "^4.5.8",
     "@mui/icons-material": "^5.10.9",
-    "@mui/material": "^5.10.9",
+    "@mui/material": "^5.10.12",
     "@shopify/react-web-worker": "^5.0.6",
     "@tauri-apps/api": "^1.1.0",
     "@testing-library/jest-dom": "^5.16.5",
@@ -16,10 +16,10 @@
     "clsx": "^1.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.4.2",
+    "react-router-dom": "^6.4.3",
     "react-scripts": "^5.0.1",
     "react-virtualized": "^9.22.3",
-    "web-vitals": "^3.0.3"
+    "web-vitals": "^3.0.4"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -50,7 +50,7 @@
   "devDependencies": {
     "@tauri-apps/cli": "^1.1.1",
     "cross-env": "^7.0.3",
-    "eslint": "^8.25.0",
+    "eslint": "^8.26.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jsx-a11y": "^6.6.1",

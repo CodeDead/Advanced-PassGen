@@ -34,7 +34,9 @@ import {
   resetState,
   setAutoUpdate,
   setError,
+  setFixedMenu,
   setLanguageIndex,
+  setLanguageSelector,
   setPageIndex,
   setThemeIndex,
   setThemeType,
@@ -53,6 +55,8 @@ const Settings = () => {
     themeType,
     languageIndex,
     autoUpdate,
+    languageSelector,
+    fixedMenu,
   } = state;
 
   const language = state.languages[languageIndex];
@@ -143,11 +147,31 @@ const Settings = () => {
                         onChange={(e) => d1(setAutoUpdate(e.target.checked))}
                         value="autoUpdate"
                       />
-                    )}
+                      )}
                     label={language.autoUpdate}
                   />
                 ) : null}
-                <FormControl variant="outlined" style={{ marginTop: 5 }}>
+                <FormControlLabel
+                  control={(
+                    <Checkbox
+                      checked={fixedMenu}
+                      onChange={(e) => d1(setFixedMenu(e.target.checked))}
+                      value="fixedMenu"
+                    />
+                  )}
+                  label={language.fixedMenu}
+                />
+                <FormControlLabel
+                  control={(
+                    <Checkbox
+                      checked={languageSelector}
+                      onChange={(e) => d1(setLanguageSelector(e.target.checked))}
+                      value="languageSelector"
+                    />
+                  )}
+                  label={language.languageSelector}
+                />
+                <FormControl variant="outlined" sx={{ mt: 2 }}>
                   <InputLabel id="language-label">{language.language}</InputLabel>
                   <Select
                     value={languageIndex}
@@ -156,9 +180,12 @@ const Settings = () => {
                     labelId="language-label"
                     label={language.language}
                   >
-                    <MenuItem value={0}>English</MenuItem>
-                    <MenuItem value={1}>Français</MenuItem>
-                    <MenuItem value={2}>Nederlands</MenuItem>
+                    <MenuItem value={0}>Deutsch</MenuItem>
+                    <MenuItem value={1}>English</MenuItem>
+                    <MenuItem value={2}>Français</MenuItem>
+                    <MenuItem value={3}>日本</MenuItem>
+                    <MenuItem value={4}>Nederlands</MenuItem>
+                    <MenuItem value={5}>Русский</MenuItem>
                   </Select>
                 </FormControl>
               </FormGroup>

@@ -2,7 +2,10 @@ import {
   RESET_STATE,
   SET_AUTO_UPDATE,
   SET_ERROR,
+  SET_FIXED_MENU,
   SET_LANGUAGE_INDEX,
+  SET_LANGUAGE_SELECTOR,
+  SET_LOADING,
   SET_PAGE_INDEX,
   SET_THEME_INDEX,
   SET_THEME_TYPE,
@@ -41,10 +44,12 @@ const MainReducer = (state, action) => {
       localStorage.clear();
       return {
         ...state,
-        languageIndex: 0,
+        languageIndex: 1,
         themeIndex: 0,
         themeType: 'light',
         autoUpdate: true,
+        languageSelector: true,
+        fixedMenu: false,
       };
     case SET_AUTO_UPDATE:
       localStorage.autoUpdate = action.payload;
@@ -57,10 +62,27 @@ const MainReducer = (state, action) => {
         ...state,
         update: action.payload,
       };
+    case SET_LANGUAGE_SELECTOR:
+      localStorage.languageSelector = action.payload;
+      return {
+        ...state,
+        languageSelector: action.payload,
+      };
+    case SET_LOADING:
+      return {
+        ...state,
+        loading: action.payload,
+      };
     case SET_ERROR:
       return {
         ...state,
         error: action.payload,
+      };
+    case SET_FIXED_MENU:
+      localStorage.fixedMenu = action.payload;
+      return {
+        ...state,
+        fixedMenu: action.payload,
       };
     default:
       return state;

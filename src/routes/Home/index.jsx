@@ -11,9 +11,10 @@ import TextField from '@mui/material/TextField';
 import { useNavigate } from 'react-router-dom';
 import { createWorkerFactory, useWorker } from '@shopify/react-web-worker';
 import { MainContext } from '../../contexts/MainContextProvider';
-import { setError, setPageIndex } from '../../reducers/MainReducer/Actions';
+import { setError, setLoading, setPageIndex } from '../../reducers/MainReducer/Actions';
 import { PasswordContext } from '../../contexts/PasswordContextProvider';
 import {
+  generatePasswordArray,
   setBrackets,
   setCapitalLetters,
   setNumbers,
@@ -24,6 +25,7 @@ import {
   setSpaces,
   setSpecialCharacters,
 } from '../../reducers/PasswordReducer/Actions';
+import LoadingBar from '../../components/LoadingBar';
 
 const createWorker = createWorkerFactory(() => import('../../utils/PasswordGenerator/index'));
 
@@ -31,7 +33,7 @@ const Home = () => {
   const [state, d1] = useContext(MainContext);
   const [state2, d2] = useContext(PasswordContext);
 
-  const { languageIndex } = state;
+  const { languageIndex, loading } = state;
   const language = state.languages[languageIndex];
 
   const {
@@ -83,19 +85,29 @@ const Home = () => {
       return;
     }
 
-    worker.PasswordGenerator(min, max, simpleCharacterSet, amount, allowDuplicates)
+    d1(setLoading(true));
+    generatePasswordArray(min, max, simpleCharacterSet, amount, allowDuplicates, worker)
       .then((res) => {
         d2(setPasswords(res));
         navigate('/generate');
       })
-      .catch((e) => {
-        d1(setError(e));
+      .catch((err) => {
+        d1(setError(err));
+      })
+      .finally(() => {
+        d1(setLoading(false));
       });
   };
 
   useEffect(() => {
     d1(setPageIndex(0));
   }, []);
+
+  if (loading) {
+    return (
+      <LoadingBar />
+    );
+  }
 
   return (
     <Container>

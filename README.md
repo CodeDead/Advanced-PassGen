@@ -1,6 +1,6 @@
 # Advanced PassGen
 
-![Advanced PassGen](https://i.imgur.com/bVTaGO7.png)
+![Advanced PassGen](https://i.imgur.com/ci8x6rX.png)
 
 ![GitHub](https://img.shields.io/badge/language-JavaScript+Rust-green)
 ![GitHub](https://img.shields.io/github/license/CodeDead/Advanced-PassGen)
@@ -53,7 +53,7 @@ yarn tauri build
 
 ### macOS
 
-#### DMG
+#### dmg
 
 You can create a macOS build by running the `yarn tauri build` command on a macOS host:
 ```shell
@@ -84,6 +84,10 @@ The theme used in this application is [MUI](https://mui.com/).
 ### Images
 
 The application icon was provided by [RemixIcon](https://remixicon.com/).
+
+### Translations
+
+* German: [uDEV2019](https://github.com/uDEV2019)
 
 ## About
 

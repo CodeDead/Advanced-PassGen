@@ -7,12 +7,18 @@ import Toolbar from '@mui/material/Toolbar';
 import Box from '@mui/material/Box';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { type } from '@tauri-apps/api/os';
+import Alert from '@mui/material/Alert';
+import Snackbar from '@mui/material/Snackbar';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
 import { MainContext } from '../../contexts/MainContextProvider';
 import ThemeSelector from '../../utils/ThemeSelector';
 import TopBar from '../TopBar';
 import ClippedDrawer from '../ClippedDrawer';
 import UpdateDialog from '../UpdateDialog';
-import { openWebSite, setError, setUpdate } from '../../reducers/MainReducer/Actions';
+import {
+  openWebSite, setError, setLoading, setUpdate,
+} from '../../reducers/MainReducer/Actions';
 import Updater from '../../utils/Updater';
 import AlertDialog from '../AlertDialog';
 import packageJson from '../../../package.json';
@@ -29,10 +35,10 @@ const NotFound = lazy(() => import('../../routes/NotFound'));
 const App = () => {
   const [state, d1] = useContext(MainContext);
   const {
-    themeIndex, themeType, update, languageIndex, autoUpdate, error,
+    themeIndex, themeType, update, languageIndex, autoUpdate, error, loading,
   } = state;
 
-  const [loading, setLoading] = useState(false);
+  const [snackOpen, setSnackOpen] = useState(false);
   const language = state.languages[languageIndex];
 
   const color = ThemeSelector(themeIndex);
@@ -43,14 +49,6 @@ const App = () => {
       mode: themeType,
     },
   });
-
-  /**
-   * Open a website
-   * @param website The website that needs to be opened
-   */
-  const openWebsite = (website) => {
-    d1(openWebSite(website));
-  };
 
   /**
    * Check for updates
@@ -77,7 +75,7 @@ const App = () => {
         d1(setError(e));
       })
       .finally(() => {
-        setLoading(false);
+        d1(setLoading(false));
       });
   };
 
@@ -88,10 +86,21 @@ const App = () => {
     d1(setError(null));
   };
 
+  /**
+   * Close the snack bar
+   */
+  const closeSnack = () => {
+    setSnackOpen(false);
+  };
+
   useEffect(() => {
     // eslint-disable-next-line no-underscore-dangle
-    if (autoUpdate && window.__TAURI__) {
-      checkForUpdates();
+    if (window.__TAURI__) {
+      if (autoUpdate) {
+        checkForUpdates();
+      }
+    } else {
+      setSnackOpen(true);
     }
   }, []);
 
@@ -131,7 +140,7 @@ const App = () => {
           <UpdateDialog
             downloadUrl={update.updateUrl}
             infoUrl={update.infoUrl}
-            openWebsite={openWebsite}
+            openWebsite={openWebSite}
             newVersion={update.version}
             onClose={() => d1(setUpdate(null))}
             updateAvailable={language.updateAvailable}
@@ -141,6 +150,20 @@ const App = () => {
             cancel={language.cancel}
           />
         ) : null}
+        <Snackbar open={snackOpen} onClose={closeSnack}>
+          <Alert onClose={closeSnack} severity="info" sx={{ width: '100%' }}>
+            <Typography>
+              {language.downloadApp}
+            </Typography>
+            <Button
+              onClick={() => window.open('https://codedead.com/software/advanced-passgen')}
+              size="small"
+              color="secondary"
+            >
+              {language.download}
+            </Button>
+          </Alert>
+        </Snackbar>
       </BrowserRouter>
     </ThemeProvider>
   );

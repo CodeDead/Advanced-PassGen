@@ -77,5 +77,8 @@
   "notFound": "Er is hier niets te zien.",
   "notFoundGoHome": "Naar de startpagina gaan?",
   "home": "Startpagina",
-  "ok": "Oké"
+  "ok": "Oké",
+  "downloadApp": "Download de desktop applicatie",
+  "languageSelector": "Taalkiezer in de bovenste balk",
+  "fixedMenu": "Vaste menu balk"
 }

@@ -77,5 +77,8 @@
   "notFound": "There's really nothing here except for some top secret stuff (maybe).",
   "notFoundGoHome": "Would you like to go back to the home page?",
   "home": "Home",
-  "ok": "OK"
+  "ok": "OK",
+  "downloadApp": "Download the desktop application",
+  "languageSelector": "Language selector in the top bar",
+  "fixedMenu": "Fixed menu"
 }

@@ -10,14 +10,16 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import FormGroup from '@mui/material/FormGroup';
 import { createWorkerFactory, useWorker } from '@shopify/react-web-worker';
-import { setError, setPageIndex } from '../../reducers/MainReducer/Actions';
+import { setError, setLoading, setPageIndex } from '../../reducers/MainReducer/Actions';
 import { MainContext } from '../../contexts/MainContextProvider';
 import { PasswordContext } from '../../contexts/PasswordContextProvider';
 import {
+  generatePasswordArray,
   setAllowDuplicates,
   setCharacterSet, setPasswords,
   setUseAdvanced,
 } from '../../reducers/PasswordReducer/Actions';
+import LoadingBar from '../../components/LoadingBar';
 
 const createWorker = createWorkerFactory(() => import('../../utils/PasswordGenerator/index'));
 
@@ -25,7 +27,7 @@ const Advanced = () => {
   const [state1, d1] = useContext(MainContext);
   const [state2, d2] = useContext(PasswordContext);
 
-  const { languageIndex } = state1;
+  const { languageIndex, loading } = state1;
   const {
     characterSet, useAdvanced, allowDuplicates, smallLetters, capitalLetters, spaces,
     specialCharacters, numbers, brackets, min, max, amount,
@@ -67,19 +69,29 @@ const Advanced = () => {
       return;
     }
 
-    worker.PasswordGenerator(min, max, simpleCharacterSet, amount, allowDuplicates)
+    d1(setLoading(true));
+    generatePasswordArray(min, max, simpleCharacterSet, amount, allowDuplicates, worker)
       .then((res) => {
         d2(setPasswords(res));
         navigate('/generate');
       })
-      .catch((e) => {
-        d1(setError(e));
+      .catch((err) => {
+        d1(setError(err));
+      })
+      .finally(() => {
+        d1(setLoading(false));
       });
   };
 
   useEffect(() => {
     d1(setPageIndex(1));
   }, []);
+
+  if (loading) {
+    return (
+      <LoadingBar />
+    );
+  }
 
   return (
     <Container>

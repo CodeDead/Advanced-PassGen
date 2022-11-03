@@ -6,3 +6,6 @@ export const SET_PAGE_INDEX = 'SET_PAGE_INDEX';
 export const SET_AUTO_UPDATE = 'SET_AUTO_UPDATE';
 export const SET_UPDATE = 'SET_UPDATE';
 export const SET_ERROR = 'SET_ERROR';
+export const SET_LANGUAGE_SELECTOR = 'SET_LANGUAGE_SELECTOR';
+export const SET_LOADING = 'SET_LOADING';
+export const SET_FIXED_MENU = 'SET_FIXED_MENU';
