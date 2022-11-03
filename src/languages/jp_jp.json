@@ -79,5 +79,6 @@
   "home": "家",
   "ok": "わかった",
   "downloadApp": "デスクトップ アプリケーションをダウンロードする",
-  "languageSelector": "トップバーの言語セレクター"
+  "languageSelector": "トップバーの言語セレクター",
+  "fixedMenu": "固定メニュー"
 }

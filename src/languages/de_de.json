@@ -79,5 +79,6 @@
   "home": "Startseite",
   "ok": "OK",
   "downloadApp": "Laden Sie die Desktop-Anwendung herunter",
-  "languageSelector": "Sprachauswahl im Menü"
+  "languageSelector": "Sprachauswahl im Menü",
+  "fixedMenu": "Festes Menü"
 }

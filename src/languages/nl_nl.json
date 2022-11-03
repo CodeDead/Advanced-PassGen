@@ -79,5 +79,6 @@
   "home": "Startpagina",
   "ok": "Oké",
   "downloadApp": "Download de desktop applicatie",
-  "languageSelector": "Taalkiezer in de bovenste balk"
+  "languageSelector": "Taalkiezer in de bovenste balk",
+  "fixedMenu": "Vaste menu balk"
 }

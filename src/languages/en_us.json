@@ -79,5 +79,6 @@
   "home": "Home",
   "ok": "OK",
   "downloadApp": "Download the desktop application",
-  "languageSelector": "Language selector in the top bar"
+  "languageSelector": "Language selector in the top bar",
+  "fixedMenu": "Fixed menu"
 }

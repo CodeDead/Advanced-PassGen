@@ -34,6 +34,7 @@ import {
   resetState,
   setAutoUpdate,
   setError,
+  setFixedMenu,
   setLanguageIndex,
   setLanguageSelector,
   setPageIndex,
@@ -55,6 +56,7 @@ const Settings = () => {
     languageIndex,
     autoUpdate,
     languageSelector,
+    fixedMenu,
   } = state;
 
   const language = state.languages[languageIndex];
@@ -145,10 +147,20 @@ const Settings = () => {
                         onChange={(e) => d1(setAutoUpdate(e.target.checked))}
                         value="autoUpdate"
                       />
-                    )}
+                      )}
                     label={language.autoUpdate}
                   />
                 ) : null}
+                <FormControlLabel
+                  control={(
+                    <Checkbox
+                      checked={fixedMenu}
+                      onChange={(e) => d1(setFixedMenu(e.target.checked))}
+                      value="fixedMenu"
+                    />
+                  )}
+                  label={language.fixedMenu}
+                />
                 <FormControlLabel
                   control={(
                     <Checkbox

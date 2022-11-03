@@ -2,6 +2,7 @@ import {
   RESET_STATE,
   SET_AUTO_UPDATE,
   SET_ERROR,
+  SET_FIXED_MENU,
   SET_LANGUAGE_INDEX,
   SET_LANGUAGE_SELECTOR,
   SET_LOADING,
@@ -48,6 +49,7 @@ const MainReducer = (state, action) => {
         themeType: 'light',
         autoUpdate: true,
         languageSelector: true,
+        fixedMenu: false,
       };
     case SET_AUTO_UPDATE:
       localStorage.autoUpdate = action.payload;
@@ -75,6 +77,12 @@ const MainReducer = (state, action) => {
       return {
         ...state,
         error: action.payload,
+      };
+    case SET_FIXED_MENU:
+      localStorage.fixedMenu = action.payload;
+      return {
+        ...state,
+        fixedMenu: action.payload,
       };
     default:
       return state;
