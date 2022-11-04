@@ -186,6 +186,7 @@ const Settings = () => {
                     <MenuItem value={3}>日本</MenuItem>
                     <MenuItem value={4}>Nederlands</MenuItem>
                     <MenuItem value={5}>Русский</MenuItem>
+                    <MenuItem value={6}>中文（简体）</MenuItem>
                   </Select>
                 </FormControl>
               </FormGroup>
