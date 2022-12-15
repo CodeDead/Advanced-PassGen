@@ -3874,7 +3874,6 @@ __metadata:
     "@testing-library/jest-dom": ^5.16.5
     "@testing-library/react": ^13.4.0
     "@testing-library/user-event": ^14.4.3
-    clsx: ^1.2.1
     cross-env: ^7.0.3
     eslint: ^8.29.0
     eslint-config-airbnb: ^19.0.4
@@ -8860,11 +8859,11 @@ __metadata:
   linkType: hard
 
 "language-tags@npm:^1.0.5":
-  version: 1.0.6
-  resolution: "language-tags@npm:1.0.6"
+  version: 1.0.7
+  resolution: "language-tags@npm:1.0.7"
   dependencies:
     language-subtag-registry: ^0.3.20
-  checksum: dc2927f7ce8f108ffd1d02ae0284b78ff6b4e03e631642794fa79d554d77b653f3f64cd1fb83acc9f3746ef7c18d43241b97feb712c05cc26e25aacd68f7a006
+  checksum: 2f1ca8ffe4e549893817456ca1974dbff0f3cc8aea4e123e666dc6df85f3cf2d828b8143084388a7e2bec15fac77b7194151e43b5b32e63526dafe17a08a9fd0
   languageName: node
   linkType: hard
 

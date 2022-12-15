@@ -1,5 +1,4 @@
 import React from 'react';
-import clsx from 'clsx';
 import TableCell from '@mui/material/TableCell';
 import { AutoSizer, Column, Table } from 'react-virtualized';
 
@@ -15,19 +14,25 @@ const MuiVirtualizedTable = (props) => {
   const getRowClassName = ({ index }) => {
     const { onRowClick } = props;
 
-    return clsx(classes.tableRow, classes.flexContainer, {
-      [classes.tableRowHover]: index !== -1 && onRowClick != null,
-    });
+    let className = `${classes.tableRow} ${classes.flexContainer}`;
+    if (index !== -1 && onRowClick != null) {
+      className += ` ${classes.tableRowHover}`;
+    }
+
+    return className;
   };
 
   const cellRenderer = ({ cellData }) => {
     const { rowHeight, onRowClick } = props;
+    let className = `${classes.tableCell} ${classes.flexContainer}`;
+    if (onRowClick == null) {
+      className += ` ${classes.noClick}`;
+    }
+
     return (
       <TableCell
         component="div"
-        className={clsx(classes.tableCell, classes.flexContainer, {
-          [classes.noClick]: onRowClick == null,
-        })}
+        className={className}
         variant="body"
         style={{ height: rowHeight || 48 }}
         align="left"
@@ -43,7 +48,7 @@ const MuiVirtualizedTable = (props) => {
     return (
       <TableCell
         component="div"
-        className={clsx(classes.tableCell, classes.flexContainer, classes.noClick)}
+        className={`${classes.tableCell} ${classes.flexContainer} ${classes.noClick}`}
         variant="head"
         style={{ height: headerHeight || 48 }}
         align={columns[columnIndex].numeric || false ? 'right' : 'left'}
