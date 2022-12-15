@@ -17,7 +17,7 @@ import TopBar from '../TopBar';
 import ClippedDrawer from '../ClippedDrawer';
 import UpdateDialog from '../UpdateDialog';
 import {
-  openWebSite, setError, setLoading, setUpdate,
+  openWebSite, setCheckedForUpdates, setError, setLoading, setUpdate,
 } from '../../reducers/MainReducer/Actions';
 import Updater from '../../utils/Updater';
 import AlertDialog from '../AlertDialog';
@@ -36,6 +36,7 @@ const App = () => {
   const [state, d1] = useContext(MainContext);
   const {
     themeIndex, themeType, update, languageIndex, autoUpdate, error, loading,
+    checkedForUpdates,
   } = state;
 
   const [snackOpen, setSnackOpen] = useState(false);
@@ -93,6 +94,13 @@ const App = () => {
     setSnackOpen(false);
   };
 
+  /**
+   * Close the dialog that displays a message that no updates are available
+   */
+  const closeNoUpdate = () => {
+    d1(setCheckedForUpdates(false));
+  };
+
   useEffect(() => {
     // eslint-disable-next-line no-underscore-dangle
     if (window.__TAURI__) {
@@ -136,6 +144,7 @@ const App = () => {
             onClose={closeAlertDialog}
           />
         ) : null}
+        {/* eslint-disable-next-line no-nested-ternary */}
         {update && update.updateAvailable ? (
           <UpdateDialog
             downloadUrl={update.updateUrl}
@@ -148,6 +157,15 @@ const App = () => {
             information={language.information}
             download={language.download}
             cancel={language.cancel}
+          />
+        ) : update && !update.updateAvailable && checkedForUpdates ? (
+          <AlertDialog
+            open
+            title={language.checkForUpdates}
+            content={language.runningLatestVersion}
+            onOk={closeNoUpdate}
+            onClose={closeNoUpdate}
+            agreeLabel={language.ok}
           />
         ) : null}
         <Snackbar open={snackOpen} onClose={closeSnack}>

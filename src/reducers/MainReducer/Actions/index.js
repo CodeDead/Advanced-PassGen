@@ -2,6 +2,7 @@ import { invoke } from '@tauri-apps/api';
 import {
   RESET_STATE,
   SET_AUTO_UPDATE,
+  SET_CHECKED_FOR_UPDATES,
   SET_ERROR,
   SET_FIXED_MENU,
   SET_LANGUAGE_INDEX,
@@ -77,5 +78,10 @@ export const setLoading = (value) => ({
 
 export const setFixedMenu = (value) => ({
   type: SET_FIXED_MENU,
+  payload: value,
+});
+
+export const setCheckedForUpdates = (value) => ({
+  type: SET_CHECKED_FOR_UPDATES,
   payload: value,
 });

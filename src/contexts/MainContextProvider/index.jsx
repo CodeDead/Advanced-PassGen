@@ -33,6 +33,7 @@ const initState = {
   themeType,
   pageIndex: 0,
   update: null,
+  checkedForUpdates: false,
   error: null,
   languageSelector,
   loading: false,

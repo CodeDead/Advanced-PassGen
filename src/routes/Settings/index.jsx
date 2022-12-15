@@ -33,6 +33,7 @@ import GridList from '../../components/GridList';
 import {
   resetState,
   setAutoUpdate,
+  setCheckedForUpdates,
   setError,
   setFixedMenu,
   setLanguageIndex,
@@ -111,6 +112,7 @@ const Settings = () => {
         Updater(res.toLowerCase(), packageJson.version)
           .then((up) => {
             d1(setUpdate(up));
+            d1(setCheckedForUpdates(true));
           })
           .catch((error) => {
             d1(setError(error));
