@@ -80,5 +80,6 @@
   "ok": "わかった",
   "downloadApp": "デスクトップ アプリケーションをダウンロードする",
   "languageSelector": "トップバーの言語セレクター",
-  "fixedMenu": "固定メニュー"
+  "fixedMenu": "固定メニュー",
+  "runningLatestVersion": "最新バージョンを実行しています。"
 }

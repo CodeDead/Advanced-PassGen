@@ -1,6 +1,6 @@
 import {
   RESET_STATE,
-  SET_AUTO_UPDATE,
+  SET_AUTO_UPDATE, SET_CHECKED_FOR_UPDATES,
   SET_ERROR,
   SET_FIXED_MENU,
   SET_LANGUAGE_INDEX,
@@ -83,6 +83,11 @@ const MainReducer = (state, action) => {
       return {
         ...state,
         fixedMenu: action.payload,
+      };
+    case SET_CHECKED_FOR_UPDATES:
+      return {
+        ...state,
+        checkedForUpdates: action.payload,
       };
     default:
       return state;
