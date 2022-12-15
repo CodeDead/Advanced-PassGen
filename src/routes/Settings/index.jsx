@@ -33,6 +33,7 @@ import GridList from '../../components/GridList';
 import {
   resetState,
   setAutoUpdate,
+  setCheckedForUpdates,
   setError,
   setFixedMenu,
   setLanguageIndex,
@@ -111,6 +112,7 @@ const Settings = () => {
         Updater(res.toLowerCase(), packageJson.version)
           .then((up) => {
             d1(setUpdate(up));
+            d1(setCheckedForUpdates(true));
           })
           .catch((error) => {
             d1(setError(error));
@@ -186,6 +188,7 @@ const Settings = () => {
                     <MenuItem value={3}>日本</MenuItem>
                     <MenuItem value={4}>Nederlands</MenuItem>
                     <MenuItem value={5}>Русский</MenuItem>
+                    <MenuItem value={6}>中文（简体）</MenuItem>
                   </Select>
                 </FormControl>
               </FormGroup>

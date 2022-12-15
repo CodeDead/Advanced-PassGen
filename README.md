@@ -87,6 +87,7 @@ The application icon was provided by [RemixIcon](https://remixicon.com/).
 
 ### Translations
 
+* Chinese (Simplified) - [大眼仔~旭](https://github.com/wcxu21)
 * German: [uDEV2019](https://github.com/uDEV2019)
 
 ## About

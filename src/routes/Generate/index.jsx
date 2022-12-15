@@ -6,13 +6,16 @@ import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import { save } from '@tauri-apps/api/dialog';
 import { invoke } from '@tauri-apps/api/tauri';
+import FormControl from '@mui/material/FormControl';
+import InputLabel from '@mui/material/InputLabel';
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
 import { MainContext } from '../../contexts/MainContextProvider';
 import { PasswordContext } from '../../contexts/PasswordContextProvider';
 import { setError, setLoading, setPageIndex } from '../../reducers/MainReducer/Actions';
 import PasswordStrength from '../../utils/PasswordStrength';
 import { generatePasswordArray, setPasswords } from '../../reducers/PasswordReducer/Actions';
 import MuiVirtualizedTable from '../../components/MuiVirtualizedTable';
-import ExportDialog from '../../components/ExportDialog';
 import LoadingBar from '../../components/LoadingBar';
 
 const classes = {
@@ -65,7 +68,7 @@ const Generate = () => {
   const { languageIndex, loading } = state1;
   const language = state1.languages[languageIndex];
 
-  const [exportOpen, setExportOpen] = useState(false);
+  const [exportType, setExportType] = useState('application/json');
 
   const {
     min, max, amount, characterSet, passwords, useAdvanced, smallLetters,
@@ -170,28 +173,13 @@ const Generate = () => {
   };
 
   /**
-   * Open the export dialog
-   */
-  const openExportDialog = () => {
-    setExportOpen(true);
-  };
-
-  /**
-   * Close the export dialog
-   */
-  const closeExportDialog = () => {
-    setExportOpen(false);
-  };
-
-  /**
    * Export the passwords
-   * @param type The export type
    */
-  const onExport = (type) => {
+  const onExport = () => {
     // eslint-disable-next-line no-underscore-dangle
     if (window.__TAURI__) {
       let ext = '';
-      switch (type) {
+      switch (exportType) {
         case 'text/plain':
           ext = 'txt';
           break;
@@ -205,7 +193,7 @@ const Generate = () => {
       save({
         multiple: false,
         filters: [{
-          name: type,
+          name: exportType,
           extensions: [ext],
         }],
       })
@@ -214,7 +202,7 @@ const Generate = () => {
             // eslint-disable-next-line no-bitwise
             const resExt = res.slice((res.lastIndexOf('.') - 1 >>> 0) + 2);
             const path = resExt && resExt.length > 0 ? res : `${res}.${ext}`;
-            invoke('save_string_to_disk', { content: getExportData(passwords, type), path })
+            invoke('save_string_to_disk', { content: getExportData(passwords, exportType), path })
               .catch((e) => {
                 d1(setError(e));
               });
@@ -224,7 +212,7 @@ const Generate = () => {
           d1(setError(e));
         });
     } else {
-      downloadFile(passwords, type);
+      downloadFile(passwords, exportType);
     }
   };
 
@@ -238,6 +226,14 @@ const Generate = () => {
   const createData = (password, passwordLength, strength) => (
     { password, length: passwordLength, strength: `${strength}%` }
   );
+
+  /**
+   * Set the export type
+   * @param e The change event
+   */
+  const handleExportTypeChange = (e) => {
+    setExportType(e.target.value);
+  };
 
   useEffect(() => {
     d1(setPageIndex(2));
@@ -304,25 +300,32 @@ const Generate = () => {
       <Button
         variant="contained"
         color="primary"
-        onClick={openExportDialog}
-        sx={{ mt: 2 }}
-        disabled={!passwords || passwords.length === 0}
+        onClick={onExport}
+        sx={{ mt: 2, ml: 2 }}
+        disabled={!passwords || passwords.length === 0 || exportType === null}
         style={{ float: 'right' }}
       >
         {language.export}
       </Button>
-      <ExportDialog
-        open={exportOpen}
-        title={language.export}
-        content={language.exportType}
-        onCancel={closeExportDialog}
-        onExport={onExport}
-        onClose={closeExportDialog}
-        cancelLabel={language.cancel}
-        jsonLabel="JSON"
-        csvLabel="CSV"
-        plainTextLabel={language.plainText}
-      />
+      <FormControl
+        sx={{ mt: 2, minWidth: 100, float: 'right' }}
+        disabled={!passwords || passwords.length === 0}
+        size="small"
+      >
+        <InputLabel id="export-type-label">{language.exportType}</InputLabel>
+        <Select
+          labelId="export-type-label"
+          id="export-type-select"
+          value={exportType}
+          label={language.exportType}
+          autoWidth
+          onChange={handleExportTypeChange}
+        >
+          <MenuItem value="application/json">JSON</MenuItem>
+          <MenuItem value="csv">CSV</MenuItem>
+          <MenuItem value="text/plain">{language.plainText}</MenuItem>
+        </Select>
+      </FormControl>
     </Container>
   );
 };

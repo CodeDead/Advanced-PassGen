@@ -6,6 +6,7 @@ import frFr from '../../languages/fr_fr.json';
 import jpJp from '../../languages/jp_jp.json';
 import nlNl from '../../languages/nl_nl.json';
 import ruRu from '../../languages/ru_ru.json';
+import zhCn from '../../languages/zh_cn.json';
 
 const languageIndex = localStorage.languageIndex ? parseFloat(localStorage.languageIndex) : 1;
 const themeIndex = localStorage.themeIndex ? parseFloat(localStorage.themeIndex) : 0;
@@ -26,11 +27,13 @@ const initState = {
     jpJp,
     nlNl,
     ruRu,
+    zhCn,
   ],
   themeIndex,
   themeType,
   pageIndex: 0,
   update: null,
+  checkedForUpdates: false,
   error: null,
   languageSelector,
   loading: false,

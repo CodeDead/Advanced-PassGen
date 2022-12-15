@@ -72,7 +72,7 @@
   "download": "Download",
   "cancel": "Abbrechen",
   "error": "Fehler",
-  "exportType": "Bitte wählen Sie den Exporttyp aus",
+  "exportType": "Exporttyp",
   "plainText": "Klartext",
   "notFound": "Hier ist wirklich nichts außer ein paar streng geheimen Sachen (vielleicht).",
   "notFoundGoHome": "Möchten Sie zur Startseite zurückkehren?",
@@ -80,5 +80,6 @@
   "ok": "OK",
   "downloadApp": "Laden Sie die Desktop-Anwendung herunter",
   "languageSelector": "Sprachauswahl im Menü",
-  "fixedMenu": "Festes Menü"
+  "fixedMenu": "Festes Menü",
+  "runningLatestVersion": "Sie verwenden die neueste Version von Advanced PassGen!"
 }

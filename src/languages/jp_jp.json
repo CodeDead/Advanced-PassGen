@@ -72,7 +72,7 @@
   "download": "ダウンロード",
   "cancel": "キャンセル",
   "error": "エラー",
-  "exportType": "エクスポートの種類を選択してください",
+  "exportType": "書き出しタイプ",
   "plainText": "平文",
   "notFound": "いくつかの極秘事項を除いて、ここには何もありません（多分）。",
   "notFoundGoHome": "ホームページに戻りますか？",
@@ -80,5 +80,6 @@
   "ok": "わかった",
   "downloadApp": "デスクトップ アプリケーションをダウンロードする",
   "languageSelector": "トップバーの言語セレクター",
-  "fixedMenu": "固定メニュー"
+  "fixedMenu": "固定メニュー",
+  "runningLatestVersion": "最新バージョンを実行しています。"
 }
