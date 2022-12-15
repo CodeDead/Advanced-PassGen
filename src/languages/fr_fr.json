@@ -72,7 +72,7 @@
   "download": "Télécharger",
   "cancel": "Annuler",
   "error": "Erreur",
-  "exportType": "S'il vous plaît sélectionner le type d'exportation",
+  "exportType": "Type d'export",
   "plainText": "Texte brut",
   "notFound": "Il n'y a rien ici",
   "notFoundGoHome": "Retour à l'accueil ?",
