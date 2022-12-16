@@ -99,6 +99,28 @@ const Home = () => {
       });
   };
 
+  /**
+   * Change a number value
+   * @param e The change event
+   * @param action The action to dispatch
+   */
+  const changeNumberValue = (e, action) => {
+    if (e.target.value && e.target.value.length > 0) {
+      switch (action) {
+        case 'min':
+          d2(setPasswordLengthMin(parseInt(e.target.value, 10)));
+          break;
+        case 'max':
+          d2(setPasswordLengthMax(parseInt(e.target.value, 10)));
+          break;
+        case 'amount':
+        default:
+          d2(setPasswordAmount(parseInt(e.target.value, 10)));
+          break;
+      }
+    }
+  };
+
   useEffect(() => {
     d1(setPageIndex(0));
   }, []);
@@ -122,7 +144,7 @@ const Home = () => {
                 value={min}
                 error={min > max}
                 fullWidth
-                onChange={(e) => d2(setPasswordLengthMin(parseInt(e.target.value, 10)))}
+                onChange={(e) => changeNumberValue(e, 'min')}
               />
             </Grid>
             <Grid item xs={12} md={12} lg={12}>
@@ -133,7 +155,7 @@ const Home = () => {
                 value={max}
                 error={max < min}
                 fullWidth
-                onChange={(e) => d2(setPasswordLengthMax(parseInt(e.target.value, 10)))}
+                onChange={(e) => changeNumberValue(e, 'max')}
               />
             </Grid>
             <Grid item xs={12} md={12} lg={12}>
@@ -143,11 +165,7 @@ const Home = () => {
                 label={language.amount}
                 value={amount}
                 error={amount.length === 0 || amount < 1}
-                onChange={(e) => {
-                  if (e.target.value && e.target.value.length > 0) {
-                    d2(setPasswordAmount(parseInt(e.target.value, 10)));
-                  }
-                }}
+                onChange={(e) => changeNumberValue(e, 'amount')}
                 fullWidth
               />
             </Grid>
