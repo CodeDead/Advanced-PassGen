@@ -118,6 +118,7 @@ const Home = () => {
               <TextField
                 label={language.minimumLength}
                 type="number"
+                autoComplete="off"
                 value={min}
                 error={min > max}
                 fullWidth
@@ -128,6 +129,7 @@ const Home = () => {
               <TextField
                 label={language.maximumLength}
                 type="number"
+                autoComplete="off"
                 value={max}
                 error={max < min}
                 fullWidth
@@ -137,9 +139,15 @@ const Home = () => {
             <Grid item xs={12} md={12} lg={12}>
               <TextField
                 type="number"
+                autoComplete="off"
                 label={language.amount}
                 value={amount}
-                onChange={(e) => d2(setPasswordAmount(e.target.value))}
+                error={amount.length === 0 || amount < 1}
+                onChange={(e) => {
+                  if (e.target.value && e.target.value.length > 0) {
+                    d2(setPasswordAmount(parseInt(e.target.value, 10)));
+                  }
+                }}
                 fullWidth
               />
             </Grid>
