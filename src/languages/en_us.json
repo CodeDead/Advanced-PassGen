@@ -81,5 +81,11 @@
   "downloadApp": "Download the desktop application",
   "languageSelector": "Language selector in the top bar",
   "fixedMenu": "Fixed menu",
-  "runningLatestVersion": "You are using the latest version!"
+  "runningLatestVersion": "You are using the latest version!",
+  "vault": "Vault",
+  "open": "Open",
+  "new": "New",
+  "save": "Save",
+  "createVault": "Create vault",
+  "decryptionKey": "Decryption key"
 }

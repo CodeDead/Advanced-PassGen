@@ -81,5 +81,11 @@
   "downloadApp": "Laden Sie die Desktop-Anwendung herunter",
   "languageSelector": "Sprachauswahl im Menü",
   "fixedMenu": "Festes Menü",
-  "runningLatestVersion": "Sie verwenden die neueste Version von Advanced PassGen!"
+  "runningLatestVersion": "Sie verwenden die neueste Version von Advanced PassGen!",
+  "vault": "Tresor",
+  "open": "Öffnen",
+  "new": "Neu",
+  "save": "Speichern",
+  "createVault": "Tresor erstellen",
+  "decryptionKey": "Entschlüsselungsschlüssel"
 }

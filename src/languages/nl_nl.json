@@ -81,5 +81,11 @@
   "downloadApp": "Download de desktop applicatie",
   "languageSelector": "Taalkiezer in de bovenste balk",
   "fixedMenu": "Vaste menu balk",
-  "runningLatestVersion": "Je gebruikt de nieuwste versie!"
+  "runningLatestVersion": "Je gebruikt de nieuwste versie!",
+  "vault": "Kluis",
+  "open": "Open",
+  "new": "Nieuw",
+  "save": "Opslaan",
+  "createVault": "Kluis aanmaken",
+  "decryptionKey": "Decryptie sleutel"
 }

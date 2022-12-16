@@ -81,5 +81,11 @@
   "downloadApp": "Télécharger l'application desktop",
   "languageSelector": "Sélecteur de langue dans la barre du haut",
   "fixedMenu": "Menu fixe",
-  "runningLatestVersion": "Vous utilisez la dernière version!"
+  "runningLatestVersion": "Vous utilisez la dernière version!",
+  "vault": "Coffre-fort",
+  "open": "Ouvrir",
+  "new": "Nouveau",
+  "save": "Enregistrer",
+  "createVault": "Créer un coffre-fort",
+  "decryptionKey": "Clé de déchiffrement"
 }

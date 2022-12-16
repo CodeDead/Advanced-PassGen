@@ -15,7 +15,7 @@ const About = () => {
   const language = state.languages[languageIndex];
 
   useEffect(() => {
-    d1(setPageIndex(5));
+    d1(setPageIndex(6));
   }, []);
 
   return (

@@ -81,5 +81,11 @@
   "downloadApp": "Скачать десктопное приложение",
   "languageSelector": "Выбор языка в верхней панели",
   "fixedMenu": "Фиксированное меню",
-  "runningLatestVersion": "Вы используете последнюю версию!"
+  "runningLatestVersion": "Вы используете последнюю версию!",
+  "vault": "Сейф",
+  "open": "Открыть",
+  "new": "Новый",
+  "save": "Сохранить",
+  "createVault": "Создать сейф",
+  "decryptionKey": "Ключ расшифровки"
 }
