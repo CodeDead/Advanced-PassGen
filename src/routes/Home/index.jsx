@@ -121,7 +121,7 @@ const Home = () => {
                 value={min}
                 error={min > max}
                 fullWidth
-                onChange={(e) => d2(setPasswordLengthMin(e.target.value))}
+                onChange={(e) => d2(setPasswordLengthMin(parseInt(e.target.value, 10)))}
               />
             </Grid>
             <Grid item xs={12} md={12} lg={12}>
@@ -131,7 +131,7 @@ const Home = () => {
                 value={max}
                 error={max < min}
                 fullWidth
-                onChange={(e) => d2(setPasswordLengthMax(e.target.value))}
+                onChange={(e) => d2(setPasswordLengthMax(parseInt(e.target.value, 10)))}
               />
             </Grid>
             <Grid item xs={12} md={12} lg={12}>
