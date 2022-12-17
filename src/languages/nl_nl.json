@@ -87,5 +87,7 @@
   "new": "Nieuw",
   "save": "Opslaan",
   "createVault": "Kluis aanmaken",
-  "decryptionKey": "Decryptie sleutel"
+  "decryptionKey": "Decryptie sleutel",
+  "edit": "Bewerken",
+  "delete": "Verwijderen"
 }

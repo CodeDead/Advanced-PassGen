@@ -87,5 +87,7 @@
   "new": "New",
   "save": "Save",
   "createVault": "Create vault",
-  "decryptionKey": "Decryption key"
+  "decryptionKey": "Decryption key",
+  "edit": "Edit",
+  "delete": "Delete"
 }

@@ -87,5 +87,7 @@
   "new": "Neu",
   "save": "Speichern",
   "createVault": "Tresor erstellen",
-  "decryptionKey": "Entschlüsselungsschlüssel"
+  "decryptionKey": "Entschlüsselungsschlüssel",
+  "edit": "Bearbeiten",
+  "delete": "Löschen"
 }

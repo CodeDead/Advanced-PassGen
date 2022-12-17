@@ -87,5 +87,7 @@
   "new": "Nouveau",
   "save": "Enregistrer",
   "createVault": "Créer un coffre-fort",
-  "decryptionKey": "Clé de déchiffrement"
+  "decryptionKey": "Clé de déchiffrement",
+  "edit": "Modifier",
+  "delete": "Supprimer"
 }

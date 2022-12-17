@@ -87,5 +87,7 @@
   "new": "新建",
   "save": "保存",
   "createVault": "创建保险库",
-  "decryptionKey": "解密密钥"
+  "decryptionKey": "解密密钥",
+  "edit": "编辑",
+  "delete": "删除"
 }
