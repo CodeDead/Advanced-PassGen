@@ -1,5 +1,5 @@
 import React, { createContext, useReducer } from 'react';
-import VaultReducer from '../../reducers/PasswordReducer';
+import VaultReducer from '../../reducers/VaultReducer';
 
 const initState = {
   vault: null,

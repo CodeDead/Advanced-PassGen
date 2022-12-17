@@ -89,5 +89,10 @@
   "createVault": "Create vault",
   "decryptionKey": "Decryption key",
   "edit": "Edit",
-  "delete": "Delete"
+  "delete": "Delete",
+  "createPassword": "Create password",
+  "title": "Title",
+  "description": "Description",
+  "url": "URL",
+  "add": "Add"
 }

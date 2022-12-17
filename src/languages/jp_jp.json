@@ -89,5 +89,10 @@
   "createVault": "金庫を作成する",
   "decryptionKey": "復号キー",
   "edit": "編集",
-  "delete": "削除"
+  "delete": "削除",
+  "createPassword": "パスワードを作成する",
+  "title": "タイトル",
+  "description": "説明",
+  "url": "URL",
+  "add": "追加"
 }

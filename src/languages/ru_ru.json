@@ -89,5 +89,10 @@
   "createVault": "Создать сейф",
   "decryptionKey": "Ключ расшифровки",
   "edit": "Редактировать",
-  "delete": "Удалить"
+  "delete": "Удалить",
+  "createPassword": "Создать пароль",
+  "title": "Заглавие",
+  "description": "Описание",
+  "url": "URL",
+  "add": "Добавить"
 }

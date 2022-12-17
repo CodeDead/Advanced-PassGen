@@ -36,9 +36,11 @@ const VaultCard = ({
         <Typography variant="h5" component="div">
           {title}
         </Typography>
-        <Typography variant="body2">
-          {description}
-        </Typography>
+        {description && description.length > 0 ? (
+          <Typography variant="body2">
+            {description}
+          </Typography>
+        ) : null}
       </CardContent>
       <CardActions>
         {url && onClick ? (

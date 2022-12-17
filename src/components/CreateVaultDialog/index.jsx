@@ -27,6 +27,9 @@ const CreateVaultDialog = ({ open, onCreate, onClose }) => {
    * Create a new vault
    */
   const create = () => {
+    if (key.length === 0) {
+      return;
+    }
     if (onCreate) {
       onCreate(key);
     }
@@ -46,11 +49,13 @@ const CreateVaultDialog = ({ open, onCreate, onClose }) => {
         <TextField
           sx={{ mt: 2 }}
           value={key}
+          type="password"
           error={key.length === 0}
           label={language.decryptionKey}
           onChange={(e) => setKey(e.target.value)}
           autoComplete="off"
           variant="outlined"
+          fullWidth
         />
       </DialogContent>
       <DialogActions>

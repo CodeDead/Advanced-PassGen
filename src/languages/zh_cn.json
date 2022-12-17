@@ -89,5 +89,10 @@
   "createVault": "创建保险库",
   "decryptionKey": "解密密钥",
   "edit": "编辑",
-  "delete": "删除"
+  "delete": "删除",
+  "createPassword": "创建密码",
+  "title": "标题",
+  "description": "描述",
+  "url": "网址",
+  "add": "添加"
 }

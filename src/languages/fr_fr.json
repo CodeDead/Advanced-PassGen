@@ -89,5 +89,10 @@
   "createVault": "Créer un coffre-fort",
   "decryptionKey": "Clé de déchiffrement",
   "edit": "Modifier",
-  "delete": "Supprimer"
+  "delete": "Supprimer",
+  "createPassword": "Créer un mot de passe",
+  "title": "Titre",
+  "description": "Description",
+  "url": "URL",
+  "add": "Ajouter"
 }

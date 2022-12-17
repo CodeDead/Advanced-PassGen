@@ -89,5 +89,10 @@
   "createVault": "Tresor erstellen",
   "decryptionKey": "Entschlüsselungsschlüssel",
   "edit": "Bearbeiten",
-  "delete": "Löschen"
+  "delete": "Löschen",
+  "createPassword": "Passwort erstellen",
+  "title": "Titel",
+  "description": "Beschreibung",
+  "url": "URL",
+  "add": "Hinzufügen"
 }

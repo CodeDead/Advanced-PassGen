@@ -7,12 +7,15 @@ import Fab from '@mui/material/Fab';
 import FileOpenIcon from '@mui/icons-material/FileOpen';
 import NoteAddIcon from '@mui/icons-material/NoteAdd';
 import SaveIcon from '@mui/icons-material/Save';
+import AddIcon from '@mui/icons-material/Add';
+import { v4 as uuidv4 } from 'uuid';
 import { MainContext } from '../../contexts/MainContextProvider';
 import { openWebSite, setPageIndex } from '../../reducers/MainReducer/Actions';
 import { VaultContext } from '../../contexts/VaultContextProvider';
 import CreateVaultDialog from '../../components/CreateVaultDialog';
-import { setVault } from '../../reducers/VaultReducer/Actions';
+import { saveVault, setVault } from '../../reducers/VaultReducer/Actions';
 import VaultCard from '../../components/VaultCard';
+import CreatePasswordDialog from '../../components/CreatePasswordDialog';
 
 const Vault = () => {
   const [state, d1] = useContext(MainContext);
@@ -23,6 +26,7 @@ const Vault = () => {
 
   const [phrase, setPhrase] = useState('');
   const [createDialogOpen, setCreateDialogOpen] = useState(false);
+  const [createPasswordDialogOpen, setCreatePasswordDialogOpen] = useState(false);
 
   /**
    * Create a new vault
@@ -37,11 +41,34 @@ const Vault = () => {
   };
 
   /**
+   * Save the vault
+   */
+  const saveVaultDetails = () => {
+    saveVault(vault, phrase);
+  };
+
+  /**
    * Open a password URL
    * @param url The URL that needs to be opened
    */
   const openPassword = (url) => {
     openWebSite(url);
+  };
+
+  /**
+   * Create a new password
+   * @param title The title
+   * @param description The description
+   * @param url The URL
+   * @param password The password
+   */
+  const addPassword = (title, description, url, password) => {
+    const id = uuidv4();
+    const newVault = JSON.parse(JSON.stringify(vault));
+    newVault.push({
+      id, title, description, url, password,
+    });
+    d3(setVault(newVault));
   };
 
   /**
@@ -62,8 +89,8 @@ const Vault = () => {
       key={item.id}
       item
       xs={12}
-      md={4}
-      lg={3}
+      md={6}
+      lg={4}
     >
       <VaultCard
         id={item.id}
@@ -115,23 +142,43 @@ const Vault = () => {
           <NoteAddIcon />
         </Fab>
         {vault ? (
-          <Fab
-            color="primary"
-            aria-label={language.save}
-            sx={{
-              position: 'absolute',
-              bottom: 16,
-              right: 152,
-            }}
-          >
-            <SaveIcon />
-          </Fab>
+          <>
+            <Fab
+              color="primary"
+              aria-label={language.add}
+              onClick={() => setCreatePasswordDialogOpen(true)}
+              sx={{
+                position: 'absolute',
+                bottom: 84,
+                right: 16,
+              }}
+            >
+              <AddIcon />
+            </Fab>
+            <Fab
+              color="primary"
+              aria-label={language.save}
+              onClick={saveVaultDetails}
+              sx={{
+                position: 'absolute',
+                bottom: 16,
+                right: 152,
+              }}
+            >
+              <SaveIcon />
+            </Fab>
+          </>
         ) : null}
       </Box>
       <CreateVaultDialog
         open={createDialogOpen}
         onClose={() => setCreateDialogOpen(false)}
         onCreate={createVault}
+      />
+      <CreatePasswordDialog
+        open={createPasswordDialogOpen}
+        onClose={() => setCreatePasswordDialogOpen(false)}
+        onCreate={addPassword}
       />
     </Container>
   );

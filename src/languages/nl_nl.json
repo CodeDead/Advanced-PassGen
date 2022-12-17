@@ -89,5 +89,10 @@
   "createVault": "Kluis aanmaken",
   "decryptionKey": "Decryptie sleutel",
   "edit": "Bewerken",
-  "delete": "Verwijderen"
+  "delete": "Verwijderen",
+  "createPassword": "Wachtwoord aanmaken",
+  "title": "Titel",
+  "description": "Beschrijving",
+  "url": "URL",
+  "add": "Toevoegen"
 }
