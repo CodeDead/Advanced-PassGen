@@ -7,7 +7,7 @@
     "@emotion/styled": "^11.10.5",
     "@fontsource/roboto": "^4.5.8",
     "@mui/icons-material": "^5.11.0",
-    "@mui/material": "^5.11.0",
+    "@mui/material": "^5.11.1",
     "@shopify/react-web-worker": "^5.0.6",
     "@tauri-apps/api": "^1.2.0",
     "@testing-library/jest-dom": "^5.16.5",
@@ -15,7 +15,7 @@
     "@testing-library/user-event": "^14.4.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.5.0",
+    "react-router-dom": "^6.6.1",
     "react-scripts": "^5.0.1",
     "react-virtualized": "^9.22.3",
     "uuid": "^9.0.0",
@@ -46,7 +46,7 @@
       "last 1 safari version"
     ]
   },
-  "packageManager": "yarn@3.3.0",
+  "packageManager": "yarn@3.3.1",
   "devDependencies": {
     "@tauri-apps/cli": "^1.2.2",
     "cross-env": "^7.0.3",

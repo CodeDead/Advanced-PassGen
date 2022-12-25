@@ -94,5 +94,7 @@
   "title": "Titel",
   "description": "Beschrijving",
   "url": "URL",
-  "add": "Toevoegen"
+  "add": "Toevoegen",
+  "search": "Zoeken",
+  "noResults": "Geen resultaten"
 }

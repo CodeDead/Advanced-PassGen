@@ -94,5 +94,7 @@
   "title": "标题",
   "description": "描述",
   "url": "网址",
-  "add": "添加"
+  "add": "添加",
+  "search": "搜索",
+  "noResults": "无结果"
 }

@@ -94,5 +94,7 @@
   "title": "タイトル",
   "description": "説明",
   "url": "URL",
-  "add": "追加"
+  "add": "追加",
+  "search": "サーチ",
+  "noResults": "結果がありません"
 }

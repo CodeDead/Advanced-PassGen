@@ -94,5 +94,7 @@
   "title": "Titel",
   "description": "Beschreibung",
   "url": "URL",
-  "add": "Hinzufügen"
+  "add": "Hinzufügen",
+  "search": "Suche",
+  "noResults": "Keine Ergebnisse"
 }

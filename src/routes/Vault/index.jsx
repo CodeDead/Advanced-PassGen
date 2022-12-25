@@ -9,6 +9,9 @@ import NoteAddIcon from '@mui/icons-material/NoteAdd';
 import SaveIcon from '@mui/icons-material/Save';
 import AddIcon from '@mui/icons-material/Add';
 import { v4 as uuidv4 } from 'uuid';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import TextField from '@mui/material/TextField';
 import { MainContext } from '../../contexts/MainContextProvider';
 import { openWebSite, setPageIndex } from '../../reducers/MainReducer/Actions';
 import { VaultContext } from '../../contexts/VaultContextProvider';
@@ -25,6 +28,7 @@ const Vault = () => {
   const { vault } = vaultState;
 
   const [phrase, setPhrase] = useState('');
+  const [search, setSearch] = useState('');
   const [createDialogOpen, setCreateDialogOpen] = useState(false);
   const [createPasswordDialogOpen, setCreatePasswordDialogOpen] = useState(false);
 
@@ -84,28 +88,41 @@ const Vault = () => {
     d1(setPageIndex(4));
   }, []);
 
-  const gridItems = vault && vault.length > 0 ? vault.map((item) => (
-    <Grid
-      key={item.id}
-      item
-      xs={12}
-      md={6}
-      lg={4}
-    >
-      <VaultCard
-        id={item.id}
-        title={item.title}
-        description={item.description}
-        url={item.url}
-        openLabel={language.open}
-        editLabel={language.edit}
-        deleteLabel={language.delete}
-        onClick={openPassword}
-        onEdit={() => {}}
-        onDelete={deletePassword}
-      />
-    </Grid>
-  )) : null;
+  let gridItems = null;
+  if (vault && vault.length > 0) {
+    const filteredVault = search && search.length > 0
+      ? vault.filter((e) => e.title.toLowerCase().includes(search.toLowerCase())
+        || e.description.toLowerCase().includes(search.toLowerCase())
+        || e.url.toLowerCase().includes(search.toLowerCase()))
+      : vault;
+
+    if (!filteredVault || filteredVault.length === 0) {
+      gridItems = (
+        <Grid item xs={12} md={12} lg={12}>
+          <Typography variant="h6" component="h6" gutterBottom>
+            {language.noResults}
+          </Typography>
+        </Grid>
+      );
+    } else {
+      gridItems = filteredVault.map((item) => (
+        <Grid key={item.id} item xs={12} md={6} lg={4}>
+          <VaultCard
+            id={item.id}
+            title={item.title}
+            description={item.description}
+            url={item.url}
+            openLabel={language.open}
+            editLabel={language.edit}
+            deleteLabel={language.delete}
+            onClick={openPassword}
+            onEdit={() => {}}
+            onDelete={deletePassword}
+          />
+        </Grid>
+      ));
+    }
+  }
 
   return (
     <Container>
@@ -115,6 +132,21 @@ const Vault = () => {
             {language.vault}
           </Typography>
         </Grid>
+        {vault && vault.length > 0 ? (
+          <Grid item xs={12} md={12} lg={12}>
+            <Card>
+              <CardContent>
+                <TextField
+                  variant="outlined"
+                  label={language.search}
+                  fullWidth
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                />
+              </CardContent>
+            </Card>
+          </Grid>
+        ) : null}
         {gridItems}
       </Grid>
       <Box sx={{ '& > :not(style)': { m: 1 } }}>
