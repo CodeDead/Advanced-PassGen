@@ -96,5 +96,6 @@
   "url": "网址",
   "add": "添加",
   "search": "搜索",
-  "noResults": "无结果"
+  "noResults": "无结果",
+  "editPassword": "编辑密码"
 }

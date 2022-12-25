@@ -96,5 +96,6 @@
   "url": "URL",
   "add": "追加",
   "search": "サーチ",
-  "noResults": "結果がありません"
+  "noResults": "結果がありません",
+  "editPassword": "パスワードを編集する"
 }

@@ -96,5 +96,6 @@
   "url": "URL",
   "add": "Ajouter",
   "search": "Rechercher",
-  "noResults": "Aucun résultat"
+  "noResults": "Aucun résultat",
+  "editPassword": "Modifier le mot de passe"
 }

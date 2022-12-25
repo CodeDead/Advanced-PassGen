@@ -96,5 +96,6 @@
   "url": "URL",
   "add": "Toevoegen",
   "search": "Zoeken",
-  "noResults": "Geen resultaten"
+  "noResults": "Geen resultaten",
+  "editPassword": "Wachtwoord bewerken"
 }

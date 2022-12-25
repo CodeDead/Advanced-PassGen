@@ -19,6 +19,7 @@ import CreateVaultDialog from '../../components/CreateVaultDialog';
 import { saveVault, setVault } from '../../reducers/VaultReducer/Actions';
 import VaultCard from '../../components/VaultCard';
 import CreatePasswordDialog from '../../components/CreatePasswordDialog';
+import EditPasswordDialog from '../../components/EditPasswordDialog';
 
 const Vault = () => {
   const [state, d1] = useContext(MainContext);
@@ -31,6 +32,8 @@ const Vault = () => {
   const [search, setSearch] = useState('');
   const [createDialogOpen, setCreateDialogOpen] = useState(false);
   const [createPasswordDialogOpen, setCreatePasswordDialogOpen] = useState(false);
+  const [editPasswordDialogOpen, setEditPasswordDialogOpen] = useState(false);
+  const [editPasswordId, setEditPasswordId] = useState(null);
 
   /**
    * Create a new vault
@@ -84,6 +87,42 @@ const Vault = () => {
     d3(setVault(newVault));
   };
 
+  /**
+   * Open the edit password dialog
+   * @param id The ID of the password that needs to be edited
+   */
+  const openEditPasswordDialog = (id) => {
+    setEditPasswordId(id);
+    setEditPasswordDialogOpen(true);
+  };
+
+  /**
+   * Close the dialog to edit a password
+   */
+  const closeEditPasswordDialog = () => {
+    setEditPasswordId(null);
+    setEditPasswordDialogOpen(false);
+  };
+
+  /**
+   * Edit a password
+   * @param id The ID of the password
+   * @param title The new title
+   * @param description The new description
+   * @param url The new URL
+   * @param password The new password
+   */
+  const editPassword = (id, title, description, url, password) => {
+    const newVault = JSON.parse(JSON.stringify(vault));
+    newVault.filter((e) => e.id === id).forEach((e) => {
+      e.title = title;
+      e.description = description;
+      e.url = url;
+      e.password = password;
+    });
+    d3(setVault(newVault));
+  };
+
   useEffect(() => {
     d1(setPageIndex(4));
   }, []);
@@ -116,13 +155,15 @@ const Vault = () => {
             editLabel={language.edit}
             deleteLabel={language.delete}
             onClick={openPassword}
-            onEdit={() => {}}
+            onEdit={openEditPasswordDialog}
             onDelete={deletePassword}
           />
         </Grid>
       ));
     }
   }
+
+  const toEdit = vault && vault.length > 0 ? vault.filter((p) => p.id === editPasswordId)[0] : null;
 
   return (
     <Container>
@@ -212,6 +253,14 @@ const Vault = () => {
         onClose={() => setCreatePasswordDialogOpen(false)}
         onCreate={addPassword}
       />
+      {editPasswordDialogOpen && toEdit ? (
+        <EditPasswordDialog
+          open={editPasswordDialogOpen}
+          onClose={closeEditPasswordDialog}
+          onSave={editPassword}
+          data={toEdit}
+        />
+      ) : null}
     </Container>
   );
 };
