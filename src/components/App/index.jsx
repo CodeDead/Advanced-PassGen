@@ -30,6 +30,7 @@ const Generate = lazy(() => import('../../routes/Generate'));
 const About = lazy(() => import('../../routes/About'));
 const Settings = lazy(() => import('../../routes/Settings'));
 const Advisor = lazy(() => import('../../routes/Advisor'));
+const Vault = lazy(() => import('../../routes/Vault'));
 const NotFound = lazy(() => import('../../routes/NotFound'));
 
 const App = () => {
@@ -127,6 +128,8 @@ const App = () => {
                 <Route exact path="/advanced" element={<Advanced />} />
                 <Route exact path="/generate" element={<Generate />} />
                 <Route exact path="/advisor" element={<Advisor />} />
+                {/* eslint-disable-next-line no-underscore-dangle */}
+                {window.__TAURI__ ? (<Route exact path="/vault" element={<Vault />} />) : null}
                 <Route exact path="/settings" element={<Settings />} />
                 <Route exact path="/about" element={<About />} />
                 <Route path="*" element={<NotFound />} />

@@ -15,6 +15,7 @@ import LightbulbIcon from '@mui/icons-material/Lightbulb';
 import InfoIcon from '@mui/icons-material/Info';
 import SettingsIcon from '@mui/icons-material/Settings';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
+import FolderIcon from '@mui/icons-material/Folder';
 import { useNavigate } from 'react-router-dom';
 import { MainContext } from '../../contexts/MainContextProvider';
 import { openWebSite } from '../../reducers/MainReducer/Actions';
@@ -148,12 +149,36 @@ const ClippedDrawer = () => {
               {textVisible ? <ListItemText primary={language.advisor} /> : null}
             </ListItemButton>
           </ListItem>
+          {/* eslint-disable-next-line no-underscore-dangle */}
+          {window.__TAURI__ ? (
+            <ListItem disablePadding sx={{ display: textVisible ? 'block' : null }}>
+              <ListItemButton
+                selected={pageIndex === 4}
+                onClick={() => navigate('/vault')}
+                sx={{
+                  minHeight: 48,
+                  justifyContent: textVisible ? 'initial' : 'center',
+                  px: 2.5,
+                }}
+              >
+                <ListItemIcon
+                  sx={{
+                    minWidth: textVisible ? null : 0,
+                    mr: textVisible ? null : 'auto',
+                  }}
+                >
+                  <FolderIcon />
+                </ListItemIcon>
+                {textVisible ? <ListItemText primary={language.vault} /> : null}
+              </ListItemButton>
+            </ListItem>
+          ) : null}
         </List>
         <Divider />
         <List>
           <ListItem disablePadding sx={{ display: textVisible ? 'block' : null }}>
             <ListItemButton
-              selected={pageIndex === 4}
+              selected={pageIndex === 5}
               onClick={() => navigate('/settings')}
               sx={{
                 minHeight: 48,
@@ -197,7 +222,7 @@ const ClippedDrawer = () => {
           </ListItem>
           <ListItem disablePadding sx={{ display: textVisible ? 'block' : null }}>
             <ListItemButton
-              selected={pageIndex === 5}
+              selected={pageIndex === 6}
               onClick={() => navigate('/about')}
               sx={{
                 minHeight: 48,
