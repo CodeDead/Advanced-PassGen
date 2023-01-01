@@ -44,6 +44,20 @@ const EditPasswordDialog = ({
   const [password, setPassword] = useState(data && data.password ? data.password : '');
   const [showPassword, setShowPassword] = useState(false);
 
+  const simpleCharacterSet = getFullCharacterSet(
+    characterSet,
+    useAdvanced,
+    smallLetters,
+    capitalLetters,
+    spaces,
+    numbers,
+    specialCharacters,
+    brackets,
+  );
+
+  const cannotGenerate = !simpleCharacterSet || simpleCharacterSet.length === 0
+    || min > max || max < min;
+
   /**
    * Close the dialog
    */
@@ -77,17 +91,7 @@ const EditPasswordDialog = ({
    * Generate passwords
    */
   const generatePassword = () => {
-    const simpleCharacterSet = getFullCharacterSet(
-      characterSet,
-      useAdvanced,
-      smallLetters,
-      capitalLetters,
-      spaces,
-      numbers,
-      specialCharacters,
-      brackets,
-    );
-    if (!simpleCharacterSet || simpleCharacterSet.length === 0 || min > max || max < min) {
+    if (cannotGenerate) {
       return;
     }
 
@@ -177,6 +181,7 @@ const EditPasswordDialog = ({
               color="primary"
               size="large"
               sx={{ width: '100%', height: '100%' }}
+              disabled={cannotGenerate}
               onClick={generatePassword}
             >
               <RefreshIcon fontSize="inherit" />

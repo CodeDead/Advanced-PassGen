@@ -18,6 +18,14 @@ const Advisor = () => {
 
   const [password, setPassword] = useState('');
 
+  /**
+   * Update the password
+   * @param event The event argument
+   */
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+  };
+
   useEffect(() => {
     d1(setPageIndex(3));
   }, []);
@@ -33,7 +41,7 @@ const Advisor = () => {
             <Grid item xs={12} md={12} lg={12}>
               <TextField
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={handlePasswordChange}
                 label={language.password}
                 fullWidth
                 type="password"

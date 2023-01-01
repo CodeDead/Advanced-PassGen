@@ -14,13 +14,15 @@ import { MainContext } from '../../contexts/MainContextProvider';
 import { setError, setLoading, setPageIndex } from '../../reducers/MainReducer/Actions';
 import { PasswordContext } from '../../contexts/PasswordContextProvider';
 import {
-  generatePasswordArray, getFullCharacterSet,
+  generatePasswordArray,
+  getFullCharacterSet,
   setBrackets,
   setCapitalLetters,
   setNumbers,
   setPasswordAmount,
   setPasswordLengthMax,
-  setPasswordLengthMin, setPasswords,
+  setPasswordLengthMin,
+  setPasswords,
   setSmallLetters,
   setSpaces,
   setSpecialCharacters,
@@ -54,21 +56,25 @@ const Home = () => {
   const navigate = useNavigate();
   const worker = useWorker(createWorker);
 
+  const simpleCharacterSet = getFullCharacterSet(
+    characterSet,
+    useAdvanced,
+    smallLetters,
+    capitalLetters,
+    spaces,
+    numbers,
+    specialCharacters,
+    brackets,
+  );
+
+  const cannotGenerate = !simpleCharacterSet || simpleCharacterSet.length === 0
+    || min > max || max < min;
+
   /**
    * Generate passwords
    */
   const generatePasswords = () => {
-    const simpleCharacterSet = getFullCharacterSet(
-      characterSet,
-      useAdvanced,
-      smallLetters,
-      capitalLetters,
-      spaces,
-      numbers,
-      specialCharacters,
-      brackets,
-    );
-    if (!simpleCharacterSet || simpleCharacterSet.length === 0 || min > max || max < min) {
+    if (!cannotGenerate) {
       return;
     }
 
@@ -234,6 +240,7 @@ const Home = () => {
         color="primary"
         style={{ float: 'right' }}
         sx={{ mt: 2, ml: 2 }}
+        disabled={cannotGenerate}
         onClick={generatePasswords}
       >
         {language.generate}

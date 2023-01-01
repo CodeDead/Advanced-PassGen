@@ -8,6 +8,7 @@ const LinearProgressWithLabel = ({ value }) => (
     <Box sx={{ display: 'flex', alignItems: 'center' }}>
       <Box sx={{ width: '100%', mr: 1 }}>
         <LinearProgress
+          style={{ height: 10 }}
           variant="determinate"
           value={value}
         />

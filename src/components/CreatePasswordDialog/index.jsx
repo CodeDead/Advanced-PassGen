@@ -42,6 +42,20 @@ const CreatePasswordDialog = ({ open, onCreate, onClose }) => {
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
 
+  const simpleCharacterSet = getFullCharacterSet(
+    characterSet,
+    useAdvanced,
+    smallLetters,
+    capitalLetters,
+    spaces,
+    numbers,
+    specialCharacters,
+    brackets,
+  );
+
+  const cannotGenerate = !simpleCharacterSet || simpleCharacterSet.length === 0
+    || min > max || max < min;
+
   /**
    * Close the dialog
    */
@@ -79,17 +93,7 @@ const CreatePasswordDialog = ({ open, onCreate, onClose }) => {
    * Generate passwords
    */
   const generatePassword = () => {
-    const simpleCharacterSet = getFullCharacterSet(
-      characterSet,
-      useAdvanced,
-      smallLetters,
-      capitalLetters,
-      spaces,
-      numbers,
-      specialCharacters,
-      brackets,
-    );
-    if (!simpleCharacterSet || simpleCharacterSet.length === 0 || min > max || max < min) {
+    if (cannotGenerate) {
       return;
     }
 
@@ -179,6 +183,7 @@ const CreatePasswordDialog = ({ open, onCreate, onClose }) => {
               color="primary"
               size="large"
               sx={{ width: '100%', height: '100%' }}
+              disabled={cannotGenerate}
               onClick={generatePassword}
             >
               <RefreshIcon fontSize="inherit" />

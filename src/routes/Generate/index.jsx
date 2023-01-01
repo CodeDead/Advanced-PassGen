@@ -81,25 +81,27 @@ const Generate = () => {
 
   const worker = useWorker(createWorker);
 
+  const simpleCharacterSet = getFullCharacterSet(
+    characterSet,
+    useAdvanced,
+    smallLetters,
+    capitalLetters,
+    spaces,
+    numbers,
+    specialCharacters,
+    brackets,
+  );
+
+  const cannotGenerate = !simpleCharacterSet || simpleCharacterSet.length === 0
+    || min > max || max < min;
+
   /**
    * Generate passwords
    */
   const generatePasswords = () => {
-    const simpleCharacterSet = getFullCharacterSet(
-      characterSet,
-      useAdvanced,
-      smallLetters,
-      capitalLetters,
-      spaces,
-      numbers,
-      specialCharacters,
-      brackets,
-    );
-
-    if (!simpleCharacterSet || simpleCharacterSet.length === 0 || min > max || max < min) {
+    if (!cannotGenerate) {
       return;
     }
-
     d1(setLoading(true));
     generatePasswordArray(min, max, simpleCharacterSet, amount, allowDuplicates, worker)
       .then((res) => {
@@ -227,6 +229,13 @@ const Generate = () => {
     setExportType(e.target.value);
   };
 
+  /**
+   * Clear all passwords
+   */
+  const clearPasswords = () => {
+    d2(setPasswords(null));
+  };
+
   useEffect(() => {
     d1(setPageIndex(2));
   }, []);
@@ -273,7 +282,7 @@ const Generate = () => {
       <Button
         variant="contained"
         color="primary"
-        onClick={() => d2(setPasswords(null))}
+        onClick={clearPasswords}
         sx={{ mt: 2 }}
         style={{ float: 'left' }}
       >
@@ -282,7 +291,7 @@ const Generate = () => {
       <Button
         variant="contained"
         color="primary"
-        disabled={min > max || max < min}
+        disabled={cannotGenerate}
         onClick={generatePasswords}
         sx={{ mt: 2, ml: 2 }}
         style={{ float: 'right' }}
