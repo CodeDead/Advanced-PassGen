@@ -97,5 +97,6 @@
   "search": "Rechercher",
   "editPassword": "Modifier le mot de passe",
   "close": "Fermer",
-  "copy": "Copier"
+  "copy": "Copier",
+  "createOrOpenVault": "Créer ou ouvrir un coffre-fort"
 }

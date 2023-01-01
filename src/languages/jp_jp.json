@@ -97,5 +97,6 @@
   "search": "サーチ",
   "editPassword": "パスワードを編集する",
   "close": "閉じる",
-  "copy": "コピー"
+  "copy": "コピー",
+  "createOrOpenVault": "金庫を作成または開く"
 }

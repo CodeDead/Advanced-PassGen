@@ -39,6 +39,16 @@ const CreatePasswordDialog = ({ open, onCreate, onClose }) => {
     handleClose();
   };
 
+  /**
+   * Handle the key up event
+   * @param e The event argument
+   */
+  const handleKeyUp = (e) => {
+    if (e.key === 'Enter' && password.length > 0 && title.length > 0) {
+      create();
+    }
+  };
+
   return (
     <Dialog
       open={open}
@@ -55,6 +65,7 @@ const CreatePasswordDialog = ({ open, onCreate, onClose }) => {
           error={title.length === 0}
           label={language.title}
           onChange={(e) => setTitle(e.target.value)}
+          onKeyUp={handleKeyUp}
           autoComplete="off"
           variant="outlined"
           fullWidth
@@ -64,6 +75,7 @@ const CreatePasswordDialog = ({ open, onCreate, onClose }) => {
           value={description}
           label={language.description}
           onChange={(e) => setDescription(e.target.value)}
+          onKeyUp={handleKeyUp}
           autoComplete="off"
           variant="outlined"
           fullWidth
@@ -73,6 +85,7 @@ const CreatePasswordDialog = ({ open, onCreate, onClose }) => {
           value={url}
           label={language.url}
           onChange={(e) => setUrl(e.target.value)}
+          onKeyUp={handleKeyUp}
           autoComplete="off"
           variant="outlined"
           fullWidth
@@ -84,6 +97,7 @@ const CreatePasswordDialog = ({ open, onCreate, onClose }) => {
           error={password.length === 0}
           label={language.password}
           onChange={(e) => setPassword(e.target.value)}
+          onKeyUp={handleKeyUp}
           autoComplete="off"
           variant="outlined"
           fullWidth

@@ -97,5 +97,6 @@
   "search": "Zoeken",
   "editPassword": "Wachtwoord bewerken",
   "close": "Sluiten",
-  "copy": "Kopiëren"
+  "copy": "Kopiëren",
+  "createOrOpenVault": "Maak een nieuwe kluis of open een bestaande kluis"
 }
