@@ -1,5 +1,9 @@
 import React, {
-  useContext, useEffect, useState, lazy, Suspense,
+  useContext,
+  useEffect,
+  useState,
+  lazy,
+  Suspense,
 } from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
@@ -17,7 +21,11 @@ import TopBar from '../TopBar';
 import ClippedDrawer from '../ClippedDrawer';
 import UpdateDialog from '../UpdateDialog';
 import {
-  openWebSite, setCheckedForUpdates, setError, setLoading, setUpdate,
+  openWebSite,
+  setCheckedForUpdates,
+  setError,
+  setLoading,
+  setUpdate,
 } from '../../reducers/MainReducer/Actions';
 import Updater from '../../utils/Updater';
 import AlertDialog from '../AlertDialog';
@@ -176,7 +184,7 @@ const App = () => {
               {language.downloadApp}
             </Typography>
             <Button
-              onClick={() => window.open('https://codedead.com/software/advanced-passgen')}
+              onClick={() => openWebSite('https://codedead.com/software/advanced-passgen')}
               size="small"
               color="secondary"
             >

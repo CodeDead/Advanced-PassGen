@@ -14,9 +14,11 @@ import { setError, setLoading, setPageIndex } from '../../reducers/MainReducer/A
 import { MainContext } from '../../contexts/MainContextProvider';
 import { PasswordContext } from '../../contexts/PasswordContextProvider';
 import {
-  generatePasswordArray, getFullCharacterSet,
+  generatePasswordArray,
+  getFullCharacterSet,
   setAllowDuplicates,
-  setCharacterSet, setPasswords,
+  setCharacterSet,
+  setPasswords,
   setUseAdvanced,
 } from '../../reducers/PasswordReducer/Actions';
 import LoadingBar from '../../components/LoadingBar';
@@ -38,22 +40,25 @@ const Advanced = () => {
   const navigate = useNavigate();
   const worker = useWorker(createWorker);
 
+  const simpleCharacterSet = getFullCharacterSet(
+    characterSet,
+    useAdvanced,
+    smallLetters,
+    capitalLetters,
+    spaces,
+    numbers,
+    specialCharacters,
+    brackets,
+  );
+
+  const cannotGenerate = !simpleCharacterSet || simpleCharacterSet.length === 0
+    || min > max || max < min;
+
   /**
    * Generate passwords
    */
   const generatePasswords = () => {
-    const simpleCharacterSet = getFullCharacterSet(
-      characterSet,
-      useAdvanced,
-      smallLetters,
-      capitalLetters,
-      spaces,
-      numbers,
-      specialCharacters,
-      brackets,
-    );
-
-    if (!simpleCharacterSet || simpleCharacterSet.length === 0 || min > max || max < min) {
+    if (cannotGenerate) {
       return;
     }
 
@@ -69,6 +74,37 @@ const Advanced = () => {
       .finally(() => {
         d1(setLoading(false));
       });
+  };
+
+  /**
+   * Change whether duplicates are allowed or not
+   * @param event The event argument
+   */
+  const handleDuplicateChange = (event) => {
+    d2(setAllowDuplicates(event.target.checked));
+  };
+
+  /**
+   * Change wether advanced options are being used or not
+   * @param event The event argument
+   */
+  const handleAdvancedChange = (event) => {
+    d2(setUseAdvanced(event.target.checked));
+  };
+
+  /**
+   * Change the character set
+   * @param event The event argument
+   */
+  const handleCharacterSetChange = (event) => {
+    d2(setCharacterSet(event.target.value));
+  };
+
+  /**
+   * Go to the home page
+   */
+  const goHome = () => {
+    navigate('/');
   };
 
   useEffect(() => {
@@ -92,7 +128,7 @@ const Advanced = () => {
                   control={(
                     <Checkbox
                       checked={allowDuplicates}
-                      onChange={(e) => d2(setAllowDuplicates(e.target.checked))}
+                      onChange={handleDuplicateChange}
                     />
                   )}
                   label={language.allowDuplicates}
@@ -101,7 +137,7 @@ const Advanced = () => {
                   control={(
                     <Checkbox
                       checked={useAdvanced}
-                      onChange={(e) => d2(setUseAdvanced(e.target.checked))}
+                      onChange={handleAdvancedChange}
                     />
                   )}
                   label={language.useCustomCharacterSet}
@@ -114,7 +150,7 @@ const Advanced = () => {
                 disabled={!useAdvanced}
                 value={characterSet}
                 fullWidth
-                onChange={(e) => d2(setCharacterSet(e.target.value))}
+                onChange={handleCharacterSetChange}
               />
             </Grid>
           </Grid>
@@ -125,7 +161,7 @@ const Advanced = () => {
         color="primary"
         style={{ float: 'left' }}
         sx={{ mt: 2 }}
-        onClick={() => navigate('/')}
+        onClick={goHome}
       >
         {language.general}
       </Button>
@@ -134,6 +170,7 @@ const Advanced = () => {
         color="primary"
         style={{ float: 'right' }}
         sx={{ mt: 2 }}
+        disabled={cannotGenerate}
         onClick={generatePasswords}
       >
         {language.generate}

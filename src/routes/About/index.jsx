@@ -14,6 +14,20 @@ const About = () => {
   const { languageIndex } = state;
   const language = state.languages[languageIndex];
 
+  /**
+   * Open the license page
+   */
+  const openLicense = () => {
+    openWebSite('https://codedead.com/Software/Advanced%20PassGen/gpl.pdf');
+  };
+
+  /**
+   * Open the home page
+   */
+  const openHomePage = () => {
+    openWebSite('https://codedead.com/');
+  };
+
   useEffect(() => {
     d1(setPageIndex(6));
   }, []);
@@ -34,7 +48,7 @@ const About = () => {
         variant="contained"
         style={{ float: 'left' }}
         sx={{ mt: 2 }}
-        onClick={() => openWebSite('https://codedead.com/Software/Advanced%20PassGen/gpl.pdf')}
+        onClick={openLicense}
       >
         {language.license}
       </Button>
@@ -42,7 +56,7 @@ const About = () => {
         variant="contained"
         style={{ float: 'right' }}
         sx={{ mt: 2 }}
-        onClick={() => openWebSite('https://codedead.com/')}
+        onClick={openHomePage}
       >
         {language.website}
       </Button>

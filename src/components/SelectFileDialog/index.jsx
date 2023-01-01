@@ -21,6 +21,10 @@ const SelectFileDialog = ({
     }
   };
 
+  /**
+   * Accept and read the file
+   * @param e The event argument
+   */
   const handleFileChange = (e) => {
     e.preventDefault();
     const reader = new FileReader();
