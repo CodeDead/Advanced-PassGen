@@ -7,7 +7,7 @@ import DialogActions from '@mui/material/DialogActions';
 import Button from '@mui/material/Button';
 import { MainContext } from '../../contexts/MainContextProvider';
 
-const CreateVaultDialog = ({ open, onCreate, onClose }) => {
+const EncryptionKeyDialog = ({ open, onAccept, onClose }) => {
   const [state] = useContext(MainContext);
   const language = state.languages[state.languageIndex];
 
@@ -24,14 +24,14 @@ const CreateVaultDialog = ({ open, onCreate, onClose }) => {
   };
 
   /**
-   * Create a new vault
+   * Accept the encryption/decryption key
    */
-  const create = () => {
+  const accept = () => {
     if (key.length === 0) {
       return;
     }
-    if (onCreate) {
-      onCreate(key);
+    if (onAccept) {
+      onAccept(key);
     }
     handleClose();
   };
@@ -43,7 +43,7 @@ const CreateVaultDialog = ({ open, onCreate, onClose }) => {
       aria-labelledby="create-vault-dialog-title"
     >
       <DialogTitle id="create-vault-dialog-title">
-        {language.createVault}
+        {language.decryptionKey}
       </DialogTitle>
       <DialogContent>
         <TextField
@@ -63,7 +63,7 @@ const CreateVaultDialog = ({ open, onCreate, onClose }) => {
           {language.cancel}
         </Button>
         <Button
-          onClick={create}
+          onClick={accept}
           autoFocus
           disabled={key.length === 0}
         >
@@ -74,4 +74,4 @@ const CreateVaultDialog = ({ open, onCreate, onClose }) => {
   );
 };
 
-export default CreateVaultDialog;
+export default EncryptionKeyDialog;

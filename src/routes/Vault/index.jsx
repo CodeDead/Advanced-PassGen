@@ -8,18 +8,23 @@ import FileOpenIcon from '@mui/icons-material/FileOpen';
 import NoteAddIcon from '@mui/icons-material/NoteAdd';
 import SaveIcon from '@mui/icons-material/Save';
 import AddIcon from '@mui/icons-material/Add';
+import CloseIcon from '@mui/icons-material/Close';
 import { v4 as uuidv4 } from 'uuid';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import TextField from '@mui/material/TextField';
+import { open, save } from '@tauri-apps/api/dialog';
+import { invoke } from '@tauri-apps/api/tauri';
+import CryptoJS from 'crypto-js';
+import { writeText } from '@tauri-apps/api/clipboard';
 import { MainContext } from '../../contexts/MainContextProvider';
-import { openWebSite, setPageIndex } from '../../reducers/MainReducer/Actions';
+import { openWebSite, setError, setPageIndex } from '../../reducers/MainReducer/Actions';
 import { VaultContext } from '../../contexts/VaultContextProvider';
-import CreateVaultDialog from '../../components/CreateVaultDialog';
-import { saveVault, setVault } from '../../reducers/VaultReducer/Actions';
+import { setVault } from '../../reducers/VaultReducer/Actions';
 import VaultCard from '../../components/VaultCard';
 import CreatePasswordDialog from '../../components/CreatePasswordDialog';
 import EditPasswordDialog from '../../components/EditPasswordDialog';
+import EncryptionKeyDialog from '../../components/EncryptionKeyDialog';
 
 const Vault = () => {
   const [state, d1] = useContext(MainContext);
@@ -30,28 +35,48 @@ const Vault = () => {
 
   const [phrase, setPhrase] = useState('');
   const [search, setSearch] = useState('');
-  const [createDialogOpen, setCreateDialogOpen] = useState(false);
+  const [keyDialogOpen, setKeyDialogOpen] = useState(false);
   const [createPasswordDialogOpen, setCreatePasswordDialogOpen] = useState(false);
   const [editPasswordDialogOpen, setEditPasswordDialogOpen] = useState(false);
   const [editPasswordId, setEditPasswordId] = useState(null);
-
-  /**
-   * Create a new vault
-   * @param key The decryption key
-   */
-  const createVault = (key) => {
-    if (!key || key.length === 0) {
-      return;
-    }
-    setPhrase(key);
-    d3(setVault([]));
-  };
+  const [keyAction, setKeyAction] = useState(null);
 
   /**
    * Save the vault
    */
-  const saveVaultDetails = () => {
-    saveVault(vault, phrase);
+  const saveVault = async () => {
+    try {
+      const path = await save();
+      if (path && path.length > 0) {
+        const encVault = CryptoJS.AES.encrypt(JSON.stringify(vault), phrase).toString();
+        await invoke('save_string_to_disk', { content: encVault, path });
+      }
+    } catch (e) {
+      d1(setError(e.toString()));
+    }
+  };
+
+  /**
+   * Open a vault
+   * @param decryptionKey The decryption key
+   * @returns {Promise<void>}
+   */
+  const openVaultDetails = async (decryptionKey) => {
+    try {
+      const path = await open({
+        multiple: false,
+      });
+      if (path && path.length > 0) {
+        const res = await invoke('read_string_from_file', { path });
+
+        const bytes = CryptoJS.AES.decrypt(res.toString(), decryptionKey);
+        const originalText = bytes.toString(CryptoJS.enc.Utf8);
+
+        d3(setVault(JSON.parse(originalText)));
+      }
+    } catch (e) {
+      d1(setError(e.toString()));
+    }
   };
 
   /**
@@ -85,6 +110,19 @@ const Vault = () => {
   const deletePassword = (id) => {
     const newVault = JSON.parse(JSON.stringify(vault)).filter((p) => p.id !== id);
     d3(setVault(newVault));
+  };
+
+  /**
+   * Copy a password to the clipboard
+   * @param id The ID of the password
+   */
+  const copyToClipboard = async (id) => {
+    const { password } = vault.find((p) => p.id === id);
+    try {
+      await writeText(password);
+    } catch (e) {
+      d1(setError(e.toString()));
+    }
   };
 
   /**
@@ -123,6 +161,56 @@ const Vault = () => {
     d3(setVault(newVault));
   };
 
+  /**
+   * Create a new vault
+   * @param key The decryption key
+   */
+  const acceptKey = (key) => {
+    if (!key || key.length === 0) {
+      return;
+    }
+    setPhrase(key);
+
+    if (keyAction === 'create') {
+      d3(setVault([]));
+    } else if (keyAction === 'open') {
+      openVaultDetails(key);
+    }
+  };
+
+  /**
+   * Open a vault
+   */
+  const openVault = () => {
+    setKeyAction('open');
+    setKeyDialogOpen(true);
+  };
+
+  /**
+   * Create a new vault
+   */
+  const createVault = () => {
+    setKeyAction('create');
+    setKeyDialogOpen(true);
+  };
+
+  /**
+   * Change the search string
+   * @param e The event argument
+   */
+  const changeSearch = (e) => {
+    setSearch(e.target.value);
+  };
+
+  /**
+   * Close a vault
+   */
+  const closeVault = () => {
+    d3(setVault(null));
+    setPhrase('');
+    setSearch('');
+  };
+
   useEffect(() => {
     d1(setPageIndex(4));
   }, []);
@@ -154,9 +242,11 @@ const Vault = () => {
             openLabel={language.open}
             editLabel={language.edit}
             deleteLabel={language.delete}
+            copyLabel={language.copy}
             onClick={openPassword}
             onEdit={openEditPasswordDialog}
             onDelete={deletePassword}
+            onCopy={copyToClipboard}
           />
         </Grid>
       ));
@@ -182,7 +272,7 @@ const Vault = () => {
                   label={language.search}
                   fullWidth
                   value={search}
-                  onChange={(e) => setSearch(e.target.value)}
+                  onChange={changeSearch}
                 />
               </CardContent>
             </Card>
@@ -199,6 +289,7 @@ const Vault = () => {
             bottom: 16,
             right: 16,
           }}
+          onClick={openVault}
         >
           <FileOpenIcon />
         </Fab>
@@ -210,7 +301,7 @@ const Vault = () => {
             bottom: 16,
             right: 84,
           }}
-          onClick={() => setCreateDialogOpen(true)}
+          onClick={createVault}
         >
           <NoteAddIcon />
         </Fab>
@@ -230,12 +321,24 @@ const Vault = () => {
             </Fab>
             <Fab
               color="primary"
-              aria-label={language.save}
-              onClick={saveVaultDetails}
+              aria-label={language.close}
+              onClick={closeVault}
               sx={{
                 position: 'absolute',
                 bottom: 16,
                 right: 152,
+              }}
+            >
+              <CloseIcon />
+            </Fab>
+            <Fab
+              color="primary"
+              aria-label={language.save}
+              onClick={saveVault}
+              sx={{
+                position: 'absolute',
+                bottom: 16,
+                right: 220,
               }}
             >
               <SaveIcon />
@@ -243,10 +346,10 @@ const Vault = () => {
           </>
         ) : null}
       </Box>
-      <CreateVaultDialog
-        open={createDialogOpen}
-        onClose={() => setCreateDialogOpen(false)}
-        onCreate={createVault}
+      <EncryptionKeyDialog
+        open={keyDialogOpen}
+        onClose={() => setKeyDialogOpen(false)}
+        onAccept={acceptKey}
       />
       <CreatePasswordDialog
         open={createPasswordDialogOpen}

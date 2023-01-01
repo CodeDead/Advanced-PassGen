@@ -19,7 +19,7 @@
   "characterSet": "Karakter set",
   "generate": "Genereer",
   "useCustomCharacterSet": "Gebruik aangepaste karakter set",
-  "aboutText": "Advanced PassGen is gemaakt door DeadLine\n\nThema: MUI\nLicentie: GPLv3\nVersie: {x}\n\nCopyright © 2022 CodeDead",
+  "aboutText": "Advanced PassGen is gemaakt door DeadLine\n\nThema: MUI\nLicentie: GPLv3\nVersie: {x}\n\nCopyright © 2023 CodeDead",
   "website": "Website",
   "license": "Licentie",
   "autoUpdate": "Automatisch updaten",
@@ -86,7 +86,6 @@
   "open": "Open",
   "new": "Nieuw",
   "save": "Opslaan",
-  "createVault": "Kluis aanmaken",
   "decryptionKey": "Decryptie sleutel",
   "edit": "Bewerken",
   "delete": "Verwijderen",
@@ -96,6 +95,7 @@
   "url": "URL",
   "add": "Toevoegen",
   "search": "Zoeken",
-  "noResults": "Geen resultaten",
-  "editPassword": "Wachtwoord bewerken"
+  "editPassword": "Wachtwoord bewerken",
+  "close": "Sluiten",
+  "copy": "Kopiëren"
 }

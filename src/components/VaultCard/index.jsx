@@ -4,10 +4,11 @@ import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import CardActionArea from '@mui/material/CardActionArea';
 
 const VaultCard = ({
-  id, title, description, url, openLabel, editLabel,
-  deleteLabel, onClick, onEdit, onDelete,
+  id, title, description, url, openLabel, editLabel, copyLabel,
+  deleteLabel, onClick, onEdit, onDelete, onCopy,
 }) => {
   /**
    * Open the URL
@@ -30,18 +31,29 @@ const VaultCard = ({
     onDelete(id);
   };
 
+  /**
+   * Copy the password to the clipboard
+   */
+  const copy = () => {
+    onCopy(id);
+  };
+
   return (
     <Card>
-      <CardContent>
-        <Typography variant="h5" component="div">
-          {title}
-        </Typography>
-        {description && description.length > 0 ? (
-          <Typography variant="body2">
-            {description}
+      <CardActionArea
+        onClick={copy}
+      >
+        <CardContent>
+          <Typography variant="h5" component="div">
+            {title}
           </Typography>
-        ) : null}
-      </CardContent>
+          {description && description.length > 0 ? (
+            <Typography variant="body2">
+              {description}
+            </Typography>
+          ) : null}
+        </CardContent>
+      </CardActionArea>
       <CardActions>
         {url && onClick ? (
           <Button
@@ -51,6 +63,12 @@ const VaultCard = ({
             {openLabel}
           </Button>
         ) : null}
+        <Button
+          size="small"
+          onClick={copy}
+        >
+          {copyLabel}
+        </Button>
         {onEdit ? (
           <Button
             size="small"

@@ -13,7 +13,11 @@
   "tauri": {
     "allowlist": {
       "dialog": {
-        "save": true
+        "save": true,
+        "open": true
+      },
+      "clipboard": {
+        "writeText": true
       },
       "all": true
     },

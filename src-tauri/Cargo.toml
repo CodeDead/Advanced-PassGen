@@ -7,12 +7,12 @@ license = "GPL-3.0-only"
 repository = "https://github.com/CodeDead/Advanced-PassGen"
 default-run = "advanced-passgen"
 edition = "2021"
-rust-version = "1.65.0"
+rust-version = "1.66.0"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [build-dependencies]
-tauri-build = { version = "1.1.1", features = [] }
+tauri-build = { version = "1.2.1", features = [] }
 
 [dependencies]
 serde_json = "1.0"

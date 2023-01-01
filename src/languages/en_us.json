@@ -19,7 +19,7 @@
   "characterSet": "Character set",
   "generate": "Generate",
   "useCustomCharacterSet": "Use custom character set",
-  "aboutText": "Advanced PassGen was created by DeadLine.\n\nTheme: MUI\nLicense: GPLv3\nVersion: {x}\n\nCopyright © 2022 CodeDead",
+  "aboutText": "Advanced PassGen was created by DeadLine.\n\nTheme: MUI\nLicense: GPLv3\nVersion: {x}\n\nCopyright © 2023 CodeDead",
   "website": "Website",
   "license": "License",
   "autoUpdate": "Automatically check for updates",
@@ -86,7 +86,6 @@
   "open": "Open",
   "new": "New",
   "save": "Save",
-  "createVault": "Create vault",
   "decryptionKey": "Decryption key",
   "edit": "Edit",
   "delete": "Delete",
@@ -96,6 +95,7 @@
   "url": "URL",
   "add": "Add",
   "search": "Search",
-  "noResults": "No results",
-  "editPassword": "Edit password"
+  "editPassword": "Edit password",
+  "close": "Close",
+  "copy": "Copy"
 }

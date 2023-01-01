@@ -19,7 +19,7 @@
   "characterSet": "字符集",
   "generate": "生成",
   "useCustomCharacterSet": "使用自定义字符集",
-  "aboutText": "Advanced PassGen 是由 DeadLine 开发的。\n\n主题：MUI\n许可证：GPLv3\n翻译：大眼仔~旭\n版本：{x}\n\n版权所有 © 2022 CodeDead",
+  "aboutText": "Advanced PassGen 是由 DeadLine 开发的。\n\n主题：MUI\n许可证：GPLv3\n翻译：大眼仔~旭\n版本：{x}\n\n版权所有 © 2023 CodeDead",
   "website": "网站",
   "license": "许可证",
   "autoUpdate": "自动检查更新",
@@ -86,7 +86,6 @@
   "open": "打开",
   "new": "新建",
   "save": "保存",
-  "createVault": "创建保险库",
   "decryptionKey": "解密密钥",
   "edit": "编辑",
   "delete": "删除",
@@ -96,6 +95,7 @@
   "url": "网址",
   "add": "添加",
   "search": "搜索",
-  "noResults": "无结果",
-  "editPassword": "编辑密码"
+  "editPassword": "编辑密码",
+  "close": "关闭",
+  "copy": "复制"
 }
