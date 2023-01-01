@@ -6,6 +6,8 @@ import DialogTitle from '@mui/material/DialogTitle';
 import DialogActions from '@mui/material/DialogActions';
 import Button from '@mui/material/Button';
 import { MainContext } from '../../contexts/MainContextProvider';
+import PasswordStrength from '../../utils/PasswordStrength';
+import LinearProgressWithLabel from '../LinearProgressWithLabel';
 
 const CreatePasswordDialog = ({ open, onCreate, onClose }) => {
   const [state] = useContext(MainContext);
@@ -102,6 +104,7 @@ const CreatePasswordDialog = ({ open, onCreate, onClose }) => {
           variant="outlined"
           fullWidth
         />
+        <LinearProgressWithLabel value={PasswordStrength(password)} />
       </DialogContent>
       <DialogActions>
         <Button onClick={handleClose}>

@@ -6,6 +6,8 @@ import DialogTitle from '@mui/material/DialogTitle';
 import DialogActions from '@mui/material/DialogActions';
 import Button from '@mui/material/Button';
 import { MainContext } from '../../contexts/MainContextProvider';
+import PasswordStrength from '../../utils/PasswordStrength';
+import LinearProgressWithLabel from '../LinearProgressWithLabel';
 
 const EditPasswordDialog = ({
   data, open, onSave, onClose,
@@ -100,6 +102,7 @@ const EditPasswordDialog = ({
           variant="outlined"
           fullWidth
         />
+        <LinearProgressWithLabel value={PasswordStrength(password)} />
       </DialogContent>
       <DialogActions>
         <Button onClick={handleClose}>
