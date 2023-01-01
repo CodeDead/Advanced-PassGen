@@ -211,6 +211,13 @@ const Vault = () => {
     setSearch('');
   };
 
+  /**
+   * Close the encryption key dialog
+   */
+  const closeEncryptionKeyDialog = () => {
+    setKeyDialogOpen(false);
+  };
+
   useEffect(() => {
     d1(setPageIndex(4));
   }, []);
@@ -263,8 +270,8 @@ const Vault = () => {
             {language.vault}
           </Typography>
         </Grid>
-        {vault && vault.length > 0 ? (
-          <Grid item xs={12} md={12} lg={12}>
+        <Grid item xs={12} md={12} lg={12}>
+          {vault && vault.length > 0 ? (
             <Card>
               <CardContent>
                 <TextField
@@ -276,8 +283,12 @@ const Vault = () => {
                 />
               </CardContent>
             </Card>
-          </Grid>
-        ) : null}
+          ) : (
+            <Typography variant="body1" gutterBottom>
+              {language.createOrOpenVault}
+            </Typography>
+          )}
+        </Grid>
         {gridItems}
       </Grid>
       <Box sx={{ '& > :not(style)': { m: 1 } }}>
@@ -294,7 +305,7 @@ const Vault = () => {
           <FileOpenIcon />
         </Fab>
         <Fab
-          color="primary"
+          color="secondary"
           aria-label={language.new}
           sx={{
             position: 'absolute',
@@ -320,7 +331,7 @@ const Vault = () => {
               <AddIcon />
             </Fab>
             <Fab
-              color="primary"
+              color="error"
               aria-label={language.close}
               onClick={closeVault}
               sx={{
@@ -332,7 +343,7 @@ const Vault = () => {
               <CloseIcon />
             </Fab>
             <Fab
-              color="primary"
+              color="success"
               aria-label={language.save}
               onClick={saveVault}
               sx={{
@@ -348,7 +359,7 @@ const Vault = () => {
       </Box>
       <EncryptionKeyDialog
         open={keyDialogOpen}
-        onClose={() => setKeyDialogOpen(false)}
+        onClose={closeEncryptionKeyDialog}
         onAccept={acceptKey}
       />
       <CreatePasswordDialog

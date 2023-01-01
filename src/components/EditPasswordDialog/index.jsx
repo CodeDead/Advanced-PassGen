@@ -5,18 +5,44 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogActions from '@mui/material/DialogActions';
 import Button from '@mui/material/Button';
+import Grid from '@mui/material/Grid';
+import IconButton from '@mui/material/IconButton';
+import RefreshIcon from '@mui/icons-material/Refresh';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { MainContext } from '../../contexts/MainContextProvider';
+import PasswordStrength from '../../utils/PasswordStrength';
+import LinearProgressWithLabel from '../LinearProgressWithLabel';
+import { generatePasswordArray, getFullCharacterSet } from '../../reducers/PasswordReducer/Actions';
+import { setError } from '../../reducers/MainReducer/Actions';
+import { PasswordContext } from '../../contexts/PasswordContextProvider';
 
 const EditPasswordDialog = ({
   data, open, onSave, onClose,
 }) => {
-  const [state] = useContext(MainContext);
+  const [state, d1] = useContext(MainContext);
+  const [state2] = useContext(PasswordContext);
+
   const language = state.languages[state.languageIndex];
+  const {
+    min,
+    max,
+    smallLetters,
+    capitalLetters,
+    spaces,
+    specialCharacters,
+    numbers,
+    brackets,
+    useAdvanced,
+    characterSet,
+    allowDuplicates,
+  } = state2;
 
   const [title, setTitle] = useState(data && data.title ? data.title : '');
   const [description, setDescription] = useState(data && data.description ? data.description : '');
   const [url, setUrl] = useState(data && data.url ? data.url : '');
   const [password, setPassword] = useState(data && data.password ? data.password : '');
+  const [showPassword, setShowPassword] = useState(false);
 
   /**
    * Close the dialog
@@ -37,6 +63,43 @@ const EditPasswordDialog = ({
     handleClose();
   };
 
+  /**
+   * Handle the key up event
+   * @param e The event argument
+   */
+  const handleKeyUp = (e) => {
+    if (e.key === 'Enter' && password.length > 0 && title.length > 0) {
+      save();
+    }
+  };
+
+  /**
+   * Generate passwords
+   */
+  const generatePassword = () => {
+    const simpleCharacterSet = getFullCharacterSet(
+      characterSet,
+      useAdvanced,
+      smallLetters,
+      capitalLetters,
+      spaces,
+      numbers,
+      specialCharacters,
+      brackets,
+    );
+    if (!simpleCharacterSet || simpleCharacterSet.length === 0 || min > max || max < min) {
+      return;
+    }
+
+    generatePasswordArray(min, max, simpleCharacterSet, 1, allowDuplicates, null)
+      .then((res) => {
+        setPassword(res[0]);
+      })
+      .catch((err) => {
+        d1(setError(err));
+      });
+  };
+
   return (
     <Dialog
       open={open}
@@ -47,45 +110,82 @@ const EditPasswordDialog = ({
         {language.editPassword}
       </DialogTitle>
       <DialogContent>
-        <TextField
-          sx={{ mt: 2 }}
-          value={title}
-          error={title.length === 0}
-          label={language.title}
-          onChange={(e) => setTitle(e.target.value)}
-          autoComplete="off"
-          variant="outlined"
-          fullWidth
-        />
-        <TextField
-          sx={{ mt: 2 }}
-          value={description}
-          label={language.description}
-          onChange={(e) => setDescription(e.target.value)}
-          autoComplete="off"
-          variant="outlined"
-          fullWidth
-        />
-        <TextField
-          sx={{ mt: 2 }}
-          value={url}
-          label={language.url}
-          onChange={(e) => setUrl(e.target.value)}
-          autoComplete="off"
-          variant="outlined"
-          fullWidth
-        />
-        <TextField
-          sx={{ mt: 2 }}
-          value={password}
-          type="password"
-          error={password.length === 0}
-          label={language.password}
-          onChange={(e) => setPassword(e.target.value)}
-          autoComplete="off"
-          variant="outlined"
-          fullWidth
-        />
+        <Grid container spacing={2} sx={{ mt: 2 }}>
+          <Grid item xs={12} md={12} lg={12}>
+            <TextField
+              value={title}
+              error={title.length === 0}
+              label={language.title}
+              onChange={(e) => setTitle(e.target.value)}
+              onKeyUp={handleKeyUp}
+              autoComplete="off"
+              variant="outlined"
+              fullWidth
+            />
+          </Grid>
+          <Grid item xs={12} md={12} lg={12}>
+            <TextField
+              value={description}
+              label={language.description}
+              onChange={(e) => setDescription(e.target.value)}
+              onKeyUp={handleKeyUp}
+              autoComplete="off"
+              variant="outlined"
+              fullWidth
+            />
+          </Grid>
+          <Grid item xs={12} md={12} lg={12}>
+            <TextField
+              value={url}
+              label={language.url}
+              onChange={(e) => setUrl(e.target.value)}
+              onKeyUp={handleKeyUp}
+              autoComplete="off"
+              variant="outlined"
+              fullWidth
+            />
+          </Grid>
+          <Grid item xs={12} md={8} lg={8}>
+            <TextField
+              value={password}
+              type={showPassword ? 'text' : 'password'}
+              error={password.length === 0}
+              label={language.password}
+              onChange={(e) => setPassword(e.target.value)}
+              onKeyUp={handleKeyUp}
+              autoComplete="off"
+              variant="outlined"
+              fullWidth
+            />
+          </Grid>
+          <Grid item xs={6} md={2} lg={2}>
+            <IconButton
+              color="primary"
+              size="large"
+              sx={{ width: '100%', height: '100%' }}
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {showPassword ? (
+                <VisibilityOffIcon fontSize="inherit" />
+              ) : (
+                <VisibilityIcon fontSize="inherit" />
+              )}
+            </IconButton>
+          </Grid>
+          <Grid item xs={6} md={2} lg={2}>
+            <IconButton
+              color="primary"
+              size="large"
+              sx={{ width: '100%', height: '100%' }}
+              onClick={generatePassword}
+            >
+              <RefreshIcon fontSize="inherit" />
+            </IconButton>
+          </Grid>
+          <Grid item xs={12} md={12} lg={12}>
+            <LinearProgressWithLabel value={PasswordStrength(password)} />
+          </Grid>
+        </Grid>
       </DialogContent>
       <DialogActions>
         <Button onClick={handleClose}>

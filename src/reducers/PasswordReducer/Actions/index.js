@@ -94,3 +94,31 @@ export const generatePasswordArray = (min, max, characterSet, amount, allowDupli
   }
   return worker.PasswordGenerator(min, max, characterSet, amount, allowDuplicates);
 };
+
+// eslint-disable-next-line max-len
+export const getFullCharacterSet = (characterSet, useAdvanced, smallLetters, capitalLetters, spaces, numbers, specialCharacters, brackets) => {
+  let simpleCharacterSet = characterSet;
+  if (!useAdvanced) {
+    simpleCharacterSet = '';
+    if (smallLetters) {
+      simpleCharacterSet += 'abcdefghijklmnopqrstuvwxyz';
+    }
+    if (capitalLetters) {
+      simpleCharacterSet += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    }
+    if (spaces) {
+      simpleCharacterSet += ' ';
+    }
+    if (specialCharacters) {
+      simpleCharacterSet += '=+-_!?.,;:\'\\"/%^*$€£&µ@#';
+    }
+    if (numbers) {
+      simpleCharacterSet += '0123456789';
+    }
+    if (brackets) {
+      simpleCharacterSet += '[]{}()<>';
+    }
+  }
+
+  return simpleCharacterSet;
+};

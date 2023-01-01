@@ -17,10 +17,10 @@ const EncryptionKeyDialog = ({ open, onAccept, onClose }) => {
    * Close the dialog
    */
   const handleClose = () => {
+    setKey('');
     if (onClose) {
       onClose();
     }
-    setKey('');
   };
 
   /**
@@ -34,6 +34,24 @@ const EncryptionKeyDialog = ({ open, onAccept, onClose }) => {
       onAccept(key);
     }
     handleClose();
+  };
+
+  /**
+   * Change the key value
+   * @param e The event argument
+   */
+  const handleChange = (e) => {
+    setKey(e.target.value);
+  };
+
+  /**
+   * Handle the key up event
+   * @param e The event argument
+   */
+  const handleKeyUp = (e) => {
+    if (e.key === 'Enter') {
+      accept();
+    }
   };
 
   return (
@@ -52,7 +70,8 @@ const EncryptionKeyDialog = ({ open, onAccept, onClose }) => {
           type="password"
           error={key.length === 0}
           label={language.decryptionKey}
-          onChange={(e) => setKey(e.target.value)}
+          onChange={handleChange}
+          onKeyUp={handleKeyUp}
           autoComplete="off"
           variant="outlined"
           fullWidth

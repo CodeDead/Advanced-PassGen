@@ -97,5 +97,6 @@
   "search": "Search",
   "editPassword": "Edit password",
   "close": "Close",
-  "copy": "Copy"
+  "copy": "Copy",
+  "createOrOpenVault": "Create or open a vault"
 }
