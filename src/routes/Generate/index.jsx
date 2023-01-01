@@ -301,7 +301,6 @@ const Generate = () => {
       </Button>
       <FormControl
         sx={{ mt: 2, minWidth: 100, float: 'right' }}
-        disabled={!passwords || passwords.length === 0}
         size="small"
       >
         <InputLabel id="export-type-label">{language.exportType}</InputLabel>
