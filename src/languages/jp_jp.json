@@ -98,5 +98,6 @@
   "editPassword": "パスワードを編集する",
   "close": "閉じる",
   "copy": "コピー",
-  "createOrOpenVault": "金庫を作成または開く"
+  "createOrOpenVault": "金庫を作成または開く",
+  "selectFile": "ファイルを選択"
 }

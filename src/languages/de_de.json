@@ -98,5 +98,6 @@
   "editPassword": "Passwort bearbeiten",
   "close": "Schließen",
   "copy": "Kopieren",
-  "createOrOpenVault": "Erstellen oder öffnen Sie einen Tresor"
+  "createOrOpenVault": "Erstellen oder öffnen Sie einen Tresor",
+  "selectFile": "Datei auswählen"
 }

@@ -25,6 +25,7 @@ import VaultCard from '../../components/VaultCard';
 import CreatePasswordDialog from '../../components/CreatePasswordDialog';
 import EditPasswordDialog from '../../components/EditPasswordDialog';
 import EncryptionKeyDialog from '../../components/EncryptionKeyDialog';
+import SelectFileDialog from '../../components/SelectFileDialog';
 
 const Vault = () => {
   const [state, d1] = useContext(MainContext);
@@ -35,21 +36,46 @@ const Vault = () => {
 
   const [phrase, setPhrase] = useState('');
   const [search, setSearch] = useState('');
+  const [editPasswordId, setEditPasswordId] = useState(null);
+  const [keyAction, setKeyAction] = useState(null);
+
   const [keyDialogOpen, setKeyDialogOpen] = useState(false);
   const [createPasswordDialogOpen, setCreatePasswordDialogOpen] = useState(false);
   const [editPasswordDialogOpen, setEditPasswordDialogOpen] = useState(false);
-  const [editPasswordId, setEditPasswordId] = useState(null);
-  const [keyAction, setKeyAction] = useState(null);
+  const [selectFileOpen, setSelectFileOpen] = useState(false);
+
+  /**
+   * Download a file
+   * @param data The data that needs to be saved
+   */
+  const downloadFile = (data) => {
+    const blob = new Blob([data]);
+    const href = URL.createObjectURL(blob);
+
+    const link = document.createElement('a');
+    link.href = href;
+    link.download = 'vault';
+    document.body.appendChild(link);
+    link.click();
+
+    document.body.removeChild(link);
+    URL.revokeObjectURL(href);
+  };
 
   /**
    * Save the vault
    */
   const saveVault = async () => {
     try {
-      const path = await save();
-      if (path && path.length > 0) {
-        const encVault = CryptoJS.AES.encrypt(JSON.stringify(vault), phrase).toString();
-        await invoke('save_string_to_disk', { content: encVault, path });
+      const encVault = CryptoJS.AES.encrypt(JSON.stringify(vault), phrase).toString();
+      // eslint-disable-next-line no-underscore-dangle
+      if (window.__TAURI__) {
+        const path = await save();
+        if (path && path.length > 0) {
+          await invoke('save_string_to_disk', { content: encVault, path });
+        }
+      } else {
+        downloadFile(encVault);
       }
     } catch (e) {
       d1(setError(e.toString()));
@@ -63,19 +89,42 @@ const Vault = () => {
    */
   const openVaultDetails = async (decryptionKey) => {
     try {
-      const path = await open({
-        multiple: false,
-      });
-      if (path && path.length > 0) {
-        const res = await invoke('read_string_from_file', { path });
+      // eslint-disable-next-line no-underscore-dangle
+      if (window.__TAURI__) {
+        const path = await open({
+          multiple: false,
+        });
+        if (path && path.length > 0) {
+          const res = await invoke('read_string_from_file', { path });
 
-        const bytes = CryptoJS.AES.decrypt(res.toString(), decryptionKey);
-        const originalText = bytes.toString(CryptoJS.enc.Utf8);
+          const bytes = CryptoJS.AES.decrypt(res.toString(), decryptionKey);
+          const originalText = bytes.toString(CryptoJS.enc.Utf8);
 
-        d3(setVault(JSON.parse(originalText)));
+          d3(setVault(JSON.parse(originalText)));
+        }
+      } else {
+        setSelectFileOpen(true);
       }
     } catch (e) {
       d1(setError(e.toString()));
+    }
+  };
+
+  /**
+   * Open vault from raw data
+   * @param data The raw data
+   * @returns {Promise<void>}
+   */
+  const openVaultFromData = async (data) => {
+    if (data && data.length > 0) {
+      try {
+        const bytes = CryptoJS.AES.decrypt(data.toString(), phrase);
+        const originalText = bytes.toString(CryptoJS.enc.Utf8);
+
+        d3(setVault(JSON.parse(originalText)));
+      } catch (e) {
+        d1(setError(e.toString()));
+      }
     }
   };
 
@@ -119,7 +168,12 @@ const Vault = () => {
   const copyToClipboard = async (id) => {
     const { password } = vault.find((p) => p.id === id);
     try {
-      await writeText(password);
+      // eslint-disable-next-line no-underscore-dangle
+      if (window.__TAURI__) {
+        await writeText(password);
+      } else {
+        await navigator.clipboard.writeText(password);
+      }
     } catch (e) {
       d1(setError(e.toString()));
     }
@@ -375,6 +429,14 @@ const Vault = () => {
           data={toEdit}
         />
       ) : null}
+      <SelectFileDialog
+        open={selectFileOpen}
+        onClose={() => setSelectFileOpen(false)}
+        onAccept={openVaultFromData}
+        selectFileLabel={language.selectFile}
+        cancelLabel={language.cancel}
+        acceptLabel={language.ok}
+      />
     </Container>
   );
 };

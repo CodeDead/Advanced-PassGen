@@ -98,5 +98,6 @@
   "editPassword": "Изменить пароль",
   "close": "Закрыть",
   "copy": "Копировать",
-  "createOrOpenVault": "Создать или открыть сейф"
+  "createOrOpenVault": "Создать или открыть сейф",
+  "selectFile": "Выбрать файл"
 }
