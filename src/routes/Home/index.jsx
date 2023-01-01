@@ -14,7 +14,7 @@ import { MainContext } from '../../contexts/MainContextProvider';
 import { setError, setLoading, setPageIndex } from '../../reducers/MainReducer/Actions';
 import { PasswordContext } from '../../contexts/PasswordContextProvider';
 import {
-  generatePasswordArray,
+  generatePasswordArray, getFullCharacterSet,
   setBrackets,
   setCapitalLetters,
   setNumbers,
@@ -58,29 +58,16 @@ const Home = () => {
    * Generate passwords
    */
   const generatePasswords = () => {
-    let simpleCharacterSet = characterSet;
-    if (!useAdvanced) {
-      simpleCharacterSet = '';
-      if (smallLetters) {
-        simpleCharacterSet += 'abcdefghijklmnopqrstuvwxyz';
-      }
-      if (capitalLetters) {
-        simpleCharacterSet += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-      }
-      if (spaces) {
-        simpleCharacterSet += ' ';
-      }
-      if (specialCharacters) {
-        simpleCharacterSet += '=+-_!?.,;:\'\\"/%^*$€£&µ@#';
-      }
-      if (numbers) {
-        simpleCharacterSet += '0123456789';
-      }
-      if (brackets) {
-        simpleCharacterSet += '[]{}()<>';
-      }
-    }
-
+    const simpleCharacterSet = getFullCharacterSet(
+      characterSet,
+      useAdvanced,
+      smallLetters,
+      capitalLetters,
+      spaces,
+      numbers,
+      specialCharacters,
+      brackets,
+    );
     if (!simpleCharacterSet || simpleCharacterSet.length === 0 || min > max || max < min) {
       return;
     }
