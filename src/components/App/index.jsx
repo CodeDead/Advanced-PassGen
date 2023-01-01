@@ -128,8 +128,7 @@ const App = () => {
                 <Route exact path="/advanced" element={<Advanced />} />
                 <Route exact path="/generate" element={<Generate />} />
                 <Route exact path="/advisor" element={<Advisor />} />
-                {/* eslint-disable-next-line no-underscore-dangle */}
-                {window.__TAURI__ ? (<Route exact path="/vault" element={<Vault />} />) : null}
+                <Route exact path="/vault" element={<Vault />} />
                 <Route exact path="/settings" element={<Settings />} />
                 <Route exact path="/about" element={<About />} />
                 <Route path="*" element={<NotFound />} />

@@ -149,30 +149,27 @@ const ClippedDrawer = () => {
               {textVisible ? <ListItemText primary={language.advisor} /> : null}
             </ListItemButton>
           </ListItem>
-          {/* eslint-disable-next-line no-underscore-dangle */}
-          {window.__TAURI__ ? (
-            <ListItem disablePadding sx={{ display: textVisible ? 'block' : null }}>
-              <ListItemButton
-                selected={pageIndex === 4}
-                onClick={() => navigate('/vault')}
+          <ListItem disablePadding sx={{ display: textVisible ? 'block' : null }}>
+            <ListItemButton
+              selected={pageIndex === 4}
+              onClick={() => navigate('/vault')}
+              sx={{
+                minHeight: 48,
+                justifyContent: textVisible ? 'initial' : 'center',
+                px: 2.5,
+              }}
+            >
+              <ListItemIcon
                 sx={{
-                  minHeight: 48,
-                  justifyContent: textVisible ? 'initial' : 'center',
-                  px: 2.5,
+                  minWidth: textVisible ? null : 0,
+                  mr: textVisible ? null : 'auto',
                 }}
               >
-                <ListItemIcon
-                  sx={{
-                    minWidth: textVisible ? null : 0,
-                    mr: textVisible ? null : 'auto',
-                  }}
-                >
-                  <FolderIcon />
-                </ListItemIcon>
-                {textVisible ? <ListItemText primary={language.vault} /> : null}
-              </ListItemButton>
-            </ListItem>
-          ) : null}
+                <FolderIcon />
+              </ListItemIcon>
+              {textVisible ? <ListItemText primary={language.vault} /> : null}
+            </ListItemButton>
+          </ListItem>
         </List>
         <Divider />
         <List>

@@ -98,5 +98,6 @@
   "editPassword": "Edit password",
   "close": "Close",
   "copy": "Copy",
-  "createOrOpenVault": "Create or open a vault"
+  "createOrOpenVault": "Create or open a vault",
+  "selectFile": "Select file"
 }

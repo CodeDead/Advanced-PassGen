@@ -98,5 +98,6 @@
   "editPassword": "Modifier le mot de passe",
   "close": "Fermer",
   "copy": "Copier",
-  "createOrOpenVault": "Créer ou ouvrir un coffre-fort"
+  "createOrOpenVault": "Créer ou ouvrir un coffre-fort",
+  "selectFile": "Sélectionner un fichier"
 }

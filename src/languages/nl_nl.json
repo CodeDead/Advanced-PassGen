@@ -98,5 +98,6 @@
   "editPassword": "Wachtwoord bewerken",
   "close": "Sluiten",
   "copy": "Kopiëren",
-  "createOrOpenVault": "Maak een nieuwe kluis of open een bestaande kluis"
+  "createOrOpenVault": "Maak een nieuwe kluis of open een bestaande kluis",
+  "selectFile": "Selecteer een bestand"
 }

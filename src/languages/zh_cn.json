@@ -98,5 +98,6 @@
   "editPassword": "编辑密码",
   "close": "关闭",
   "copy": "复制",
-  "createOrOpenVault": "创建或打开保险库"
+  "createOrOpenVault": "创建或打开保险库",
+  "selectFile": "选择文件"
 }
