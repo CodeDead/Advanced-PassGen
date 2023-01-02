@@ -19,7 +19,7 @@
   "characterSet": "キャラクターセット",
   "generate": "生成",
   "useCustomCharacterSet": "カスタム文字セットを使用する",
-  "aboutText": "Advanced PassGen は DeadLine によって作成されました。\n\nテーマ: MUI\nライセンス: GPLv3\nバージョン: {x}\n\n著作権 © 2023 CodeDead",
+  "aboutText": "Advanced PassGen は DeadLine によって作成されました。\n\nテーマ: MUI\nライセンス: GPLv3\nバージョン: {x}\n\n著作権 © {year} CodeDead",
   "website": "ウェブサイト",
   "license": "ライセンス",
   "autoUpdate": "アップデートを自動的に確認する",
