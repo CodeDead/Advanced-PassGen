@@ -20,7 +20,7 @@ import { writeText } from '@tauri-apps/api/clipboard';
 import { MainContext } from '../../contexts/MainContextProvider';
 import { openWebSite, setError, setPageIndex } from '../../reducers/MainReducer/Actions';
 import { VaultContext } from '../../contexts/VaultContextProvider';
-import { setVault } from '../../reducers/VaultReducer/Actions';
+import { setPhrase, setVault } from '../../reducers/VaultReducer/Actions';
 import VaultCard from '../../components/VaultCard';
 import CreatePasswordDialog from '../../components/CreatePasswordDialog';
 import EditPasswordDialog from '../../components/EditPasswordDialog';
@@ -32,9 +32,9 @@ const Vault = () => {
   const [vaultState, d3] = useContext(VaultContext);
 
   const language = state.languages[state.languageIndex];
-  const { vault } = vaultState;
+  const { themeIndex } = state;
+  const { vault, phrase } = vaultState;
 
-  const [phrase, setPhrase] = useState('');
   const [search, setSearch] = useState('');
   const [editPasswordId, setEditPasswordId] = useState(null);
   const [keyAction, setKeyAction] = useState(null);
@@ -223,7 +223,7 @@ const Vault = () => {
     if (!key || key.length === 0) {
       return;
     }
-    setPhrase(key);
+    d3(setPhrase(key));
 
     if (keyAction === 'create') {
       d3(setVault([]));
@@ -261,7 +261,7 @@ const Vault = () => {
    */
   const closeVault = () => {
     d3(setVault(null));
-    setPhrase('');
+    d3(setPhrase(''));
     setSearch('');
   };
 
@@ -308,6 +308,7 @@ const Vault = () => {
             onEdit={openEditPasswordDialog}
             onDelete={deletePassword}
             onCopy={copyToClipboard}
+            themeIndex={themeIndex}
           />
         </Grid>
       ));
