@@ -19,7 +19,7 @@
   "characterSet": "Набор символов",
   "generate": "Создать",
   "useCustomCharacterSet": "Использовать пользовательский набор символов",
-  "aboutText": "Advanced PassGen был создан DeadLine.\n\nТема: МУИ\nЛицензия: GPLv3\nВерсия: {x}\n\nАвторское право © 2023 CodeDead",
+  "aboutText": "Advanced PassGen был создан DeadLine.\n\nТема: МУИ\nЛицензия: GPLv3\nВерсия: {x}\n\nАвторское право © {year} CodeDead",
   "website": "Веб-сайт",
   "license": "Лицензия",
   "autoUpdate": "Автоматически проверять наличие обновлений",

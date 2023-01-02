@@ -40,7 +40,7 @@ const About = () => {
       <Card>
         <CardContent>
           <Typography style={{ whiteSpace: 'pre-wrap' }}>
-            {language.aboutText.replace('{x}', packageJson.version)}
+            {language.aboutText.replace('{x}', packageJson.version).replace('{year}', new Date().getFullYear())}
           </Typography>
         </CardContent>
       </Card>

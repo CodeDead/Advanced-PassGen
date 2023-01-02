@@ -19,7 +19,7 @@
   "characterSet": "Ensemble de caractères",
   "generate": "Générer",
   "useCustomCharacterSet": "Utiliser un ensemble de caractères personnalisé",
-  "aboutText": "Advanced PassGen a été créé par DeadLine\n\nThème : MUI\nLicence: GPLv3\nVersion: {x}\n\nCopyright © 2023 CodeDead",
+  "aboutText": "Advanced PassGen a été créé par DeadLine\n\nThème : MUI\nLicence: GPLv3\nVersion: {x}\n\nCopyright © {year} CodeDead",
   "website": "Site web",
   "license": "Licence",
   "autoUpdate": "Mise à jour automatique",

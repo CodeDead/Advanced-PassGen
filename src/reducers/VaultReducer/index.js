@@ -1,4 +1,4 @@
-import { SET_VAULT } from './Actions/actionTypes';
+import { SET_PHRASE, SET_VAULT } from './Actions/actionTypes';
 
 const VaultReducer = (state, action) => {
   if (!action || !action.type) {
@@ -9,6 +9,11 @@ const VaultReducer = (state, action) => {
       return {
         ...state,
         vault: action.payload,
+      };
+    case SET_PHRASE:
+      return {
+        ...state,
+        phrase: action.payload,
       };
     default:
       return state;

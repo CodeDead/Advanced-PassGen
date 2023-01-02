@@ -5,10 +5,13 @@ import CardActions from '@mui/material/CardActions';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import CardActionArea from '@mui/material/CardActionArea';
+import CardMedia from '@mui/material/CardMedia';
+import LockIcon from '@mui/icons-material/Lock';
+import ThemeSelector from '../../utils/ThemeSelector';
 
 const VaultCard = ({
   id, title, description, url, openLabel, editLabel, copyLabel,
-  deleteLabel, onClick, onEdit, onDelete, onCopy,
+  deleteLabel, onClick, onEdit, onDelete, onCopy, themeIndex,
 }) => {
   /**
    * Open the URL
@@ -39,10 +42,23 @@ const VaultCard = ({
   };
 
   return (
-    <Card>
-      <CardActionArea
-        onClick={copy}
-      >
+    <Card style={{ height: '100%' }}>
+      <CardActionArea onClick={copy}>
+        <CardMedia
+          style={{
+            height: 120,
+            backgroundColor: ThemeSelector(themeIndex)['500'],
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+          title={title}
+        >
+          <LockIcon
+            color="inherit"
+            fontSize="large"
+          />
+        </CardMedia>
         <CardContent>
           <Typography variant="h5" component="div">
             {title}

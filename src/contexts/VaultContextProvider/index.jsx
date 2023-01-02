@@ -3,6 +3,7 @@ import VaultReducer from '../../reducers/VaultReducer';
 
 const initState = {
   vault: null,
+  phrase: '',
 };
 
 export const VaultContext = createContext(initState);

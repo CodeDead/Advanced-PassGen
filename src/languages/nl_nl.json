@@ -19,7 +19,7 @@
   "characterSet": "Karakter set",
   "generate": "Genereer",
   "useCustomCharacterSet": "Gebruik aangepaste karakter set",
-  "aboutText": "Advanced PassGen is gemaakt door DeadLine\n\nThema: MUI\nLicentie: GPLv3\nVersie: {x}\n\nCopyright © 2023 CodeDead",
+  "aboutText": "Advanced PassGen is gemaakt door DeadLine\n\nThema: MUI\nLicentie: GPLv3\nVersie: {x}\n\nCopyright © {year} CodeDead",
   "website": "Website",
   "license": "Licentie",
   "autoUpdate": "Automatisch updaten",
