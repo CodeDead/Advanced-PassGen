@@ -99,5 +99,6 @@
   "close": "Schließen",
   "copy": "Kopieren",
   "createOrOpenVault": "Erstellen oder öffnen Sie einen Tresor",
-  "selectFile": "Datei auswählen"
+  "selectFile": "Datei auswählen",
+  "username": "Benutzername"
 }

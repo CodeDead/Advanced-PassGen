@@ -141,13 +141,14 @@ const Vault = () => {
    * @param title The title
    * @param description The description
    * @param url The URL
+   * @param username The username
    * @param password The password
    */
-  const addPassword = (title, description, url, password) => {
+  const addPassword = (title, description, url, username, password) => {
     const id = uuidv4();
     const newVault = JSON.parse(JSON.stringify(vault));
     newVault.push({
-      id, title, description, url, password,
+      id, title, description, url, username, password,
     });
     d3(setVault(newVault));
   };
@@ -202,14 +203,16 @@ const Vault = () => {
    * @param title The new title
    * @param description The new description
    * @param url The new URL
+   * @param username The new username
    * @param password The new password
    */
-  const editPassword = (id, title, description, url, password) => {
+  const editPassword = (id, title, description, url, username, password) => {
     const newVault = JSON.parse(JSON.stringify(vault));
     newVault.filter((e) => e.id === id).forEach((e) => {
       e.title = title;
       e.description = description;
       e.url = url;
+      e.username = username;
       e.password = password;
     });
     d3(setVault(newVault));
@@ -281,7 +284,8 @@ const Vault = () => {
     const filteredVault = search && search.length > 0
       ? vault.filter((e) => e.title.toLowerCase().includes(search.toLowerCase())
         || e.description.toLowerCase().includes(search.toLowerCase())
-        || e.url.toLowerCase().includes(search.toLowerCase()))
+        || e.url.toLowerCase().includes(search.toLowerCase())
+        || e.username.toLowerCase().includes(search.toLowerCase()))
       : vault;
 
     if (!filteredVault || filteredVault.length === 0) {

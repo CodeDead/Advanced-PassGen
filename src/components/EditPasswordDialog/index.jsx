@@ -42,6 +42,7 @@ const EditPasswordDialog = ({
   const [description, setDescription] = useState(data && data.description ? data.description : '');
   const [url, setUrl] = useState(data && data.url ? data.url : '');
   const [password, setPassword] = useState(data && data.password ? data.password : '');
+  const [username, setUsername] = useState(data && data.username ? data.username : '');
   const [showPassword, setShowPassword] = useState(false);
 
   const simpleCharacterSet = getFullCharacterSet(
@@ -72,7 +73,7 @@ const EditPasswordDialog = ({
    */
   const save = () => {
     if (onSave) {
-      onSave(data.id, title, description, url, password);
+      onSave(data.id, title, description, url, username, password);
     }
     handleClose();
   };
@@ -143,6 +144,18 @@ const EditPasswordDialog = ({
               value={url}
               label={language.url}
               onChange={(e) => setUrl(e.target.value)}
+              onKeyUp={handleKeyUp}
+              autoComplete="off"
+              variant="outlined"
+              fullWidth
+            />
+          </Grid>
+          <Grid item xs={12} md={12} lg={12}>
+            <TextField
+              value={username}
+              type="text"
+              label={language.username}
+              onChange={(e) => setUsername(e.target.value)}
               onKeyUp={handleKeyUp}
               autoComplete="off"
               variant="outlined"

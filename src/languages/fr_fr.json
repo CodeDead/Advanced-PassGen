@@ -99,5 +99,6 @@
   "close": "Fermer",
   "copy": "Copier",
   "createOrOpenVault": "Créer ou ouvrir un coffre-fort",
-  "selectFile": "Sélectionner un fichier"
+  "selectFile": "Sélectionner un fichier",
+  "username": "Nom d'utilisateur"
 }

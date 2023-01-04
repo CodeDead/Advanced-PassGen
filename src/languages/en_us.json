@@ -99,5 +99,6 @@
   "close": "Close",
   "copy": "Copy",
   "createOrOpenVault": "Create or open a vault",
-  "selectFile": "Select file"
+  "selectFile": "Select file",
+  "username": "Username"
 }
