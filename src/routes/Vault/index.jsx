@@ -414,6 +414,7 @@ const Vault = () => {
       </Box>
       <EncryptionKeyDialog
         open={keyDialogOpen}
+        verify={keyAction === 'create'}
         onClose={closeEncryptionKeyDialog}
         onAccept={acceptKey}
       />
