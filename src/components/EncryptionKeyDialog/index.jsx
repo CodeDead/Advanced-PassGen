@@ -5,19 +5,24 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogActions from '@mui/material/DialogActions';
 import Button from '@mui/material/Button';
+import Grid from '@mui/material/Grid';
 import { MainContext } from '../../contexts/MainContextProvider';
 
-const EncryptionKeyDialog = ({ open, onAccept, onClose }) => {
+const EncryptionKeyDialog = ({
+  open, onAccept, onClose, verify,
+}) => {
   const [state] = useContext(MainContext);
   const language = state.languages[state.languageIndex];
 
   const [key, setKey] = useState('');
+  const [key2, setKey2] = useState('');
 
   /**
    * Close the dialog
    */
   const handleClose = () => {
     setKey('');
+    setKey2('');
     if (onClose) {
       onClose();
     }
@@ -28,6 +33,9 @@ const EncryptionKeyDialog = ({ open, onAccept, onClose }) => {
    */
   const accept = () => {
     if (key.length === 0) {
+      return;
+    }
+    if (verify && key !== key2) {
       return;
     }
     if (onAccept) {
@@ -42,6 +50,14 @@ const EncryptionKeyDialog = ({ open, onAccept, onClose }) => {
    */
   const handleChange = (e) => {
     setKey(e.target.value);
+  };
+
+  /**
+   * Change the verification key value
+   * @param e The event argument
+   */
+  const handleVerifyChange = (e) => {
+    setKey2(e.target.value);
   };
 
   /**
@@ -64,18 +80,36 @@ const EncryptionKeyDialog = ({ open, onAccept, onClose }) => {
         {language.decryptionKey}
       </DialogTitle>
       <DialogContent>
-        <TextField
-          sx={{ mt: 2 }}
-          value={key}
-          type="password"
-          error={key.length === 0}
-          label={language.decryptionKey}
-          onChange={handleChange}
-          onKeyUp={handleKeyUp}
-          autoComplete="off"
-          variant="outlined"
-          fullWidth
-        />
+        <Grid container spacing={2} sx={{ mt: 2 }}>
+          <Grid item xs={12} md={12} lg={12}>
+            <TextField
+              value={key}
+              type="password"
+              error={key.length === 0 || (verify && key !== key2)}
+              label={language.decryptionKey}
+              onChange={handleChange}
+              onKeyUp={handleKeyUp}
+              autoComplete="off"
+              variant="outlined"
+              fullWidth
+            />
+          </Grid>
+          {verify ? (
+            <Grid item xs={12} md={12} lg={12}>
+              <TextField
+                value={key2}
+                type="password"
+                error={key2.length === 0 || (verify && key !== key2)}
+                label={language.decryptionKey}
+                onChange={handleVerifyChange}
+                onKeyUp={handleKeyUp}
+                autoComplete="off"
+                variant="outlined"
+                fullWidth
+              />
+            </Grid>
+          ) : null}
+        </Grid>
       </DialogContent>
       <DialogActions>
         <Button onClick={handleClose}>
@@ -84,7 +118,7 @@ const EncryptionKeyDialog = ({ open, onAccept, onClose }) => {
         <Button
           onClick={accept}
           autoFocus
-          disabled={key.length === 0}
+          disabled={key.length === 0 || (verify && key !== key2)}
         >
           {language.ok}
         </Button>

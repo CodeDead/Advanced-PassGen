@@ -2295,10 +2295,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mui/core-downloads-tracker@npm:^5.11.2":
-  version: 5.11.2
-  resolution: "@mui/core-downloads-tracker@npm:5.11.2"
-  checksum: 1f2c45ef37b13829fa2331811548cdd3f3cb94e384513db8820533570c8ef4569e5f835f8757a48d783553f44af3f4ed2f93d402891e27718fcc58e16129a874
+"@mui/core-downloads-tracker@npm:^5.11.3":
+  version: 5.11.3
+  resolution: "@mui/core-downloads-tracker@npm:5.11.3"
+  checksum: 0bc6ad3e2bc9170cf2fc1de749c12c1255ccf6fe17b9df047fa6a69d3a1965413a891b01dfef2939f0af7273693479b08ebd85ef3cc2e7c5e5750eced6ae15d7
   languageName: node
   linkType: hard
 
@@ -2318,13 +2318,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mui/material@npm:^5.11.2":
-  version: 5.11.2
-  resolution: "@mui/material@npm:5.11.2"
+"@mui/material@npm:^5.11.3":
+  version: 5.11.3
+  resolution: "@mui/material@npm:5.11.3"
   dependencies:
     "@babel/runtime": ^7.20.7
     "@mui/base": 5.0.0-alpha.112
-    "@mui/core-downloads-tracker": ^5.11.2
+    "@mui/core-downloads-tracker": ^5.11.3
     "@mui/system": ^5.11.2
     "@mui/types": ^7.2.3
     "@mui/utils": ^5.11.2
@@ -2347,7 +2347,7 @@ __metadata:
       optional: true
     "@types/react":
       optional: true
-  checksum: 4f2baa4b4d8f7842b081e9e919172020f7055e33c24af36c5a458eac1a76ff3e896651fdf21daa523a68ac0bfb3670864c1b4dec9fae6d8fadf2b602f14f95ea
+  checksum: aa96078c51367315b9452a4a4fc7fe16aba3338bf5a8455f9c35d9f290d7d50c47e0af85124f0dbbbfd86c99b02d82039f0b923e98d93f7a04d409ba0ac41beb
   languageName: node
   linkType: hard
 
@@ -3870,7 +3870,7 @@ __metadata:
     "@emotion/styled": ^11.10.5
     "@fontsource/roboto": ^4.5.8
     "@mui/icons-material": ^5.11.0
-    "@mui/material": ^5.11.2
+    "@mui/material": ^5.11.3
     "@shopify/react-web-worker": ^5.0.6
     "@tauri-apps/api": ^1.2.0
     "@tauri-apps/cli": ^1.2.2
