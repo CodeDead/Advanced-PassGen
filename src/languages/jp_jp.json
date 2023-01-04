@@ -99,5 +99,6 @@
   "close": "閉じる",
   "copy": "コピー",
   "createOrOpenVault": "金庫を作成または開く",
-  "selectFile": "ファイルを選択"
+  "selectFile": "ファイルを選択",
+  "username": "ユーザー名"
 }

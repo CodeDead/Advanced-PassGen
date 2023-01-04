@@ -99,5 +99,6 @@
   "close": "Sluiten",
   "copy": "Kopiëren",
   "createOrOpenVault": "Maak een nieuwe kluis of open een bestaande kluis",
-  "selectFile": "Selecteer een bestand"
+  "selectFile": "Selecteer een bestand",
+  "username": "Gebruikersnaam"
 }

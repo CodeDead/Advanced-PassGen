@@ -39,6 +39,7 @@ const CreatePasswordDialog = ({ open, onCreate, onClose }) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [url, setUrl] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
 
@@ -67,6 +68,7 @@ const CreatePasswordDialog = ({ open, onCreate, onClose }) => {
     setDescription('');
     setUrl('');
     setPassword('');
+    setUsername('');
   };
 
   /**
@@ -74,7 +76,7 @@ const CreatePasswordDialog = ({ open, onCreate, onClose }) => {
    */
   const create = () => {
     if (onCreate) {
-      onCreate(title, description, url, password);
+      onCreate(title, description, url, username, password);
     }
     handleClose();
   };
@@ -145,6 +147,18 @@ const CreatePasswordDialog = ({ open, onCreate, onClose }) => {
               value={url}
               label={language.url}
               onChange={(e) => setUrl(e.target.value)}
+              onKeyUp={handleKeyUp}
+              autoComplete="off"
+              variant="outlined"
+              fullWidth
+            />
+          </Grid>
+          <Grid item xs={12} md={12} lg={12}>
+            <TextField
+              value={username}
+              type="text"
+              label={language.username}
+              onChange={(e) => setUsername(e.target.value)}
               onKeyUp={handleKeyUp}
               autoComplete="off"
               variant="outlined"
