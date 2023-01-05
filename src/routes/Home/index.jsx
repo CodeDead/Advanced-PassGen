@@ -74,7 +74,7 @@ const Home = () => {
    * Generate passwords
    */
   const generatePasswords = () => {
-    if (!cannotGenerate) {
+    if (cannotGenerate) {
       return;
     }
 

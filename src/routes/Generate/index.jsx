@@ -99,7 +99,7 @@ const Generate = () => {
    * Generate passwords
    */
   const generatePasswords = () => {
-    if (!cannotGenerate) {
+    if (cannotGenerate) {
       return;
     }
     d1(setLoading(true));
