@@ -1,5 +1,9 @@
 import React, {
-  useContext, useEffect, useState, lazy, Suspense,
+  useContext,
+  useEffect,
+  useState,
+  lazy,
+  Suspense,
 } from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
@@ -17,7 +21,11 @@ import TopBar from '../TopBar';
 import ClippedDrawer from '../ClippedDrawer';
 import UpdateDialog from '../UpdateDialog';
 import {
-  openWebSite, setCheckedForUpdates, setError, setLoading, setUpdate,
+  openWebSite,
+  setCheckedForUpdates,
+  setError,
+  setLoading,
+  setUpdate,
 } from '../../reducers/MainReducer/Actions';
 import Updater from '../../utils/Updater';
 import AlertDialog from '../AlertDialog';
@@ -30,6 +38,7 @@ const Generate = lazy(() => import('../../routes/Generate'));
 const About = lazy(() => import('../../routes/About'));
 const Settings = lazy(() => import('../../routes/Settings'));
 const Advisor = lazy(() => import('../../routes/Advisor'));
+const Vault = lazy(() => import('../../routes/Vault'));
 const NotFound = lazy(() => import('../../routes/NotFound'));
 
 const App = () => {
@@ -127,6 +136,7 @@ const App = () => {
                 <Route exact path="/advanced" element={<Advanced />} />
                 <Route exact path="/generate" element={<Generate />} />
                 <Route exact path="/advisor" element={<Advisor />} />
+                <Route exact path="/vault" element={<Vault />} />
                 <Route exact path="/settings" element={<Settings />} />
                 <Route exact path="/about" element={<About />} />
                 <Route path="*" element={<NotFound />} />
@@ -174,7 +184,7 @@ const App = () => {
               {language.downloadApp}
             </Typography>
             <Button
-              onClick={() => window.open('https://codedead.com/software/advanced-passgen')}
+              onClick={() => openWebSite('https://codedead.com/software/advanced-passgen')}
               size="small"
               color="secondary"
             >

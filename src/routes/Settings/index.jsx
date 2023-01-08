@@ -127,7 +127,7 @@ const Settings = () => {
   };
 
   useEffect(() => {
-    d1(setPageIndex(4));
+    d1(setPageIndex(5));
   }, []);
 
   return (

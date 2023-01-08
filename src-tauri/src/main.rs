@@ -12,6 +12,7 @@ fn main() {
         .invoke_handler(tauri::generate_handler![
             open_website,
             save_string_to_disk,
+            read_string_from_file,
             generate_passwords
         ])
         .run(tauri::generate_context!())
@@ -30,6 +31,14 @@ fn open_website(website: &str) -> Result<String, String> {
 fn save_string_to_disk(content: &str, path: &str) -> Result<String, String> {
     match fs::write(path, content) {
         Ok(_) => Ok(String::from("Success")),
+        Err(e) => Err(e.to_string()),
+    }
+}
+
+#[tauri::command]
+async fn read_string_from_file(path: &str) -> Result<String, String> {
+    match fs::read_to_string(path) {
+        Ok(s) => Ok(s),
         Err(e) => Err(e.to_string()),
     }
 }

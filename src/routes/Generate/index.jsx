@@ -14,7 +14,11 @@ import { MainContext } from '../../contexts/MainContextProvider';
 import { PasswordContext } from '../../contexts/PasswordContextProvider';
 import { setError, setLoading, setPageIndex } from '../../reducers/MainReducer/Actions';
 import PasswordStrength from '../../utils/PasswordStrength';
-import { generatePasswordArray, setPasswords } from '../../reducers/PasswordReducer/Actions';
+import {
+  generatePasswordArray,
+  getFullCharacterSet,
+  setPasswords,
+} from '../../reducers/PasswordReducer/Actions';
 import MuiVirtualizedTable from '../../components/MuiVirtualizedTable';
 import LoadingBar from '../../components/LoadingBar';
 
@@ -77,37 +81,27 @@ const Generate = () => {
 
   const worker = useWorker(createWorker);
 
+  const simpleCharacterSet = getFullCharacterSet(
+    characterSet,
+    useAdvanced,
+    smallLetters,
+    capitalLetters,
+    spaces,
+    numbers,
+    specialCharacters,
+    brackets,
+  );
+
+  const cannotGenerate = !simpleCharacterSet || simpleCharacterSet.length === 0
+    || min > max || max < min;
+
   /**
    * Generate passwords
    */
   const generatePasswords = () => {
-    let simpleCharacterSet = characterSet;
-    if (!useAdvanced) {
-      simpleCharacterSet = '';
-      if (smallLetters) {
-        simpleCharacterSet += 'abcdefghijklmnopqrstuvwxyz';
-      }
-      if (capitalLetters) {
-        simpleCharacterSet += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-      }
-      if (spaces) {
-        simpleCharacterSet += ' ';
-      }
-      if (specialCharacters) {
-        simpleCharacterSet += '=+-_!?.,;:\'\\"/%^*$€£&µ@#';
-      }
-      if (numbers) {
-        simpleCharacterSet += '0123456789';
-      }
-      if (brackets) {
-        simpleCharacterSet += '[]{}()<>';
-      }
-    }
-
-    if (!simpleCharacterSet || simpleCharacterSet.length === 0 || min > max || max < min) {
+    if (cannotGenerate) {
       return;
     }
-
     d1(setLoading(true));
     generatePasswordArray(min, max, simpleCharacterSet, amount, allowDuplicates, worker)
       .then((res) => {
@@ -235,6 +229,13 @@ const Generate = () => {
     setExportType(e.target.value);
   };
 
+  /**
+   * Clear all passwords
+   */
+  const clearPasswords = () => {
+    d2(setPasswords(null));
+  };
+
   useEffect(() => {
     d1(setPageIndex(2));
   }, []);
@@ -281,7 +282,7 @@ const Generate = () => {
       <Button
         variant="contained"
         color="primary"
-        onClick={() => d2(setPasswords(null))}
+        onClick={clearPasswords}
         sx={{ mt: 2 }}
         style={{ float: 'left' }}
       >
@@ -290,7 +291,7 @@ const Generate = () => {
       <Button
         variant="contained"
         color="primary"
-        disabled={min > max || max < min}
+        disabled={cannotGenerate}
         onClick={generatePasswords}
         sx={{ mt: 2, ml: 2 }}
         style={{ float: 'right' }}
@@ -309,7 +310,6 @@ const Generate = () => {
       </Button>
       <FormControl
         sx={{ mt: 2, minWidth: 100, float: 'right' }}
-        disabled={!passwords || passwords.length === 0}
         size="small"
       >
         <InputLabel id="export-type-label">{language.exportType}</InputLabel>

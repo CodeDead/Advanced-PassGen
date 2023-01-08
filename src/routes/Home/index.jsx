@@ -15,12 +15,14 @@ import { setError, setLoading, setPageIndex } from '../../reducers/MainReducer/A
 import { PasswordContext } from '../../contexts/PasswordContextProvider';
 import {
   generatePasswordArray,
+  getFullCharacterSet,
   setBrackets,
   setCapitalLetters,
   setNumbers,
   setPasswordAmount,
   setPasswordLengthMax,
-  setPasswordLengthMin, setPasswords,
+  setPasswordLengthMin,
+  setPasswords,
   setSmallLetters,
   setSpaces,
   setSpecialCharacters,
@@ -54,34 +56,25 @@ const Home = () => {
   const navigate = useNavigate();
   const worker = useWorker(createWorker);
 
+  const simpleCharacterSet = getFullCharacterSet(
+    characterSet,
+    useAdvanced,
+    smallLetters,
+    capitalLetters,
+    spaces,
+    numbers,
+    specialCharacters,
+    brackets,
+  );
+
+  const cannotGenerate = !simpleCharacterSet || simpleCharacterSet.length === 0
+    || min > max || max < min;
+
   /**
    * Generate passwords
    */
   const generatePasswords = () => {
-    let simpleCharacterSet = characterSet;
-    if (!useAdvanced) {
-      simpleCharacterSet = '';
-      if (smallLetters) {
-        simpleCharacterSet += 'abcdefghijklmnopqrstuvwxyz';
-      }
-      if (capitalLetters) {
-        simpleCharacterSet += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-      }
-      if (spaces) {
-        simpleCharacterSet += ' ';
-      }
-      if (specialCharacters) {
-        simpleCharacterSet += '=+-_!?.,;:\'\\"/%^*$€£&µ@#';
-      }
-      if (numbers) {
-        simpleCharacterSet += '0123456789';
-      }
-      if (brackets) {
-        simpleCharacterSet += '[]{}()<>';
-      }
-    }
-
-    if (!simpleCharacterSet || simpleCharacterSet.length === 0 || min > max || max < min) {
+    if (cannotGenerate) {
       return;
     }
 
@@ -97,6 +90,28 @@ const Home = () => {
       .finally(() => {
         d1(setLoading(false));
       });
+  };
+
+  /**
+   * Change a number value
+   * @param e The change event
+   * @param action The action to dispatch
+   */
+  const changeNumberValue = (e, action) => {
+    if (e.target.value && e.target.value.length > 0) {
+      switch (action) {
+        case 'min':
+          d2(setPasswordLengthMin(parseInt(e.target.value, 10)));
+          break;
+        case 'max':
+          d2(setPasswordLengthMax(parseInt(e.target.value, 10)));
+          break;
+        case 'amount':
+        default:
+          d2(setPasswordAmount(parseInt(e.target.value, 10)));
+          break;
+      }
+    }
   };
 
   useEffect(() => {
@@ -122,7 +137,7 @@ const Home = () => {
                 value={min}
                 error={min > max}
                 fullWidth
-                onChange={(e) => d2(setPasswordLengthMin(parseInt(e.target.value, 10)))}
+                onChange={(e) => changeNumberValue(e, 'min')}
               />
             </Grid>
             <Grid item xs={12} md={12} lg={12}>
@@ -133,7 +148,7 @@ const Home = () => {
                 value={max}
                 error={max < min}
                 fullWidth
-                onChange={(e) => d2(setPasswordLengthMax(parseInt(e.target.value, 10)))}
+                onChange={(e) => changeNumberValue(e, 'max')}
               />
             </Grid>
             <Grid item xs={12} md={12} lg={12}>
@@ -143,11 +158,7 @@ const Home = () => {
                 label={language.amount}
                 value={amount}
                 error={amount.length === 0 || amount < 1}
-                onChange={(e) => {
-                  if (e.target.value && e.target.value.length > 0) {
-                    d2(setPasswordAmount(parseInt(e.target.value, 10)));
-                  }
-                }}
+                onChange={(e) => changeNumberValue(e, 'amount')}
                 fullWidth
               />
             </Grid>
@@ -229,6 +240,7 @@ const Home = () => {
         color="primary"
         style={{ float: 'right' }}
         sx={{ mt: 2, ml: 2 }}
+        disabled={cannotGenerate}
         onClick={generatePasswords}
       >
         {language.generate}

@@ -8,19 +8,23 @@
   },
   "package": {
     "productName": "advanced-passgen",
-    "version": "2.2.1"
+    "version": "2.3.0"
   },
   "tauri": {
     "allowlist": {
       "dialog": {
-        "save": true
+        "save": true,
+        "open": true
+      },
+      "clipboard": {
+        "writeText": true
       },
       "all": true
     },
     "bundle": {
       "active": true,
       "category": "Utility",
-      "copyright": "Copyright © 2022 CodeDead",
+      "copyright": "Copyright © 2023 CodeDead",
       "deb": {
         "depends": []
       },
