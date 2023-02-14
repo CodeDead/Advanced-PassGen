@@ -20,7 +20,8 @@ jobs:
       - name: Node.js setup
         uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 'lts/*'
+          cache: 'yarn'
 
       - name: Rust setup
         uses: actions-rs/toolchain@v1
@@ -32,6 +33,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y libgtk-3-dev libwebkit2gtk-4.0-dev libayatana-appindicator3-dev librsvg2-dev
+
       - name: Install app dependencies and build web
         run: yarn && yarn build
 
