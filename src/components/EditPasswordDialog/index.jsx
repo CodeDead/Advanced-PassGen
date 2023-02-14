@@ -118,6 +118,16 @@ const EditPasswordDialog = ({
         <Grid container spacing={2} sx={{ mt: 2 }}>
           <Grid item xs={12} md={12} lg={12}>
             <TextField
+              value={data.id}
+              label={language.id}
+              autoComplete="off"
+              variant="outlined"
+              disabled
+              fullWidth
+            />
+          </Grid>
+          <Grid item xs={12} md={12} lg={12}>
+            <TextField
               value={title}
               error={title.length === 0}
               label={language.title}

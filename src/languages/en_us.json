@@ -100,5 +100,8 @@
   "copy": "Copy",
   "createOrOpenVault": "Create or open a vault",
   "selectFile": "Select file",
-  "username": "Username"
+  "username": "Username",
+  "createVault": "Create a new vault",
+  "openVault": "Open an existing vault",
+  "id": "ID"
 }

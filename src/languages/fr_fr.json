@@ -100,5 +100,8 @@
   "copy": "Copier",
   "createOrOpenVault": "Créer ou ouvrir un coffre-fort",
   "selectFile": "Sélectionner un fichier",
-  "username": "Nom d'utilisateur"
+  "username": "Nom d'utilisateur",
+  "createVault": "Créer un coffre-fort",
+  "openVault": "Ouvrir un coffre-fort",
+  "id": "ID"
 }

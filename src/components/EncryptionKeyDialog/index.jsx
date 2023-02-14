@@ -9,7 +9,7 @@ import Grid from '@mui/material/Grid';
 import { MainContext } from '../../contexts/MainContextProvider';
 
 const EncryptionKeyDialog = ({
-  open, onAccept, onClose, verify,
+  title, open, onAccept, onClose, verify,
 }) => {
   const [state] = useContext(MainContext);
   const language = state.languages[state.languageIndex];
@@ -77,7 +77,7 @@ const EncryptionKeyDialog = ({
       aria-labelledby="create-vault-dialog-title"
     >
       <DialogTitle id="create-vault-dialog-title">
-        {language.decryptionKey}
+        {title}
       </DialogTitle>
       <DialogContent>
         <Grid container spacing={2} sx={{ mt: 2 }}>

@@ -100,5 +100,8 @@
   "copy": "コピー",
   "createOrOpenVault": "金庫を作成または開く",
   "selectFile": "ファイルを選択",
-  "username": "ユーザー名"
+  "username": "ユーザー名",
+  "createVault": "金庫を作成する",
+  "openVault": "金庫を開く",
+  "id": "ID"
 }

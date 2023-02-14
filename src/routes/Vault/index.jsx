@@ -284,7 +284,8 @@ const Vault = () => {
       ? vault.filter((e) => e.title.toLowerCase().includes(search.toLowerCase())
         || e.description.toLowerCase().includes(search.toLowerCase())
         || e.url.toLowerCase().includes(search.toLowerCase())
-        || e.username.toLowerCase().includes(search.toLowerCase()))
+        || e.username.toLowerCase().includes(search.toLowerCase())
+        || e.id.includes(search))
       : vault;
 
     if (!filteredVault || filteredVault.length === 0) {
@@ -416,6 +417,7 @@ const Vault = () => {
         ) : null}
       </Box>
       <EncryptionKeyDialog
+        title={keyAction === 'create' ? language.createVault : language.openVault}
         open={keyDialogOpen}
         verify={keyAction === 'create'}
         onClose={closeEncryptionKeyDialog}
