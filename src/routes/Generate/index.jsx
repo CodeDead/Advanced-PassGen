@@ -322,7 +322,7 @@ const Generate = () => {
           onChange={handleExportTypeChange}
         >
           <MenuItem value="application/json">JSON</MenuItem>
-          <MenuItem value="csv">CSV</MenuItem>
+          <MenuItem value="text/csv">CSV</MenuItem>
           <MenuItem value="text/plain">{language.plainText}</MenuItem>
         </Select>
       </FormControl>

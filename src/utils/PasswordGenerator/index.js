@@ -1,13 +1,19 @@
 /**
- * Generate a random number between min and max
- * @param min The minimum
- * @param max The maximum
- * @returns {number} The random number between min and max (inclusive)
+ * Generate a secure random number between min and max
+ * @param min The minimum number
+ * @param max The maximum number
+ * @returns {number} The secure random number between min and max (inclusive)
  */
-const getRandomInt = (min, max) => {
+const getRandomIntInclusive = (min, max) => {
+  const randomBuffer = new Uint32Array(1);
+  window.crypto.getRandomValues(randomBuffer);
+
+  const randomNumber = randomBuffer[0] / (0xffffffff + 1);
+
   const newMin = Math.ceil(min);
   const newMax = Math.floor(max);
-  return Math.floor(Math.random() * (newMax - newMin + 1)) + newMin;
+
+  return Math.floor(randomNumber * (newMax - newMin + 1)) + newMin;
 };
 
 /**
@@ -39,9 +45,13 @@ export function PasswordGenerator(minLength, maxLength, characterSet, amount, al
 
     while (!canContinue) {
       let password = '';
-      const length = getRandomInt(minLength, maxLength);
+      const length = getRandomIntInclusive(minLength, maxLength);
       for (let j = 0; j < length; j += 1) {
-        password += characterSet[Math.floor(Math.random() * characterSet.length)];
+        const randomBuffer = new Uint32Array(1);
+        window.crypto.getRandomValues(randomBuffer);
+
+        const randomNumber = randomBuffer[0] / (0xffffffff + 1);
+        password += characterSet[Math.floor(randomNumber * characterSet.length)];
       }
 
       if (allowDuplicates === true || (!allowDuplicates && !passwordArray.includes(password))) {

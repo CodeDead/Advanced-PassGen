@@ -9,7 +9,6 @@ import NoteAddIcon from '@mui/icons-material/NoteAdd';
 import SaveIcon from '@mui/icons-material/Save';
 import AddIcon from '@mui/icons-material/Add';
 import CloseIcon from '@mui/icons-material/Close';
-import { v4 as uuidv4 } from 'uuid';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import TextField from '@mui/material/TextField';
@@ -145,7 +144,7 @@ const Vault = () => {
    * @param password The password
    */
   const addPassword = (title, description, url, username, password) => {
-    const id = uuidv4();
+    const id = window.crypto.randomUUID();
     const newVault = JSON.parse(JSON.stringify(vault));
     newVault.push({
       id, title, description, url, username, password,
