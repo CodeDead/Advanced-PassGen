@@ -100,5 +100,8 @@
   "copy": "Копировать",
   "createOrOpenVault": "Создать или открыть сейф",
   "selectFile": "Выбрать файл",
-  "username": "Имя пользователя"
+  "username": "Имя пользователя",
+  "createVault": "Создать сейф",
+  "openVault": "Открыть сейф",
+  "id": "ID"
 }

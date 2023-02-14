@@ -100,5 +100,8 @@
   "copy": "复制",
   "createOrOpenVault": "创建或打开保险库",
   "selectFile": "选择文件",
-  "username": "用户名"
+  "username": "用户名",
+  "createVault": "创建保险库",
+  "openVault": "打开保险库",
+  "id": "ID"
 }

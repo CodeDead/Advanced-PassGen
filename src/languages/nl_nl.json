@@ -100,5 +100,8 @@
   "copy": "Kopiëren",
   "createOrOpenVault": "Maak een nieuwe kluis of open een bestaande kluis",
   "selectFile": "Selecteer een bestand",
-  "username": "Gebruikersnaam"
+  "username": "Gebruikersnaam",
+  "createVault": "Kluis aanmaken",
+  "openVault": "Kluis openen",
+  "id": "ID"
 }

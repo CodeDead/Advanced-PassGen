@@ -100,5 +100,8 @@
   "copy": "Kopieren",
   "createOrOpenVault": "Erstellen oder öffnen Sie einen Tresor",
   "selectFile": "Datei auswählen",
-  "username": "Benutzername"
+  "username": "Benutzername",
+  "createVault": "Tresor erstellen",
+  "openVault": "Tresor öffnen",
+  "id": "ID"
 }
