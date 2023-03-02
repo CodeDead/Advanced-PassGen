@@ -115,5 +115,6 @@
   "lime": "Citron vert",
   "limeDescription": "La couleur des agrumes appelés limes.",
   "yellow": "Jaune",
-  "yellowDescription": "La couleur de la lumière du soleil."
+  "yellowDescription": "La couleur de la lumière du soleil.",
+  "colorOnDark": "Couleur sur fond foncé"
 }

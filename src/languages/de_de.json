@@ -115,5 +115,6 @@
   "lime": "Limette",
   "limeDescription": "Die Farbe der Zitrusfrucht namens Limetten.",
   "yellow": "Gelb",
-  "yellowDescription": "Die Farbe der Sonne."
+  "yellowDescription": "Die Farbe der Sonne.",
+  "colorOnDark": "Farbe auf dunklem Hintergrund"
 }

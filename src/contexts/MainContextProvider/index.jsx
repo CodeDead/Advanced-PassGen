@@ -13,6 +13,7 @@ const themeIndex = localStorage.themeIndex ? parseFloat(localStorage.themeIndex)
 const themeType = localStorage.themeType ? localStorage.themeType : 'light';
 const autoUpdate = localStorage.autoUpdate ? (localStorage.autoUpdate === 'true') : true;
 const fixedMenu = localStorage.fixedMenu ? (localStorage.fixedMenu === 'true') : false;
+const colorOnDark = localStorage.colorOnDark ? (localStorage.colorOnDark === 'true') : false;
 const languageSelector = localStorage.languageSelector
   ? (localStorage.languageSelector === 'true')
   : true;
@@ -38,6 +39,7 @@ const initState = {
   languageSelector,
   loading: false,
   fixedMenu,
+  colorOnDark,
 };
 
 export const MainContext = createContext(initState);
