@@ -115,5 +115,6 @@
   "lime": "Лайм",
   "limeDescription": "Цвет цитрусовых, называемых лаймами.",
   "yellow": "Желтый",
-  "yellowDescription": "Цвет солнца."
+  "yellowDescription": "Цвет солнца.",
+  "colorOnDark": "Цвет на темной теме"
 }

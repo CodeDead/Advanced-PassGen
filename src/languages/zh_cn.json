@@ -115,5 +115,6 @@
   "lime": "酸橙色",
   "limeDescription": "柑橘类水果的颜色称为酸橙。",
   "yellow": "黄色",
-  "yellowDescription": "太阳的颜色。"
+  "yellowDescription": "太阳的颜色。",
+  "colorOnDark": "深色主题上的颜色"
 }

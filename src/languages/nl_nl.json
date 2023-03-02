@@ -115,5 +115,6 @@
   "lime": "Limoen",
   "limeDescription": "Het is niet groen, het is niet geel, het is limoen.",
   "yellow": "Geel",
-  "yellowDescription": "De kleur van de zon."
+  "yellowDescription": "De kleur van de zon.",
+  "colorOnDark": "Kleur op donkere achtergrond"
 }

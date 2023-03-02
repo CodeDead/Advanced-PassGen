@@ -115,5 +115,6 @@
   "lime": "ライム",
   "limeDescription": "ライムという柑橘類の色。",
   "yellow": "黄色",
-  "yellowDescription": "太陽の色。"
+  "yellowDescription": "太陽の色。",
+  "colorOnDark": "ダークテーマでの色"
 }
