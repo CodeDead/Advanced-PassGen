@@ -10,7 +10,7 @@ const PasswordStrength = (password) => {
   const hasNumber = /\d/.test(password);
   const hasLower = /[a-z]/.test(password);
   const hasUpper = /[A-Z]/.test(password);
-  const hasSymbol = /[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]/.test(password);
+  const hasSymbol = /[!@#€£µ$%^&*()_+\-=[\]{};':"\\|,.<>/?]/.test(password);
   const hasRepetition = /([a-zA-Z0-9])\1{2,}/.test(password);
 
   if (length > 4) {
