@@ -7,11 +7,13 @@ import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import Brightness5Icon from '@mui/icons-material/Brightness5';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
+import MenuIcon from '@mui/icons-material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import { useNavigate } from 'react-router-dom';
 import { setLanguageIndex, setThemeType } from '../../reducers/MainReducer/Actions';
 import { MainContext } from '../../contexts/MainContextProvider';
 
-const TopBar = () => {
+const TopBar = ({ onOpenDrawer, onTitleClick }) => {
   const [state, d1] = useContext(MainContext);
 
   const {
@@ -24,6 +26,8 @@ const TopBar = () => {
 
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
+
+  const navigate = useNavigate();
 
   /**
    * Change the theme style
@@ -56,6 +60,23 @@ const TopBar = () => {
     d1(setLanguageIndex(lang));
   };
 
+  /**
+   * Open the drawer
+   */
+  const openDrawer = () => {
+    if (onOpenDrawer) {
+      onOpenDrawer();
+    }
+  };
+
+  /**
+   * Go to the home page
+   */
+  const goHome = () => {
+    onTitleClick();
+    navigate('/');
+  };
+
   return (
     <AppBar
       position="fixed"
@@ -63,7 +84,23 @@ const TopBar = () => {
       enableColorOnDark={colorOnDark}
     >
       <Toolbar>
-        <Typography variant="h6" noWrap component="div">
+        <IconButton
+          size="large"
+          edge="start"
+          color="inherit"
+          aria-label="menu"
+          sx={{ mr: 2 }}
+          onClick={openDrawer}
+        >
+          <MenuIcon />
+        </IconButton>
+        <Typography
+          variant="h6"
+          noWrap
+          component="div"
+          style={{ cursor: 'pointer' }}
+          onClick={goHome}
+        >
           {language.appName}
         </Typography>
         <div style={{ flexGrow: 1 }} />

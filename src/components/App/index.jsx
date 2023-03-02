@@ -48,6 +48,7 @@ const App = () => {
     checkedForUpdates,
   } = state;
 
+  const [drawerOpen, setDrawerOpen] = useState(false);
   const [snackOpen, setSnackOpen] = useState(false);
   const language = state.languages[languageIndex];
 
@@ -126,8 +127,16 @@ const App = () => {
       <BrowserRouter>
         <CssBaseline />
         <Box sx={{ display: 'flex' }}>
-          <TopBar />
-          <ClippedDrawer />
+          <TopBar
+            onOpenDrawer={() => setDrawerOpen(!drawerOpen)}
+            onTitleClick={() => {
+              setDrawerOpen(false);
+            }}
+          />
+          <ClippedDrawer
+            open={drawerOpen}
+            onClose={() => setDrawerOpen(false)}
+          />
           <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
             <Toolbar />
             <Suspense fallback={<LoadingBar />}>
