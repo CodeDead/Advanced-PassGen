@@ -42,7 +42,6 @@ import {
   setCheckedForUpdates,
   setColorOnDark,
   setError,
-  setFixedMenu,
   setLanguageIndex,
   setLanguageSelector,
   setPageIndex,
@@ -64,7 +63,6 @@ const Settings = () => {
     languageIndex,
     autoUpdate,
     languageSelector,
-    fixedMenu,
     colorOnDark,
   } = state;
 
@@ -161,16 +159,6 @@ const Settings = () => {
                     label={language.autoUpdate}
                   />
                 ) : null}
-                <FormControlLabel
-                  control={(
-                    <Checkbox
-                      checked={fixedMenu}
-                      onChange={(e) => d1(setFixedMenu(e.target.checked))}
-                      value="fixedMenu"
-                    />
-                  )}
-                  label={language.fixedMenu}
-                />
                 <FormControlLabel
                   control={(
                     <Checkbox
