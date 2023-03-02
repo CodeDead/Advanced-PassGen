@@ -17,6 +17,12 @@ import orange from '@mui/material/colors/orange';
 import deepOrange from '@mui/material/colors/deepOrange';
 import amber from '@mui/material/colors/amber';
 import brown from '@mui/material/colors/brown';
+import pink from '@mui/material/colors/pink';
+import indigo from '@mui/material/colors/indigo';
+import cyan from '@mui/material/colors/cyan';
+import teal from '@mui/material/colors/teal';
+import lime from '@mui/material/colors/lime';
+import yellow from '@mui/material/colors/yellow';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
@@ -284,6 +290,48 @@ const Settings = () => {
               color={brown[500]}
               selected={themeIndex === 11}
               onAction={() => changeTheme(11)}
+            />
+            <Theme
+              title={language.pink}
+              description={language.pinkDescription}
+              color={pink[500]}
+              selected={themeIndex === 12}
+              onAction={() => changeTheme(12)}
+            />
+            <Theme
+              title={language.indigo}
+              description={language.indigoDescription}
+              color={indigo[500]}
+              selected={themeIndex === 13}
+              onAction={() => changeTheme(13)}
+            />
+            <Theme
+              title={language.cyan}
+              description={language.cyanDescription}
+              color={cyan[500]}
+              selected={themeIndex === 14}
+              onAction={() => changeTheme(14)}
+            />
+            <Theme
+              title={language.teal}
+              description={language.tealDescription}
+              color={teal[500]}
+              selected={themeIndex === 15}
+              onAction={() => changeTheme(15)}
+            />
+            <Theme
+              title={language.lime}
+              description={language.limeDescription}
+              color={lime[500]}
+              selected={themeIndex === 16}
+              onAction={() => changeTheme(16)}
+            />
+            <Theme
+              title={language.yellow}
+              description={language.yellowDescription}
+              color={yellow[500]}
+              selected={themeIndex === 17}
+              onAction={() => changeTheme(17)}
             />
           </GridList>
         </Grid>

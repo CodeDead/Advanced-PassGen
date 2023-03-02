@@ -103,5 +103,17 @@
   "username": "ユーザー名",
   "createVault": "金庫を作成する",
   "openVault": "金庫を開く",
-  "id": "ID"
+  "id": "ID",
+  "pink": "ピンク",
+  "pinkDescription": "あなたの好きな色。",
+  "indigo": "インディゴ",
+  "indigoDescription": "地平線の最も深い藍色。",
+  "cyan": "シアン",
+  "cyanDescription": "青と緑の中間。",
+  "teal": "ティール",
+  "tealDescription": "目の周りの着色された領域。",
+  "lime": "ライム",
+  "limeDescription": "ライムという柑橘類の色。",
+  "yellow": "黄色",
+  "yellowDescription": "太陽の色。"
 }

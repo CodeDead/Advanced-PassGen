@@ -103,5 +103,17 @@
   "username": "Username",
   "createVault": "Create a new vault",
   "openVault": "Open an existing vault",
-  "id": "ID"
+  "id": "ID",
+  "pink": "Pink",
+  "pinkDescription": "The color of love.",
+  "indigo": "Indigo",
+  "indigoDescription": "The deepest indigo of the horizon.",
+  "cyan": "Cyan",
+  "cyanDescription": "Halfway between blue and green.",
+  "teal": "Teal",
+  "tealDescription": "The colored area around the eye.",
+  "lime": "Lime",
+  "limeDescription": "The color of the citrus fruit called limes.",
+  "yellow": "Yellow",
+  "yellowDescription": "The color of the sun."
 }
