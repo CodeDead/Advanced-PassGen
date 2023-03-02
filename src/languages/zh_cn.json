@@ -103,5 +103,17 @@
   "username": "用户名",
   "createVault": "创建保险库",
   "openVault": "打开保险库",
-  "id": "ID"
+  "id": "ID",
+  "pink": "粉色",
+  "pinkDescription": "粉色是一种很好的颜色。",
+  "indigo": "靛蓝色",
+  "indigoDescription": "地平线最深的靛蓝。",
+  "cyan": "青色",
+  "cyanDescription": "介于蓝色和绿色之间。",
+  "teal": "蓝绿色",
+  "tealDescription": "眼睛周围的彩色区域。",
+  "lime": "酸橙色",
+  "limeDescription": "柑橘类水果的颜色称为酸橙。",
+  "yellow": "黄色",
+  "yellowDescription": "太阳的颜色。"
 }

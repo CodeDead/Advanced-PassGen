@@ -103,5 +103,17 @@
   "username": "Benutzername",
   "createVault": "Tresor erstellen",
   "openVault": "Tresor öffnen",
-  "id": "ID"
+  "id": "ID",
+  "pink": "Pink",
+  "pinkDescription": "Das ist rosa.",
+  "indigo": "Indigo",
+  "indigoDescription": "Das tiefste Indigo des Horizonts.",
+  "cyan": "Cyan",
+  "cyanDescription": "Auf halbem Weg zwischen Blau und Grün.",
+  "teal": "Teal",
+  "tealDescription": "Der farbige Bereich um das Auge.",
+  "lime": "Limette",
+  "limeDescription": "Die Farbe der Zitrusfrucht namens Limetten.",
+  "yellow": "Gelb",
+  "yellowDescription": "Die Farbe der Sonne."
 }

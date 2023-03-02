@@ -103,5 +103,17 @@
   "username": "Gebruikersnaam",
   "createVault": "Kluis aanmaken",
   "openVault": "Kluis openen",
-  "id": "ID"
+  "id": "ID",
+  "pink": "Roze",
+  "pinkDescription": "Voor de liefhebbers.",
+  "indigo": "Indigo",
+  "indigoDescription": "De diepste indigo van de horizon.",
+  "cyan": "Cyaan",
+  "cyanDescription": "Halverwege tussen blauw en groen.",
+  "teal": "Blauwgroen",
+  "tealDescription": "Het gekleurde gebied rond het oog.",
+  "lime": "Limoen",
+  "limeDescription": "Het is niet groen, het is niet geel, het is limoen.",
+  "yellow": "Geel",
+  "yellowDescription": "De kleur van de zon."
 }

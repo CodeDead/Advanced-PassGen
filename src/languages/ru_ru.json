@@ -103,5 +103,17 @@
   "username": "Имя пользователя",
   "createVault": "Создать сейф",
   "openVault": "Открыть сейф",
-  "id": "ID"
+  "id": "ID",
+  "pink": "Розовый",
+  "pinkDescription": "Лучший цвет.",
+  "indigo": "Индиго",
+  "indigoDescription": "Самый глубокий индиго горизонта.",
+  "cyan": "Голубой",
+  "cyanDescription": "Что-то среднее между синим и зеленым.",
+  "teal": "Бирюзовый",
+  "tealDescription": "Цветная область вокруг глаза.",
+  "lime": "Лайм",
+  "limeDescription": "Цвет цитрусовых, называемых лаймами.",
+  "yellow": "Желтый",
+  "yellowDescription": "Цвет солнца."
 }
