@@ -3,8 +3,8 @@
   "build": {
     "beforeBuildCommand": "yarn build",
     "beforeDevCommand": "yarn cross-env BROWSER=none yarn start",
-    "devPath": "http://localhost:3000",
-    "distDir": "../build"
+    "devPath": "http://localhost:5173",
+    "distDir": "../dist"
   },
   "package": {
     "productName": "advanced-passgen",

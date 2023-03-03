@@ -18,13 +18,13 @@ Advanced PassGen uses tauri to build the desktop application. You can find more 
 
 ### Web
 
-You can build a web version of Advanced PassGen by running the following command:
+You can build a web version of Advanced PassGen using `Vite` by running the following command:
 
 ```shell
 yarn build
 ```
 
-For more information about building the web version, please read the `creact-react-app` documentation [here](https://create-react-app.dev/docs/production-build).
+For more information about building the web version, please read the `Vite` documentation [here](https://vitejs.dev/guide/build.html).
 
 ### Windows
 

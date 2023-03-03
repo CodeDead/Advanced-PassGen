@@ -175,7 +175,11 @@ const TopBar = ({ onOpenDrawer, onTitleClick }) => {
             </Menu>
           </div>
         ) : null}
-        <IconButton color="inherit" onClick={changeThemeStyle}>
+        <IconButton
+          aria-label={language.theme}
+          color="inherit"
+          onClick={changeThemeStyle}
+        >
           {themeType === 'dark' ? <Brightness5Icon /> : <Brightness7Icon />}
         </IconButton>
       </Toolbar>
