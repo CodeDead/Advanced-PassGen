@@ -75,7 +75,7 @@ This project uses [Tauri](https://tauri.app/) to create a cross-platform applica
 
 ### ReactJS
 
-This project uses [ReactJS](https://reactjs.org/) to create the user interface.
+This project uses [React](https://reactjs.org/) to create the user interface.
 
 ### Theme
 
