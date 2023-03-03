@@ -8,7 +8,7 @@
     "@fontsource/roboto": "^4.5.8",
     "@mui/icons-material": "^5.11.11",
     "@mui/material": "^5.11.11",
-    "@mui/x-data-grid": "^5.17.25",
+    "@mui/x-data-grid": "^5.17.26",
     "@shopify/react-web-worker": "^5.0.8",
     "@tauri-apps/api": "^1.2.0",
     "@testing-library/jest-dom": "^5.16.5",
@@ -18,15 +18,14 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.8.2",
-    "react-scripts": "^5.0.1",
     "web-vitals": "^3.1.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "vite",
+    "build": "vite build",
+    "preview": "vite build && vite preview",
     "dev": "tauri dev",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "lint": "eslint . --ext .ts,.tsx,.js,.jsx"
   },
   "eslintConfig": {
     "extends": [
@@ -49,12 +48,16 @@
   "packageManager": "yarn@3.4.1",
   "devDependencies": {
     "@tauri-apps/cli": "^1.2.3",
+    "@vitejs/plugin-react": "^3.1.0",
     "cross-env": "^7.0.3",
     "eslint": "^8.35.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-jsx-a11y": "^6.7.1",
     "eslint-plugin-react": "^7.32.2",
-    "eslint-plugin-react-hooks": "^4.6.0"
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "vite": "^4.1.4",
+    "vite-plugin-eslint": "^1.8.1",
+    "vite-plugin-svgr": "^2.4.0"
   }
 }
