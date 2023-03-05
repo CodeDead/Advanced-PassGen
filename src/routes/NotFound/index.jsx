@@ -18,7 +18,7 @@ const NotFound = () => {
   }, []);
 
   return (
-    <Container maxWidth="md" style={{ marginTop: 20 }}>
+    <Container maxWidth="md">
       <Card>
         <CardContent>
           <Typography gutterBottom>

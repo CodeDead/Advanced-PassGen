@@ -9,9 +9,9 @@ import NoteAddIcon from '@mui/icons-material/NoteAdd';
 import SaveIcon from '@mui/icons-material/Save';
 import AddIcon from '@mui/icons-material/Add';
 import CloseIcon from '@mui/icons-material/Close';
-import { v4 as uuidv4 } from 'uuid';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
+import Tooltip from '@mui/material/Tooltip';
 import TextField from '@mui/material/TextField';
 import { open, save } from '@tauri-apps/api/dialog';
 import { invoke } from '@tauri-apps/api/tauri';
@@ -145,7 +145,7 @@ const Vault = () => {
    * @param password The password
    */
   const addPassword = (title, description, url, username, password) => {
-    const id = uuidv4();
+    const id = window.crypto.randomUUID();
     const newVault = JSON.parse(JSON.stringify(vault));
     newVault.push({
       id, title, description, url, username, password,
@@ -276,7 +276,7 @@ const Vault = () => {
   };
 
   useEffect(() => {
-    d1(setPageIndex(4));
+    d1(setPageIndex(3));
   }, []);
 
   let gridItems = null;
@@ -285,7 +285,8 @@ const Vault = () => {
       ? vault.filter((e) => e.title.toLowerCase().includes(search.toLowerCase())
         || e.description.toLowerCase().includes(search.toLowerCase())
         || e.url.toLowerCase().includes(search.toLowerCase())
-        || e.username.toLowerCase().includes(search.toLowerCase()))
+        || e.username.toLowerCase().includes(search.toLowerCase())
+        || e.id.includes(search))
       : vault;
 
     if (!filteredVault || filteredVault.length === 0) {
@@ -323,14 +324,12 @@ const Vault = () => {
 
   return (
     <Container>
+      <Typography component="h2" variant="h5" color="primary" gutterBottom>
+        {language.vault}
+      </Typography>
       <Grid container spacing={2}>
         <Grid item xs={12} md={12} lg={12}>
-          <Typography component="h2" variant="h5" color="primary" gutterBottom>
-            {language.vault}
-          </Typography>
-        </Grid>
-        <Grid item xs={12} md={12} lg={12}>
-          {vault && vault.length > 0 ? (
+          {vault ? (
             <Card>
               <CardContent>
                 <TextField
@@ -351,72 +350,83 @@ const Vault = () => {
         {gridItems}
       </Grid>
       <Box sx={{ '& > :not(style)': { m: 1 } }}>
-        <Fab
-          color="primary"
-          aria-label={language.open}
-          sx={{
-            position: 'absolute',
-            bottom: 16,
-            right: 16,
-          }}
-          onClick={openVault}
-        >
-          <FileOpenIcon />
-        </Fab>
-        <Fab
-          color="secondary"
-          aria-label={language.new}
-          sx={{
-            position: 'absolute',
-            bottom: 16,
-            right: 84,
-          }}
-          onClick={createVault}
-        >
-          <NoteAddIcon />
-        </Fab>
+        <Tooltip title={language.open}>
+          <Fab
+            color="primary"
+            aria-label={language.open}
+            sx={{
+              position: 'absolute',
+              bottom: 16,
+              right: 16,
+            }}
+            onClick={openVault}
+          >
+            <FileOpenIcon />
+          </Fab>
+        </Tooltip>
+        <Tooltip title={language.new}>
+          <Fab
+            color="secondary"
+            aria-label={language.new}
+            sx={{
+              position: 'absolute',
+              bottom: 16,
+              right: 84,
+            }}
+            onClick={createVault}
+          >
+            <NoteAddIcon />
+          </Fab>
+        </Tooltip>
         {vault ? (
           <>
-            <Fab
-              color="primary"
-              aria-label={language.add}
-              onClick={() => setCreatePasswordDialogOpen(true)}
-              sx={{
-                position: 'absolute',
-                bottom: 84,
-                right: 16,
-              }}
-            >
-              <AddIcon />
-            </Fab>
-            <Fab
-              color="error"
-              aria-label={language.close}
-              onClick={closeVault}
-              sx={{
-                position: 'absolute',
-                bottom: 16,
-                right: 152,
-              }}
-            >
-              <CloseIcon />
-            </Fab>
-            <Fab
-              color="success"
-              aria-label={language.save}
-              onClick={saveVault}
-              sx={{
-                position: 'absolute',
-                bottom: 16,
-                right: 220,
-              }}
-            >
-              <SaveIcon />
-            </Fab>
+            <Tooltip title={language.add}>
+              <Fab
+                color="primary"
+                aria-label={language.add}
+                onClick={() => setCreatePasswordDialogOpen(true)}
+                sx={{
+                  position: 'absolute',
+                  bottom: 84,
+                  right: 16,
+                }}
+              >
+                <AddIcon />
+              </Fab>
+            </Tooltip>
+            <Tooltip title={language.close}>
+              <Fab
+                color="error"
+                aria-label={language.close}
+                onClick={closeVault}
+                sx={{
+                  position: 'absolute',
+                  bottom: 16,
+                  right: 152,
+                }}
+              >
+                <CloseIcon />
+              </Fab>
+            </Tooltip>
+            <Tooltip title={language.save}>
+              <Fab
+                color="success"
+                aria-label={language.save}
+                onClick={saveVault}
+                sx={{
+                  position: 'absolute',
+                  bottom: 16,
+                  right: 220,
+                }}
+              >
+                <SaveIcon />
+              </Fab>
+            </Tooltip>
           </>
         ) : null}
       </Box>
       <EncryptionKeyDialog
+        title={keyAction === 'create' ? language.createVault : language.openVault}
         open={keyDialogOpen}
         verify={keyAction === 'create'}
         onClose={closeEncryptionKeyDialog}

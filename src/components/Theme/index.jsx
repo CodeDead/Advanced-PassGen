@@ -16,14 +16,14 @@ const Theme = ({
       <CardActionArea onClick={action}>
         <CardMedia
           style={{
-            height: 60,
+            height: 40,
             backgroundColor: color,
           }}
           title={title}
           image={blank}
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
+          <Typography gutterBottom variant="h6" component="h4">
             {title}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">

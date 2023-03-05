@@ -2,8 +2,8 @@ import {
   RESET_STATE,
   SET_AUTO_UPDATE,
   SET_CHECKED_FOR_UPDATES,
+  SET_COLOR_ON_DARK,
   SET_ERROR,
-  SET_FIXED_MENU,
   SET_LANGUAGE_INDEX,
   SET_LANGUAGE_SELECTOR,
   SET_LOADING,
@@ -50,7 +50,7 @@ const MainReducer = (state, action) => {
         themeType: 'light',
         autoUpdate: true,
         languageSelector: true,
-        fixedMenu: false,
+        colorOnDark: false,
       };
     case SET_AUTO_UPDATE:
       localStorage.autoUpdate = action.payload;
@@ -79,16 +79,16 @@ const MainReducer = (state, action) => {
         ...state,
         error: action.payload,
       };
-    case SET_FIXED_MENU:
-      localStorage.fixedMenu = action.payload;
-      return {
-        ...state,
-        fixedMenu: action.payload,
-      };
     case SET_CHECKED_FOR_UPDATES:
       return {
         ...state,
         checkedForUpdates: action.payload,
+      };
+    case SET_COLOR_ON_DARK:
+      localStorage.colorOnDark = action.payload;
+      return {
+        ...state,
+        colorOnDark: action.payload,
       };
     default:
       return state;

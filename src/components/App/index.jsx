@@ -33,7 +33,6 @@ import packageJson from '../../../package.json';
 import LoadingBar from '../LoadingBar';
 
 const Home = lazy(() => import('../../routes/Home'));
-const Advanced = lazy(() => import('../../routes/Advanced'));
 const Generate = lazy(() => import('../../routes/Generate'));
 const About = lazy(() => import('../../routes/About'));
 const Settings = lazy(() => import('../../routes/Settings'));
@@ -48,6 +47,7 @@ const App = () => {
     checkedForUpdates,
   } = state;
 
+  const [drawerOpen, setDrawerOpen] = useState(false);
   const [snackOpen, setSnackOpen] = useState(false);
   const language = state.languages[languageIndex];
 
@@ -126,14 +126,21 @@ const App = () => {
       <BrowserRouter>
         <CssBaseline />
         <Box sx={{ display: 'flex' }}>
-          <TopBar />
-          <ClippedDrawer />
+          <TopBar
+            onOpenDrawer={() => setDrawerOpen(!drawerOpen)}
+            onTitleClick={() => {
+              setDrawerOpen(false);
+            }}
+          />
+          <ClippedDrawer
+            open={drawerOpen}
+            onClose={() => setDrawerOpen(false)}
+          />
           <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
             <Toolbar />
             <Suspense fallback={<LoadingBar />}>
               <Routes>
                 <Route exact path="/" element={<Home />} />
-                <Route exact path="/advanced" element={<Advanced />} />
                 <Route exact path="/generate" element={<Generate />} />
                 <Route exact path="/advisor" element={<Advisor />} />
                 <Route exact path="/vault" element={<Vault />} />

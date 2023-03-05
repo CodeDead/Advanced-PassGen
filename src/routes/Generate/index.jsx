@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from 'react';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import { createWorkerFactory, useWorker } from '@shopify/react-web-worker';
-import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import { save } from '@tauri-apps/api/dialog';
 import { invoke } from '@tauri-apps/api/tauri';
@@ -10,6 +9,7 @@ import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
+import { DataGrid } from '@mui/x-data-grid';
 import { MainContext } from '../../contexts/MainContextProvider';
 import { PasswordContext } from '../../contexts/PasswordContextProvider';
 import { setError, setLoading, setPageIndex } from '../../reducers/MainReducer/Actions';
@@ -19,51 +19,9 @@ import {
   getFullCharacterSet,
   setPasswords,
 } from '../../reducers/PasswordReducer/Actions';
-import MuiVirtualizedTable from '../../components/MuiVirtualizedTable';
 import LoadingBar from '../../components/LoadingBar';
 
-const classes = {
-  flexContainer: 'ReactVirtualizedDemo-flexContainer',
-  tableRow: 'ReactVirtualizedDemo-tableRow',
-  tableRowHover: 'ReactVirtualizedDemo-tableRowHover',
-  tableCell: 'ReactVirtualizedDemo-tableCell',
-  noClick: 'ReactVirtualizedDemo-noClick',
-};
-
-const styles = ({ theme }) => ({
-  // temporary right-to-left patch, waiting for
-  // https://github.com/bvaughn/react-virtualized/issues/454
-  '& .ReactVirtualized__Table__headerRow': {
-    ...(theme.direction === 'rtl' && {
-      paddingLeft: '0 !important',
-    }),
-    ...(theme.direction !== 'rtl' && {
-      paddingRight: undefined,
-    }),
-  },
-  [`& .${classes.flexContainer}`]: {
-    display: 'flex',
-    alignItems: 'center',
-    boxSizing: 'border-box',
-  },
-  [`& .${classes.tableRow}`]: {
-    cursor: 'pointer',
-  },
-  [`& .${classes.tableRowHover}`]: {
-    '&:hover': {
-      backgroundColor: theme.palette.grey[200],
-    },
-  },
-  [`& .${classes.tableCell}`]: {
-    flex: 1,
-  },
-  [`& .${classes.noClick}`]: {
-    cursor: 'initial',
-  },
-});
-
 const createWorker = createWorkerFactory(() => import('../../utils/PasswordGenerator/index'));
-const VirtualizedTable = styled(MuiVirtualizedTable)(styles);
 
 const Generate = () => {
   const [state1, d1] = useContext(MainContext);
@@ -212,13 +170,16 @@ const Generate = () => {
 
   /**
    * Create a JSON object with the passwords and their strength
+   * @param id The ID
    * @param password The password
    * @param passwordLength The length of the password
    * @param strength The strength of the password
    * @returns {{password, strength: string, length}} The JSON object
    */
-  const createData = (password, passwordLength, strength) => (
-    { password, length: passwordLength, strength: `${strength}%` }
+  const createData = (id, password, passwordLength, strength) => (
+    {
+      id, password, length: passwordLength, strength,
+    }
   );
 
   /**
@@ -237,12 +198,12 @@ const Generate = () => {
   };
 
   useEffect(() => {
-    d1(setPageIndex(2));
+    d1(setPageIndex(1));
   }, []);
 
   const passwordRows = [];
   if (passwords && passwords.length > 0) {
-    passwords.forEach((e) => passwordRows.push(createData(e, e.length, PasswordStrength(e))));
+    passwords.forEach((e, i) => passwordRows.push(createData(`${e}${i}`, e, e.length, PasswordStrength(e))));
   }
 
   if (loading) {
@@ -251,32 +212,41 @@ const Generate = () => {
     );
   }
 
+  const columns = [
+    {
+      field: 'password',
+      headerName: language.password,
+      editable: false,
+      flex: 1,
+    },
+    {
+      field: 'length',
+      headerName: language.length,
+      type: 'number',
+      editable: false,
+    },
+    {
+      field: 'strength',
+      headerName: language.strength,
+      editable: false,
+      valueFormatter: (params) => {
+        const valueFormatted = Number(params.value).toLocaleString();
+        return `${valueFormatted}%`;
+      },
+    },
+  ];
+
   return (
     <Container
       maxWidth="xl"
     >
-      <Paper style={{ height: '60vh', width: '100%' }}>
-        <VirtualizedTable
-          rowCount={passwordRows.length}
-          rowGetter={({ index }) => passwordRows[index]}
-          columns={[
-            {
-              width: 800,
-              label: language.password,
-              dataKey: 'password',
-            },
-            {
-              width: 120,
-              label: language.length,
-              dataKey: 'length',
-              numeric: true,
-            },
-            {
-              width: 120,
-              label: language.strength,
-              dataKey: 'strength',
-            },
-          ]}
+      <Paper style={{ height: '70vh', width: '100%' }}>
+        <DataGrid
+          rows={passwordRows}
+          columns={columns}
+          pageSize={50}
+          rowsPerPageOptions={[50]}
+          disableSelectionOnClick
         />
       </Paper>
       <Button
@@ -322,7 +292,7 @@ const Generate = () => {
           onChange={handleExportTypeChange}
         >
           <MenuItem value="application/json">JSON</MenuItem>
-          <MenuItem value="csv">CSV</MenuItem>
+          <MenuItem value="text/csv">CSV</MenuItem>
           <MenuItem value="text/plain">{language.plainText}</MenuItem>
         </Select>
       </FormControl>

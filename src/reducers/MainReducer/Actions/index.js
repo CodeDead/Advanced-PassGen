@@ -3,8 +3,8 @@ import {
   RESET_STATE,
   SET_AUTO_UPDATE,
   SET_CHECKED_FOR_UPDATES,
+  SET_COLOR_ON_DARK,
   SET_ERROR,
-  SET_FIXED_MENU,
   SET_LANGUAGE_INDEX,
   SET_LANGUAGE_SELECTOR,
   SET_LOADING,
@@ -76,12 +76,12 @@ export const setLoading = (value) => ({
   payload: value,
 });
 
-export const setFixedMenu = (value) => ({
-  type: SET_FIXED_MENU,
+export const setCheckedForUpdates = (value) => ({
+  type: SET_CHECKED_FOR_UPDATES,
   payload: value,
 });
 
-export const setCheckedForUpdates = (value) => ({
-  type: SET_CHECKED_FOR_UPDATES,
+export const setColorOnDark = (value) => ({
+  type: SET_COLOR_ON_DARK,
   payload: value,
 });

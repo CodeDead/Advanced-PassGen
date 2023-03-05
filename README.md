@@ -1,6 +1,6 @@
 # Advanced PassGen
 
-![Advanced PassGen](https://i.imgur.com/ci8x6rX.png)
+![Advanced PassGen](https://i.imgur.com/WcaJL2t.png)
 
 ![GitHub](https://img.shields.io/badge/language-JavaScript+Rust-green)
 ![GitHub](https://img.shields.io/github/license/CodeDead/Advanced-PassGen)
@@ -10,7 +10,7 @@
 
 Advanced PassGen is a free and open-source application that can help you generate passwords and export them. You can export your passwords in plain text, CSV or JSON format!
 
-For a live version of the application, visit [https://advancedpassgen.codedead.com](https://advancedpassgen.codedead.com).
+For a live version of the application, visit [our website](https://advancedpassgen.codedead.com).
 
 ## Building
 
@@ -18,13 +18,13 @@ Advanced PassGen uses tauri to build the desktop application. You can find more 
 
 ### Web
 
-You can build a web version of Advanced PassGen by running the following command:
+You can build a web version of Advanced PassGen using `Vite` by running the following command:
 
 ```shell
 yarn build
 ```
 
-For more information about building the web version, please read the `creact-react-app` documentation [here](https://create-react-app.dev/docs/production-build).
+For more information about building the web version, please read the `Vite` documentation [here](https://vitejs.dev/guide/build.html).
 
 ### Windows
 
@@ -75,7 +75,7 @@ This project uses [Tauri](https://tauri.app/) to create a cross-platform applica
 
 ### ReactJS
 
-This project uses [ReactJS](https://reactjs.org/) to create the user interface.
+This project uses [React](https://reactjs.org/) to create the user interface.
 
 ### Theme
 
