@@ -27,7 +27,7 @@ const Advisor = () => {
   };
 
   useEffect(() => {
-    d1(setPageIndex(3));
+    d1(setPageIndex(2));
   }, []);
 
   return (

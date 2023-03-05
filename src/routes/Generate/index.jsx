@@ -198,7 +198,7 @@ const Generate = () => {
   };
 
   useEffect(() => {
-    d1(setPageIndex(2));
+    d1(setPageIndex(1));
   }, []);
 
   const passwordRows = [];
@@ -231,7 +231,7 @@ const Generate = () => {
       editable: false,
       valueFormatter: (params) => {
         const valueFormatted = Number(params.value).toLocaleString();
-        return `${valueFormatted} %`;
+        return `${valueFormatted}%`;
       },
     },
   ];
@@ -240,7 +240,7 @@ const Generate = () => {
     <Container
       maxWidth="xl"
     >
-      <Paper style={{ height: '60vh', width: '100%' }}>
+      <Paper style={{ height: '70vh', width: '100%' }}>
         <DataGrid
           rows={passwordRows}
           columns={columns}

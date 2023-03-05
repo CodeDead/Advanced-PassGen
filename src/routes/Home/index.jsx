@@ -1,7 +1,5 @@
 import React, { useContext, useEffect } from 'react';
 import Button from '@mui/material/Button';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
 import Checkbox from '@mui/material/Checkbox';
 import Container from '@mui/material/Container';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -10,14 +8,23 @@ import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 import { useNavigate } from 'react-router-dom';
 import { createWorkerFactory, useWorker } from '@shopify/react-web-worker';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import Typography from '@mui/material/Typography';
+import Accordion from '@mui/material/Accordion';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import CardContent from '@mui/material/CardContent';
+import Card from '@mui/material/Card';
 import { MainContext } from '../../contexts/MainContextProvider';
 import { setError, setLoading, setPageIndex } from '../../reducers/MainReducer/Actions';
 import { PasswordContext } from '../../contexts/PasswordContextProvider';
 import {
   generatePasswordArray,
   getFullCharacterSet,
+  setAllowDuplicates,
   setBrackets,
   setCapitalLetters,
+  setCharacterSet,
   setNumbers,
   setPasswordAmount,
   setPasswordLengthMax,
@@ -26,6 +33,7 @@ import {
   setSmallLetters,
   setSpaces,
   setSpecialCharacters,
+  setUseAdvanced,
 } from '../../reducers/PasswordReducer/Actions';
 import LoadingBar from '../../components/LoadingBar';
 
@@ -112,6 +120,30 @@ const Home = () => {
           break;
       }
     }
+  };
+
+  /**
+   * Change whether duplicates are allowed or not
+   * @param event The event argument
+   */
+  const handleDuplicateChange = (event) => {
+    d2(setAllowDuplicates(event.target.checked));
+  };
+
+  /**
+   * Change wether advanced options are being used or not
+   * @param event The event argument
+   */
+  const handleAdvancedChange = (event) => {
+    d2(setUseAdvanced(event.target.checked));
+  };
+
+  /**
+   * Change the character set
+   * @param event The event argument
+   */
+  const handleCharacterSetChange = (event) => {
+    d2(setCharacterSet(event.target.value));
   };
 
   useEffect(() => {
@@ -235,24 +267,61 @@ const Home = () => {
           </Grid>
         </CardContent>
       </Card>
+      <Accordion sx={{ mt: 2 }}>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        >
+          <Typography>
+            {language.advanced}
+          </Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Grid container spacing={2}>
+            <Grid item xs={12} md={12} lg={12}>
+              <FormGroup>
+                <FormControlLabel
+                  control={(
+                    <Checkbox
+                      checked={allowDuplicates}
+                      onChange={handleDuplicateChange}
+                    />
+                  )}
+                  label={language.allowDuplicates}
+                />
+                <FormControlLabel
+                  control={(
+                    <Checkbox
+                      checked={useAdvanced}
+                      onChange={handleAdvancedChange}
+                    />
+                  )}
+                  label={language.useCustomCharacterSet}
+                />
+              </FormGroup>
+            </Grid>
+            <Grid item xs={12} md={12} lg={12}>
+              <TextField
+                label={language.characterSet}
+                disabled={!useAdvanced}
+                value={characterSet}
+                fullWidth
+                onChange={handleCharacterSetChange}
+              />
+            </Grid>
+          </Grid>
+        </AccordionDetails>
+      </Accordion>
       <Button
         variant="contained"
         color="primary"
         style={{ float: 'right' }}
-        sx={{ mt: 2, ml: 2 }}
+        sx={{ mt: 2 }}
         disabled={cannotGenerate}
         onClick={generatePasswords}
       >
         {language.generate}
-      </Button>
-      <Button
-        variant="contained"
-        color="primary"
-        style={{ float: 'left' }}
-        sx={{ mt: 2 }}
-        onClick={() => navigate('/advanced')}
-      >
-        {language.advanced}
       </Button>
     </Container>
   );

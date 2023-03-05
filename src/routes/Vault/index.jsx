@@ -276,7 +276,7 @@ const Vault = () => {
   };
 
   useEffect(() => {
-    d1(setPageIndex(4));
+    d1(setPageIndex(3));
   }, []);
 
   let gridItems = null;
@@ -324,12 +324,10 @@ const Vault = () => {
 
   return (
     <Container>
+      <Typography component="h2" variant="h5" color="primary" gutterBottom>
+        {language.vault}
+      </Typography>
       <Grid container spacing={2}>
-        <Grid item xs={12} md={12} lg={12}>
-          <Typography component="h2" variant="h5" color="primary" gutterBottom>
-            {language.vault}
-          </Typography>
-        </Grid>
         <Grid item xs={12} md={12} lg={12}>
           {vault ? (
             <Card>

@@ -29,7 +29,7 @@ const About = () => {
   };
 
   useEffect(() => {
-    d1(setPageIndex(6));
+    d1(setPageIndex(5));
   }, []);
 
   return (
