@@ -137,7 +137,7 @@ const Settings = () => {
   };
 
   useEffect(() => {
-    d1(setPageIndex(5));
+    d1(setPageIndex(4));
   }, []);
 
   return (
@@ -151,7 +151,7 @@ const Settings = () => {
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <Typography component="h2" variant="h5" color="primary">
+          <Typography>
             {language.general}
           </Typography>
         </AccordionSummary>
@@ -221,7 +221,7 @@ const Settings = () => {
           aria-controls="panel1bh-content"
           id="panel1bh-header"
         >
-          <Typography component="h2" variant="h5" color="primary">
+          <Typography>
             {language.theme}
           </Typography>
         </AccordionSummary>

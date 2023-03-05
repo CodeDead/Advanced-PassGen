@@ -9,7 +9,6 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import HomeIcon from '@mui/icons-material/Home';
-import BuildIcon from '@mui/icons-material/Build';
 import ListIcon from '@mui/icons-material/List';
 import LightbulbIcon from '@mui/icons-material/Lightbulb';
 import InfoIcon from '@mui/icons-material/Info';
@@ -71,17 +70,6 @@ const ClippedDrawer = ({ open, onClose }) => {
           <ListItem disablePadding>
             <ListItemButton
               selected={pageIndex === 1}
-              onClick={() => handleNavigate('/advanced')}
-            >
-              <ListItemIcon>
-                <BuildIcon />
-              </ListItemIcon>
-              <ListItemText primary={language.advanced} />
-            </ListItemButton>
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemButton
-              selected={pageIndex === 2}
               onClick={() => handleNavigate('/generate')}
             >
               <ListItemIcon>
@@ -95,7 +83,7 @@ const ClippedDrawer = ({ open, onClose }) => {
         <List>
           <ListItem disablePadding>
             <ListItemButton
-              selected={pageIndex === 3}
+              selected={pageIndex === 2}
               onClick={() => handleNavigate('/advisor')}
             >
               <ListItemIcon>
@@ -106,7 +94,7 @@ const ClippedDrawer = ({ open, onClose }) => {
           </ListItem>
           <ListItem disablePadding>
             <ListItemButton
-              selected={pageIndex === 4}
+              selected={pageIndex === 3}
               onClick={() => handleNavigate('/vault')}
             >
               <ListItemIcon>
@@ -120,7 +108,7 @@ const ClippedDrawer = ({ open, onClose }) => {
         <List>
           <ListItem disablePadding>
             <ListItemButton
-              selected={pageIndex === 5}
+              selected={pageIndex === 4}
               onClick={() => handleNavigate('/settings')}
             >
               <ListItemIcon>
@@ -147,7 +135,7 @@ const ClippedDrawer = ({ open, onClose }) => {
           </ListItem>
           <ListItem disablePadding>
             <ListItemButton
-              selected={pageIndex === 6}
+              selected={pageIndex === 5}
               onClick={() => handleNavigate('/about')}
             >
               <ListItemIcon>

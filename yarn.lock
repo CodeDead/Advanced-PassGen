@@ -979,26 +979,26 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@shopify/react-hooks@npm:^3.0.2":
-  version: 3.0.2
-  resolution: "@shopify/react-hooks@npm:3.0.2"
+"@shopify/react-hooks@npm:^3.0.3":
+  version: 3.0.3
+  resolution: "@shopify/react-hooks@npm:3.0.3"
   peerDependencies:
     react: ">=16.8.0 <19.0.0"
-  checksum: ffa87eb6f735ffc19d468272863c8a2ae80fa2c4154e2c392718da3eb34f83515b8f1a8843b80853b80cb2a53e95296f3db4aee222ba181b43f5a3b82eec43c9
+  checksum: 0106cacc3bdee6af18b5c931bb3602bc1e78b36be6707d570a45b0abebb27e3522a1a7cb4ee79d1cf46ac6fd3a089501fa2c833945524b2ff0273a7381198825
   languageName: node
   linkType: hard
 
-"@shopify/react-web-worker@npm:^5.0.8":
-  version: 5.0.8
-  resolution: "@shopify/react-web-worker@npm:5.0.8"
+"@shopify/react-web-worker@npm:^5.0.9":
+  version: 5.0.9
+  resolution: "@shopify/react-web-worker@npm:5.0.9"
   dependencies:
-    "@shopify/react-hooks": ^3.0.2
+    "@shopify/react-hooks": ^3.0.3
     "@shopify/useful-types": ^5.1.1
     "@shopify/web-worker": ^6.0.1
   peerDependencies:
     react: ">=16.8.0 <19.0.0"
     react-dom: ">=16.8.0 <19.0.0"
-  checksum: 8a7c4995843aad3956722709c3939cf64805b82464d06e34516c9029bc5a71c56e4defb706414f497c7f7a8d5ed11538e4e7d319c93bc1f61a9a46648a908b81
+  checksum: bee402931186fd0d7b45dfd4af0f07b1b529b8d0ba50a0a94c327079d431c8ff02351ec8450b59956eb33607f29daff209a4ff1f6c65aab79047b80ec3dc377f
   languageName: node
   linkType: hard
 
@@ -1402,7 +1402,7 @@ __metadata:
     "@mui/icons-material": ^5.11.11
     "@mui/material": ^5.11.11
     "@mui/x-data-grid": ^6.0.0
-    "@shopify/react-web-worker": ^5.0.8
+    "@shopify/react-web-worker": ^5.0.9
     "@tauri-apps/api": ^1.2.0
     "@tauri-apps/cli": ^1.2.3
     "@vitejs/plugin-react": ^3.1.0
