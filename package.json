@@ -7,14 +7,14 @@
     "@emotion/styled": "^11.10.6",
     "@fontsource/roboto": "^4.5.8",
     "@mui/icons-material": "^5.11.11",
-    "@mui/material": "^5.11.11",
-    "@mui/x-data-grid": "^6.0.0",
-    "@shopify/react-web-worker": "^5.0.9",
+    "@mui/material": "^5.11.15",
+    "@mui/x-data-grid": "^6.0.3",
+    "@shopify/react-web-worker": "^5.0.11",
     "@tauri-apps/api": "^1.2.0",
     "crypto-js": "^4.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.8.2"
+    "react-router-dom": "^6.9.0"
   },
   "scripts": {
     "start": "vite",
@@ -41,18 +41,19 @@
       "last 1 safari version"
     ]
   },
-  "packageManager": "yarn@3.4.1",
+  "packageManager": "yarn@3.5.0",
   "devDependencies": {
     "@tauri-apps/cli": "^1.2.3",
     "@vitejs/plugin-react": "^3.1.0",
     "cross-env": "^7.0.3",
-    "eslint": "^8.35.0",
+    "eslint": "^8.37.0",
     "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-react-app": "^7.0.1",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-jsx-a11y": "^6.7.1",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "vite": "^4.1.4",
+    "vite": "^4.2.1",
     "vite-plugin-eslint": "^1.8.1",
     "vite-plugin-svgr": "^2.4.0"
   }
