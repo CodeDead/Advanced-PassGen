@@ -6,7 +6,7 @@ const characterSet = localStorage.characterSet ? localStorage.characterSet : '';
 const initState = {
   length: 1,
   min: 1,
-  max: 1,
+  max: 30,
   amount: 1,
   smallLetters: false,
   capitalLetters: false,
