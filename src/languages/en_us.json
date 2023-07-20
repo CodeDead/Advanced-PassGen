@@ -127,5 +127,7 @@
     "Don't use a password that is listed as an example of how to pick a good password",
     "Don't use a password that contains personal information (name, birth date, etc.)"
   ],
-  "confirmDelete": "Are you sure you want to delete this password?"
+  "confirmDelete": "Are you sure you want to delete this password?",
+  "showPassword": "Show password",
+  "hidePassword": "Hide password"
 }

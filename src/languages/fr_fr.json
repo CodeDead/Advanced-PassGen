@@ -124,5 +124,7 @@
     "Ne partagez jamais vos mots de passe avec qui que ce soit",
     "Ne stockez jamais vos mots de passe dans un fichier texte"
   ],
-  "confirmDelete": "Êtes-vous sûr de vouloir supprimer cet élément ?"
+  "confirmDelete": "Êtes-vous sûr de vouloir supprimer cet élément ?",
+  "showPassword": "Afficher le mot de passe",
+  "hidePassword": "Masquer le mot de passe"
 }

@@ -126,5 +126,7 @@
     "Gebruik een wachtwoord dat niet uit een patroon bestaat",
     "Gebruik een wachtwoord dat niet uit een herhaling van hetzelfde teken bestaat"
   ],
-  "confirmDelete": "Weet je zeker dat je dit wachtwoord wilt verwijderen?"
+  "confirmDelete": "Weet je zeker dat je dit wachtwoord wilt verwijderen?",
+  "showPassword": "Wachtwoord tonen",
+  "hidePassword": "Wachtwoord verbergen"
 }

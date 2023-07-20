@@ -125,5 +125,7 @@
     "Verwenden Sie keine Passwörter, die Sie bereits verwendet haben",
     "Verwenden Sie keine Passwörter, die Sie in einem anderen Dienst verwendet haben"
   ],
-  "confirmDelete": "Sind Sie sicher, dass Sie dieses Passwort löschen möchten?"
+  "confirmDelete": "Sind Sie sicher, dass Sie dieses Passwort löschen möchten?",
+  "hidePassword": "Passwort ausblenden",
+  "showPassword": "Passwort anzeigen"
 }
