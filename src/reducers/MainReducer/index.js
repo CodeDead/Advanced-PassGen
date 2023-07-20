@@ -10,6 +10,7 @@ import {
   SET_PAGE_INDEX,
   SET_THEME_INDEX,
   SET_THEME_TYPE,
+  SET_TIPS,
   SET_UPDATE,
 } from './Actions/actionTypes';
 
@@ -49,8 +50,9 @@ const MainReducer = (state, action) => {
         themeIndex: 0,
         themeType: 'light',
         autoUpdate: true,
-        languageSelector: true,
+        languageSelector: false,
         colorOnDark: false,
+        tips: true,
       };
     case SET_AUTO_UPDATE:
       localStorage.autoUpdate = action.payload;
@@ -89,6 +91,12 @@ const MainReducer = (state, action) => {
       return {
         ...state,
         colorOnDark: action.payload,
+      };
+    case SET_TIPS:
+      localStorage.tips = action.payload;
+      return {
+        ...state,
+        tips: action.payload,
       };
     default:
       return state;

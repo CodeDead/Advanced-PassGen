@@ -115,5 +115,15 @@
   "limeDescription": "Die Farbe der Zitrusfrucht namens Limetten.",
   "yellow": "Gelb",
   "yellowDescription": "Die Farbe der Sonne.",
-  "colorOnDark": "Farbe auf dunklem Hintergrund"
+  "colorOnDark": "Farbe auf dunklem Hintergrund",
+  "tips": "Tipps",
+  "passwordTips": [
+    "Verwenden Sie einzigartige Passwörter für jeden Dienst",
+    "Verwenden Sie eine Kombination aus Groß- und Kleinbuchstaben, Zahlen und Sonderzeichen",
+    "Verwenden Sie keine Wörter, die in einem Wörterbuch enthalten sind",
+    "Verwenden Sie keine persönlichen Informationen",
+    "Verwenden Sie keine Passwörter, die Sie bereits verwendet haben",
+    "Verwenden Sie keine Passwörter, die Sie in einem anderen Dienst verwendet haben"
+  ],
+  "confirmDelete": "Sind Sie sicher, dass Sie dieses Passwort löschen möchten?"
 }

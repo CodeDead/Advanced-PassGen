@@ -131,7 +131,7 @@ const Home = () => {
   };
 
   /**
-   * Change wether advanced options are being used or not
+   * Change whether advanced options are being used or not
    * @param event The event argument
    */
   const handleAdvancedChange = (event) => {

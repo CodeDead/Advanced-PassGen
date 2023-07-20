@@ -12,6 +12,7 @@
   },
   "tauri": {
     "allowlist": {
+      "all": false,
       "dialog": {
         "save": true,
         "open": true
@@ -19,7 +20,9 @@
       "clipboard": {
         "writeText": true
       },
-      "all": true
+      "os": {
+        "all": true
+      }
     },
     "bundle": {
       "active": true,

@@ -26,6 +26,7 @@ import CreatePasswordDialog from '../../components/CreatePasswordDialog';
 import EditPasswordDialog from '../../components/EditPasswordDialog';
 import EncryptionKeyDialog from '../../components/EncryptionKeyDialog';
 import SelectFileDialog from '../../components/SelectFileDialog';
+import AlertDialog from '../../components/AlertDialog';
 
 const Vault = () => {
   const [state, d1] = useContext(MainContext);
@@ -43,6 +44,9 @@ const Vault = () => {
   const [createPasswordDialogOpen, setCreatePasswordDialogOpen] = useState(false);
   const [editPasswordDialogOpen, setEditPasswordDialogOpen] = useState(false);
   const [selectFileOpen, setSelectFileOpen] = useState(false);
+
+  const [toDelete, setToDelete] = useState(null);
+  const [deleteOpen, setDeleteOpen] = useState(false);
 
   /**
    * Download a file
@@ -155,11 +159,21 @@ const Vault = () => {
 
   /**
    * Delete a password from the vault
-   * @param id The ID of the password
    */
-  const deletePassword = (id) => {
-    const newVault = JSON.parse(JSON.stringify(vault)).filter((p) => p.id !== id);
+  const deletePassword = () => {
+    const newVault = JSON.parse(JSON.stringify(vault)).filter((p) => p.id !== toDelete);
     d3(setVault(newVault));
+
+    setToDelete(null);
+  };
+
+  /**
+   * Open the delete dialog confirmation
+   * @param id The ID of the password that needs to be removed
+   */
+  const openDeleteDialog = (id) => {
+    setToDelete(id);
+    setDeleteOpen(true);
   };
 
   /**
@@ -311,7 +325,7 @@ const Vault = () => {
             copyLabel={language.copy}
             onClick={openPassword}
             onEdit={openEditPasswordDialog}
-            onDelete={deletePassword}
+            onDelete={openDeleteDialog}
             onCopy={copyToClipboard}
             themeIndex={themeIndex}
           />
@@ -443,6 +457,18 @@ const Vault = () => {
           onClose={closeEditPasswordDialog}
           onSave={editPassword}
           data={toEdit}
+        />
+      ) : null}
+      {deleteOpen && toDelete ? (
+        <AlertDialog
+          open={deleteOpen}
+          title={language.confirmation}
+          content={language.confirmDelete}
+          onOk={deletePassword}
+          onCancel={() => setDeleteOpen(false)}
+          onClose={() => setDeleteOpen(false)}
+          agreeLabel={language.yes}
+          cancelLabel={language.no}
         />
       ) : null}
       <SelectFileDialog
