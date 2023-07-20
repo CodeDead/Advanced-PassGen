@@ -53,7 +53,7 @@ const ClippedDrawer = ({ open, onClose }) => {
     >
       <Toolbar />
       <Box
-        sx={{ width: 220 }}
+        sx={{ width: 240 }}
       >
         <List>
           <ListItem disablePadding sx={{ display: 'block' }}>

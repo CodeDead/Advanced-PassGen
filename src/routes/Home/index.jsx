@@ -36,6 +36,7 @@ import {
   setUseAdvanced,
 } from '../../reducers/PasswordReducer/Actions';
 import LoadingBar from '../../components/LoadingBar';
+import PasswordTips from '../../components/PasswordTips';
 
 const createWorker = createWorkerFactory(() => import('../../utils/PasswordGenerator/index'));
 
@@ -158,6 +159,7 @@ const Home = () => {
 
   return (
     <Container>
+      <PasswordTips />
       <Card>
         <CardContent>
           <Grid container spacing={2}>
