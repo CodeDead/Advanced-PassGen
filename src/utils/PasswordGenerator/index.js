@@ -27,7 +27,7 @@ const getRandomIntInclusive = (min, max) => {
  * @constructor
  */
 // eslint-disable-next-line import/prefer-default-export
-export function PasswordGenerator(minLength, maxLength, characterSet, amount, allowDuplicates) {
+export const PasswordGenerator = (minLength, maxLength, characterSet, amount, allowDuplicates) => {
   const passwordArray = [];
 
   let maxCount = 0;
@@ -67,4 +67,4 @@ export function PasswordGenerator(minLength, maxLength, characterSet, amount, al
     }
   }
   return passwordArray;
-}
+};

@@ -115,5 +115,18 @@
   "limeDescription": "Het is niet groen, het is niet geel, het is limoen.",
   "yellow": "Geel",
   "yellowDescription": "De kleur van de zon.",
-  "colorOnDark": "Kleur op donkere achtergrond"
+  "colorOnDark": "Kleur op donkere achtergrond",
+  "tips": "Tips",
+  "passwordTips": [
+    "Gebruik een wachtwoord dat je makkelijk kunt onthouden, maar moeilijk te raden is",
+    "Gebruik een wachtwoord dat je niet voor andere websites gebruikt",
+    "Gebruik een wachtwoord dat uit minimaal 8 tekens bestaat",
+    "Gebruik een wachtwoord dat uit minimaal 1 hoofdletter, 1 kleine letter, 1 cijfer en 1 speciaal teken bestaat",
+    "Gebruik een wachtwoord dat niet in een woordenboek staat",
+    "Gebruik een wachtwoord dat niet uit een patroon bestaat",
+    "Gebruik een wachtwoord dat niet uit een herhaling van hetzelfde teken bestaat"
+  ],
+  "confirmDelete": "Weet je zeker dat je dit wachtwoord wilt verwijderen?",
+  "showPassword": "Wachtwoord tonen",
+  "hidePassword": "Wachtwoord verbergen"
 }

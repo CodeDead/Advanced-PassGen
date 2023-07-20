@@ -115,5 +115,16 @@
   "limeDescription": "La couleur des agrumes appelés limes.",
   "yellow": "Jaune",
   "yellowDescription": "La couleur de la lumière du soleil.",
-  "colorOnDark": "Couleur sur fond foncé"
+  "colorOnDark": "Couleur sur fond foncé",
+  "tips": "Conseils",
+  "passwordTips": [
+    "Utilisez des mots de passe différents pour chaque compte",
+    "Utilisez des mots de passe longs",
+    "Utilisez des mots de passe avec des lettres majuscules et minuscules, des chiffres et des caractères spéciaux",
+    "Ne partagez jamais vos mots de passe avec qui que ce soit",
+    "Ne stockez jamais vos mots de passe dans un fichier texte"
+  ],
+  "confirmDelete": "Êtes-vous sûr de vouloir supprimer cet élément ?",
+  "showPassword": "Afficher le mot de passe",
+  "hidePassword": "Masquer le mot de passe"
 }

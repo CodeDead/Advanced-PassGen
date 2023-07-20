@@ -15,7 +15,8 @@ const autoUpdate = localStorage.autoUpdate ? (localStorage.autoUpdate === 'true'
 const colorOnDark = localStorage.colorOnDark ? (localStorage.colorOnDark === 'true') : false;
 const languageSelector = localStorage.languageSelector
   ? (localStorage.languageSelector === 'true')
-  : true;
+  : false;
+const tips = localStorage.tips ? (localStorage.tips === 'true') : true;
 
 const initState = {
   autoUpdate,
@@ -38,6 +39,7 @@ const initState = {
   languageSelector,
   loading: false,
   colorOnDark,
+  tips,
 };
 
 export const MainContext = createContext(initState);

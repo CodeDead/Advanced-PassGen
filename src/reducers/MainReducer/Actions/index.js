@@ -11,6 +11,7 @@ import {
   SET_PAGE_INDEX,
   SET_THEME_INDEX,
   SET_THEME_TYPE,
+  SET_TIPS,
   SET_UPDATE,
 } from './actionTypes';
 
@@ -83,5 +84,10 @@ export const setCheckedForUpdates = (value) => ({
 
 export const setColorOnDark = (value) => ({
   type: SET_COLOR_ON_DARK,
+  payload: value,
+});
+
+export const setTips = (value) => ({
+  type: SET_TIPS,
   payload: value,
 });

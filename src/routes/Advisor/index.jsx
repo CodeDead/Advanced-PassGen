@@ -1,4 +1,6 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, {
+  useContext, useEffect, useState,
+} from 'react';
 import Container from '@mui/material/Container';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -9,6 +11,7 @@ import { MainContext } from '../../contexts/MainContextProvider';
 import LinearProgressWithLabel from '../../components/LinearProgressWithLabel';
 import PasswordStrength from '../../utils/PasswordStrength';
 import { setPageIndex } from '../../reducers/MainReducer/Actions';
+import PasswordTips from '../../components/PasswordTips';
 
 const Advisor = () => {
   const [state, d1] = useContext(MainContext);
@@ -35,6 +38,7 @@ const Advisor = () => {
       <Typography component="h2" variant="h5" color="primary" gutterBottom>
         {language.checkPasswordStrength}
       </Typography>
+      <PasswordTips />
       <Card>
         <CardContent>
           <Grid container spacing={2}>

@@ -48,6 +48,7 @@ import {
   setPageIndex,
   setThemeIndex,
   setThemeType,
+  setTips,
   setUpdate,
 } from '../../reducers/MainReducer/Actions';
 import { MainContext } from '../../contexts/MainContextProvider';
@@ -65,6 +66,7 @@ const Settings = () => {
     autoUpdate,
     languageSelector,
     colorOnDark,
+    tips,
   } = state;
 
   const language = state.languages[languageIndex];
@@ -179,6 +181,16 @@ const Settings = () => {
                 />
               )}
               label={language.colorOnDark}
+            />
+            <FormControlLabel
+              control={(
+                <Checkbox
+                  checked={tips}
+                  onChange={(e) => d1(setTips(e.target.checked))}
+                  value="tipsSelector"
+                />
+              )}
+              label={language.tips}
             />
             <FormControlLabel
               control={(

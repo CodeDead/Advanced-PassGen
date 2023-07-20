@@ -115,5 +115,19 @@
   "limeDescription": "The color of the citrus fruit.",
   "yellow": "Yellow",
   "yellowDescription": "The color of the sun.",
-  "colorOnDark": "Color on dark"
+  "colorOnDark": "Color on dark",
+  "tips": "Tips",
+  "passwordTips": [
+    "Use a trusted password manager to improve your security",
+    "Use a different password for every account",
+    "Use a long password",
+    "Use a password with a mix of characters",
+    "Use a password with a mix of special characters, numbers and letters",
+    "Aim to create a passphrase that is 16 characters or more. Use a mix of alphabetical and numeric, a mixture of upper and lowercase, and special characters when creating your unique passphrase",
+    "Don't use a password that is listed as an example of how to pick a good password",
+    "Don't use a password that contains personal information (name, birth date, etc.)"
+  ],
+  "confirmDelete": "Are you sure you want to delete this password?",
+  "showPassword": "Show password",
+  "hidePassword": "Hide password"
 }

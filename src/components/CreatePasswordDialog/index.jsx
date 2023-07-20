@@ -10,6 +10,7 @@ import Button from '@mui/material/Button';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import VisibilityIcon from '@mui/icons-material/Visibility';
+import Tooltip from '@mui/material/Tooltip';
 import { MainContext } from '../../contexts/MainContextProvider';
 import PasswordStrength from '../../utils/PasswordStrength';
 import LinearProgressWithLabel from '../LinearProgressWithLabel';
@@ -165,7 +166,7 @@ const CreatePasswordDialog = ({ open, onCreate, onClose }) => {
               fullWidth
             />
           </Grid>
-          <Grid item xs={12} md={8} lg={8}>
+          <Grid item xs={12} md={10} lg={10}>
             <TextField
               value={password}
               type={showPassword ? 'text' : 'password'}
@@ -178,7 +179,7 @@ const CreatePasswordDialog = ({ open, onCreate, onClose }) => {
               fullWidth
             />
           </Grid>
-          <Grid item xs={6} md={2} lg={2}>
+          <Grid item xs={6} md={1} lg={1}>
             <IconButton
               color="primary"
               size="large"
@@ -186,13 +187,17 @@ const CreatePasswordDialog = ({ open, onCreate, onClose }) => {
               onClick={() => setShowPassword(!showPassword)}
             >
               {showPassword ? (
-                <VisibilityOffIcon fontSize="inherit" />
+                <Tooltip title={language.hidePassword}>
+                  <VisibilityOffIcon fontSize="inherit" />
+                </Tooltip>
               ) : (
-                <VisibilityIcon fontSize="inherit" />
+                <Tooltip title={language.showPassword}>
+                  <VisibilityIcon fontSize="inherit" />
+                </Tooltip>
               )}
             </IconButton>
           </Grid>
-          <Grid item xs={6} md={2} lg={2}>
+          <Grid item xs={6} md={1} lg={1}>
             <IconButton
               color="primary"
               size="large"
@@ -200,7 +205,9 @@ const CreatePasswordDialog = ({ open, onCreate, onClose }) => {
               disabled={cannotGenerate}
               onClick={generatePassword}
             >
-              <RefreshIcon fontSize="inherit" />
+              <Tooltip title={language.generate}>
+                <RefreshIcon fontSize="inherit" />
+              </Tooltip>
             </IconButton>
           </Grid>
           <Grid item xs={12} md={12} lg={12}>

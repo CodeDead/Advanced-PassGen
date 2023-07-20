@@ -36,6 +36,7 @@ import {
   setUseAdvanced,
 } from '../../reducers/PasswordReducer/Actions';
 import LoadingBar from '../../components/LoadingBar';
+import PasswordTips from '../../components/PasswordTips';
 
 const createWorker = createWorkerFactory(() => import('../../utils/PasswordGenerator/index'));
 
@@ -131,7 +132,7 @@ const Home = () => {
   };
 
   /**
-   * Change wether advanced options are being used or not
+   * Change whether advanced options are being used or not
    * @param event The event argument
    */
   const handleAdvancedChange = (event) => {
@@ -158,6 +159,7 @@ const Home = () => {
 
   return (
     <Container>
+      <PasswordTips />
       <Card>
         <CardContent>
           <Grid container spacing={2}>

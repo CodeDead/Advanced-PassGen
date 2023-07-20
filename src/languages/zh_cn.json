@@ -115,5 +115,17 @@
   "limeDescription": "柑橘类水果的颜色称为酸橙。",
   "yellow": "黄色",
   "yellowDescription": "太阳的颜色。",
-  "colorOnDark": "深色主题上的颜色"
+  "colorOnDark": "深色主题上的颜色",
+  "tips": "提示",
+  "passwordTips": [
+    "使用大写字母",
+    "使用小写字母",
+    "使用数字",
+    "使用特殊字符",
+    "不要使用你的名字",
+    "不要使用你的生日"
+  ],
+  "confirmDelete": "你确定要删除这个密码吗？",
+  "showPassword": "显示密码",
+  "hidePassword": "隐藏密码"
 }
