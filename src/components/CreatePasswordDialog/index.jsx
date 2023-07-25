@@ -11,12 +11,15 @@ import RefreshIcon from '@mui/icons-material/Refresh';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import Tooltip from '@mui/material/Tooltip';
+import { createWorkerFactory, useWorker } from '@shopify/react-web-worker';
 import { MainContext } from '../../contexts/MainContextProvider';
 import PasswordStrength from '../../utils/PasswordStrength';
 import LinearProgressWithLabel from '../LinearProgressWithLabel';
 import { setError } from '../../reducers/MainReducer/Actions';
 import { generatePasswordArray, getFullCharacterSet } from '../../reducers/PasswordReducer/Actions';
 import { PasswordContext } from '../../contexts/PasswordContextProvider';
+
+const createWorker = createWorkerFactory(() => import('../../utils/PasswordGenerator/index'));
 
 const CreatePasswordDialog = ({ open, onCreate, onClose }) => {
   const [state, d1] = useContext(MainContext);
@@ -54,6 +57,8 @@ const CreatePasswordDialog = ({ open, onCreate, onClose }) => {
     specialCharacters,
     brackets,
   );
+
+  const worker = useWorker(createWorker);
 
   const cannotGenerate = !simpleCharacterSet || simpleCharacterSet.length === 0
     || min > max || max < min;
@@ -100,7 +105,7 @@ const CreatePasswordDialog = ({ open, onCreate, onClose }) => {
       return;
     }
 
-    generatePasswordArray(min, max, simpleCharacterSet, 1, allowDuplicates, null)
+    generatePasswordArray(min, max, simpleCharacterSet, 1, allowDuplicates, worker)
       .then((res) => {
         setPassword(res[0]);
       })
