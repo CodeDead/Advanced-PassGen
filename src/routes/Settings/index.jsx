@@ -72,7 +72,8 @@ const Settings = () => {
   const language = state.languages[languageIndex];
 
   const [generalExpanded, setGeneralExpanded] = useState(true);
-  const [themeExpanded, setThemeExpanded] = useState(false);
+  // eslint-disable-next-line no-underscore-dangle
+  const [themeExpanded, setThemeExpanded] = useState(!window.__TAURI__);
 
   const [resetDialogOpen, setResetDialogOpen] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -218,6 +219,7 @@ const Settings = () => {
                 <MenuItem value={4}>Nederlands</MenuItem>
                 <MenuItem value={5}>Русский</MenuItem>
                 <MenuItem value={6}>中文（简体）</MenuItem>
+                <MenuItem value={7}>Türkçe</MenuItem>
               </Select>
             </FormControl>
           </FormGroup>

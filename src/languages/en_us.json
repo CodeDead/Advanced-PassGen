@@ -125,9 +125,10 @@
     "Use a password with a mix of special characters, numbers and letters",
     "Aim to create a passphrase that is 16 characters or more. Use a mix of alphabetical and numeric, a mixture of upper and lowercase, and special characters when creating your unique passphrase",
     "Don't use a password that is listed as an example of how to pick a good password",
-    "Don't use a password that contains personal information (name, birth date, etc.)"
+    "Don't use a password that contains personal information (name, date of birth, etc.)"
   ],
   "confirmDelete": "Are you sure you want to delete this password?",
   "showPassword": "Show password",
-  "hidePassword": "Hide password"
+  "hidePassword": "Hide password",
+  "exit": "Exit"
 }

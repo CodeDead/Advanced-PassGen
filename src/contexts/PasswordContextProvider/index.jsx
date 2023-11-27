@@ -7,7 +7,7 @@ const initState = {
   length: 1,
   min: 8,
   max: 30,
-  amount: 1,
+  amount: 100,
   smallLetters: true,
   capitalLetters: true,
   spaces: false,

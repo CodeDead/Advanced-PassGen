@@ -126,5 +126,6 @@
   ],
   "confirmDelete": "Êtes-vous sûr de vouloir supprimer cet élément ?",
   "showPassword": "Afficher le mot de passe",
-  "hidePassword": "Masquer le mot de passe"
+  "hidePassword": "Masquer le mot de passe",
+  "exit": "Quitter"
 }
