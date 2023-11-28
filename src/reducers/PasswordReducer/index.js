@@ -2,7 +2,7 @@ import {
   SET_ALLOW_DUPLICATES,
   SET_BRACKETS,
   SET_CAPITAL_LETTERS,
-  SET_CHARACTER_SET,
+  SET_CHARACTER_SET, SET_INCLUDE_SYMBOLS,
   SET_NUMBERS,
   SET_PASSWORD_AMOUNT,
   SET_PASSWORD_LENGTH_MAX,
@@ -72,6 +72,12 @@ const PasswordReducer = (state, action) => {
       return {
         ...state,
         characterSet: action.payload,
+      };
+    case SET_INCLUDE_SYMBOLS:
+      localStorage.includeSymbols = action.payload;
+      return {
+        ...state,
+        includeSymbols: action.payload,
       };
     case SET_USE_ADVANCED:
       return {

@@ -25,6 +25,7 @@ import {
   setBrackets,
   setCapitalLetters,
   setCharacterSet,
+  setIncludeSymbols,
   setNumbers,
   setPasswordAmount,
   setPasswordLengthMax,
@@ -59,6 +60,7 @@ const Home = () => {
     brackets,
     useAdvanced,
     characterSet,
+    includeSymbols,
     allowDuplicates,
   } = state2;
 
@@ -88,7 +90,8 @@ const Home = () => {
     }
 
     d1(setLoading(true));
-    generatePasswordArray(min, max, simpleCharacterSet, amount, allowDuplicates, worker)
+    // eslint-disable-next-line max-len
+    generatePasswordArray(min, max, simpleCharacterSet, includeSymbols, amount, allowDuplicates, worker)
       .then((res) => {
         d2(setPasswords(res));
         navigate('/generate');
@@ -145,6 +148,14 @@ const Home = () => {
    */
   const handleCharacterSetChange = (event) => {
     d2(setCharacterSet(event.target.value));
+  };
+
+  /**
+   * Change the include symbols value
+   * @param event The event argument
+   */
+  const handleIncludeSymbolsChange = (event) => {
+    d2(setIncludeSymbols(event.target.value));
   };
 
   useEffect(() => {
@@ -314,6 +325,14 @@ const Home = () => {
                 value={characterSet}
                 fullWidth
                 onChange={handleCharacterSetChange}
+              />
+            </Grid>
+            <Grid item xs={12} md={12} lg={12}>
+              <TextField
+                label={language.includeSymbols}
+                value={includeSymbols}
+                fullWidth
+                onChange={handleIncludeSymbolsChange}
               />
             </Grid>
           </Grid>

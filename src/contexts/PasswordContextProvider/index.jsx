@@ -2,6 +2,7 @@ import React, { createContext, useReducer } from 'react';
 import PasswordReducer from '../../reducers/PasswordReducer';
 
 const characterSet = localStorage.characterSet ? localStorage.characterSet : '';
+const includeSymbols = localStorage.includeSymbols ? localStorage.includeSymbols : '';
 
 const initState = {
   length: 1,
@@ -15,6 +16,7 @@ const initState = {
   numbers: true,
   brackets: true,
   characterSet,
+  includeSymbols,
   useAdvanced: false,
   passwords: null,
   allowDuplicates: true,

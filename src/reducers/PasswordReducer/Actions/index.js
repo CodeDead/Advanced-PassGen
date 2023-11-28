@@ -4,6 +4,7 @@ import {
   SET_BRACKETS,
   SET_CAPITAL_LETTERS,
   SET_CHARACTER_SET,
+  SET_INCLUDE_SYMBOLS,
   SET_NUMBERS,
   SET_PASSWORD_AMOUNT,
   SET_PASSWORD_LENGTH_MAX,
@@ -80,19 +81,25 @@ export const setAllowDuplicates = (value) => ({
   payload: value,
 });
 
+export const setIncludeSymbols = (value) => ({
+  type: SET_INCLUDE_SYMBOLS,
+  payload: value,
+});
+
 // eslint-disable-next-line max-len
-export const generatePasswordArray = (min, max, characterSet, amount, allowDuplicates, worker) => {
+export const generatePasswordArray = (min, max, characterSet, includeSymbols, amount, allowDuplicates, worker) => {
   // eslint-disable-next-line no-underscore-dangle
   if (window.__TAURI__) {
     return invoke('generate_passwords', {
       minLength: parseFloat(min),
       maxLength: parseFloat(max),
       characterSet,
+      includeSymbols,
       amount: parseFloat(amount),
       allowDuplicates,
     });
   }
-  return worker.PasswordGenerator(min, max, characterSet, amount, allowDuplicates);
+  return worker.PasswordGenerator(min, max, characterSet, includeSymbols, amount, allowDuplicates);
 };
 
 // eslint-disable-next-line max-len

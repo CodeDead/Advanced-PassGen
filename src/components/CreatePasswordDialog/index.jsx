@@ -37,6 +37,7 @@ const CreatePasswordDialog = ({ open, onCreate, onClose }) => {
     brackets,
     useAdvanced,
     characterSet,
+    includeSymbols,
     allowDuplicates,
   } = state2;
 
@@ -105,7 +106,7 @@ const CreatePasswordDialog = ({ open, onCreate, onClose }) => {
       return;
     }
 
-    generatePasswordArray(min, max, simpleCharacterSet, 1, allowDuplicates, worker)
+    generatePasswordArray(min, max, simpleCharacterSet, includeSymbols, 1, allowDuplicates, worker)
       .then((res) => {
         setPassword(res[0]);
       })
