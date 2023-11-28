@@ -128,5 +128,6 @@
   "confirmDelete": "你确定要删除这个密码吗？",
   "showPassword": "显示密码",
   "hidePassword": "隐藏密码",
-  "exit": "退出"
+  "exit": "退出",
+  "includeSymbols": "包含符号"
 }

@@ -130,5 +130,6 @@
   "confirmDelete": "Are you sure you want to delete this password?",
   "showPassword": "Show password",
   "hidePassword": "Hide password",
-  "exit": "Exit"
+  "exit": "Exit",
+  "includeSymbols": "Include symbols"
 }

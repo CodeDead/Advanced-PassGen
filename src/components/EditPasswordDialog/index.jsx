@@ -35,6 +35,7 @@ const EditPasswordDialog = ({
     brackets,
     useAdvanced,
     characterSet,
+    includeSymbols,
     allowDuplicates,
   } = state2;
 
@@ -96,7 +97,7 @@ const EditPasswordDialog = ({
       return;
     }
 
-    generatePasswordArray(min, max, simpleCharacterSet, 1, allowDuplicates, null)
+    generatePasswordArray(min, max, simpleCharacterSet, includeSymbols, 1, allowDuplicates, null)
       .then((res) => {
         setPassword(res[0]);
       })

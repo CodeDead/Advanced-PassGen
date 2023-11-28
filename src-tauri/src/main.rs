@@ -13,10 +13,16 @@ fn main() {
             open_website,
             save_string_to_disk,
             read_string_from_file,
-            generate_passwords
+            generate_passwords,
+            exit_app
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
+}
+
+#[tauri::command]
+fn exit_app() {
+    std::process::exit(0x0);
 }
 
 #[tauri::command]
@@ -48,12 +54,17 @@ async fn generate_passwords(
     min_length: u64,
     max_length: u64,
     character_set: &str,
+    include_symbols: &str,
     amount: u64,
     allow_duplicates: bool,
 ) -> Result<Vec<String>, String> {
     let mut password_list: Vec<String> = Vec::new();
     let mut max_count: f64 = 0.0;
-    let char_count = character_set.graphemes(true).count();
+
+    let mut total_character_set = String::from(character_set);
+    total_character_set.push_str(include_symbols);
+
+    let char_count = total_character_set.graphemes(true).count();
 
     if !allow_duplicates {
         let mut current = min_length;
@@ -64,7 +75,7 @@ async fn generate_passwords(
     }
 
     let mut rng = rand::thread_rng();
-    let chars = character_set.chars();
+    let chars = total_character_set.chars();
     for _n in 0..amount {
         let mut can_continue = false;
         while !can_continue {

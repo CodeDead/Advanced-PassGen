@@ -130,5 +130,6 @@
   "confirmDelete": "Bu şifreyi silmek istediğinizden emin misiniz?",
   "showPassword": "Şifreyi göster",
   "hidePassword": "Şifreyi gizle",
-  "exit": "Çıkış"
+  "exit": "Çıkış",
+  "includeSymbols": "Semboller dahil"
 }

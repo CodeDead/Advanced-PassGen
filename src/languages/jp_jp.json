@@ -127,5 +127,6 @@
   "confirmDelete": "このパスワードを削除してもよろしいですか？",
   "showPassword": "パスワードを表示",
   "hidePassword": "パスワードを隠す",
-  "exit": "出口"
+  "exit": "出口",
+  "includeSymbols": "シンボルを含める"
 }

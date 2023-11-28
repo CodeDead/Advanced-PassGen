@@ -21,21 +21,23 @@ const getRandomIntInclusive = (min, max) => {
  * @param minLength The minimum length of the password
  * @param maxLength The maximum length of the password
  * @param characterSet The character set to use
+ * @param includeSymbols Custom symbols to include
  * @param amount The amount of passwords to generate
  * @param allowDuplicates Whether to allow duplicate passwords
  * @returns {*[]} The array of passwords
  * @constructor
  */
-// eslint-disable-next-line import/prefer-default-export
-export const PasswordGenerator = (minLength, maxLength, characterSet, amount, allowDuplicates) => {
+// eslint-disable-next-line import/prefer-default-export,max-len
+export const PasswordGenerator = (minLength, maxLength, characterSet, includeSymbols, amount, allowDuplicates) => {
   const passwordArray = [];
+  const totalCharacterSet = characterSet + includeSymbols;
 
   let maxCount = 0;
   if (!allowDuplicates) {
     let current = parseInt(minLength, 10);
     while (current <= parseInt(maxLength, 10)) {
       // eslint-disable-next-line no-restricted-properties,prefer-exponentiation-operator
-      maxCount += Math.pow(characterSet.length, current);
+      maxCount += Math.pow(totalCharacterSet.length, current);
       current += 1;
     }
   }
@@ -51,7 +53,7 @@ export const PasswordGenerator = (minLength, maxLength, characterSet, amount, al
         window.crypto.getRandomValues(randomBuffer);
 
         const randomNumber = randomBuffer[0] / (0xffffffff + 1);
-        password += characterSet[Math.floor(randomNumber * characterSet.length)];
+        password += totalCharacterSet[Math.floor(randomNumber * totalCharacterSet.length)];
       }
 
       if (allowDuplicates === true || (!allowDuplicates && !passwordArray.includes(password))) {

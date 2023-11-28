@@ -33,7 +33,7 @@ const Generate = () => {
   const [exportType, setExportType] = useState('application/json');
 
   const {
-    min, max, amount, characterSet, passwords, useAdvanced, smallLetters,
+    min, max, amount, characterSet, includeSymbols, passwords, useAdvanced, smallLetters,
     capitalLetters, spaces, specialCharacters, numbers, brackets, allowDuplicates,
   } = state2;
 
@@ -61,7 +61,8 @@ const Generate = () => {
       return;
     }
     d1(setLoading(true));
-    generatePasswordArray(min, max, simpleCharacterSet, amount, allowDuplicates, worker)
+    // eslint-disable-next-line max-len
+    generatePasswordArray(min, max, simpleCharacterSet, includeSymbols, amount, allowDuplicates, worker)
       .then((res) => {
         d2(setPasswords(res));
       })
