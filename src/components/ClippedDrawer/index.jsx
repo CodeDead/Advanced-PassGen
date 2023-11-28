@@ -15,7 +15,9 @@ import InfoIcon from '@mui/icons-material/Info';
 import SettingsIcon from '@mui/icons-material/Settings';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import FolderIcon from '@mui/icons-material/Folder';
+import CloseIcon from '@mui/icons-material/Close';
 import { useNavigate } from 'react-router-dom';
+import { invoke } from '@tauri-apps/api/tauri';
 import { MainContext } from '../../contexts/MainContextProvider';
 import { openWebSite } from '../../reducers/MainReducer/Actions';
 
@@ -43,6 +45,16 @@ const ClippedDrawer = ({ open, onClose }) => {
   const handleNavigate = (page) => {
     navigate(page);
     closeDrawer();
+  };
+
+  /**
+   * Exit the application
+   */
+  const exitApp = () => {
+    // eslint-disable-next-line no-underscore-dangle
+    if (window.__TAURI__) {
+      invoke('exit_app');
+    }
   };
 
   return (
@@ -145,6 +157,24 @@ const ClippedDrawer = ({ open, onClose }) => {
             </ListItemButton>
           </ListItem>
         </List>
+        {/* eslint-disable-next-line no-underscore-dangle */}
+        {window.__TAURI__ ? (
+          <>
+            <Divider />
+            <List>
+              <ListItem disablePadding>
+                <ListItemButton
+                  onClick={() => exitApp()}
+                >
+                  <ListItemIcon>
+                    <CloseIcon />
+                  </ListItemIcon>
+                  <ListItemText primary={language.exit} />
+                </ListItemButton>
+              </ListItem>
+            </List>
+          </>
+        ) : null}
       </Box>
     </Drawer>
   );

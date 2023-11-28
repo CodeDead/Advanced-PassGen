@@ -127,5 +127,6 @@
   ],
   "confirmDelete": "Sind Sie sicher, dass Sie dieses Passwort löschen möchten?",
   "hidePassword": "Passwort ausblenden",
-  "showPassword": "Passwort anzeigen"
+  "showPassword": "Passwort anzeigen",
+  "exit": "Beenden"
 }

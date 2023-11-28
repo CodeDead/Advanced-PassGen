@@ -172,6 +172,12 @@ const TopBar = ({ onOpenDrawer, onTitleClick }) => {
               >
                 中文（简体）
               </MenuItem>
+              <MenuItem
+                onClick={() => changeLanguage(7)}
+                selected={languageIndex === 7}
+              >
+                Türkçe
+              </MenuItem>
             </Menu>
           </div>
         ) : null}

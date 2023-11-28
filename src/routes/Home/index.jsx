@@ -269,7 +269,11 @@ const Home = () => {
           </Grid>
         </CardContent>
       </Card>
-      <Accordion sx={{ mt: 2 }}>
+      <Accordion
+        sx={{ mt: 2 }}
+        /* eslint-disable-next-line no-underscore-dangle */
+        defaultExpanded={!window.__TAURI__}
+      >
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
