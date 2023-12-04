@@ -19,7 +19,7 @@
   "characterSet": "Karakter seti",
   "generate": "Oluştur",
   "useCustomCharacterSet": "Özel karakter seti kullan",
-  "aboutText": "Advanced PassGen DeadLine tarafından oluşturuldu.\n\nTema: MUI\nLisans: GPLv3\nSürüm: {x}\n\nTelif Hakkı © {yıl} CodeDead",
+  "aboutText": "Advanced PassGen DeadLine tarafından oluşturuldu.\n\nTema: MUI\nLisans: GPLv3\nSürüm: {x}\n\nTelif Hakkı © {year} CodeDead",
   "website": "İnternet sitesi",
   "license": "Lisans",
   "autoUpdate": "Güncellemeleri otomatik olarak kontrol et",
