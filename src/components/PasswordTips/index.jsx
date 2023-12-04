@@ -27,12 +27,10 @@ const PasswordTips = () => {
       clearInterval(intervalId.current);
     }
 
-    const x = setInterval(() => {
+    intervalId.current = setInterval(() => {
       setCurrentTip(language.passwordTips[Math.floor(Math.random()
         * language.passwordTips.length)]);
     }, 30000);
-
-    intervalId.current = x;
   };
 
   useEffect(() => {
