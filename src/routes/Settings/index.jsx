@@ -214,12 +214,13 @@ const Settings = () => {
               >
                 <MenuItem value={0}>Deutsch</MenuItem>
                 <MenuItem value={1}>English</MenuItem>
-                <MenuItem value={2}>Français</MenuItem>
-                <MenuItem value={3}>日本</MenuItem>
-                <MenuItem value={4}>Nederlands</MenuItem>
-                <MenuItem value={5}>Русский</MenuItem>
-                <MenuItem value={6}>中文（简体）</MenuItem>
-                <MenuItem value={7}>Türkçe</MenuItem>
+                <MenuItem value={2}>Español</MenuItem>
+                <MenuItem value={3}>Français</MenuItem>
+                <MenuItem value={4}>日本</MenuItem>
+                <MenuItem value={5}>Nederlands</MenuItem>
+                <MenuItem value={6}>Русский</MenuItem>
+                <MenuItem value={7}>中文（简体）</MenuItem>
+                <MenuItem value={8}>Türkçe</MenuItem>
               </Select>
             </FormControl>
           </FormGroup>

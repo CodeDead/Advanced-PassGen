@@ -1,6 +1,7 @@
 import React, { createContext, useReducer } from 'react';
 import MainReducer from '../../reducers/MainReducer';
 import enUs from '../../languages/en_us.json';
+import esEs from '../../languages/es_es.json';
 import deDe from '../../languages/de_de.json';
 import frFr from '../../languages/fr_fr.json';
 import jpJp from '../../languages/jp_jp.json';
@@ -25,6 +26,7 @@ const initState = {
   languages: [
     deDe,
     enUs,
+    esEs,
     frFr,
     jpJp,
     nlNl,

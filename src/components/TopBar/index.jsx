@@ -144,36 +144,42 @@ const TopBar = ({ onOpenDrawer, onTitleClick }) => {
               </MenuItem>
               <MenuItem
                 onClick={() => changeLanguage(2)}
+                selected={languageIndex === 1}
+              >
+                Español
+              </MenuItem>
+              <MenuItem
+                onClick={() => changeLanguage(3)}
                 selected={languageIndex === 2}
               >
                 Français
               </MenuItem>
               <MenuItem
-                onClick={() => changeLanguage(3)}
+                onClick={() => changeLanguage(4)}
                 selected={languageIndex === 3}
               >
                 日本
               </MenuItem>
               <MenuItem
-                onClick={() => changeLanguage(4)}
+                onClick={() => changeLanguage(5)}
                 selected={languageIndex === 4}
               >
                 Nederlands
               </MenuItem>
               <MenuItem
-                onClick={() => changeLanguage(5)}
+                onClick={() => changeLanguage(6)}
                 selected={languageIndex === 5}
               >
                 Русский
               </MenuItem>
               <MenuItem
-                onClick={() => changeLanguage(6)}
+                onClick={() => changeLanguage(7)}
                 selected={languageIndex === 6}
               >
                 中文（简体）
               </MenuItem>
               <MenuItem
-                onClick={() => changeLanguage(7)}
+                onClick={() => changeLanguage(8)}
                 selected={languageIndex === 7}
               >
                 Türkçe
