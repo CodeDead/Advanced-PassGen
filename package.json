@@ -2,6 +2,7 @@
   "name": "advanced-passgen",
   "version": "2.4.3",
   "private": true,
+  "type": "module",
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
