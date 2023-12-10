@@ -1,3 +1,5 @@
+import Graphemer from 'graphemer';
+
 /**
  * Generate a secure random number between min and max
  * @param min The minimum number
@@ -30,14 +32,18 @@ const getRandomIntInclusive = (min, max) => {
 // eslint-disable-next-line import/prefer-default-export,max-len
 export const PasswordGenerator = (minLength, maxLength, characterSet, includeSymbols, amount, allowDuplicates) => {
   const passwordArray = [];
+  const splitter = new Graphemer();
   const totalCharacterSet = characterSet + includeSymbols;
+
+  const graphemeCount = splitter.countGraphemes(totalCharacterSet);
+  const graphemes = splitter.splitGraphemes(totalCharacterSet);
 
   let maxCount = 0;
   if (!allowDuplicates) {
     let current = parseInt(minLength, 10);
     while (current <= parseInt(maxLength, 10)) {
       // eslint-disable-next-line no-restricted-properties,prefer-exponentiation-operator
-      maxCount += Math.pow(totalCharacterSet.length, current);
+      maxCount += Math.pow(graphemeCount, current);
       current += 1;
     }
   }
@@ -53,7 +59,7 @@ export const PasswordGenerator = (minLength, maxLength, characterSet, includeSym
         window.crypto.getRandomValues(randomBuffer);
 
         const randomNumber = randomBuffer[0] / (0xffffffff + 1);
-        password += totalCharacterSet[Math.floor(randomNumber * totalCharacterSet.length)];
+        password += graphemes[Math.floor(randomNumber * graphemeCount)];
       }
 
       if (allowDuplicates === true || (!allowDuplicates && !passwordArray.includes(password))) {

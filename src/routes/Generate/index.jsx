@@ -10,6 +10,7 @@ import InputLabel from '@mui/material/InputLabel';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import { DataGrid } from '@mui/x-data-grid';
+import Graphemer from 'graphemer';
 import { MainContext } from '../../contexts/MainContextProvider';
 import { PasswordContext } from '../../contexts/PasswordContextProvider';
 import { setError, setLoading, setPageIndex } from '../../reducers/MainReducer/Actions';
@@ -204,7 +205,10 @@ const Generate = () => {
 
   const passwordRows = [];
   if (passwords && passwords.length > 0) {
-    passwords.forEach((e, i) => passwordRows.push(createData(`${e}${i}`, e, e.length, PasswordStrength(e))));
+    const splitter = new Graphemer();
+    passwords.forEach((e, i) => {
+      passwordRows.push(createData(`${e}${i}`, e, splitter.countGraphemes(e), PasswordStrength(e)));
+    });
   }
 
   if (loading) {
