@@ -14,6 +14,7 @@
     "@shopify/react-web-worker": "^5.0.13",
     "@tauri-apps/api": "1.5.1",
     "crypto-js": "^4.2.0",
+    "grapheme-splitter": "^1.0.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.20.1"
