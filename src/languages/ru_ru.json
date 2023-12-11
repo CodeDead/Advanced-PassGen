@@ -129,5 +129,7 @@
   "showPassword": "Показать пароль",
   "hidePassword": "Скрыть пароль",
   "exit": "Выход",
-  "includeSymbols": "Включить символы"
+  "includeSymbols": "Включить символы",
+  "useEmojis": "Использовать эмодзи",
+  "exportSuccessful": "Экспорт успешно завершен!"
 }

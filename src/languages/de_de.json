@@ -129,5 +129,7 @@
   "hidePassword": "Passwort ausblenden",
   "showPassword": "Passwort anzeigen",
   "exit": "Beenden",
-  "includeSymbols": "Symbole einschließen"
+  "includeSymbols": "Symbole einschließen",
+  "useEmojis": "Emojis verwenden",
+  "exportSuccessful": "Export erfolgreich"
 }
