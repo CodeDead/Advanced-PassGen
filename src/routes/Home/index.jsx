@@ -34,7 +34,8 @@ import {
   setSmallLetters,
   setSpaces,
   setSpecialCharacters,
-  setUseAdvanced, setUseEmojis,
+  setUseAdvanced,
+  setUseEmojis,
 } from '../../reducers/PasswordReducer/Actions';
 import LoadingBar from '../../components/LoadingBar';
 import PasswordTips from '../../components/PasswordTips';
