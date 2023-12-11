@@ -39,6 +39,7 @@ const CreatePasswordDialog = ({ open, onCreate, onClose }) => {
     characterSet,
     includeSymbols,
     allowDuplicates,
+    useEmojis,
   } = state2;
 
   const [title, setTitle] = useState('');
@@ -57,6 +58,7 @@ const CreatePasswordDialog = ({ open, onCreate, onClose }) => {
     numbers,
     specialCharacters,
     brackets,
+    useEmojis,
   );
 
   const worker = useWorker(createWorker);

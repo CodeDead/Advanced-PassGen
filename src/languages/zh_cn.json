@@ -129,5 +129,7 @@
   "showPassword": "显示密码",
   "hidePassword": "隐藏密码",
   "exit": "退出",
-  "includeSymbols": "包含符号"
+  "includeSymbols": "包含符号",
+  "useEmojis": "使用表情符号",
+  "exportSuccessful": "导出成功"
 }

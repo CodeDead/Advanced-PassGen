@@ -130,5 +130,7 @@
   "showPassword": "Wachtwoord tonen",
   "hidePassword": "Wachtwoord verbergen",
   "exit": "Afsluiten",
-  "includeSymbols": "Inclusief symbolen"
+  "includeSymbols": "Inclusief symbolen",
+  "useEmojis": "Gebruik emoji's",
+  "exportSuccessful": "Export aangemaakt"
 }

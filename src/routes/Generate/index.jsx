@@ -11,6 +11,8 @@ import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import { DataGrid } from '@mui/x-data-grid';
 import Graphemer from 'graphemer';
+import Alert from '@mui/material/Alert';
+import Snackbar from '@mui/material/Snackbar';
 import { MainContext } from '../../contexts/MainContextProvider';
 import { PasswordContext } from '../../contexts/PasswordContextProvider';
 import { setError, setLoading, setPageIndex } from '../../reducers/MainReducer/Actions';
@@ -32,10 +34,11 @@ const Generate = () => {
   const language = state1.languages[languageIndex];
 
   const [exportType, setExportType] = useState('application/json');
+  const [snackOpen, setSnackOpen] = useState(false);
 
   const {
     min, max, amount, characterSet, includeSymbols, passwords, useAdvanced, smallLetters,
-    capitalLetters, spaces, specialCharacters, numbers, brackets, allowDuplicates,
+    capitalLetters, spaces, specialCharacters, numbers, brackets, allowDuplicates, useEmojis,
   } = state2;
 
   const worker = useWorker(createWorker);
@@ -49,10 +52,18 @@ const Generate = () => {
     numbers,
     specialCharacters,
     brackets,
+    useEmojis,
   );
 
   const cannotGenerate = !simpleCharacterSet || simpleCharacterSet.length === 0
     || min > max || max < min;
+
+  /**
+   * Close the snackbar
+   */
+  const closeSnack = () => {
+    setSnackOpen(false);
+  };
 
   /**
    * Generate passwords
@@ -84,15 +95,15 @@ const Generate = () => {
   const getExportData = (passwordArray, type) => {
     let toExport = '';
     if (type === 'text/plain') {
-      for (let i = 0; i < passwordArray.length; i += 1) {
-        toExport += `${passwordArray[i]}\n`;
-      }
+      passwordArray.forEach((e) => {
+        toExport += `${e}\n`;
+      });
     } else if (type === 'application/json') {
       toExport = JSON.stringify(passwordArray, null, 2);
     } else if (type === 'text/csv') {
-      for (let i = 0; i < passwordArray.length; i += 1) {
-        toExport += `"${passwordArray[i].replace('"', '""')}",\n`;
-      }
+      passwordArray.forEach((e) => {
+        toExport += `"${e.replace('"', '""')}",\n`;
+      });
     }
     return toExport;
   };
@@ -124,6 +135,8 @@ const Generate = () => {
 
     document.body.removeChild(link);
     URL.revokeObjectURL(href);
+
+    setSnackOpen(true);
   };
 
   /**
@@ -157,6 +170,9 @@ const Generate = () => {
             const resExt = res.slice((res.lastIndexOf('.') - 1 >>> 0) + 2);
             const path = resExt && resExt.length > 0 ? res : `${res}.${ext}`;
             invoke('save_string_to_disk', { content: getExportData(passwords, exportType), path })
+              .then(() => {
+                setSnackOpen(true);
+              })
               .catch((e) => {
                 d1(setError(e));
               });
@@ -301,6 +317,11 @@ const Generate = () => {
           <MenuItem value="text/plain">{language.plainText}</MenuItem>
         </Select>
       </FormControl>
+      <Snackbar open={snackOpen} autoHideDuration={3000} onClose={closeSnack}>
+        <Alert onClose={closeSnack} severity="success" sx={{ width: '100%' }}>
+          {language.exportSuccessful}
+        </Alert>
+      </Snackbar>
     </Container>
   );
 };

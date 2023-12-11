@@ -37,6 +37,7 @@ const EditPasswordDialog = ({
     characterSet,
     includeSymbols,
     allowDuplicates,
+    useEmojis,
   } = state2;
 
   const [title, setTitle] = useState(data && data.title ? data.title : '');
@@ -55,6 +56,7 @@ const EditPasswordDialog = ({
     numbers,
     specialCharacters,
     brackets,
+    useEmojis,
   );
 
   const cannotGenerate = !simpleCharacterSet || simpleCharacterSet.length === 0

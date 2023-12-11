@@ -128,5 +128,7 @@
   "showPassword": "パスワードを表示",
   "hidePassword": "パスワードを隠す",
   "exit": "出口",
-  "includeSymbols": "シンボルを含める"
+  "includeSymbols": "シンボルを含める",
+  "useEmojis": "絵文字を使用する",
+  "exportSuccessful": "エクスポートに成功しました"
 }

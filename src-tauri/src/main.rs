@@ -64,7 +64,8 @@ async fn generate_passwords(
     let mut total_character_set = String::from(character_set);
     total_character_set.push_str(include_symbols);
 
-    let char_count = total_character_set.graphemes(true).count();
+    let graphemes = total_character_set.graphemes(true);
+    let char_count = graphemes.clone().count();
 
     if !allow_duplicates {
         let mut current = min_length;
@@ -75,7 +76,7 @@ async fn generate_passwords(
     }
 
     let mut rng = rand::thread_rng();
-    let chars = total_character_set.graphemes(true).collect::<Vec<&str>>();
+    let chars = graphemes.collect::<Vec<&str>>();
     for _n in 0..amount {
         let mut can_continue = false;
         while !can_continue {
