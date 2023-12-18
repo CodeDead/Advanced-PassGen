@@ -83,7 +83,8 @@ The theme used in this application is [MUI](https://mui.com/).
 
 ### Images
 
-The application icon was provided by [RemixIcon](https://remixicon.com/).
+The application icon (and derivatives) are provided by [RemixIcon](https://remixicon.com/).  
+All other images were provided by [MUI](https://mui.com/material-ui/material-icons/).
 
 ### Translations
 

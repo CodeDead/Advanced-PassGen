@@ -128,5 +128,7 @@
   "showPassword": "Afficher le mot de passe",
   "hidePassword": "Masquer le mot de passe",
   "exit": "Quitter",
-  "includeSymbols": "Inclure les symboles"
+  "includeSymbols": "Inclure les symboles",
+  "useEmojis": "Utiliser les emojis",
+  "exportSuccessful": "Exportation réussie"
 }

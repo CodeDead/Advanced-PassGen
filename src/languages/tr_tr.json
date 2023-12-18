@@ -131,5 +131,7 @@
   "showPassword": "Şifreyi göster",
   "hidePassword": "Şifreyi gizle",
   "exit": "Çıkış",
-  "includeSymbols": "Semboller dahil"
+  "includeSymbols": "Semboller dahil",
+  "useEmojis": "Emojileri kullan",
+  "exportSuccessful": "Başarıyla dışa aktarıldı"
 }

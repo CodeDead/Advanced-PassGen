@@ -20,6 +20,7 @@ const initState = {
   useAdvanced: false,
   passwords: null,
   allowDuplicates: true,
+  useEmojis: false,
 };
 
 export const PasswordContext = createContext(initState);

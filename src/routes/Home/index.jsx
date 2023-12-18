@@ -35,6 +35,7 @@ import {
   setSpaces,
   setSpecialCharacters,
   setUseAdvanced,
+  setUseEmojis,
 } from '../../reducers/PasswordReducer/Actions';
 import LoadingBar from '../../components/LoadingBar';
 import PasswordTips from '../../components/PasswordTips';
@@ -62,6 +63,7 @@ const Home = () => {
     characterSet,
     includeSymbols,
     allowDuplicates,
+    useEmojis,
   } = state2;
 
   const navigate = useNavigate();
@@ -76,6 +78,7 @@ const Home = () => {
     numbers,
     specialCharacters,
     brackets,
+    useEmojis,
   );
 
   const cannotGenerate = !simpleCharacterSet || simpleCharacterSet.length === 0
@@ -132,6 +135,14 @@ const Home = () => {
    */
   const handleDuplicateChange = (event) => {
     d2(setAllowDuplicates(event.target.checked));
+  };
+
+  /**
+   * Change whether emojis can be used or not
+   * @param event The event argument
+   */
+  const handleEmojiChange = (event) => {
+    d2(setUseEmojis(event.target.checked));
   };
 
   /**
@@ -306,6 +317,16 @@ const Home = () => {
                     />
                   )}
                   label={language.allowDuplicates}
+                />
+                <FormControlLabel
+                  control={(
+                    <Checkbox
+                      checked={useEmojis}
+                      disabled={useAdvanced}
+                      onChange={handleEmojiChange}
+                    />
+                  )}
+                  label={language.useEmojis}
                 />
                 <FormControlLabel
                   control={(

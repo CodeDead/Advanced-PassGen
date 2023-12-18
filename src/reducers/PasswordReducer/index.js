@@ -2,7 +2,8 @@ import {
   SET_ALLOW_DUPLICATES,
   SET_BRACKETS,
   SET_CAPITAL_LETTERS,
-  SET_CHARACTER_SET, SET_INCLUDE_SYMBOLS,
+  SET_CHARACTER_SET,
+  SET_INCLUDE_SYMBOLS,
   SET_NUMBERS,
   SET_PASSWORD_AMOUNT,
   SET_PASSWORD_LENGTH_MAX,
@@ -12,6 +13,7 @@ import {
   SET_SPACES,
   SET_SPECIAL_CHARACTERS,
   SET_USE_ADVANCED,
+  SET_USE_EMOJIS,
 } from './Actions/actionTypes';
 
 const PasswordReducer = (state, action) => {
@@ -93,6 +95,11 @@ const PasswordReducer = (state, action) => {
       return {
         ...state,
         allowDuplicates: action.payload,
+      };
+    case SET_USE_EMOJIS:
+      return {
+        ...state,
+        useEmojis: action.payload,
       };
     default:
       return state;

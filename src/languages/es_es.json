@@ -131,5 +131,7 @@
   "showPassword": "Mostrar contraseña",
   "hidePassword": "Contraseña oculta",
   "exit": "Salida",
-  "includeSymbols": "Include symbols"
+  "includeSymbols": "Incluir símbolos",
+  "useEmojis": "Usar emojis",
+  "exportSuccessful": "Exportación exitosa"
 }
