@@ -1,6 +1,6 @@
 [package]
 name = "advanced-passgen"
-version = "2.4.3"
+version = "2.5.0"
 description = "Advanced PassGen can be used to quickly generate thousands of passwords"
 authors = ["CodeDead <admin@codedead.com>"]
 license = "GPL-3.0-only"
