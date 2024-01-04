@@ -7,7 +7,7 @@ license = "GPL-3.0-only"
 repository = "https://github.com/CodeDead/Advanced-PassGen"
 default-run = "advanced-passgen"
 edition = "2021"
-rust-version = "1.74.1"
+rust-version = "1.75.0"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
@@ -24,7 +24,7 @@ unicode-segmentation = "1.10.1"
 
 [features]
 # by default Tauri runs in production mode
-# when `tauri dev` runs it is executed with `cargo run --no-default-features` if `devPath` is an URL
+# when `tauri dev` runs it is executed with `cargo run --no-default-features` if `devPath` is a URL
 default = [ "custom-protocol" ]
 # this feature is used for production builds where `devPath` points to the filesystem
 # DO NOT remove this
