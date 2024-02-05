@@ -2,7 +2,7 @@
   "$schema": "../node_modules/@tauri-apps/cli/schema.json",
   "build": {
     "beforeBuildCommand": "yarn build",
-    "beforeDevCommand": "yarn cross-env BROWSER=none yarn start",
+    "beforeDevCommand": "yarn start",
     "devPath": "http://localhost:5173",
     "distDir": "../dist"
   },
@@ -27,7 +27,7 @@
     "bundle": {
       "active": true,
       "category": "Utility",
-      "copyright": "Copyright © 2023 CodeDead",
+      "copyright": "Copyright © 2024 CodeDead",
       "deb": {
         "depends": []
       },
