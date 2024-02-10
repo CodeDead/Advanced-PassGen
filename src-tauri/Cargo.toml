@@ -7,7 +7,7 @@ license = "GPL-3.0-only"
 repository = "https://github.com/CodeDead/Advanced-PassGen"
 default-run = "advanced-passgen"
 edition = "2021"
-rust-version = "1.75.0"
+rust-version = "1.76.0"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
@@ -20,7 +20,7 @@ serde = { version = "1.0", features = ["derive"] }
 tauri = { version = "1.5.4", features = [ "dialog-open", "clipboard-write-text", "dialog-save", "os-all"] }
 open = "5.0.1"
 rand = "0.8.5"
-unicode-segmentation = "1.10.1"
+unicode-segmentation = "1.11.0"
 
 [features]
 # by default Tauri runs in production mode
