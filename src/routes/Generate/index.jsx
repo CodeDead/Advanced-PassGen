@@ -251,7 +251,7 @@ const Generate = () => {
       headerName: language.strength,
       editable: false,
       valueFormatter: (params) => {
-        const valueFormatted = Number(params.value).toLocaleString();
+        const valueFormatted = Number(params).toLocaleString();
         return `${valueFormatted}%`;
       },
     },
