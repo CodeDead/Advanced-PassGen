@@ -21,7 +21,6 @@
   },
   "scripts": {
     "start": "vite",
-    "tstart": "",
     "build": "vite build",
     "preview": "vite build && vite preview",
     "tdev": "tauri dev",
