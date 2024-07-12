@@ -7,17 +7,17 @@
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
     "@fontsource/roboto": "^5.0.13",
-    "@mui/icons-material": "^5.15.17",
-    "@mui/material": "^5.15.17",
-    "@mui/system": "^5.15.15",
-    "@mui/x-data-grid": "^7.4.0",
-    "@shopify/react-web-worker": "^5.0.17",
-    "@tauri-apps/api": "^1.5.5",
+    "@mui/icons-material": "^5.16.1",
+    "@mui/material": "^5.16.1",
+    "@mui/system": "^5.16.1",
+    "@mui/x-data-grid": "^7.10.0",
+    "@shopify/react-web-worker": "^5.1.0",
+    "@tauri-apps/api": "^1.6.0",
     "crypto-js": "^4.2.0",
     "graphemer": "^1.4.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-router-dom": "^6.23.1"
+    "react-router-dom": "^6.24.1"
   },
   "scripts": {
     "start": "vite",
@@ -32,18 +32,18 @@
       "react-app/jest"
     ]
   },
-  "packageManager": "yarn@4.1.1",
+  "packageManager": "yarn@4.3.1",
   "devDependencies": {
-    "@tauri-apps/cli": "^1.5.13",
-    "@vitejs/plugin-react": "^4.2.1",
+    "@tauri-apps/cli": "^1.6.0",
+    "@vitejs/plugin-react": "^4.3.1",
     "eslint": "^8.57.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-react-app": "^7.0.1",
     "eslint-plugin-import": "^2.29.1",
-    "eslint-plugin-jsx-a11y": "^6.8.0",
-    "eslint-plugin-react": "^7.34.1",
+    "eslint-plugin-jsx-a11y": "^6.9.0",
+    "eslint-plugin-react": "^7.34.3",
     "eslint-plugin-react-hooks": "^4.6.2",
-    "vite": "^5.2.11",
+    "vite": "^5.3.3",
     "vite-plugin-eslint": "^1.8.1",
     "vite-plugin-svgr": "^4.2.0"
   }
