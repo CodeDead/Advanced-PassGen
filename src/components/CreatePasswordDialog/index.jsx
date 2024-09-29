@@ -5,7 +5,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogActions from '@mui/material/DialogActions';
 import IconButton from '@mui/material/IconButton';
-import Grid from '@mui/material/Grid';
+import Grid from '@mui/material/Grid2';
 import Button from '@mui/material/Button';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
@@ -128,7 +128,7 @@ const CreatePasswordDialog = ({ open, onCreate, onClose }) => {
       </DialogTitle>
       <DialogContent>
         <Grid container spacing={2} sx={{ mt: 2 }}>
-          <Grid item xs={12} md={12} lg={12}>
+          <Grid size={12}>
             <TextField
               value={title}
               error={title.length === 0}
@@ -140,7 +140,7 @@ const CreatePasswordDialog = ({ open, onCreate, onClose }) => {
               fullWidth
             />
           </Grid>
-          <Grid item xs={12} md={12} lg={12}>
+          <Grid size={12}>
             <TextField
               value={description}
               label={language.description}
@@ -151,7 +151,7 @@ const CreatePasswordDialog = ({ open, onCreate, onClose }) => {
               fullWidth
             />
           </Grid>
-          <Grid item xs={12} md={12} lg={12}>
+          <Grid size={12}>
             <TextField
               value={url}
               label={language.url}
@@ -162,7 +162,7 @@ const CreatePasswordDialog = ({ open, onCreate, onClose }) => {
               fullWidth
             />
           </Grid>
-          <Grid item xs={12} md={12} lg={12}>
+          <Grid size={12}>
             <TextField
               value={username}
               type="text"
@@ -174,7 +174,7 @@ const CreatePasswordDialog = ({ open, onCreate, onClose }) => {
               fullWidth
             />
           </Grid>
-          <Grid item xs={12} md={10} lg={10}>
+          <Grid size={{ xs: 12, md: 10, lg: 10 }}>
             <TextField
               value={password}
               type={showPassword ? 'text' : 'password'}
@@ -187,7 +187,7 @@ const CreatePasswordDialog = ({ open, onCreate, onClose }) => {
               fullWidth
             />
           </Grid>
-          <Grid item xs={6} md={1} lg={1}>
+          <Grid size={{ xs: 6, md: 1, lg: 1 }}>
             <IconButton
               color="primary"
               size="large"
@@ -205,7 +205,7 @@ const CreatePasswordDialog = ({ open, onCreate, onClose }) => {
               )}
             </IconButton>
           </Grid>
-          <Grid item xs={6} md={1} lg={1}>
+          <Grid size={{ xs: 6, md: 1, lg: 1 }}>
             <IconButton
               color="primary"
               size="large"
@@ -218,7 +218,7 @@ const CreatePasswordDialog = ({ open, onCreate, onClose }) => {
               </Tooltip>
             </IconButton>
           </Grid>
-          <Grid item xs={12} md={12} lg={12}>
+          <Grid size={12}>
             <LinearProgressWithLabel value={PasswordStrength(password)} />
           </Grid>
         </Grid>

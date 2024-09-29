@@ -4,7 +4,7 @@ import Checkbox from '@mui/material/Checkbox';
 import Container from '@mui/material/Container';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormGroup from '@mui/material/FormGroup';
-import Grid from '@mui/material/Grid';
+import Grid from '@mui/material/Grid2';
 import TextField from '@mui/material/TextField';
 import { useNavigate } from 'react-router-dom';
 import { createWorkerFactory, useWorker } from '@shopify/react-web-worker';
@@ -185,7 +185,7 @@ const Home = () => {
       <Card>
         <CardContent>
           <Grid container spacing={2}>
-            <Grid item xs={12} md={6} lg={6}>
+            <Grid size={{ xs: 12, md: 6, lg: 6 }}>
               <TextField
                 label={language.minimumLength}
                 type="number"
@@ -196,7 +196,7 @@ const Home = () => {
                 onChange={(e) => changeNumberValue(e, 'min')}
               />
             </Grid>
-            <Grid item xs={12} md={6} lg={6}>
+            <Grid size={{ xs: 12, md: 6, lg: 6 }}>
               <TextField
                 label={language.maximumLength}
                 type="number"
@@ -207,7 +207,7 @@ const Home = () => {
                 onChange={(e) => changeNumberValue(e, 'max')}
               />
             </Grid>
-            <Grid item xs={12} md={12} lg={12}>
+            <Grid size={12}>
               <TextField
                 type="number"
                 autoComplete="off"
@@ -220,7 +220,7 @@ const Home = () => {
             </Grid>
           </Grid>
           <Grid container spacing={2}>
-            <Grid item xs={6} md={6} lg={6}>
+            <Grid size={{ xs: 6, md: 6, lg: 6 }}>
               <FormGroup>
                 <FormControlLabel
                   control={(
@@ -254,7 +254,7 @@ const Home = () => {
                 />
               </FormGroup>
             </Grid>
-            <Grid item xs={6} md={6} lg={6}>
+            <Grid size={{ xs: 6, md: 6, lg: 6 }}>
               <FormGroup>
                 <FormControlLabel
                   control={(
@@ -307,7 +307,7 @@ const Home = () => {
         </AccordionSummary>
         <AccordionDetails>
           <Grid container spacing={2}>
-            <Grid item xs={12} md={12} lg={12}>
+            <Grid size={12}>
               <FormGroup>
                 <FormControlLabel
                   control={(
@@ -339,7 +339,7 @@ const Home = () => {
                 />
               </FormGroup>
             </Grid>
-            <Grid item xs={12} md={12} lg={12}>
+            <Grid size={12}>
               <TextField
                 label={language.characterSet}
                 disabled={!useAdvanced}
@@ -348,7 +348,7 @@ const Home = () => {
                 onChange={handleCharacterSetChange}
               />
             </Grid>
-            <Grid item xs={12} md={12} lg={12}>
+            <Grid size={12}>
               <TextField
                 label={language.includeSymbols}
                 value={includeSymbols}

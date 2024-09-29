@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import Container from '@mui/material/Container';
-import Grid from '@mui/material/Grid';
+import Grid from '@mui/material/Grid2';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Fab from '@mui/material/Fab';
@@ -305,7 +305,7 @@ const Vault = () => {
 
     if (!filteredVault || filteredVault.length === 0) {
       gridItems = (
-        <Grid item xs={12} md={12} lg={12}>
+        <Grid size={12}>
           <Typography variant="h6" component="h6" gutterBottom>
             {language.noResults}
           </Typography>
@@ -313,7 +313,7 @@ const Vault = () => {
       );
     } else {
       gridItems = filteredVault.map((item) => (
-        <Grid key={item.id} item xs={12} md={6} lg={4}>
+        <Grid key={item.id} size={{ xs: 12, md: 6, lg: 4 }}>
           <VaultCard
             id={item.id}
             title={item.title}
@@ -342,7 +342,7 @@ const Vault = () => {
         {language.vault}
       </Typography>
       <Grid container spacing={2}>
-        <Grid item xs={12} md={12} lg={12}>
+        <Grid size={12}>
           {vault ? (
             <Card>
               <CardContent>

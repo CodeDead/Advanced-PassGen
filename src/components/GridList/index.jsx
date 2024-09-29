@@ -1,5 +1,5 @@
 import React from 'react';
-import Grid from '@mui/material/Grid';
+import Grid from '@mui/material/Grid2';
 
 const GridList = ({
   spacing, children, xs, md, lg,
@@ -7,7 +7,7 @@ const GridList = ({
   <Grid container spacing={spacing}>
     {children.map((e, i) => (
       // eslint-disable-next-line react/no-array-index-key
-      <Grid key={i} item xs={xs} md={md} lg={lg}>
+      <Grid key={i} size={{ xs, md, lg }}>
         {e}
       </Grid>
     ))}
