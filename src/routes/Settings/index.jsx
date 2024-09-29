@@ -211,6 +211,7 @@ const Settings = () => {
                 id="language-simple"
                 labelId="language-label"
                 label={language.language}
+                variant="outlined"
               >
                 <MenuItem value={0}>Deutsch</MenuItem>
                 <MenuItem value={1}>English</MenuItem>

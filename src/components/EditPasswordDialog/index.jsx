@@ -5,7 +5,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogActions from '@mui/material/DialogActions';
 import Button from '@mui/material/Button';
-import Grid from '@mui/material/Grid';
+import Grid from '@mui/material/Grid2';
 import IconButton from '@mui/material/IconButton';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import VisibilityIcon from '@mui/icons-material/Visibility';
@@ -119,7 +119,7 @@ const EditPasswordDialog = ({
       </DialogTitle>
       <DialogContent>
         <Grid container spacing={2} sx={{ mt: 2 }}>
-          <Grid item xs={12} md={12} lg={12}>
+          <Grid size={12}>
             <TextField
               value={data.id}
               label={language.id}
@@ -129,7 +129,7 @@ const EditPasswordDialog = ({
               fullWidth
             />
           </Grid>
-          <Grid item xs={12} md={12} lg={12}>
+          <Grid size={12}>
             <TextField
               value={title}
               error={title.length === 0}
@@ -141,7 +141,7 @@ const EditPasswordDialog = ({
               fullWidth
             />
           </Grid>
-          <Grid item xs={12} md={12} lg={12}>
+          <Grid size={12}>
             <TextField
               value={description}
               label={language.description}
@@ -152,7 +152,7 @@ const EditPasswordDialog = ({
               fullWidth
             />
           </Grid>
-          <Grid item xs={12} md={12} lg={12}>
+          <Grid size={12}>
             <TextField
               value={url}
               label={language.url}
@@ -163,7 +163,7 @@ const EditPasswordDialog = ({
               fullWidth
             />
           </Grid>
-          <Grid item xs={12} md={12} lg={12}>
+          <Grid size={12}>
             <TextField
               value={username}
               type="text"
@@ -175,7 +175,7 @@ const EditPasswordDialog = ({
               fullWidth
             />
           </Grid>
-          <Grid item xs={12} md={8} lg={8}>
+          <Grid size={{ xs: 12, md: 8, lg: 8 }}>
             <TextField
               value={password}
               type={showPassword ? 'text' : 'password'}
@@ -188,7 +188,7 @@ const EditPasswordDialog = ({
               fullWidth
             />
           </Grid>
-          <Grid item xs={6} md={2} lg={2}>
+          <Grid size={{ xs: 6, md: 2, lg: 2 }}>
             <IconButton
               color="primary"
               size="large"
@@ -202,7 +202,7 @@ const EditPasswordDialog = ({
               )}
             </IconButton>
           </Grid>
-          <Grid item xs={6} md={2} lg={2}>
+          <Grid size={{ xs: 6, md: 2, lg: 2 }}>
             <IconButton
               color="primary"
               size="large"
@@ -213,7 +213,7 @@ const EditPasswordDialog = ({
               <RefreshIcon fontSize="inherit" />
             </IconButton>
           </Grid>
-          <Grid item xs={12} md={12} lg={12}>
+          <Grid size={12}>
             <LinearProgressWithLabel value={PasswordStrength(password)} />
           </Grid>
         </Grid>

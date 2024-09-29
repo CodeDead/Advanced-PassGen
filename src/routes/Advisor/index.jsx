@@ -4,7 +4,7 @@ import React, {
 import Container from '@mui/material/Container';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import Grid from '@mui/material/Grid';
+import Grid from '@mui/material/Grid2';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import { MainContext } from '../../contexts/MainContextProvider';
@@ -42,7 +42,7 @@ const Advisor = () => {
       <Card>
         <CardContent>
           <Grid container spacing={2}>
-            <Grid item xs={12} md={12} lg={12}>
+            <Grid size={12}>
               <TextField
                 value={password}
                 onChange={handlePasswordChange}
@@ -51,7 +51,7 @@ const Advisor = () => {
                 type="password"
               />
             </Grid>
-            <Grid item xs={12} md={12} lg={12}>
+            <Grid size={12}>
               <LinearProgressWithLabel value={PasswordStrength(password)} />
             </Grid>
           </Grid>

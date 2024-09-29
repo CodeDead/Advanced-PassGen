@@ -5,7 +5,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogActions from '@mui/material/DialogActions';
 import Button from '@mui/material/Button';
-import Grid from '@mui/material/Grid';
+import Grid from '@mui/material/Grid2';
 import { MainContext } from '../../contexts/MainContextProvider';
 
 const EncryptionKeyDialog = ({
@@ -81,7 +81,7 @@ const EncryptionKeyDialog = ({
       </DialogTitle>
       <DialogContent>
         <Grid container spacing={2} sx={{ mt: 2 }}>
-          <Grid item xs={12} md={12} lg={12}>
+          <Grid size={12}>
             <TextField
               value={key}
               type="password"
@@ -95,7 +95,7 @@ const EncryptionKeyDialog = ({
             />
           </Grid>
           {verify ? (
-            <Grid item xs={12} md={12} lg={12}>
+            <Grid size={12}>
               <TextField
                 value={key2}
                 type="password"

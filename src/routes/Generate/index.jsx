@@ -311,6 +311,7 @@ const Generate = () => {
           label={language.exportType}
           autoWidth
           onChange={handleExportTypeChange}
+          variant="outlined"
         >
           <MenuItem value="application/json">JSON</MenuItem>
           <MenuItem value="text/csv">CSV</MenuItem>
