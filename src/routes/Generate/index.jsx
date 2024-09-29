@@ -102,7 +102,7 @@ const Generate = () => {
       toExport = JSON.stringify(passwordArray, null, 2);
     } else if (type === 'text/csv') {
       passwordArray.forEach((e) => {
-        toExport += `"${e.replace('"', '""')}",\n`;
+        toExport += `"${e.replaceAll('"', '""')}",\n`;
       });
     }
     return toExport;
