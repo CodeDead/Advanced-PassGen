@@ -1,6 +1,6 @@
 {
   "name": "advanced-passgen",
-  "version": "2.5.1",
+  "version": "2.5.2",
   "private": true,
   "type": "module",
   "dependencies": {
@@ -35,7 +35,7 @@
   "packageManager": "yarn@4.5.0",
   "devDependencies": {
     "@tauri-apps/cli": "^1.6.2",
-    "@vitejs/plugin-react": "^4.3.1",
+    "@vitejs/plugin-react": "^4.3.2",
     "eslint": "^8.57.1",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-react-app": "^7.0.1",
