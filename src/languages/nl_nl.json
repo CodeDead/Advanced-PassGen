@@ -78,7 +78,7 @@
   "notFoundGoHome": "Naar de startpagina gaan?",
   "home": "Startpagina",
   "ok": "Oké",
-  "downloadApp": "Download de desktop applicatie",
+  "downloadApp": "Download de desktop applicatie voor verbeterde beveiliging en prestaties",
   "languageSelector": "Taalkiezer in de bovenste balk",
   "runningLatestVersion": "Je gebruikt de nieuwste versie!",
   "vault": "Kluis",
@@ -132,5 +132,8 @@
   "exit": "Afsluiten",
   "includeSymbols": "Inclusief symbolen",
   "useEmojis": "Gebruik emoji's",
-  "exportSuccessful": "Export aangemaakt"
+  "exportSuccessful": "Export aangemaakt",
+  "cookieNoticeText": "Deze website maakt gebruik van cookies om ervoor te zorgen dat je de beste ervaring op onze website krijgt.",
+  "accept": "Accepteren",
+  "reject": "Afwijzen"
 }

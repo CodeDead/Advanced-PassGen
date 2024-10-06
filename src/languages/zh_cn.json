@@ -131,5 +131,8 @@
   "exit": "退出",
   "includeSymbols": "包含符号",
   "useEmojis": "使用表情符号",
-  "exportSuccessful": "导出成功"
+  "exportSuccessful": "导出成功",
+  "cookieNoticeText": "本网站使用 Cookie。如果您同意使用 Cookie，请关闭此通知。",
+  "accept": "接受",
+  "reject": "拒绝"
 }

@@ -3,74 +3,62 @@
   "build": {
     "beforeBuildCommand": "yarn build",
     "beforeDevCommand": "yarn start",
-    "devPath": "http://localhost:5173",
-    "distDir": "../dist"
+    "frontendDist": "../dist",
+    "devUrl": "http://localhost:5173"
   },
-  "package": {
-    "productName": "advanced-passgen",
-    "version": "2.5.2"
-  },
-  "tauri": {
-    "allowlist": {
-      "all": false,
-      "dialog": {
-        "save": true,
-        "open": true
-      },
-      "clipboard": {
-        "writeText": true
-      },
-      "os": {
-        "all": true
-      }
+  "bundle": {
+    "active": true,
+    "category": "Utility",
+    "copyright": "Copyright © 2024 CodeDead",
+    "targets": "all",
+    "externalBin": [],
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ],
+    "windows": {
+      "certificateThumbprint": null,
+      "digestAlgorithm": "sha256",
+      "timestampUrl": ""
     },
-    "bundle": {
-      "active": true,
-      "category": "Utility",
-      "copyright": "Copyright © 2024 CodeDead",
+    "longDescription": "Advanced PassGen is a free and open-source application that can help you generate passwords and export them",
+    "macOS": {
+      "entitlements": null,
+      "exceptionDomain": "",
+      "frameworks": [],
+      "providerShortName": null,
+      "signingIdentity": null
+    },
+    "resources": [],
+    "shortDescription": "Generate passwords with ease",
+    "linux": {
       "deb": {
         "depends": []
-      },
-      "externalBin": [],
-      "icon": [
-        "icons/32x32.png",
-        "icons/128x128.png",
-        "icons/128x128@2x.png",
-        "icons/icon.icns",
-        "icons/icon.ico"
-      ],
-      "identifier": "com.codedead.advancedpassgen",
-      "longDescription": "Advanced PassGen is a free and open-source application that can help you generate passwords and export them",
-      "macOS": {
-        "entitlements": null,
-        "exceptionDomain": "",
-        "frameworks": [],
-        "providerShortName": null,
-        "signingIdentity": null
-      },
-      "resources": [],
-      "shortDescription": "Generate passwords with ease",
-      "targets": "all",
-      "windows": {
-        "certificateThumbprint": null,
-        "digestAlgorithm": "sha256",
-        "timestampUrl": ""
       }
-    },
-    "security": {
-      "csp": null
-    },
-    "updater": {
-      "active": false
-    },
+    }
+  },
+  "productName": "advanced-passgen",
+  "mainBinaryName": "advanced-passgen",
+  "version": "2.5.2",
+  "identifier": "com.codedead.advancedpassgen",
+  "plugins": {},
+  "app": {
+    "withGlobalTauri": true,
     "windows": [
       {
         "fullscreen": false,
-        "height": 550,
+        "height": 685,
         "resizable": true,
         "title": "Advanced PassGen",
         "width": 1000
       }
-    ]
+    ],
+    "security": {
+      "capabilities": ["main-capabilities"],
+      "csp": null
+    }
   }
 }

@@ -12,15 +12,18 @@ rust-version = "1.81.0"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [build-dependencies]
-tauri-build = { version = "1.5.5", features = [] }
+tauri-build = { version = "2.0.1", features = [] }
 
 [dependencies]
 serde_json = "1.0"
 serde = { version = "1.0", features = ["derive"] }
-tauri = { version = "1.8.0", features = [ "dialog-open", "clipboard-write-text", "dialog-save", "os-all"] }
+tauri = { version = "2.0.1", features = [] }
 open = "5.3.0"
 rand = "0.8.5"
 unicode-segmentation = "1.12.0"
+tauri-plugin-dialog = "2.0.1"
+tauri-plugin-clipboard-manager = "2.0.1"
+tauri-plugin-os = "2.0.1"
 
 [features]
 # by default Tauri runs in production mode

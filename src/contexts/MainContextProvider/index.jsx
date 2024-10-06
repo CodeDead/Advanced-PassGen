@@ -19,6 +19,13 @@ const languageSelector = localStorage.languageSelector
   ? (localStorage.languageSelector === 'true')
   : false;
 const tips = localStorage.tips ? (localStorage.tips === 'true') : true;
+let hasSetCookies = false;
+let allowCookies = true;
+
+if (localStorage.allowCookies) {
+  allowCookies = localStorage.allowCookies === 'true';
+  hasSetCookies = true;
+}
 
 const initState = {
   autoUpdate,
@@ -44,6 +51,8 @@ const initState = {
   loading: false,
   colorOnDark,
   tips,
+  allowCookies,
+  hasSetCookies,
 };
 
 export const MainContext = createContext(initState);

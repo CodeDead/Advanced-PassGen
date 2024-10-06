@@ -13,10 +13,11 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Tooltip from '@mui/material/Tooltip';
 import TextField from '@mui/material/TextField';
-import { open, save } from '@tauri-apps/api/dialog';
-import { invoke } from '@tauri-apps/api/tauri';
+import { open, save } from '@tauri-apps/plugin-dialog';
+import { invoke } from '@tauri-apps/api/core';
 import CryptoJS from 'crypto-js';
-import { writeText } from '@tauri-apps/api/clipboard';
+import { writeText } from '@tauri-apps/plugin-clipboard-manager';
+import ReactGA from 'react-ga4';
 import { MainContext } from '../../contexts/MainContextProvider';
 import { openWebSite, setError, setPageIndex } from '../../reducers/MainReducer/Actions';
 import { VaultContext } from '../../contexts/VaultContextProvider';
@@ -33,7 +34,7 @@ const Vault = () => {
   const [vaultState, d3] = useContext(VaultContext);
 
   const language = state.languages[state.languageIndex];
-  const { themeIndex } = state;
+  const { themeIndex, allowCookies } = state;
   const { vault, phrase } = vaultState;
 
   const [search, setSearch] = useState('');
@@ -291,6 +292,13 @@ const Vault = () => {
 
   useEffect(() => {
     d1(setPageIndex(3));
+    if (allowCookies) {
+      ReactGA.send({
+        hitType: 'pageview',
+        page: '/about',
+        title: 'Password Vault | Advanced PassGen',
+      });
+    }
   }, []);
 
   let gridItems = null;

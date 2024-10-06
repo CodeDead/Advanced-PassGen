@@ -133,5 +133,8 @@
   "exit": "Çıkış",
   "includeSymbols": "Semboller dahil",
   "useEmojis": "Emojileri kullan",
-  "exportSuccessful": "Başarıyla dışa aktarıldı"
+  "exportSuccessful": "Başarıyla dışa aktarıldı",
+  "cookieNoticeText": "Bu site, size sitemizde en iyi deneyimi sunmak için çerezler kullanır. Çerez kullanımını kabul ediyorsanız, bu bildirimi kapatın.",
+  "accept": "Kabul etmek",
+  "reject": "Reddetmek"
 }
