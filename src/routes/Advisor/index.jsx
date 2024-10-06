@@ -32,6 +32,7 @@ const Advisor = () => {
 
   useEffect(() => {
     d1(setPageIndex(2));
+    document.title = 'Advisor | Advanced PassGen';
     if (allowCookies) {
       ReactGA.send({
         hitType: 'pageview',

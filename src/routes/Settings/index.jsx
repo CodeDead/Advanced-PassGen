@@ -140,6 +140,7 @@ const Settings = () => {
 
   useEffect(() => {
     d1(setPageIndex(4));
+    document.title = 'Settings | Advanced PassGen';
     if (allowCookies) {
       ReactGA.send({
         hitType: 'pageview',

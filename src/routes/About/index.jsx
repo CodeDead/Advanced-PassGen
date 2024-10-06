@@ -31,6 +31,7 @@ const About = () => {
 
   useEffect(() => {
     d1(setPageIndex(5));
+    document.title = 'About | Advanced PassGen';
     if (allowCookies) {
       ReactGA.send({
         hitType: 'pageview',

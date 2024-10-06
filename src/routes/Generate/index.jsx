@@ -218,6 +218,7 @@ const Generate = () => {
 
   useEffect(() => {
     d1(setPageIndex(1));
+    document.title = 'Password Generator | Advanced PassGen';
     if (allowCookies) {
       ReactGA.send({
         hitType: 'pageview',

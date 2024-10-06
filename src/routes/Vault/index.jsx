@@ -292,6 +292,7 @@ const Vault = () => {
 
   useEffect(() => {
     d1(setPageIndex(3));
+    document.title = 'Password Vault | Advanced PassGen';
     if (allowCookies) {
       ReactGA.send({
         hitType: 'pageview',

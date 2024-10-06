@@ -16,6 +16,7 @@ const NotFound = () => {
 
   useEffect(() => {
     d1(setPageIndex(-1));
+    document.title = 'Not Found | Advanced PassGen';
     if (allowCookies) {
       ReactGA.send({
         hitType: 'pageview',
