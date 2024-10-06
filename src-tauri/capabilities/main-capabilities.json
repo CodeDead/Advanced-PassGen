@@ -1,0 +1,25 @@
+{
+  "identifier": "main-capabilities",
+  "description": "Main capabilities",
+  "local": true,
+  "windows": [
+    "main"
+  ],
+  "permissions": [
+    "core:default",
+    "dialog:allow-open",
+    "dialog:allow-save",
+    "os:allow-platform",
+    "os:allow-version",
+    "os:allow-os-type",
+    "os:allow-family",
+    "os:allow-arch",
+    "os:allow-exe-extension",
+    "os:allow-locale",
+    "os:allow-hostname",
+    "clipboard-manager:allow-write-text",
+    "dialog:default",
+    "clipboard-manager:default",
+    "os:default"
+  ]
+}

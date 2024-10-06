@@ -7,6 +7,7 @@ import CardContent from '@mui/material/CardContent';
 import Grid from '@mui/material/Grid2';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
+import ReactGA from 'react-ga4';
 import { MainContext } from '../../contexts/MainContextProvider';
 import LinearProgressWithLabel from '../../components/LinearProgressWithLabel';
 import PasswordStrength from '../../utils/PasswordStrength';
@@ -16,7 +17,7 @@ import PasswordTips from '../../components/PasswordTips';
 const Advisor = () => {
   const [state, d1] = useContext(MainContext);
 
-  const { languageIndex } = state;
+  const { languageIndex, allowCookies } = state;
   const language = state.languages[languageIndex];
 
   const [password, setPassword] = useState('');
@@ -31,6 +32,13 @@ const Advisor = () => {
 
   useEffect(() => {
     d1(setPageIndex(2));
+    if (allowCookies) {
+      ReactGA.send({
+        hitType: 'pageview',
+        page: '/about',
+        title: 'Advisor | Advanced PassGen',
+      });
+    }
   }, []);
 
   return (

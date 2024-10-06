@@ -10,11 +10,12 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Toolbar from '@mui/material/Toolbar';
 import Box from '@mui/material/Box';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { type } from '@tauri-apps/api/os';
+import { platform } from '@tauri-apps/plugin-os';
 import Alert from '@mui/material/Alert';
 import Snackbar from '@mui/material/Snackbar';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import ReactGA from 'react-ga4';
 import { MainContext } from '../../contexts/MainContextProvider';
 import ThemeSelector from '../../utils/ThemeSelector';
 import TopBar from '../TopBar';
@@ -22,6 +23,7 @@ import ClippedDrawer from '../ClippedDrawer';
 import UpdateDialog from '../UpdateDialog';
 import {
   openWebSite,
+  setAllowCookies,
   setCheckedForUpdates,
   setError,
   setLoading,
@@ -44,9 +46,10 @@ const App = () => {
   const [state, d1] = useContext(MainContext);
   const {
     themeIndex, themeType, update, languageIndex, autoUpdate, error, loading,
-    checkedForUpdates,
+    checkedForUpdates, allowCookies, hasSetCookies,
   } = state;
 
+  const [cookieBannerOpen, setCookieBannerOpen] = useState(!hasSetCookies);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [snackOpen, setSnackOpen] = useState(false);
   const language = state.languages[languageIndex];
@@ -71,22 +74,19 @@ const App = () => {
     d1(setUpdate(null));
     d1(setError(null));
 
-    type()
-      .then((res) => {
-        Updater(res.toLowerCase(), packageJson.version)
-          .then((up) => {
-            d1(setUpdate(up));
-          })
-          .catch((err) => {
-            d1(setError(err));
-          });
-      })
-      .catch((e) => {
-        d1(setError(e));
-      })
-      .finally(() => {
-        d1(setLoading(false));
-      });
+    try {
+      const res = platform();
+      Updater(res.toLowerCase(), packageJson.version)
+        .then((up) => {
+          d1(setUpdate(up));
+        })
+        .catch((err) => {
+          d1(setError(err));
+        });
+    } catch (e) {
+      d1(setError(e));
+    }
+    d1(setLoading(false));
   };
 
   /**
@@ -101,6 +101,29 @@ const App = () => {
    */
   const closeSnack = () => {
     setSnackOpen(false);
+  };
+
+  /**
+   * Close the cookie snack bar
+   */
+  const closeCookieSnack = () => {
+    setCookieBannerOpen(false);
+  };
+
+  /**
+   * Accept cookies
+   */
+  const acceptCookies = () => {
+    d1(setAllowCookies(true));
+    setCookieBannerOpen(false);
+  };
+
+  /**
+   * Decline cookies
+   */
+  const declineCookies = () => {
+    d1(setAllowCookies(false));
+    setCookieBannerOpen(false);
   };
 
   /**
@@ -120,6 +143,18 @@ const App = () => {
       setSnackOpen(true);
     }
   }, []);
+
+  useEffect(() => {
+    // eslint-disable-next-line no-underscore-dangle
+    if (!window.__TAURI__) {
+      if (allowCookies) {
+        ReactGA.initialize('G-M3DEBWW06X');
+        window['ga-disable-G-M3DEBWW06X'] = false;
+      } else {
+        window['ga-disable-G-M3DEBWW06X'] = true;
+      }
+    }
+  }, [allowCookies]);
 
   return (
     <ThemeProvider theme={theme}>
@@ -185,7 +220,37 @@ const App = () => {
             agreeLabel={language.ok}
           />
         ) : null}
-        <Snackbar open={snackOpen} onClose={closeSnack}>
+        {/* eslint-disable-next-line no-underscore-dangle */}
+        {!window.__TAURI__ && cookieBannerOpen ? (
+          <Alert
+            onClose={closeCookieSnack}
+            severity="info"
+            sx={{
+              width: '100%',
+              position: 'fixed',
+              bottom: 0,
+            }}
+          >
+            <Typography>
+              {language.cookieNoticeText}
+            </Typography>
+            <Button
+              onClick={declineCookies}
+              size="small"
+              color="error"
+            >
+              {language.reject}
+            </Button>
+            <Button
+              onClick={acceptCookies}
+              size="small"
+              color="primary"
+            >
+              {language.accept}
+            </Button>
+          </Alert>
+        ) : null}
+        <Snackbar open={snackOpen} onClose={closeSnack} sx={{ mb: cookieBannerOpen ? 10 : null }}>
           <Alert onClose={closeSnack} severity="info" sx={{ width: '100%' }}>
             <Typography>
               {language.downloadApp}

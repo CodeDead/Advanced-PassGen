@@ -130,5 +130,8 @@
   "exit": "Quitter",
   "includeSymbols": "Inclure les symboles",
   "useEmojis": "Utiliser les emojis",
-  "exportSuccessful": "Exportation réussie"
+  "exportSuccessful": "Exportation réussie",
+  "cookieNoticeText": "Ce site utilise des cookies pour vous garantir la meilleure expérience sur notre site.",
+  "accept": "Accepter",
+  "reject": "Rejeter"
 }

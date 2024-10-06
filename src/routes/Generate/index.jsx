@@ -3,8 +3,8 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import { createWorkerFactory, useWorker } from '@shopify/react-web-worker';
 import Paper from '@mui/material/Paper';
-import { save } from '@tauri-apps/api/dialog';
-import { invoke } from '@tauri-apps/api/tauri';
+import { save } from '@tauri-apps/plugin-dialog';
+import { invoke } from '@tauri-apps/api/core';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import Select from '@mui/material/Select';
@@ -13,6 +13,7 @@ import { DataGrid } from '@mui/x-data-grid';
 import Graphemer from 'graphemer';
 import Alert from '@mui/material/Alert';
 import Snackbar from '@mui/material/Snackbar';
+import ReactGA from 'react-ga4';
 import { MainContext } from '../../contexts/MainContextProvider';
 import { PasswordContext } from '../../contexts/PasswordContextProvider';
 import { setError, setLoading, setPageIndex } from '../../reducers/MainReducer/Actions';
@@ -30,7 +31,7 @@ const Generate = () => {
   const [state1, d1] = useContext(MainContext);
   const [state2, d2] = useContext(PasswordContext);
 
-  const { languageIndex, loading } = state1;
+  const { languageIndex, loading, allowCookies } = state1;
   const language = state1.languages[languageIndex];
 
   const [exportType, setExportType] = useState('application/json');
@@ -217,6 +218,13 @@ const Generate = () => {
 
   useEffect(() => {
     d1(setPageIndex(1));
+    if (allowCookies) {
+      ReactGA.send({
+        hitType: 'pageview',
+        page: '/about',
+        title: 'Password Generator | Advanced PassGen',
+      });
+    }
   }, []);
 
   const passwordRows = [];

@@ -9,6 +9,9 @@ use unicode_segmentation::UnicodeSegmentation;
 
 fn main() {
     tauri::Builder::default()
+        .plugin(tauri_plugin_os::init())
+        .plugin(tauri_plugin_clipboard_manager::init())
+        .plugin(tauri_plugin_dialog::init())
         .invoke_handler(tauri::generate_handler![
             open_website,
             save_string_to_disk,

@@ -34,7 +34,8 @@ import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { type } from '@tauri-apps/api/os';
+import { platform } from '@tauri-apps/plugin-os';
+import ReactGA from 'react-ga4';
 import Theme from '../../components/Theme';
 import GridList from '../../components/GridList';
 import {
@@ -67,6 +68,7 @@ const Settings = () => {
     languageSelector,
     colorOnDark,
     tips,
+    allowCookies,
   } = state;
 
   const language = state.languages[languageIndex];
@@ -120,27 +122,31 @@ const Settings = () => {
     d1(setUpdate(null));
     d1(setError(null));
 
-    type()
-      .then((res) => {
-        Updater(res.toLowerCase(), packageJson.version)
-          .then((up) => {
-            d1(setUpdate(up));
-            d1(setCheckedForUpdates(true));
-          })
-          .catch((error) => {
-            d1(setError(error));
-          });
-      })
-      .catch((e) => {
-        d1(setError(e));
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+    try {
+      const res = platform();
+      Updater(res.toLowerCase(), packageJson.version)
+        .then((up) => {
+          d1(setUpdate(up));
+          d1(setCheckedForUpdates(true));
+        })
+        .catch((error) => {
+          d1(setError(error));
+        });
+    } catch (e) {
+      d1(setError(e));
+    }
+    setLoading(false);
   };
 
   useEffect(() => {
     d1(setPageIndex(4));
+    if (allowCookies) {
+      ReactGA.send({
+        hitType: 'pageview',
+        page: '/about',
+        title: 'Settings | Advanced PassGen',
+      });
+    }
   }, []);
 
   return (

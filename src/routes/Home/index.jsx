@@ -15,6 +15,7 @@ import Accordion from '@mui/material/Accordion';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import CardContent from '@mui/material/CardContent';
 import Card from '@mui/material/Card';
+import ReactGA from 'react-ga4';
 import { MainContext } from '../../contexts/MainContextProvider';
 import { setError, setLoading, setPageIndex } from '../../reducers/MainReducer/Actions';
 import { PasswordContext } from '../../contexts/PasswordContextProvider';
@@ -46,7 +47,7 @@ const Home = () => {
   const [state, d1] = useContext(MainContext);
   const [state2, d2] = useContext(PasswordContext);
 
-  const { languageIndex, loading } = state;
+  const { languageIndex, loading, allowCookies } = state;
   const language = state.languages[languageIndex];
 
   const {
@@ -171,6 +172,13 @@ const Home = () => {
 
   useEffect(() => {
     d1(setPageIndex(0));
+    if (allowCookies) {
+      ReactGA.send({
+        hitType: 'pageview',
+        page: '/about',
+        title: 'Home | Advanced PassGen',
+      });
+    }
   }, []);
 
   if (loading) {

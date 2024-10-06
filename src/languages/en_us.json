@@ -78,7 +78,7 @@
   "notFoundGoHome": "Would you like to go back to the home page?",
   "home": "Home",
   "ok": "OK",
-  "downloadApp": "Download the desktop application",
+  "downloadApp": "Download the desktop application for improved security and performance",
   "languageSelector": "Language selector in the top bar",
   "runningLatestVersion": "You are using the latest version!",
   "vault": "Vault",
@@ -133,5 +133,8 @@
   "exit": "Exit",
   "includeSymbols": "Include symbols",
   "useEmojis": "Use emojis",
-  "exportSuccessful": "Export successful"
+  "exportSuccessful": "Export successful",
+  "cookieNoticeText": "This website uses cookies to ensure you get the best experience on our website.",
+  "accept": "Accept",
+  "reject": "Reject"
 }

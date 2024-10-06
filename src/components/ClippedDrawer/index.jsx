@@ -17,7 +17,7 @@ import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import FolderIcon from '@mui/icons-material/Folder';
 import CloseIcon from '@mui/icons-material/Close';
 import { useNavigate } from 'react-router-dom';
-import { invoke } from '@tauri-apps/api/tauri';
+import { invoke } from '@tauri-apps/api/core';
 import { MainContext } from '../../contexts/MainContextProvider';
 import { openWebSite } from '../../reducers/MainReducer/Actions';
 
