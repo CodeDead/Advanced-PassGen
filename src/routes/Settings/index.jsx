@@ -235,7 +235,7 @@ const Settings = () => {
         </AccordionDetails>
       </Accordion>
       <Accordion
-        TransitionProps={{ unmountOnExit: true }}
+        slotProps={{ transition: { unmountOnExit: true } }}
         expanded={themeExpanded}
         onChange={() => setThemeExpanded((prev) => !prev)}
       >
