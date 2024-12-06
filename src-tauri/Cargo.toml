@@ -7,22 +7,22 @@ license = "GPL-3.0-only"
 repository = "https://github.com/CodeDead/Advanced-PassGen"
 default-run = "advanced-passgen"
 edition = "2021"
-rust-version = "1.81.0"
+rust-version = "1.83.0"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [build-dependencies]
-tauri-build = { version = "2.0.1", features = [] }
+tauri-build = { version = "2.0.3", features = [] }
 
 [dependencies]
 serde_json = "1.0"
 serde = { version = "1.0", features = ["derive"] }
-tauri = { version = "2.0.1", features = [] }
-open = "5.3.0"
+tauri = { version = "2.1.1", features = [] }
+open = "5.3.1"
 rand = "0.8.5"
 unicode-segmentation = "1.12.0"
-tauri-plugin-dialog = "2.0.1"
-tauri-plugin-clipboard-manager = "2.0.1"
+tauri-plugin-dialog = "2.0.4"
+tauri-plugin-clipboard-manager = "2.0.2"
 tauri-plugin-os = "2.0.1"
 
 [features]
