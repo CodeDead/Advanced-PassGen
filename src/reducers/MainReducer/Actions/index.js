@@ -5,6 +5,7 @@ import {
   SET_AUTO_UPDATE,
   SET_CHECKED_FOR_UPDATES,
   SET_COLOR_ON_DARK,
+  SET_DEFAULT_SORT_BY_STRENGTH,
   SET_ERROR,
   SET_LANGUAGE_INDEX,
   SET_LANGUAGE_SELECTOR,
@@ -96,4 +97,9 @@ export const setTips = (value) => ({
 export const setAllowCookies = (allow) => ({
   type: SET_ALLOW_COOKIES,
   payload: allow,
+});
+
+export const setDefaultSortByStrength = (value) => ({
+  type: SET_DEFAULT_SORT_BY_STRENGTH,
+  payload: value,
 });

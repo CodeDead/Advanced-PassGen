@@ -42,7 +42,7 @@ import {
   resetState,
   setAutoUpdate,
   setCheckedForUpdates,
-  setColorOnDark,
+  setColorOnDark, setDefaultSortByStrength,
   setError,
   setLanguageIndex,
   setLanguageSelector,
@@ -69,6 +69,7 @@ const Settings = () => {
     colorOnDark,
     tips,
     allowCookies,
+    sortByStrength,
   } = state;
 
   const language = state.languages[languageIndex];
@@ -209,6 +210,16 @@ const Settings = () => {
                 />
               )}
               label={language.languageSelector}
+            />
+            <FormControlLabel
+              control={(
+                <Checkbox
+                  checked={sortByStrength}
+                  onChange={(e) => d1(setDefaultSortByStrength(e.target.checked))}
+                  value="strengthSortSelector"
+                />
+                )}
+              label={language.sortByStrength}
             />
             <FormControl variant="outlined" sx={{ mt: 2 }}>
               <InputLabel id="language-label">{language.language}</InputLabel>

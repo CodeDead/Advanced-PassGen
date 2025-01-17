@@ -136,5 +136,6 @@
   "exportSuccessful": "Exportación exitosa",
   "cookieNoticeText": "Este sitio web utiliza cookies para garantizar que obtenga la mejor experiencia en nuestro sitio web.",
   "accept": "Aceptar",
-  "reject": "Rechazar"
+  "reject": "Rechazar",
+  "sortByStrength": "Ordenar por fuerza de forma predeterminada"
 }

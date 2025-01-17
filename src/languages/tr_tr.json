@@ -136,5 +136,6 @@
   "exportSuccessful": "Başarıyla dışa aktarıldı",
   "cookieNoticeText": "Bu site, size sitemizde en iyi deneyimi sunmak için çerezler kullanır. Çerez kullanımını kabul ediyorsanız, bu bildirimi kapatın.",
   "accept": "Kabul etmek",
-  "reject": "Reddetmek"
+  "reject": "Reddetmek",
+    "sortByStrength": "Varsayılan olarak güce göre sırala"
 }
