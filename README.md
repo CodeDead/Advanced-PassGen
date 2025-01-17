@@ -99,4 +99,4 @@ This library is maintained by CodeDead. You can find more about us using the fol
 * [Facebook](https://facebook.com/deadlinecodedead/)
 * [Reddit](https://www.reddit.com/r/CodeDead/)
 
-Copyright © 2024 CodeDead
+Copyright © 2025 CodeDead
