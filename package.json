@@ -36,7 +36,6 @@
       "react-app/jest"
     ]
   },
-  "packageManager": "yarn@4.6.0",
   "devDependencies": {
     "@tauri-apps/cli": "^2.2.4",
     "@vitejs/plugin-react": "^4.3.4",
