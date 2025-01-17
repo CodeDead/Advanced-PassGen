@@ -19,6 +19,7 @@ const languageSelector = localStorage.languageSelector
   ? (localStorage.languageSelector === 'true')
   : false;
 const tips = localStorage.tips ? (localStorage.tips === 'true') : true;
+const sortByStrength = localStorage.sortByStrength ? (localStorage.sortByStrength === 'true') : true;
 let hasSetCookies = false;
 let allowCookies = true;
 
@@ -53,6 +54,7 @@ const initState = {
   tips,
   allowCookies,
   hasSetCookies,
+  sortByStrength,
 };
 
 export const MainContext = createContext(initState);

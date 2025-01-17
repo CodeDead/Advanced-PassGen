@@ -31,7 +31,9 @@ const Generate = () => {
   const [state1, d1] = useContext(MainContext);
   const [state2, d2] = useContext(PasswordContext);
 
-  const { languageIndex, loading, allowCookies } = state1;
+  const {
+    languageIndex, loading, allowCookies, sortByStrength,
+  } = state1;
   const language = state1.languages[languageIndex];
 
   const [exportType, setExportType] = useState('application/json');
@@ -228,12 +230,16 @@ const Generate = () => {
     }
   }, []);
 
-  const passwordRows = [];
+  let passwordRows = [];
   if (passwords && passwords.length > 0) {
     const splitter = new Graphemer();
     passwords.forEach((e, i) => {
       passwordRows.push(createData(`${e}${i}`, e, splitter.countGraphemes(e), PasswordStrength(e)));
     });
+
+    if (sortByStrength) {
+      passwordRows = passwordRows.sort((a, b) => parseFloat(b.strength) - parseFloat(a.strength));
+    }
   }
 
   if (loading) {

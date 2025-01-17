@@ -3,7 +3,7 @@ import {
   SET_ALLOW_COOKIES,
   SET_AUTO_UPDATE,
   SET_CHECKED_FOR_UPDATES,
-  SET_COLOR_ON_DARK,
+  SET_COLOR_ON_DARK, SET_DEFAULT_SORT_BY_STRENGTH,
   SET_ERROR,
   SET_LANGUAGE_INDEX,
   SET_LANGUAGE_SELECTOR,
@@ -54,6 +54,7 @@ const MainReducer = (state, action) => {
         languageSelector: false,
         colorOnDark: false,
         tips: true,
+        sortByStrength: true,
       };
     case SET_AUTO_UPDATE:
       localStorage.autoUpdate = action.payload;
@@ -104,6 +105,12 @@ const MainReducer = (state, action) => {
       return {
         ...state,
         allowCookies: action.payload,
+      };
+    case SET_DEFAULT_SORT_BY_STRENGTH:
+      localStorage.sortByStrength = action.payload;
+      return {
+        ...state,
+        sortByStrength: action.payload,
       };
     default:
       return state;

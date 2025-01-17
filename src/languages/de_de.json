@@ -134,5 +134,6 @@
   "exportSuccessful": "Export erfolgreich",
   "cookieNoticeText": "Diese Website verwendet Cookies, um sicherzustellen, dass Sie die bestmögliche Erfahrung auf unserer Website haben.",
   "accept": "Akzeptieren",
-  "reject": "Ablehnen"
+  "reject": "Ablehnen",
+  "sortByStrength": "Standardmäßig nach Stärke sortieren"
 }
