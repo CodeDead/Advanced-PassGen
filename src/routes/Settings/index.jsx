@@ -4,24 +4,26 @@ import Typography from '@mui/material/Typography';
 import FormLabel from '@mui/material/FormLabel';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
-import blue from '@mui/material/colors/blue';
-import purple from '@mui/material/colors/purple';
-import deepPurple from '@mui/material/colors/deepPurple';
-import lightBlue from '@mui/material/colors/lightBlue';
-import red from '@mui/material/colors/red';
-import green from '@mui/material/colors/green';
-import lightGreen from '@mui/material/colors/lightGreen';
-import grey from '@mui/material/colors/grey';
-import orange from '@mui/material/colors/orange';
-import deepOrange from '@mui/material/colors/deepOrange';
-import amber from '@mui/material/colors/amber';
-import brown from '@mui/material/colors/brown';
-import pink from '@mui/material/colors/pink';
-import indigo from '@mui/material/colors/indigo';
-import cyan from '@mui/material/colors/cyan';
-import teal from '@mui/material/colors/teal';
-import lime from '@mui/material/colors/lime';
-import yellow from '@mui/material/colors/yellow';
+import {
+  blue,
+  lightBlue,
+  red,
+  green,
+  lightGreen,
+  purple,
+  deepOrange,
+  deepPurple,
+  grey,
+  orange,
+  amber,
+  brown,
+  pink,
+  indigo,
+  cyan,
+  teal,
+  lime,
+  yellow,
+} from '@mui/material/colors';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';

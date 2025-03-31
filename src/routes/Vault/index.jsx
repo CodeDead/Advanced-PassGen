@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import Container from '@mui/material/Container';
-import Grid from '@mui/material/Grid2';
+import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Fab from '@mui/material/Fab';
