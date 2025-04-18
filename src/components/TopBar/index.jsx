@@ -1,27 +1,25 @@
 import React, { useContext, useState } from 'react';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import Menu from '@mui/material/Menu';
-import LanguageIcon from '@mui/icons-material/Language';
-import Typography from '@mui/material/Typography';
-import IconButton from '@mui/material/IconButton';
 import Brightness5Icon from '@mui/icons-material/Brightness5';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
+import LanguageIcon from '@mui/icons-material/Language';
 import MenuIcon from '@mui/icons-material/Menu';
+import AppBar from '@mui/material/AppBar';
+import IconButton from '@mui/material/IconButton';
+import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router-dom';
-import { setLanguageIndex, setThemeType } from '../../reducers/MainReducer/Actions';
 import { MainContext } from '../../contexts/MainContextProvider';
+import {
+  setLanguageIndex,
+  setThemeType,
+} from '../../reducers/MainReducer/Actions';
 
 const TopBar = ({ onOpenDrawer, onTitleClick }) => {
   const [state, d1] = useContext(MainContext);
 
-  const {
-    languageIndex,
-    themeType,
-    languageSelector,
-    colorOnDark,
-  } = state;
+  const { languageIndex, themeType, languageSelector, colorOnDark } = state;
   const language = state.languages[languageIndex];
 
   const [anchorEl, setAnchorEl] = useState(null);

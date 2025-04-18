@@ -1,13 +1,18 @@
 import React, { useState } from 'react';
-import Dialog from '@mui/material/Dialog';
-import DialogTitle from '@mui/material/DialogTitle';
-import DialogContent from '@mui/material/DialogContent';
-import DialogActions from '@mui/material/DialogActions';
 import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogTitle from '@mui/material/DialogTitle';
 import TextField from '@mui/material/TextField';
 
 const SelectFileDialog = ({
-  open, onClose, onAccept, selectFileLabel, cancelLabel, acceptLabel,
+  open,
+  onClose,
+  onAccept,
+  selectFileLabel,
+  cancelLabel,
+  acceptLabel,
 }) => {
   const [data, setData] = useState(null);
 
@@ -29,7 +34,7 @@ const SelectFileDialog = ({
     e.preventDefault();
     const reader = new FileReader();
     reader.onload = async (ev) => {
-      const text = (ev.target.result);
+      const text = ev.target.result;
       setData(text);
     };
     reader.readAsText(e.target.files[0]);
@@ -54,15 +59,10 @@ const SelectFileDialog = ({
     >
       <DialogTitle id="alert-dialog-title">{selectFileLabel}</DialogTitle>
       <DialogContent>
-        <TextField
-          type="file"
-          onChange={handleFileChange}
-        />
+        <TextField type="file" onChange={handleFileChange} />
       </DialogContent>
       <DialogActions>
-        <Button onClick={handleClose}>
-          {cancelLabel}
-        </Button>
+        <Button onClick={handleClose}>{cancelLabel}</Button>
         <Button
           onClick={accept}
           autoFocus

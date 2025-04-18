@@ -2,7 +2,9 @@ import React, { createContext, useReducer } from 'react';
 import PasswordReducer from '../../reducers/PasswordReducer';
 
 const characterSet = localStorage.characterSet ? localStorage.characterSet : '';
-const includeSymbols = localStorage.includeSymbols ? localStorage.includeSymbols : '';
+const includeSymbols = localStorage.includeSymbols
+  ? localStorage.includeSymbols
+  : '';
 
 const initState = {
   length: 1,
@@ -23,13 +25,13 @@ const initState = {
   useEmojis: false,
 };
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const PasswordContext = createContext(initState);
 
 const PasswordContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(PasswordReducer, initState);
 
   return (
-    // eslint-disable-next-line react/jsx-no-constructed-context-values
     <PasswordContext.Provider value={[state, dispatch]}>
       {children}
     </PasswordContext.Provider>

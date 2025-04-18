@@ -1,47 +1,64 @@
 import React, { useContext, useEffect, useState } from 'react';
-import Container from '@mui/material/Container';
+import Alert from '@mui/material/Alert';
 import Button from '@mui/material/Button';
-import { createWorkerFactory, useWorker } from '@shopify/react-web-worker';
-import Paper from '@mui/material/Paper';
-import { save } from '@tauri-apps/plugin-dialog';
-import { invoke } from '@tauri-apps/api/core';
+import Container from '@mui/material/Container';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
-import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
-import { DataGrid } from '@mui/x-data-grid';
-import Graphemer from 'graphemer';
-import Alert from '@mui/material/Alert';
+import Paper from '@mui/material/Paper';
+import Select from '@mui/material/Select';
 import Snackbar from '@mui/material/Snackbar';
+import { DataGrid } from '@mui/x-data-grid';
+import { createWorkerFactory, useWorker } from '@shopify/react-web-worker';
+import { invoke } from '@tauri-apps/api/core';
+import { save } from '@tauri-apps/plugin-dialog';
+import Graphemer from 'graphemer';
 import ReactGA from 'react-ga4';
+import LoadingBar from '../../components/LoadingBar';
 import { MainContext } from '../../contexts/MainContextProvider';
 import { PasswordContext } from '../../contexts/PasswordContextProvider';
-import { setError, setLoading, setPageIndex } from '../../reducers/MainReducer/Actions';
-import PasswordStrength from '../../utils/PasswordStrength';
+import {
+  setError,
+  setLoading,
+  setPageIndex,
+} from '../../reducers/MainReducer/Actions';
 import {
   generatePasswordArray,
   getFullCharacterSet,
   setPasswords,
 } from '../../reducers/PasswordReducer/Actions';
-import LoadingBar from '../../components/LoadingBar';
+import PasswordStrength from '../../utils/PasswordStrength';
 
-const createWorker = createWorkerFactory(() => import('../../utils/PasswordGenerator/index'));
+const createWorker = createWorkerFactory(
+  () => import('../../utils/PasswordGenerator/index'),
+);
 
 const Generate = () => {
   const [state1, d1] = useContext(MainContext);
   const [state2, d2] = useContext(PasswordContext);
 
-  const {
-    languageIndex, loading, allowCookies, sortByStrength,
-  } = state1;
+  const { languageIndex, loading, allowCookies, sortByStrength } = state1;
   const language = state1.languages[languageIndex];
 
   const [exportType, setExportType] = useState('application/json');
   const [snackOpen, setSnackOpen] = useState(false);
 
   const {
-    min, max, amount, characterSet, includeSymbols, passwords, useAdvanced, smallLetters,
-    capitalLetters, spaces, specialCharacters, numbers, brackets, allowDuplicates, useEmojis,
+    min,
+    max,
+    amount,
+    characterSet,
+    includeSymbols,
+    passwords,
+    useAdvanced,
+    smallLetters,
+    capitalLetters,
+    spaces,
+    specialCharacters,
+    numbers,
+    brackets,
+    allowDuplicates,
+    useEmojis,
   } = state2;
 
   const worker = useWorker(createWorker);
@@ -58,8 +75,11 @@ const Generate = () => {
     useEmojis,
   );
 
-  const cannotGenerate = !simpleCharacterSet || simpleCharacterSet.length === 0
-    || min > max || max < min;
+  const cannotGenerate =
+    !simpleCharacterSet ||
+    simpleCharacterSet.length === 0 ||
+    min > max ||
+    max < min;
 
   /**
    * Close the snackbar
@@ -76,8 +96,15 @@ const Generate = () => {
       return;
     }
     d1(setLoading(true));
-    // eslint-disable-next-line max-len
-    generatePasswordArray(min, max, simpleCharacterSet, includeSymbols, amount, allowDuplicates, worker)
+    generatePasswordArray(
+      min,
+      max,
+      simpleCharacterSet,
+      includeSymbols,
+      amount,
+      allowDuplicates,
+      worker,
+    )
       .then((res) => {
         d2(setPasswords(res));
       })
@@ -146,7 +173,6 @@ const Generate = () => {
    * Export the passwords
    */
   const onExport = () => {
-    // eslint-disable-next-line no-underscore-dangle
     if (window.__TAURI__) {
       let ext = '';
       switch (exportType) {
@@ -162,17 +188,21 @@ const Generate = () => {
       }
       save({
         multiple: false,
-        filters: [{
-          name: exportType,
-          extensions: [ext],
-        }],
+        filters: [
+          {
+            name: exportType,
+            extensions: [ext],
+          },
+        ],
       })
         .then((res) => {
           if (res && res.length > 0) {
-            // eslint-disable-next-line no-bitwise
-            const resExt = res.slice((res.lastIndexOf('.') - 1 >>> 0) + 2);
+            const resExt = res.slice(((res.lastIndexOf('.') - 1) >>> 0) + 2);
             const path = resExt && resExt.length > 0 ? res : `${res}.${ext}`;
-            invoke('save_string_to_disk', { content: getExportData(passwords, exportType), path })
+            invoke('save_string_to_disk', {
+              content: getExportData(passwords, exportType),
+              path,
+            })
               .then(() => {
                 setSnackOpen(true);
               })
@@ -197,11 +227,12 @@ const Generate = () => {
    * @param strength The strength of the password
    * @returns {{password, strength: string, length}} The JSON object
    */
-  const createData = (id, password, passwordLength, strength) => (
-    {
-      id, password, length: passwordLength, strength,
-    }
-  );
+  const createData = (id, password, passwordLength, strength) => ({
+    id,
+    password,
+    length: passwordLength,
+    strength,
+  });
 
   /**
    * Set the export type
@@ -228,24 +259,32 @@ const Generate = () => {
         title: 'Password Generator | Advanced PassGen',
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   let passwordRows = [];
   if (passwords && passwords.length > 0) {
     const splitter = new Graphemer();
     passwords.forEach((e, i) => {
-      passwordRows.push(createData(`${e}${i}`, e, splitter.countGraphemes(e), PasswordStrength(e)));
+      passwordRows.push(
+        createData(
+          `${e}${i}`,
+          e,
+          splitter.countGraphemes(e),
+          PasswordStrength(e),
+        ),
+      );
     });
 
     if (sortByStrength) {
-      passwordRows = passwordRows.sort((a, b) => parseFloat(b.strength) - parseFloat(a.strength));
+      passwordRows = passwordRows.sort(
+        (a, b) => parseFloat(b.strength) - parseFloat(a.strength),
+      );
     }
   }
 
   if (loading) {
-    return (
-      <LoadingBar />
-    );
+    return <LoadingBar />;
   }
 
   const columns = [
@@ -273,9 +312,7 @@ const Generate = () => {
   ];
 
   return (
-    <Container
-      maxWidth="xl"
-    >
+    <Container maxWidth="xl">
       <Paper style={{ height: '70vh', width: '100%' }}>
         <DataGrid
           rows={passwordRows}
@@ -314,10 +351,7 @@ const Generate = () => {
       >
         {language.export}
       </Button>
-      <FormControl
-        sx={{ mt: 2, minWidth: 100, float: 'right' }}
-        size="small"
-      >
+      <FormControl sx={{ mt: 2, minWidth: 100, float: 'right' }} size="small">
         <InputLabel id="export-type-label">{language.exportType}</InputLabel>
         <Select
           labelId="export-type-label"

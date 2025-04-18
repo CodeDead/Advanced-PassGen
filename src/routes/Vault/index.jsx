@@ -1,33 +1,37 @@
 import React, { useContext, useEffect, useState } from 'react';
-import Container from '@mui/material/Container';
-import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-import Fab from '@mui/material/Fab';
+import AddIcon from '@mui/icons-material/Add';
+import CloseIcon from '@mui/icons-material/Close';
 import FileOpenIcon from '@mui/icons-material/FileOpen';
 import NoteAddIcon from '@mui/icons-material/NoteAdd';
 import SaveIcon from '@mui/icons-material/Save';
-import AddIcon from '@mui/icons-material/Add';
-import CloseIcon from '@mui/icons-material/Close';
+import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import Tooltip from '@mui/material/Tooltip';
+import Container from '@mui/material/Container';
+import Fab from '@mui/material/Fab';
+import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
-import { open, save } from '@tauri-apps/plugin-dialog';
+import Tooltip from '@mui/material/Tooltip';
+import Typography from '@mui/material/Typography';
 import { invoke } from '@tauri-apps/api/core';
-import CryptoJS from 'crypto-js';
 import { writeText } from '@tauri-apps/plugin-clipboard-manager';
+import { open, save } from '@tauri-apps/plugin-dialog';
+import CryptoJS from 'crypto-js';
 import ReactGA from 'react-ga4';
-import { MainContext } from '../../contexts/MainContextProvider';
-import { openWebSite, setError, setPageIndex } from '../../reducers/MainReducer/Actions';
-import { VaultContext } from '../../contexts/VaultContextProvider';
-import { setPhrase, setVault } from '../../reducers/VaultReducer/Actions';
-import VaultCard from '../../components/VaultCard';
+import AlertDialog from '../../components/AlertDialog';
 import CreatePasswordDialog from '../../components/CreatePasswordDialog';
 import EditPasswordDialog from '../../components/EditPasswordDialog';
 import EncryptionKeyDialog from '../../components/EncryptionKeyDialog';
 import SelectFileDialog from '../../components/SelectFileDialog';
-import AlertDialog from '../../components/AlertDialog';
+import VaultCard from '../../components/VaultCard';
+import { MainContext } from '../../contexts/MainContextProvider';
+import { VaultContext } from '../../contexts/VaultContextProvider';
+import {
+  openWebSite,
+  setError,
+  setPageIndex,
+} from '../../reducers/MainReducer/Actions';
+import { setPhrase, setVault } from '../../reducers/VaultReducer/Actions';
 
 const Vault = () => {
   const [state, d1] = useContext(MainContext);
@@ -42,7 +46,8 @@ const Vault = () => {
   const [keyAction, setKeyAction] = useState(null);
 
   const [keyDialogOpen, setKeyDialogOpen] = useState(false);
-  const [createPasswordDialogOpen, setCreatePasswordDialogOpen] = useState(false);
+  const [createPasswordDialogOpen, setCreatePasswordDialogOpen] =
+    useState(false);
   const [editPasswordDialogOpen, setEditPasswordDialogOpen] = useState(false);
   const [selectFileOpen, setSelectFileOpen] = useState(false);
 
@@ -72,8 +77,10 @@ const Vault = () => {
    */
   const saveVault = async () => {
     try {
-      const encVault = CryptoJS.AES.encrypt(JSON.stringify(vault), phrase).toString();
-      // eslint-disable-next-line no-underscore-dangle
+      const encVault = CryptoJS.AES.encrypt(
+        JSON.stringify(vault),
+        phrase,
+      ).toString();
       if (window.__TAURI__) {
         const path = await save();
         if (path && path.length > 0) {
@@ -94,7 +101,6 @@ const Vault = () => {
    */
   const openVaultDetails = async (decryptionKey) => {
     try {
-      // eslint-disable-next-line no-underscore-dangle
       if (window.__TAURI__) {
         const path = await open({
           multiple: false,
@@ -153,7 +159,12 @@ const Vault = () => {
     const id = window.crypto.randomUUID();
     const newVault = JSON.parse(JSON.stringify(vault));
     newVault.push({
-      id, title, description, url, username, password,
+      id,
+      title,
+      description,
+      url,
+      username,
+      password,
     });
     d3(setVault(newVault));
   };
@@ -162,7 +173,9 @@ const Vault = () => {
    * Delete a password from the vault
    */
   const deletePassword = () => {
-    const newVault = JSON.parse(JSON.stringify(vault)).filter((p) => p.id !== toDelete);
+    const newVault = JSON.parse(JSON.stringify(vault)).filter(
+      (p) => p.id !== toDelete,
+    );
     d3(setVault(newVault));
 
     setToDelete(null);
@@ -184,7 +197,6 @@ const Vault = () => {
   const copyToClipboard = async (id) => {
     const { password } = vault.find((p) => p.id === id);
     try {
-      // eslint-disable-next-line no-underscore-dangle
       if (window.__TAURI__) {
         await writeText(password);
       } else {
@@ -223,13 +235,15 @@ const Vault = () => {
    */
   const editPassword = (id, title, description, url, username, password) => {
     const newVault = JSON.parse(JSON.stringify(vault));
-    newVault.filter((e) => e.id === id).forEach((e) => {
-      e.title = title;
-      e.description = description;
-      e.url = url;
-      e.username = username;
-      e.password = password;
-    });
+    newVault
+      .filter((e) => e.id === id)
+      .forEach((e) => {
+        e.title = title;
+        e.description = description;
+        e.url = url;
+        e.username = username;
+        e.password = password;
+      });
     d3(setVault(newVault));
   };
 
@@ -300,17 +314,22 @@ const Vault = () => {
         title: 'Password Vault | Advanced PassGen',
       });
     }
+    // eslint-disable-next-line
   }, []);
 
   let gridItems = null;
   if (vault && vault.length > 0) {
-    const filteredVault = search && search.length > 0
-      ? vault.filter((e) => e.title.toLowerCase().includes(search.toLowerCase())
-        || e.description.toLowerCase().includes(search.toLowerCase())
-        || e.url.toLowerCase().includes(search.toLowerCase())
-        || e.username.toLowerCase().includes(search.toLowerCase())
-        || e.id.includes(search))
-      : vault;
+    const filteredVault =
+      search && search.length > 0
+        ? vault.filter(
+            (e) =>
+              e.title.toLowerCase().includes(search.toLowerCase()) ||
+              e.description.toLowerCase().includes(search.toLowerCase()) ||
+              e.url.toLowerCase().includes(search.toLowerCase()) ||
+              e.username.toLowerCase().includes(search.toLowerCase()) ||
+              e.id.includes(search),
+          )
+        : vault;
 
     if (!filteredVault || filteredVault.length === 0) {
       gridItems = (
@@ -343,7 +362,10 @@ const Vault = () => {
     }
   }
 
-  const toEdit = vault && vault.length > 0 ? vault.filter((p) => p.id === editPasswordId)[0] : null;
+  const toEdit =
+    vault && vault.length > 0
+      ? vault.filter((p) => p.id === editPasswordId)[0]
+      : null;
 
   return (
     <Container>
@@ -449,7 +471,9 @@ const Vault = () => {
         ) : null}
       </Box>
       <EncryptionKeyDialog
-        title={keyAction === 'create' ? language.createVault : language.openVault}
+        title={
+          keyAction === 'create' ? language.createVault : language.openVault
+        }
         open={keyDialogOpen}
         verify={keyAction === 'create'}
         onClose={closeEncryptionKeyDialog}

@@ -1,10 +1,10 @@
 import React, { useContext, useEffect } from 'react';
-import Container from '@mui/material/Container';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Container from '@mui/material/Container';
+import Typography from '@mui/material/Typography';
 import ReactGA from 'react-ga4';
 import { MainContext } from '../../contexts/MainContextProvider';
 import { setPageIndex } from '../../reducers/MainReducer/Actions';
@@ -24,18 +24,15 @@ const NotFound = () => {
         title: 'Not Found | Advanced PassGen',
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <Container maxWidth="md">
       <Card>
         <CardContent>
-          <Typography gutterBottom>
-            {language.notFound}
-          </Typography>
-          <Typography>
-            {language.notFoundGoHome}
-          </Typography>
+          <Typography gutterBottom>{language.notFound}</Typography>
+          <Typography>{language.notFoundGoHome}</Typography>
         </CardContent>
         <CardActions>
           <Button color="primary" variant="contained" href="/">

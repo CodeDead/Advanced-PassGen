@@ -1,16 +1,14 @@
 import React, { useContext, useState } from 'react';
+import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
-import TextField from '@mui/material/TextField';
+import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
-import DialogActions from '@mui/material/DialogActions';
-import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
+import TextField from '@mui/material/TextField';
 import { MainContext } from '../../contexts/MainContextProvider';
 
-const EncryptionKeyDialog = ({
-  title, open, onAccept, onClose, verify,
-}) => {
+const EncryptionKeyDialog = ({ title, open, onAccept, onClose, verify }) => {
   const [state] = useContext(MainContext);
   const language = state.languages[state.languageIndex];
 
@@ -76,9 +74,7 @@ const EncryptionKeyDialog = ({
       onClose={handleClose}
       aria-labelledby="create-vault-dialog-title"
     >
-      <DialogTitle id="create-vault-dialog-title">
-        {title}
-      </DialogTitle>
+      <DialogTitle id="create-vault-dialog-title">{title}</DialogTitle>
       <DialogContent>
         <Grid container spacing={2} sx={{ mt: 2 }}>
           <Grid size={12}>
@@ -112,9 +108,7 @@ const EncryptionKeyDialog = ({
         </Grid>
       </DialogContent>
       <DialogActions>
-        <Button onClick={handleClose}>
-          {language.cancel}
-        </Button>
+        <Button onClick={handleClose}>{language.cancel}</Button>
         <Button
           onClick={accept}
           autoFocus

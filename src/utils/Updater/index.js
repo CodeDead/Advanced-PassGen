@@ -8,11 +8,12 @@ const Updater = (os, currentVersion) => {
   const isNewer = (a, b) => {
     const partsA = a.split('.');
     const partsB = b.split('.');
-    const numParts = partsA.length > partsB.length ? partsA.length : partsB.length;
+    const numParts =
+      partsA.length > partsB.length ? partsA.length : partsB.length;
 
     for (let i = 0; i < numParts; i += 1) {
       if ((parseInt(partsB[i], 10) || 0) !== (parseInt(partsA[i], 10) || 0)) {
-        return ((parseInt(partsB[i], 10) || 0) > (parseInt(partsA[i], 10) || 0));
+        return (parseInt(partsB[i], 10) || 0) > (parseInt(partsA[i], 10) || 0);
       }
     }
 
@@ -33,7 +34,12 @@ const Updater = (os, currentVersion) => {
       version: null,
     };
 
-    if (isNewer(currentVersion, `${platform.version.majorVersion}.${platform.version.minorVersion}.${platform.version.buildVersion}.${platform.version.revisionVersion}`)) {
+    if (
+      isNewer(
+        currentVersion,
+        `${platform.version.majorVersion}.${platform.version.minorVersion}.${platform.version.buildVersion}.${platform.version.revisionVersion}`,
+      )
+    ) {
       data.updateAvailable = true;
     }
 

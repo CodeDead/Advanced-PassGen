@@ -29,8 +29,14 @@ const getRandomIntInclusive = (min, max) => {
  * @returns {*[]} The array of passwords
  * @constructor
  */
-// eslint-disable-next-line import/prefer-default-export,max-len
-export const PasswordGenerator = (minLength, maxLength, characterSet, includeSymbols, amount, allowDuplicates) => {
+export const PasswordGenerator = (
+  minLength,
+  maxLength,
+  characterSet,
+  includeSymbols,
+  amount,
+  allowDuplicates,
+) => {
   const passwordArray = [];
   const splitter = new Graphemer();
   const totalCharacterSet = characterSet + includeSymbols;
@@ -42,7 +48,6 @@ export const PasswordGenerator = (minLength, maxLength, characterSet, includeSym
   if (!allowDuplicates) {
     let current = parseInt(minLength, 10);
     while (current <= parseInt(maxLength, 10)) {
-      // eslint-disable-next-line no-restricted-properties,prefer-exponentiation-operator
       maxCount += Math.pow(graphemeCount, current);
       current += 1;
     }
@@ -62,14 +67,20 @@ export const PasswordGenerator = (minLength, maxLength, characterSet, includeSym
         password += graphemes[Math.floor(randomNumber * graphemeCount)];
       }
 
-      if (allowDuplicates === true || (!allowDuplicates && !passwordArray.includes(password))) {
+      if (
+        allowDuplicates === true ||
+        (!allowDuplicates && !passwordArray.includes(password))
+      ) {
         passwordArray.push(password);
         canContinue = true;
       }
 
       // We've reached the end of the line
-      if (canContinue === false && allowDuplicates === false
-        && passwordArray.length === maxCount) {
+      if (
+        canContinue === false &&
+        allowDuplicates === false &&
+        passwordArray.length === maxCount
+      ) {
         return passwordArray;
       }
     }

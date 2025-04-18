@@ -6,9 +6,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import blank from './blank.png';
 
-const Theme = ({
-  title, description, color, selected, onAction,
-}) => {
+const Theme = ({ title, description, color, selected, onAction }) => {
   const action = onAction || null;
 
   return (

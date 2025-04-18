@@ -1,9 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
-import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
-import FormLabel from '@mui/material/FormLabel';
-import Radio from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import Accordion from '@mui/material/Accordion';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import Button from '@mui/material/Button';
+import Checkbox from '@mui/material/Checkbox';
 import {
   blue,
   lightBlue,
@@ -24,27 +25,30 @@ import {
   lime,
   yellow,
 } from '@mui/material/colors';
-import FormGroup from '@mui/material/FormGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
+import Container from '@mui/material/Container';
 import FormControl from '@mui/material/FormControl';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormGroup from '@mui/material/FormGroup';
+import FormLabel from '@mui/material/FormLabel';
 import InputLabel from '@mui/material/InputLabel';
-import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
-import Button from '@mui/material/Button';
-import Accordion from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import Select from '@mui/material/Select';
+import Typography from '@mui/material/Typography';
 import { platform } from '@tauri-apps/plugin-os';
 import ReactGA from 'react-ga4';
-import Theme from '../../components/Theme';
+import packageJson from '../../../package.json';
+import AlertDialog from '../../components/AlertDialog';
 import GridList from '../../components/GridList';
+import Theme from '../../components/Theme';
+import { MainContext } from '../../contexts/MainContextProvider';
 import {
   resetState,
   setAutoUpdate,
   setCheckedForUpdates,
-  setColorOnDark, setDefaultSortByStrength,
+  setColorOnDark,
+  setDefaultSortByStrength,
   setError,
   setLanguageIndex,
   setLanguageSelector,
@@ -54,10 +58,7 @@ import {
   setTips,
   setUpdate,
 } from '../../reducers/MainReducer/Actions';
-import { MainContext } from '../../contexts/MainContextProvider';
-import AlertDialog from '../../components/AlertDialog';
 import Updater from '../../utils/Updater';
-import packageJson from '../../../package.json';
 
 const Settings = () => {
   const [state, d1] = useContext(MainContext);
@@ -77,7 +78,6 @@ const Settings = () => {
   const language = state.languages[languageIndex];
 
   const [generalExpanded, setGeneralExpanded] = useState(true);
-  // eslint-disable-next-line no-underscore-dangle
   const [themeExpanded, setThemeExpanded] = useState(!window.__TAURI__);
 
   const [resetDialogOpen, setResetDialogOpen] = useState(false);
@@ -151,6 +151,7 @@ const Settings = () => {
         title: 'Settings | Advanced PassGen',
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -164,63 +165,63 @@ const Settings = () => {
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <Typography>
-            {language.general}
-          </Typography>
+          <Typography>{language.general}</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <FormGroup>
-            {/* eslint-disable-next-line no-underscore-dangle */}
+            {}
             {window.__TAURI__ ? (
               <FormControlLabel
-                control={(
+                control={
                   <Checkbox
                     checked={autoUpdate}
                     onChange={(e) => d1(setAutoUpdate(e.target.checked))}
                     value="autoUpdate"
                   />
-                )}
+                }
                 label={language.autoUpdate}
               />
             ) : null}
             <FormControlLabel
-              control={(
+              control={
                 <Checkbox
                   checked={colorOnDark}
                   onChange={(e) => d1(setColorOnDark(e.target.checked))}
                   value="colorOnDarkSelector"
                 />
-              )}
+              }
               label={language.colorOnDark}
             />
             <FormControlLabel
-              control={(
+              control={
                 <Checkbox
                   checked={tips}
                   onChange={(e) => d1(setTips(e.target.checked))}
                   value="tipsSelector"
                 />
-              )}
+              }
               label={language.tips}
             />
             <FormControlLabel
-              control={(
+              control={
                 <Checkbox
                   checked={languageSelector}
                   onChange={(e) => d1(setLanguageSelector(e.target.checked))}
                   value="languageSelector"
                 />
-              )}
+              }
               label={language.languageSelector}
             />
             <FormControlLabel
-              control={(
+              control={
                 <Checkbox
                   checked={sortByStrength}
-                  onChange={(e) => d1(setDefaultSortByStrength(e.target.checked))}
+                  onChange={(e) =>
+                    d1(setDefaultSortByStrength(e.target.checked))
+                  }
                   value="strengthSortSelector"
                 />
-                )}
+              }
               label={language.sortByStrength}
             />
             <FormControl variant="outlined" sx={{ mt: 2 }}>
@@ -257,9 +258,7 @@ const Settings = () => {
           aria-controls="panel1bh-content"
           id="panel1bh-header"
         >
-          <Typography>
-            {language.theme}
-          </Typography>
+          <Typography>{language.theme}</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <GridList spacing={2} xs={6} md={4} lg={4}>
@@ -393,19 +392,23 @@ const Settings = () => {
           <FormControl style={{ marginTop: 10 }} component="fieldset">
             <FormLabel component="legend">{language.themeStyle}</FormLabel>
             <RadioGroup row value={themeType} onChange={changeThemeStyle}>
-              <FormControlLabel value="light" control={<Radio />} label={language.light} />
-              <FormControlLabel value="dark" control={<Radio />} label={language.dark} />
+              <FormControlLabel
+                value="light"
+                control={<Radio />}
+                label={language.light}
+              />
+              <FormControlLabel
+                value="dark"
+                control={<Radio />}
+                label={language.dark}
+              />
             </RadioGroup>
           </FormControl>
         </AccordionDetails>
       </Accordion>
-      {/* eslint-disable-next-line no-underscore-dangle */}
+      {}
       {window.__TAURI__ ? (
-        <Button
-          variant="contained"
-          sx={{ mt: 2 }}
-          onClick={checkForUpdates}
-        >
+        <Button variant="contained" sx={{ mt: 2 }} onClick={checkForUpdates}>
           {language.checkForUpdates}
         </Button>
       ) : null}

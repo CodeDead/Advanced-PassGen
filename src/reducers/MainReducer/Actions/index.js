@@ -47,13 +47,10 @@ export const setAutoUpdate = (value) => ({
 });
 
 export const openWebSite = (website) => {
-  // eslint-disable-next-line no-underscore-dangle
   if (window.__TAURI__) {
-    invoke('open_website', { website })
-      .catch((e) => {
-        // eslint-disable-next-line no-console
-        console.error(e);
-      });
+    invoke('open_website', { website }).catch((e) => {
+      console.error(e);
+    });
   } else {
     window.open(website, '_blank'); // We're running in a browser
   }

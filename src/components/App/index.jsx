@@ -1,26 +1,17 @@
-import React, {
-  useContext,
-  useEffect,
-  useState,
-  lazy,
-  Suspense,
-} from 'react';
+import React, { useContext, useEffect, useState, lazy, Suspense } from 'react';
+import Alert from '@mui/material/Alert';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
+import Snackbar from '@mui/material/Snackbar';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Toolbar from '@mui/material/Toolbar';
-import Box from '@mui/material/Box';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { platform } from '@tauri-apps/plugin-os';
-import Alert from '@mui/material/Alert';
-import Snackbar from '@mui/material/Snackbar';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import { platform } from '@tauri-apps/plugin-os';
 import ReactGA from 'react-ga4';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import packageJson from '../../../package.json';
 import { MainContext } from '../../contexts/MainContextProvider';
-import ThemeSelector from '../../utils/ThemeSelector';
-import TopBar from '../TopBar';
-import ClippedDrawer from '../ClippedDrawer';
-import UpdateDialog from '../UpdateDialog';
 import {
   openWebSite,
   setAllowCookies,
@@ -29,10 +20,13 @@ import {
   setLoading,
   setUpdate,
 } from '../../reducers/MainReducer/Actions';
+import ThemeSelector from '../../utils/ThemeSelector';
 import Updater from '../../utils/Updater';
 import AlertDialog from '../AlertDialog';
-import packageJson from '../../../package.json';
+import ClippedDrawer from '../ClippedDrawer';
 import LoadingBar from '../LoadingBar';
+import TopBar from '../TopBar';
+import UpdateDialog from '../UpdateDialog';
 
 const Home = lazy(() => import('../../routes/Home'));
 const Generate = lazy(() => import('../../routes/Generate'));
@@ -45,8 +39,16 @@ const NotFound = lazy(() => import('../../routes/NotFound'));
 const App = () => {
   const [state, d1] = useContext(MainContext);
   const {
-    themeIndex, themeType, update, languageIndex, autoUpdate, error, loading,
-    checkedForUpdates, allowCookies, hasSetCookies,
+    themeIndex,
+    themeType,
+    update,
+    languageIndex,
+    autoUpdate,
+    error,
+    loading,
+    checkedForUpdates,
+    allowCookies,
+    hasSetCookies,
   } = state;
 
   const [cookieBannerOpen, setCookieBannerOpen] = useState(!hasSetCookies);
@@ -134,7 +136,6 @@ const App = () => {
   };
 
   useEffect(() => {
-    // eslint-disable-next-line no-underscore-dangle
     if (window.__TAURI__) {
       if (autoUpdate) {
         checkForUpdates();
@@ -142,10 +143,10 @@ const App = () => {
     } else {
       setSnackOpen(true);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
-    // eslint-disable-next-line no-underscore-dangle
     if (!window.__TAURI__) {
       if (allowCookies) {
         ReactGA.initialize('G-M3DEBWW06X');
@@ -196,7 +197,7 @@ const App = () => {
             onClose={closeAlertDialog}
           />
         ) : null}
-        {/* eslint-disable-next-line no-nested-ternary */}
+        {}
         {update && update.updateAvailable ? (
           <UpdateDialog
             downloadUrl={update.updateUrl}
@@ -220,7 +221,7 @@ const App = () => {
             agreeLabel={language.ok}
           />
         ) : null}
-        {/* eslint-disable-next-line no-underscore-dangle */}
+        {}
         {!window.__TAURI__ && cookieBannerOpen ? (
           <Alert
             onClose={closeCookieSnack}
@@ -231,32 +232,26 @@ const App = () => {
               bottom: 0,
             }}
           >
-            <Typography>
-              {language.cookieNoticeText}
-            </Typography>
-            <Button
-              onClick={declineCookies}
-              size="small"
-              color="error"
-            >
+            <Typography>{language.cookieNoticeText}</Typography>
+            <Button onClick={declineCookies} size="small" color="error">
               {language.reject}
             </Button>
-            <Button
-              onClick={acceptCookies}
-              size="small"
-              color="primary"
-            >
+            <Button onClick={acceptCookies} size="small" color="primary">
               {language.accept}
             </Button>
           </Alert>
         ) : null}
-        <Snackbar open={snackOpen} onClose={closeSnack} sx={{ mb: cookieBannerOpen ? 10 : null }}>
+        <Snackbar
+          open={snackOpen}
+          onClose={closeSnack}
+          sx={{ mb: cookieBannerOpen ? 10 : null }}
+        >
           <Alert onClose={closeSnack} severity="info" sx={{ width: '100%' }}>
-            <Typography>
-              {language.downloadApp}
-            </Typography>
+            <Typography>{language.downloadApp}</Typography>
             <Button
-              onClick={() => openWebSite('https://codedead.com/software/advanced-passgen')}
+              onClick={() =>
+                openWebSite('https://codedead.com/software/advanced-passgen')
+              }
               size="small"
               color="secondary"
             >

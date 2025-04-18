@@ -1,7 +1,4 @@
-import {
-  SET_PHRASE,
-  SET_VAULT,
-} from './actionTypes';
+import { SET_PHRASE, SET_VAULT } from './actionTypes';
 
 export const setVault = (vault) => ({
   type: SET_VAULT,
