@@ -1,16 +1,22 @@
 import React from 'react';
+import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import Button from '@mui/material/Button';
 
 const UpdateDialog = ({
-  downloadUrl, openWebsite,
-  infoUrl, newVersion, onClose,
-  updateAvailable, newVersionText,
-  information, download, cancel,
+  downloadUrl,
+  openWebsite,
+  infoUrl,
+  newVersion,
+  onClose,
+  updateAvailable,
+  newVersionText,
+  information,
+  download,
+  cancel,
 }) => {
   /**
    * Close the UpdateDialog
@@ -50,12 +56,8 @@ const UpdateDialog = ({
         </DialogContentText>
       </DialogContent>
       <DialogActions>
-        <Button onClick={handleClose}>
-          {cancel}
-        </Button>
-        <Button onClick={openInformation}>
-          {information}
-        </Button>
+        <Button onClick={handleClose}>{cancel}</Button>
+        <Button onClick={openInformation}>{information}</Button>
         <Button onClick={openDownload} autoFocus>
           {download}
         </Button>

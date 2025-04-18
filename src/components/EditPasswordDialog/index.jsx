@@ -1,25 +1,26 @@
 import React, { useContext, useState } from 'react';
-import Dialog from '@mui/material/Dialog';
-import TextField from '@mui/material/TextField';
-import DialogContent from '@mui/material/DialogContent';
-import DialogTitle from '@mui/material/DialogTitle';
-import DialogActions from '@mui/material/DialogActions';
-import Button from '@mui/material/Button';
-import Grid from '@mui/material/Grid';
-import IconButton from '@mui/material/IconButton';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogTitle from '@mui/material/DialogTitle';
+import Grid from '@mui/material/Grid';
+import IconButton from '@mui/material/IconButton';
+import TextField from '@mui/material/TextField';
 import { MainContext } from '../../contexts/MainContextProvider';
+import { PasswordContext } from '../../contexts/PasswordContextProvider';
+import { setError } from '../../reducers/MainReducer/Actions';
+import {
+  generatePasswordArray,
+  getFullCharacterSet,
+} from '../../reducers/PasswordReducer/Actions';
 import PasswordStrength from '../../utils/PasswordStrength';
 import LinearProgressWithLabel from '../LinearProgressWithLabel';
-import { generatePasswordArray, getFullCharacterSet } from '../../reducers/PasswordReducer/Actions';
-import { setError } from '../../reducers/MainReducer/Actions';
-import { PasswordContext } from '../../contexts/PasswordContextProvider';
 
-const EditPasswordDialog = ({
-  data, open, onSave, onClose,
-}) => {
+const EditPasswordDialog = ({ data, open, onSave, onClose }) => {
   const [state, d1] = useContext(MainContext);
   const [state2] = useContext(PasswordContext);
 
@@ -41,10 +42,16 @@ const EditPasswordDialog = ({
   } = state2;
 
   const [title, setTitle] = useState(data && data.title ? data.title : '');
-  const [description, setDescription] = useState(data && data.description ? data.description : '');
+  const [description, setDescription] = useState(
+    data && data.description ? data.description : '',
+  );
   const [url, setUrl] = useState(data && data.url ? data.url : '');
-  const [password, setPassword] = useState(data && data.password ? data.password : '');
-  const [username, setUsername] = useState(data && data.username ? data.username : '');
+  const [password, setPassword] = useState(
+    data && data.password ? data.password : '',
+  );
+  const [username, setUsername] = useState(
+    data && data.username ? data.username : '',
+  );
   const [showPassword, setShowPassword] = useState(false);
 
   const simpleCharacterSet = getFullCharacterSet(
@@ -59,8 +66,11 @@ const EditPasswordDialog = ({
     useEmojis,
   );
 
-  const cannotGenerate = !simpleCharacterSet || simpleCharacterSet.length === 0
-    || min > max || max < min;
+  const cannotGenerate =
+    !simpleCharacterSet ||
+    simpleCharacterSet.length === 0 ||
+    min > max ||
+    max < min;
 
   /**
    * Close the dialog
@@ -99,7 +109,15 @@ const EditPasswordDialog = ({
       return;
     }
 
-    generatePasswordArray(min, max, simpleCharacterSet, includeSymbols, 1, allowDuplicates, null)
+    generatePasswordArray(
+      min,
+      max,
+      simpleCharacterSet,
+      includeSymbols,
+      1,
+      allowDuplicates,
+      null,
+    )
       .then((res) => {
         setPassword(res[0]);
       })
@@ -219,9 +237,7 @@ const EditPasswordDialog = ({
         </Grid>
       </DialogContent>
       <DialogActions>
-        <Button onClick={handleClose}>
-          {language.cancel}
-        </Button>
+        <Button onClick={handleClose}>{language.cancel}</Button>
         <Button
           onClick={save}
           autoFocus

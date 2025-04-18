@@ -1,0 +1,9 @@
+dist
+.yarn
+dist
+node_modules
+nginx
+.idea
+README.md
+src-tauri
+.github

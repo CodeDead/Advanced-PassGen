@@ -1,24 +1,30 @@
 import React, { useContext, useEffect } from 'react';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import Accordion from '@mui/material/Accordion';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import AccordionSummary from '@mui/material/AccordionSummary';
 import Button from '@mui/material/Button';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
 import Checkbox from '@mui/material/Checkbox';
 import Container from '@mui/material/Container';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormGroup from '@mui/material/FormGroup';
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
-import { useNavigate } from 'react-router-dom';
-import { createWorkerFactory, useWorker } from '@shopify/react-web-worker';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Typography from '@mui/material/Typography';
-import Accordion from '@mui/material/Accordion';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import CardContent from '@mui/material/CardContent';
-import Card from '@mui/material/Card';
+import { createWorkerFactory, useWorker } from '@shopify/react-web-worker';
 import ReactGA from 'react-ga4';
+import { useNavigate } from 'react-router-dom';
+import LoadingBar from '../../components/LoadingBar';
+import PasswordTips from '../../components/PasswordTips';
 import { MainContext } from '../../contexts/MainContextProvider';
-import { setError, setLoading, setPageIndex } from '../../reducers/MainReducer/Actions';
 import { PasswordContext } from '../../contexts/PasswordContextProvider';
+import {
+  setError,
+  setLoading,
+  setPageIndex,
+} from '../../reducers/MainReducer/Actions';
 import {
   generatePasswordArray,
   getFullCharacterSet,
@@ -38,10 +44,10 @@ import {
   setUseAdvanced,
   setUseEmojis,
 } from '../../reducers/PasswordReducer/Actions';
-import LoadingBar from '../../components/LoadingBar';
-import PasswordTips from '../../components/PasswordTips';
 
-const createWorker = createWorkerFactory(() => import('../../utils/PasswordGenerator/index'));
+const createWorker = createWorkerFactory(
+  () => import('../../utils/PasswordGenerator/index'),
+);
 
 const Home = () => {
   const [state, d1] = useContext(MainContext);
@@ -82,8 +88,11 @@ const Home = () => {
     useEmojis,
   );
 
-  const cannotGenerate = !simpleCharacterSet || simpleCharacterSet.length === 0
-    || min > max || max < min;
+  const cannotGenerate =
+    !simpleCharacterSet ||
+    simpleCharacterSet.length === 0 ||
+    min > max ||
+    max < min;
 
   /**
    * Generate passwords
@@ -94,8 +103,15 @@ const Home = () => {
     }
 
     d1(setLoading(true));
-    // eslint-disable-next-line max-len
-    generatePasswordArray(min, max, simpleCharacterSet, includeSymbols, amount, allowDuplicates, worker)
+    generatePasswordArray(
+      min,
+      max,
+      simpleCharacterSet,
+      includeSymbols,
+      amount,
+      allowDuplicates,
+      worker,
+    )
       .then((res) => {
         d2(setPasswords(res));
         navigate('/generate');
@@ -180,12 +196,11 @@ const Home = () => {
         title: 'Home | Advanced PassGen',
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (loading) {
-    return (
-      <LoadingBar />
-    );
+    return <LoadingBar />;
   }
 
   return (
@@ -232,33 +247,33 @@ const Home = () => {
             <Grid size={{ xs: 6, md: 6, lg: 6 }}>
               <FormGroup>
                 <FormControlLabel
-                  control={(
+                  control={
                     <Checkbox
                       checked={smallLetters}
                       disabled={useAdvanced}
                       onChange={(e) => d2(setSmallLetters(e.target.checked))}
                     />
-                  )}
+                  }
                   label={language.smallLetters}
                 />
                 <FormControlLabel
-                  control={(
+                  control={
                     <Checkbox
                       checked={capitalLetters}
                       disabled={useAdvanced}
                       onChange={(e) => d2(setCapitalLetters(e.target.checked))}
                     />
-                  )}
+                  }
                   label={language.capitalLetters}
                 />
                 <FormControlLabel
-                  control={(
+                  control={
                     <Checkbox
                       checked={spaces}
                       disabled={useAdvanced}
                       onChange={(e) => d2(setSpaces(e.target.checked))}
                     />
-                  )}
+                  }
                   label={language.spaces}
                 />
               </FormGroup>
@@ -266,33 +281,35 @@ const Home = () => {
             <Grid size={{ xs: 6, md: 6, lg: 6 }}>
               <FormGroup>
                 <FormControlLabel
-                  control={(
+                  control={
                     <Checkbox
                       checked={specialCharacters}
                       disabled={useAdvanced}
-                      onChange={(e) => d2(setSpecialCharacters(e.target.checked))}
+                      onChange={(e) =>
+                        d2(setSpecialCharacters(e.target.checked))
+                      }
                     />
-                  )}
+                  }
                   label={language.specialCharacters}
                 />
                 <FormControlLabel
-                  control={(
+                  control={
                     <Checkbox
                       checked={numbers}
                       disabled={useAdvanced}
                       onChange={(e) => d2(setNumbers(e.target.checked))}
                     />
-                  )}
+                  }
                   label={language.numbers}
                 />
                 <FormControlLabel
-                  control={(
+                  control={
                     <Checkbox
                       checked={brackets}
                       disabled={useAdvanced}
                       onChange={(e) => d2(setBrackets(e.target.checked))}
                     />
-                  )}
+                  }
                   label={language.brackets}
                 />
               </FormGroup>
@@ -300,50 +317,44 @@ const Home = () => {
           </Grid>
         </CardContent>
       </Card>
-      <Accordion
-        sx={{ mt: 2 }}
-        /* eslint-disable-next-line no-underscore-dangle */
-        defaultExpanded={!window.__TAURI__}
-      >
+      <Accordion sx={{ mt: 2 }} defaultExpanded={!window.__TAURI__}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <Typography>
-            {language.advanced}
-          </Typography>
+          <Typography>{language.advanced}</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Grid container spacing={2}>
             <Grid size={12}>
               <FormGroup>
                 <FormControlLabel
-                  control={(
+                  control={
                     <Checkbox
                       checked={allowDuplicates}
                       onChange={handleDuplicateChange}
                     />
-                  )}
+                  }
                   label={language.allowDuplicates}
                 />
                 <FormControlLabel
-                  control={(
+                  control={
                     <Checkbox
                       checked={useEmojis}
                       disabled={useAdvanced}
                       onChange={handleEmojiChange}
                     />
-                  )}
+                  }
                   label={language.useEmojis}
                 />
                 <FormControlLabel
-                  control={(
+                  control={
                     <Checkbox
                       checked={useAdvanced}
                       onChange={handleAdvancedChange}
                     />
-                  )}
+                  }
                   label={language.useCustomCharacterSet}
                 />
               </FormGroup>

@@ -1,23 +1,23 @@
 import React, { useContext } from 'react';
+import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
+import CloseIcon from '@mui/icons-material/Close';
+import FolderIcon from '@mui/icons-material/Folder';
+import HomeIcon from '@mui/icons-material/Home';
+import InfoIcon from '@mui/icons-material/Info';
+import LightbulbIcon from '@mui/icons-material/Lightbulb';
+import ListIcon from '@mui/icons-material/List';
+import SettingsIcon from '@mui/icons-material/Settings';
 import Box from '@mui/material/Box';
-import Drawer from '@mui/material/Drawer';
-import Toolbar from '@mui/material/Toolbar';
-import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
+import Drawer from '@mui/material/Drawer';
+import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import HomeIcon from '@mui/icons-material/Home';
-import ListIcon from '@mui/icons-material/List';
-import LightbulbIcon from '@mui/icons-material/Lightbulb';
-import InfoIcon from '@mui/icons-material/Info';
-import SettingsIcon from '@mui/icons-material/Settings';
-import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
-import FolderIcon from '@mui/icons-material/Folder';
-import CloseIcon from '@mui/icons-material/Close';
-import { useNavigate } from 'react-router-dom';
+import Toolbar from '@mui/material/Toolbar';
 import { invoke } from '@tauri-apps/api/core';
+import { useNavigate } from 'react-router-dom';
 import { MainContext } from '../../contexts/MainContextProvider';
 import { openWebSite } from '../../reducers/MainReducer/Actions';
 
@@ -51,22 +51,15 @@ const ClippedDrawer = ({ open, onClose }) => {
    * Exit the application
    */
   const exitApp = () => {
-    // eslint-disable-next-line no-underscore-dangle
     if (window.__TAURI__) {
       invoke('exit_app');
     }
   };
 
   return (
-    <Drawer
-      anchor="left"
-      open={open}
-      onClose={closeDrawer}
-    >
+    <Drawer anchor="left" open={open} onClose={closeDrawer}>
       <Toolbar />
-      <Box
-        sx={{ width: 240 }}
-      >
+      <Box sx={{ width: 240 }}>
         <List>
           <ListItem disablePadding sx={{ display: 'block' }}>
             <ListItemButton
@@ -157,15 +150,13 @@ const ClippedDrawer = ({ open, onClose }) => {
             </ListItemButton>
           </ListItem>
         </List>
-        {/* eslint-disable-next-line no-underscore-dangle */}
+        {}
         {window.__TAURI__ ? (
           <>
             <Divider />
             <List>
               <ListItem disablePadding>
-                <ListItemButton
-                  onClick={() => exitApp()}
-                >
+                <ListItemButton onClick={() => exitApp()}>
                   <ListItemIcon>
                     <CloseIcon />
                   </ListItemIcon>

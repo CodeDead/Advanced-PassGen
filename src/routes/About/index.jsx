@@ -1,13 +1,13 @@
 import React, { useContext, useEffect } from 'react';
-import Container from '@mui/material/Container';
+import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
+import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
 import ReactGA from 'react-ga4';
+import packageJson from '../../../package.json';
 import { MainContext } from '../../contexts/MainContextProvider';
 import { openWebSite, setPageIndex } from '../../reducers/MainReducer/Actions';
-import packageJson from '../../../package.json';
 
 const About = () => {
   const [state, d1] = useContext(MainContext);
@@ -39,6 +39,7 @@ const About = () => {
         title: 'About | Advanced PassGen',
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -49,7 +50,9 @@ const About = () => {
       <Card>
         <CardContent>
           <Typography style={{ whiteSpace: 'pre-wrap' }}>
-            {language.aboutText.replace('{x}', packageJson.version).replace('{year}', new Date().getFullYear())}
+            {language.aboutText
+              .replace('{x}', packageJson.version)
+              .replace('{year}', new Date().getFullYear())}
           </Typography>
         </CardContent>
       </Card>

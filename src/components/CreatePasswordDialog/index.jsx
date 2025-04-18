@@ -1,25 +1,30 @@
 import React, { useContext, useState } from 'react';
+import RefreshIcon from '@mui/icons-material/Refresh';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
-import TextField from '@mui/material/TextField';
+import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
-import DialogActions from '@mui/material/DialogActions';
-import IconButton from '@mui/material/IconButton';
 import Grid from '@mui/material/Grid';
-import Button from '@mui/material/Button';
-import RefreshIcon from '@mui/icons-material/Refresh';
-import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
-import VisibilityIcon from '@mui/icons-material/Visibility';
+import IconButton from '@mui/material/IconButton';
+import TextField from '@mui/material/TextField';
 import Tooltip from '@mui/material/Tooltip';
 import { createWorkerFactory, useWorker } from '@shopify/react-web-worker';
 import { MainContext } from '../../contexts/MainContextProvider';
+import { PasswordContext } from '../../contexts/PasswordContextProvider';
+import { setError } from '../../reducers/MainReducer/Actions';
+import {
+  generatePasswordArray,
+  getFullCharacterSet,
+} from '../../reducers/PasswordReducer/Actions';
 import PasswordStrength from '../../utils/PasswordStrength';
 import LinearProgressWithLabel from '../LinearProgressWithLabel';
-import { setError } from '../../reducers/MainReducer/Actions';
-import { generatePasswordArray, getFullCharacterSet } from '../../reducers/PasswordReducer/Actions';
-import { PasswordContext } from '../../contexts/PasswordContextProvider';
 
-const createWorker = createWorkerFactory(() => import('../../utils/PasswordGenerator/index'));
+const createWorker = createWorkerFactory(
+  () => import('../../utils/PasswordGenerator/index'),
+);
 
 const CreatePasswordDialog = ({ open, onCreate, onClose }) => {
   const [state, d1] = useContext(MainContext);
@@ -63,8 +68,11 @@ const CreatePasswordDialog = ({ open, onCreate, onClose }) => {
 
   const worker = useWorker(createWorker);
 
-  const cannotGenerate = !simpleCharacterSet || simpleCharacterSet.length === 0
-    || min > max || max < min;
+  const cannotGenerate =
+    !simpleCharacterSet ||
+    simpleCharacterSet.length === 0 ||
+    min > max ||
+    max < min;
 
   /**
    * Close the dialog
@@ -108,7 +116,15 @@ const CreatePasswordDialog = ({ open, onCreate, onClose }) => {
       return;
     }
 
-    generatePasswordArray(min, max, simpleCharacterSet, includeSymbols, 1, allowDuplicates, worker)
+    generatePasswordArray(
+      min,
+      max,
+      simpleCharacterSet,
+      includeSymbols,
+      1,
+      allowDuplicates,
+      worker,
+    )
       .then((res) => {
         setPassword(res[0]);
       })
@@ -224,9 +240,7 @@ const CreatePasswordDialog = ({ open, onCreate, onClose }) => {
         </Grid>
       </DialogContent>
       <DialogActions>
-        <Button onClick={handleClose}>
-          {language.cancel}
-        </Button>
+        <Button onClick={handleClose}>{language.cancel}</Button>
         <Button
           onClick={create}
           autoFocus

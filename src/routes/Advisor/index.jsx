@@ -1,18 +1,16 @@
-import React, {
-  useContext, useEffect, useState,
-} from 'react';
-import Container from '@mui/material/Container';
+import React, { useContext, useEffect, useState } from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
+import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import ReactGA from 'react-ga4';
-import { MainContext } from '../../contexts/MainContextProvider';
 import LinearProgressWithLabel from '../../components/LinearProgressWithLabel';
-import PasswordStrength from '../../utils/PasswordStrength';
-import { setPageIndex } from '../../reducers/MainReducer/Actions';
 import PasswordTips from '../../components/PasswordTips';
+import { MainContext } from '../../contexts/MainContextProvider';
+import { setPageIndex } from '../../reducers/MainReducer/Actions';
+import PasswordStrength from '../../utils/PasswordStrength';
 
 const Advisor = () => {
   const [state, d1] = useContext(MainContext);
@@ -40,6 +38,7 @@ const Advisor = () => {
         title: 'Advisor | Advanced PassGen',
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
