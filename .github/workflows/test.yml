@@ -6,6 +6,9 @@ on:
       - master
       - development
 
+permissions:
+  contents: read
+
 jobs:
   test-eslint:
     runs-on: ubuntu-latest
