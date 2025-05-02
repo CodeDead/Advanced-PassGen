@@ -1,7 +1,7 @@
-FROM node:current-alpine as build
+FROM node:current-alpine AS build
 
 WORKDIR /app
-ENV PATH /app/node_modules/.bin:$PATH
+ENV PATH=/app/node_modules/.bin:$PATH
 
 COPY package.json ./
 
