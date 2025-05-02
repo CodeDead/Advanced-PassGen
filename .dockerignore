@@ -12,7 +12,6 @@ Dockerfile
 .eslintcache
 .eslintrc.json
 .prettierignore
-eslint.config.js
 .idea
 .vscode
 dist
