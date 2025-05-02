@@ -134,8 +134,5 @@
   "includeSymbols": "Include symbols",
   "useEmojis": "Use emojis",
   "exportSuccessful": "Export successful",
-  "cookieNoticeText": "This website uses cookies to ensure you get the best experience on our website.",
-  "accept": "Accept",
-  "reject": "Reject",
   "sortByStrength": "Sort by strength by default"
 }

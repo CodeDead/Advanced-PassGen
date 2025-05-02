@@ -1,7 +1,6 @@
 import { invoke } from '@tauri-apps/api/core';
 import {
   RESET_STATE,
-  SET_ALLOW_COOKIES,
   SET_AUTO_UPDATE,
   SET_CHECKED_FOR_UPDATES,
   SET_COLOR_ON_DARK,
@@ -89,11 +88,6 @@ export const setColorOnDark = (value) => ({
 export const setTips = (value) => ({
   type: SET_TIPS,
   payload: value,
-});
-
-export const setAllowCookies = (allow) => ({
-  type: SET_ALLOW_COOKIES,
-  payload: allow,
 });
 
 export const setDefaultSortByStrength = (value) => ({

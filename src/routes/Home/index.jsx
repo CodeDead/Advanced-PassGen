@@ -14,7 +14,6 @@ import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import { createWorkerFactory, useWorker } from '@shopify/react-web-worker';
-import ReactGA from 'react-ga4';
 import { useNavigate } from 'react-router-dom';
 import LoadingBar from '../../components/LoadingBar';
 import PasswordTips from '../../components/PasswordTips';
@@ -53,7 +52,7 @@ const Home = () => {
   const [state, d1] = useContext(MainContext);
   const [state2, d2] = useContext(PasswordContext);
 
-  const { languageIndex, loading, allowCookies } = state;
+  const { languageIndex, loading } = state;
   const language = state.languages[languageIndex];
 
   const {
@@ -189,13 +188,6 @@ const Home = () => {
   useEffect(() => {
     d1(setPageIndex(0));
     document.title = 'Home | Advanced PassGen';
-    if (allowCookies) {
-      ReactGA.send({
-        hitType: 'pageview',
-        page: '/about',
-        title: 'Home | Advanced PassGen',
-      });
-    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

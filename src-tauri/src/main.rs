@@ -78,15 +78,15 @@ async fn generate_passwords(
         }
     }
 
-    let mut rng = rand::thread_rng();
+    let mut rng = rand::rng();
     let chars = graphemes.collect::<Vec<&str>>();
     for _n in 0..amount {
         let mut can_continue = false;
         while !can_continue {
             let mut password = String::from("");
-            let length = rng.gen_range(min_length..(max_length + 1));
+            let length = rng.random_range(min_length..(max_length + 1));
             for _j in 0..length {
-                let index = rng.gen_range(0..char_count);
+                let index = rng.random_range(0..char_count);
                 password.push_str(chars.clone()[index]);
             }
 

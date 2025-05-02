@@ -8,13 +8,11 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { platform } from '@tauri-apps/plugin-os';
-import ReactGA from 'react-ga4';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import packageJson from '../../../package.json';
 import { MainContext } from '../../contexts/MainContextProvider';
 import {
   openWebSite,
-  setAllowCookies,
   setCheckedForUpdates,
   setError,
   setLoading,
@@ -47,11 +45,8 @@ const App = () => {
     error,
     loading,
     checkedForUpdates,
-    allowCookies,
-    hasSetCookies,
   } = state;
 
-  const [cookieBannerOpen, setCookieBannerOpen] = useState(!hasSetCookies);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [snackOpen, setSnackOpen] = useState(false);
   const language = state.languages[languageIndex];
@@ -106,29 +101,6 @@ const App = () => {
   };
 
   /**
-   * Close the cookie snack bar
-   */
-  const closeCookieSnack = () => {
-    setCookieBannerOpen(false);
-  };
-
-  /**
-   * Accept cookies
-   */
-  const acceptCookies = () => {
-    d1(setAllowCookies(true));
-    setCookieBannerOpen(false);
-  };
-
-  /**
-   * Decline cookies
-   */
-  const declineCookies = () => {
-    d1(setAllowCookies(false));
-    setCookieBannerOpen(false);
-  };
-
-  /**
    * Close the dialog that displays a message that no updates are available
    */
   const closeNoUpdate = () => {
@@ -145,17 +117,6 @@ const App = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  useEffect(() => {
-    if (!window.__TAURI__) {
-      if (allowCookies) {
-        ReactGA.initialize('G-M3DEBWW06X');
-        window['ga-disable-G-M3DEBWW06X'] = false;
-      } else {
-        window['ga-disable-G-M3DEBWW06X'] = true;
-      }
-    }
-  }, [allowCookies]);
 
   return (
     <ThemeProvider theme={theme}>
@@ -221,31 +182,7 @@ const App = () => {
             agreeLabel={language.ok}
           />
         ) : null}
-        {}
-        {!window.__TAURI__ && cookieBannerOpen ? (
-          <Alert
-            onClose={closeCookieSnack}
-            severity="info"
-            sx={{
-              width: '100%',
-              position: 'fixed',
-              bottom: 0,
-            }}
-          >
-            <Typography>{language.cookieNoticeText}</Typography>
-            <Button onClick={declineCookies} size="small" color="error">
-              {language.reject}
-            </Button>
-            <Button onClick={acceptCookies} size="small" color="primary">
-              {language.accept}
-            </Button>
-          </Alert>
-        ) : null}
-        <Snackbar
-          open={snackOpen}
-          onClose={closeSnack}
-          sx={{ mb: cookieBannerOpen ? 10 : null }}
-        >
+        <Snackbar open={snackOpen} onClose={closeSnack}>
           <Alert onClose={closeSnack} severity="info" sx={{ width: '100%' }}>
             <Typography>{language.downloadApp}</Typography>
             <Button

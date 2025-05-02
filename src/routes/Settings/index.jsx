@@ -37,7 +37,6 @@ import RadioGroup from '@mui/material/RadioGroup';
 import Select from '@mui/material/Select';
 import Typography from '@mui/material/Typography';
 import { platform } from '@tauri-apps/plugin-os';
-import ReactGA from 'react-ga4';
 import packageJson from '../../../package.json';
 import AlertDialog from '../../components/AlertDialog';
 import GridList from '../../components/GridList';
@@ -71,7 +70,6 @@ const Settings = () => {
     languageSelector,
     colorOnDark,
     tips,
-    allowCookies,
     sortByStrength,
   } = state;
 
@@ -144,13 +142,6 @@ const Settings = () => {
   useEffect(() => {
     d1(setPageIndex(4));
     document.title = 'Settings | Advanced PassGen';
-    if (allowCookies) {
-      ReactGA.send({
-        hitType: 'pageview',
-        page: '/about',
-        title: 'Settings | Advanced PassGen',
-      });
-    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
