@@ -17,7 +17,6 @@ import { invoke } from '@tauri-apps/api/core';
 import { writeText } from '@tauri-apps/plugin-clipboard-manager';
 import { open, save } from '@tauri-apps/plugin-dialog';
 import CryptoJS from 'crypto-js';
-import ReactGA from 'react-ga4';
 import AlertDialog from '../../components/AlertDialog';
 import CreatePasswordDialog from '../../components/CreatePasswordDialog';
 import EditPasswordDialog from '../../components/EditPasswordDialog';
@@ -37,8 +36,8 @@ const Vault = () => {
   const [state, d1] = useContext(MainContext);
   const [vaultState, d3] = useContext(VaultContext);
 
-  const language = state.languages[state.languageIndex];
-  const { themeIndex, allowCookies } = state;
+  const { themeIndex, languageIndex } = state;
+  const language = state.languages[languageIndex];
   const { vault, phrase } = vaultState;
 
   const [search, setSearch] = useState('');
@@ -307,13 +306,6 @@ const Vault = () => {
   useEffect(() => {
     d1(setPageIndex(3));
     document.title = 'Password Vault | Advanced PassGen';
-    if (allowCookies) {
-      ReactGA.send({
-        hitType: 'pageview',
-        page: '/about',
-        title: 'Password Vault | Advanced PassGen',
-      });
-    }
     // eslint-disable-next-line
   }, []);
 

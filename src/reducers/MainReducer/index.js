@@ -1,6 +1,5 @@
 import {
   RESET_STATE,
-  SET_ALLOW_COOKIES,
   SET_AUTO_UPDATE,
   SET_CHECKED_FOR_UPDATES,
   SET_COLOR_ON_DARK,
@@ -100,12 +99,6 @@ const MainReducer = (state, action) => {
       return {
         ...state,
         tips: action.payload,
-      };
-    case SET_ALLOW_COOKIES:
-      localStorage.allowCookies = action.payload;
-      return {
-        ...state,
-        allowCookies: action.payload,
       };
     case SET_DEFAULT_SORT_BY_STRENGTH:
       localStorage.sortByStrength = action.payload;

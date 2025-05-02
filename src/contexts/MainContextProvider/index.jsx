@@ -30,13 +30,6 @@ const tips = localStorage.tips ? localStorage.tips === 'true' : true;
 const sortByStrength = localStorage.sortByStrength
   ? localStorage.sortByStrength === 'true'
   : true;
-let hasSetCookies = false;
-let allowCookies = true;
-
-if (localStorage.allowCookies) {
-  allowCookies = localStorage.allowCookies === 'true';
-  hasSetCookies = true;
-}
 
 const initState = {
   autoUpdate,
@@ -52,8 +45,6 @@ const initState = {
   loading: false,
   colorOnDark,
   tips,
-  allowCookies,
-  hasSetCookies,
   sortByStrength,
 };
 

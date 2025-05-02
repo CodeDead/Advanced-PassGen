@@ -13,7 +13,6 @@ import { createWorkerFactory, useWorker } from '@shopify/react-web-worker';
 import { invoke } from '@tauri-apps/api/core';
 import { save } from '@tauri-apps/plugin-dialog';
 import Graphemer from 'graphemer';
-import ReactGA from 'react-ga4';
 import LoadingBar from '../../components/LoadingBar';
 import { MainContext } from '../../contexts/MainContextProvider';
 import { PasswordContext } from '../../contexts/PasswordContextProvider';
@@ -37,7 +36,7 @@ const Generate = () => {
   const [state1, d1] = useContext(MainContext);
   const [state2, d2] = useContext(PasswordContext);
 
-  const { languageIndex, loading, allowCookies, sortByStrength } = state1;
+  const { languageIndex, loading, sortByStrength } = state1;
   const language = state1.languages[languageIndex];
 
   const [exportType, setExportType] = useState('application/json');
@@ -252,13 +251,6 @@ const Generate = () => {
   useEffect(() => {
     d1(setPageIndex(1));
     document.title = 'Password Generator | Advanced PassGen';
-    if (allowCookies) {
-      ReactGA.send({
-        hitType: 'pageview',
-        page: '/about',
-        title: 'Password Generator | Advanced PassGen',
-      });
-    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

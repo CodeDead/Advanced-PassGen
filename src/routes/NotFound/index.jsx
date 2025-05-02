@@ -5,25 +5,16 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
-import ReactGA from 'react-ga4';
 import { MainContext } from '../../contexts/MainContextProvider';
 import { setPageIndex } from '../../reducers/MainReducer/Actions';
 
 const NotFound = () => {
   const [state, d1] = useContext(MainContext);
-  const { languageIndex, allowCookies } = state;
-  const language = state.languages[languageIndex];
+  const language = state.languages[state.languageIndex];
 
   useEffect(() => {
     d1(setPageIndex(-1));
     document.title = 'Not Found | Advanced PassGen';
-    if (allowCookies) {
-      ReactGA.send({
-        hitType: 'pageview',
-        page: '/about',
-        title: 'Not Found | Advanced PassGen',
-      });
-    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

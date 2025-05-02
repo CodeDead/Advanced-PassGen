@@ -4,16 +4,13 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
-import ReactGA from 'react-ga4';
 import packageJson from '../../../package.json';
 import { MainContext } from '../../contexts/MainContextProvider';
 import { openWebSite, setPageIndex } from '../../reducers/MainReducer/Actions';
 
 const About = () => {
   const [state, d1] = useContext(MainContext);
-
-  const { languageIndex, allowCookies } = state;
-  const language = state.languages[languageIndex];
+  const language = state.languages[state.languageIndex];
 
   /**
    * Open the license page
@@ -32,13 +29,6 @@ const About = () => {
   useEffect(() => {
     d1(setPageIndex(5));
     document.title = 'About | Advanced PassGen';
-    if (allowCookies) {
-      ReactGA.send({
-        hitType: 'pageview',
-        page: '/about',
-        title: 'About | Advanced PassGen',
-      });
-    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

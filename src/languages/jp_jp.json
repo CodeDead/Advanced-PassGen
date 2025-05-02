@@ -131,8 +131,5 @@
   "includeSymbols": "シンボルを含める",
   "useEmojis": "絵文字を使用する",
   "exportSuccessful": "エクスポートに成功しました",
-  "cookieNoticeText": "このサイトはクッキーを使用しています。 クッキーを使用することに同意する場合は、この通知を閉じてください。",
-  "accept": "受け入れる",
-  "reject": "拒否する",
   "sortByStrength": "デフォルトで強さ順に並べ替え"
 }
