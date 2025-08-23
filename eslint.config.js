@@ -17,6 +17,7 @@ export default [
       '.idea',
       'src-tauri',
       '.github',
+      'vite.config.js',
     ],
   },
   {
