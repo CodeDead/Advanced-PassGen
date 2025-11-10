@@ -8,10 +8,11 @@ use std::fs;
 use unicode_segmentation::UnicodeSegmentation;
 
 fn main() {
-    // Fix for NVIDIA
+    #[cfg(target_os = "linux")]
     unsafe {
         std::env::set_var("__GL_THREADED_OPTIMIZATIONS", "0");
         std::env::set_var("__NV_DISABLE_EXPLICIT_SYNC", "1");
+        std::env::set_var("WEBKIT_DISABLE_DMABUF_RENDERER", "1");
     }
 
     tauri::Builder::default()
@@ -96,7 +97,7 @@ async fn generate_passwords(
                 password.push_str(chars.clone()[index]);
             }
 
-            if allow_duplicates || (!allow_duplicates && !password_list.contains(&password)) {
+            if allow_duplicates || !password_list.contains(&password) {
                 password_list.push(password);
                 can_continue = true;
             }
