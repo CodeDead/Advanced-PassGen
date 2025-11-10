@@ -17,3 +17,4 @@ Dockerfile
 dist
 .github/*
 src-tauri/*
+yarn.lock
