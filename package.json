@@ -6,11 +6,11 @@
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
-    "@fontsource/roboto": "^5.2.8",
+    "@fontsource/roboto": "^5.2.9",
     "@mui/icons-material": "^7.3.5",
     "@mui/material": "^7.3.5",
     "@mui/system": "^7.3.5",
-    "@mui/x-data-grid": "^8.19.0",
+    "@mui/x-data-grid": "^8.20.0",
     "@shopify/react-web-worker": "^5.1.6",
     "@tauri-apps/api": "^2.9.0",
     "@tauri-apps/plugin-clipboard-manager": "^2.3.2",
@@ -47,10 +47,10 @@
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.4.24",
     "globals": "^16.5.0",
-    "prettier": "^3.6.2",
+    "prettier": "^3.7.1",
     "vite": "^7.2.4",
     "vite-plugin-eslint": "^1.8.1",
     "vite-plugin-svgr": "^4.5.0"
   },
-  "packageManager": "yarn@4.11.0"
+  "packageManager": "yarn@4.12.0"
 }
