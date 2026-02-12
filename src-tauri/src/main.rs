@@ -3,16 +3,14 @@
     windows_subsystem = "windows"
 )]
 
-use rand::Rng;
+use rand::RngExt;
 use std::fs;
 use unicode_segmentation::UnicodeSegmentation;
 
 fn main() {
     #[cfg(target_os = "linux")]
     unsafe {
-        std::env::set_var("__GL_THREADED_OPTIMIZATIONS", "0");
         std::env::set_var("__NV_DISABLE_EXPLICIT_SYNC", "1");
-        std::env::set_var("WEBKIT_DISABLE_DMABUF_RENDERER", "1");
     }
 
     tauri::Builder::default()
