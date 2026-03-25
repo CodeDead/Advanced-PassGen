@@ -10,7 +10,7 @@
     "@mui/icons-material": "^7.3.9",
     "@mui/material": "^7.3.9",
     "@mui/system": "^7.3.9",
-    "@mui/x-data-grid": "^8.27.5",
+    "@mui/x-data-grid": "^8.28.0",
     "@shopify/react-web-worker": "^5.1.6",
     "@tauri-apps/api": "^2.10.1",
     "@tauri-apps/plugin-clipboard-manager": "^2.3.2",
@@ -20,7 +20,7 @@
     "graphemer": "^1.4.0",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
-    "react-router-dom": "^7.13.1"
+    "react-router-dom": "^7.13.2"
   },
   "scripts": {
     "start": "vite",
@@ -40,7 +40,7 @@
     "@eslint/js": "^10.0.1",
     "@tauri-apps/cli": "^2.10.1",
     "@vitejs/plugin-react": "^6.0.1",
-    "eslint": "^10.0.3",
+    "eslint": "^10.1.0",
     "eslint-config-react-app": "^7.0.1",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-react": "^7.37.5",
@@ -48,7 +48,7 @@
     "eslint-plugin-react-refresh": "^0.5.2",
     "globals": "^17.4.0",
     "prettier": "^3.8.1",
-    "vite": "^8.0.0",
+    "vite": "^8.0.2",
     "vite-plugin-eslint": "^1.8.1",
     "vite-plugin-svgr": "^4.5.0"
   },
