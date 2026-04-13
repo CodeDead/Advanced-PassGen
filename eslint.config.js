@@ -1,12 +1,13 @@
 import js from '@eslint/js';
-import importPlugin from 'eslint-plugin-import';
+import { flatConfigs } from 'eslint-plugin-import-x';
 import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
+// eslint-disable-next-line import-x/no-named-as-default
 import reactRefresh from 'eslint-plugin-react-refresh';
 import globals from 'globals';
 
 export default [
-  importPlugin.flatConfigs.recommended,
+  flatConfigs.recommended,
   {
     ignores: [
       'dist',
@@ -16,7 +17,6 @@ export default [
       'nginx',
       '.idea',
       'src-tauri',
-      '.github',
       'vite.config.js',
     ],
   },
@@ -33,7 +33,7 @@ export default [
     },
     settings: {
       react: { version: '19.0' },
-      'import/resolver': {
+      'import-x/resolver': {
         node: {
           extensions: ['.js', '.jsx', '.ts', '.tsx'],
         },
@@ -69,7 +69,7 @@ export default [
       'react/jsx-uses-react': 'error',
       semi: [2, 'always'],
       quotes: [2, 'single'],
-      'import/order': [
+      'import-x/order': [
         'error',
         {
           groups: ['builtin', 'external', 'internal', ['parent', 'sibling']],
