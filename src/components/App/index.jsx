@@ -49,7 +49,7 @@ const App = () => {
 
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [snackOpen, setSnackOpen] = useState(
-    !window.__TAURI__ && window.innerWidth > 600
+    !window.__TAURI__ && window.innerWidth > 600,
   );
   const language = state.languages[languageIndex];
 
