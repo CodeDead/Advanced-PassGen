@@ -8,6 +8,8 @@ import MenuItem from '@mui/material/MenuItem';
 import Paper from '@mui/material/Paper';
 import Select from '@mui/material/Select';
 import Snackbar from '@mui/material/Snackbar';
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import { DataGrid } from '@mui/x-data-grid';
 import { invoke } from '@tauri-apps/api/core';
 import { save } from '@tauri-apps/plugin-dialog';
@@ -61,6 +63,8 @@ const Generate = () => {
 
   const { languageIndex, loading, sortByStrength } = state1;
   const language = state1.languages[languageIndex];
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   const [exportType, setExportType] = useState('application/json');
   const [snackOpen, setSnackOpen] = useState(false);
@@ -307,6 +311,14 @@ const Generate = () => {
     <Container maxWidth="xl">
       <Paper style={{ height: '70vh', width: '100%' }}>
         <DataGrid
+          initialState={{
+            columns: {
+              columnVisibilityModel: {
+                length: !isMobile,
+                strength: !isMobile,
+              },
+            },
+          }}
           rows={passwordRows}
           columns={columns}
           pageSize={50}

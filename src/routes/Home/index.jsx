@@ -11,8 +11,10 @@ import Container from '@mui/material/Container';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormGroup from '@mui/material/FormGroup';
 import Grid from '@mui/material/Grid';
+import { useTheme } from '@mui/material/styles';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import { useNavigate } from 'react-router-dom';
 import LoadingBar from '../../components/LoadingBar';
 import PasswordTips from '../../components/PasswordTips';
@@ -88,6 +90,9 @@ const Home = () => {
     simpleCharacterSet.length === 0 ||
     min > max ||
     max < min;
+
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   /**
    * Generate passwords
@@ -307,7 +312,7 @@ const Home = () => {
       </Card>
       <Accordion
         sx={{ mt: 2 }}
-        defaultExpanded={!window.__TAURI__ && window.innerWidth > 600}
+        defaultExpanded={!window.__TAURI__ && !isMobile}
       >
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
