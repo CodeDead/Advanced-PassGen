@@ -46,6 +46,7 @@ const App = () => {
     error,
     loading,
     checkedForUpdates,
+    tips,
   } = state;
 
   const color = ThemeSelector(themeIndex);
@@ -58,7 +59,9 @@ const App = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const [snackOpen, setSnackOpen] = useState(!window.__TAURI__ && !isMobile);
+  const [snackOpen, setSnackOpen] = useState(
+    !window.__TAURI__ && !isMobile && tips,
+  );
   const language = state.languages[languageIndex];
 
   /**
