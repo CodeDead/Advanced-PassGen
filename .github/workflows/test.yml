@@ -13,7 +13,7 @@ jobs:
   test-eslint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - name: Install modules
         run: yarn
 
@@ -41,7 +41,7 @@ jobs:
 
     runs-on: ${{ matrix.platform }}
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
 
       - name: install dependencies (ubuntu only)
         if: startsWith(matrix.platform, 'ubuntu-22.04')

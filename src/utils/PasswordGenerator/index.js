@@ -1,5 +1,7 @@
 import Graphemer from 'graphemer';
 
+const GraphemerConstructor = Graphemer.default ?? Graphemer;
+
 /**
  * Generate a secure random number between min and max
  * @param min The minimum number
@@ -8,7 +10,7 @@ import Graphemer from 'graphemer';
  */
 const getRandomIntInclusive = (min, max) => {
   const randomBuffer = new Uint32Array(1);
-  window.crypto.getRandomValues(randomBuffer);
+  globalThis.crypto.getRandomValues(randomBuffer);
 
   const randomNumber = randomBuffer[0] / (0xffffffff + 1);
 
@@ -38,7 +40,7 @@ export const PasswordGenerator = (
   allowDuplicates,
 ) => {
   const passwordArray = [];
-  const splitter = new Graphemer();
+  const splitter = new GraphemerConstructor();
   const totalCharacterSet = characterSet + includeSymbols;
 
   const graphemeCount = splitter.countGraphemes(totalCharacterSet);
@@ -61,7 +63,7 @@ export const PasswordGenerator = (
       const length = getRandomIntInclusive(minLength, maxLength);
       for (let j = 0; j < length; j += 1) {
         const randomBuffer = new Uint32Array(1);
-        window.crypto.getRandomValues(randomBuffer);
+        globalThis.crypto.getRandomValues(randomBuffer);
 
         const randomNumber = randomBuffer[0] / (0xffffffff + 1);
         password += graphemes[Math.floor(randomNumber * graphemeCount)];
