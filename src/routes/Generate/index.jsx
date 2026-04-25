@@ -40,7 +40,7 @@ const EXPORT_TYPES = {
     serialize: (passwordArray) =>
       passwordArray
         .map((password) => `"${password.replaceAll('"', '""')}"`)
-        .join(',\n'),
+        .join('\n'),
   },
   'text/plain': {
     extension: 'txt',

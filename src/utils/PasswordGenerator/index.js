@@ -66,7 +66,7 @@ export const PasswordGenerator = (
   }
 
   const passwordArray = [];
-  const generatedPasswords = new Set();
+  const generatedPasswords = allowDuplicates ? null : new Set();
   const splitter = new GraphemerConstructor();
   const graphemes = splitter.splitGraphemes(totalCharacterSet);
   const graphemeCount = graphemes.length;
@@ -94,11 +94,11 @@ export const PasswordGenerator = (
       password += graphemes[getRandomIntInclusive(0, graphemeCount - 1)];
     }
 
-    if (!allowDuplicates && generatedPasswords.has(password)) {
+    if (generatedPasswords?.has(password)) {
       continue;
     }
 
-    generatedPasswords.add(password);
+    generatedPasswords?.add(password);
     passwordArray.push(password);
   }
 
