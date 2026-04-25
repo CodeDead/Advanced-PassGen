@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useMemo, useState } from 'react';
 import Alert from '@mui/material/Alert';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
@@ -30,6 +30,31 @@ import PasswordStrength from '../../utils/PasswordStrength';
 
 const GraphemerConstructor = Graphemer.default ?? Graphemer;
 
+const EXPORT_TYPES = {
+  'application/json': {
+    extension: 'json',
+    serialize: (passwordArray) => JSON.stringify(passwordArray, null, 2),
+  },
+  'text/csv': {
+    extension: 'csv',
+    serialize: (passwordArray) =>
+      passwordArray
+        .map((password) => `"${password.replaceAll('"', '""')}"`)
+        .join(',\n'),
+  },
+  'text/plain': {
+    extension: 'txt',
+    serialize: (passwordArray) => passwordArray.join('\n'),
+  },
+};
+
+const createPasswordRow = (id, password, passwordLength, strength) => ({
+  id,
+  password,
+  length: passwordLength,
+  strength,
+});
+
 const Generate = () => {
   const [state1, d1] = useContext(MainContext);
   const [state2, d2] = useContext(PasswordContext);
@@ -60,23 +85,34 @@ const Generate = () => {
 
   const worker = usePasswordGeneratorWorker();
 
-  const simpleCharacterSet = getFullCharacterSet(
-    characterSet,
-    useAdvanced,
-    smallLetters,
-    capitalLetters,
-    spaces,
-    numbers,
-    specialCharacters,
-    brackets,
-    useEmojis,
+  const simpleCharacterSet = useMemo(
+    () =>
+      getFullCharacterSet(
+        characterSet,
+        useAdvanced,
+        smallLetters,
+        capitalLetters,
+        spaces,
+        numbers,
+        specialCharacters,
+        brackets,
+        useEmojis,
+      ),
+    [
+      brackets,
+      capitalLetters,
+      characterSet,
+      numbers,
+      smallLetters,
+      spaces,
+      specialCharacters,
+      useAdvanced,
+      useEmojis,
+    ],
   );
 
   const cannotGenerate =
-    !simpleCharacterSet ||
-    simpleCharacterSet.length === 0 ||
-    min > max ||
-    max < min;
+    !simpleCharacterSet || simpleCharacterSet.length === 0 || min > max;
 
   /**
    * Close the snackbar
@@ -120,19 +156,8 @@ const Generate = () => {
    * @returns {string} The export data
    */
   const getExportData = (passwordArray, type) => {
-    let toExport = '';
-    if (type === 'text/plain') {
-      passwordArray.forEach((e) => {
-        toExport += `${e}\n`;
-      });
-    } else if (type === 'application/json') {
-      toExport = JSON.stringify(passwordArray, null, 2);
-    } else if (type === 'text/csv') {
-      passwordArray.forEach((e) => {
-        toExport += `"${e.replaceAll('"', '""')}",\n`;
-      });
-    }
-    return toExport;
+    const exportConfig = EXPORT_TYPES[type] ?? EXPORT_TYPES['text/plain'];
+    return exportConfig.serialize(passwordArray);
   };
 
   /**
@@ -141,15 +166,8 @@ const Generate = () => {
    * @param type The file type
    */
   const downloadFile = (data, type) => {
-    let fileName = 'export';
-
-    if (type === 'text/plain') {
-      fileName += '.txt';
-    } else if (type === 'application/json') {
-      fileName += '.json';
-    } else if (type === 'text/csv') {
-      fileName += '.csv';
-    }
+    const exportConfig = EXPORT_TYPES[type] ?? EXPORT_TYPES['text/plain'];
+    const fileName = `export.${exportConfig.extension}`;
 
     const blob = new Blob([getExportData(data, type)], { type });
     const href = URL.createObjectURL(blob);
@@ -171,31 +189,24 @@ const Generate = () => {
    */
   const onExport = () => {
     if (window.__TAURI__) {
-      let ext = '';
-      switch (exportType) {
-        case 'text/plain':
-          ext = 'txt';
-          break;
-        case 'application/json':
-          ext = 'json';
-          break;
-        default:
-          ext = 'csv';
-          break;
-      }
+      const exportConfig =
+        EXPORT_TYPES[exportType] ?? EXPORT_TYPES['text/plain'];
       save({
         multiple: false,
         filters: [
           {
             name: exportType,
-            extensions: [ext],
+            extensions: [exportConfig.extension],
           },
         ],
       })
         .then((res) => {
           if (res && res.length > 0) {
             const resExt = res.slice(((res.lastIndexOf('.') - 1) >>> 0) + 2);
-            const path = resExt && resExt.length > 0 ? res : `${res}.${ext}`;
+            const path =
+              resExt && resExt.length > 0
+                ? res
+                : `${res}.${exportConfig.extension}`;
             invoke('save_string_to_disk', {
               content: getExportData(passwords, exportType),
               path,
@@ -224,17 +235,6 @@ const Generate = () => {
    * @param strength The strength of the password
    * @returns {{password, strength: string, length}} The JSON object
    */
-  const createData = (id, password, passwordLength, strength) => ({
-    id,
-    password,
-    length: passwordLength,
-    strength,
-  });
-
-  /**
-   * Set the export type
-   * @param e The change event
-   */
   const handleExportTypeChange = (e) => {
     setExportType(e.target.value);
   };
@@ -249,29 +249,31 @@ const Generate = () => {
   useEffect(() => {
     d1(setPageIndex(1));
     document.title = 'Password Generator | Advanced PassGen';
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [d1]);
 
-  let passwordRows = [];
-  if (passwords && passwords.length > 0) {
-    const splitter = new GraphemerConstructor();
-    passwords.forEach((e, i) => {
-      passwordRows.push(
-        createData(
-          `${e}${i}`,
-          e,
-          splitter.countGraphemes(e),
-          PasswordStrength(e),
-        ),
-      );
-    });
-
-    if (sortByStrength) {
-      passwordRows = passwordRows.sort(
-        (a, b) => parseFloat(b.strength) - parseFloat(a.strength),
-      );
+  const passwordRows = useMemo(() => {
+    if (!passwords || passwords.length === 0) {
+      return [];
     }
-  }
+
+    const splitter = new GraphemerConstructor();
+    const rows = passwords.map((password, index) =>
+      createPasswordRow(
+        `${password}${index}`,
+        password,
+        splitter.countGraphemes(password),
+        PasswordStrength(password),
+      ),
+    );
+
+    if (!sortByStrength) {
+      return rows;
+    }
+
+    return [...rows].sort(
+      (a, b) => parseFloat(b.strength) - parseFloat(a.strength),
+    );
+  }, [passwords, sortByStrength]);
 
   if (loading) {
     return <LoadingBar />;
