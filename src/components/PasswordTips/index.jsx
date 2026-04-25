@@ -1,10 +1,19 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, {
+  useCallback,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import CloseIcon from '@mui/icons-material/Close';
 import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
 import Collapse from '@mui/material/Collapse';
 import IconButton from '@mui/material/IconButton';
 import { MainContext } from '../../contexts/MainContextProvider';
+
+const getRandomTipIndex = (length) =>
+  length > 0 ? Math.floor(Math.random() * length) : 0;
 
 const PasswordTips = () => {
   const [state] = useContext(MainContext);
@@ -13,75 +22,64 @@ const PasswordTips = () => {
   const language = state.languages[languageIndex];
 
   const [tipsOpen, setTipsOpen] = useState(tips);
-  const intervalId = useRef();
-  const [currentTip, setCurrentTip] = useState(
-    language.passwordTips[
-      // eslint-disable-next-line react-hooks/purity
-      Math.floor(Math.random() * language.passwordTips.length)
-    ],
+  const intervalId = useRef(null);
+  const [tipIndex, setTipIndex] = useState(() =>
+    getRandomTipIndex(language.passwordTips.length),
   );
+  const currentTip =
+    language.passwordTips[tipIndex % language.passwordTips.length] ?? '';
 
   /**
-   * Generate a new tipper
+   * Clear the active tip timer
    */
-  const generateNewTipper = () => {
+  const clearTipInterval = useCallback(() => {
     if (intervalId.current !== null) {
       clearInterval(intervalId.current);
+      intervalId.current = null;
     }
-
-    intervalId.current = setInterval(() => {
-      setCurrentTip(
-        language.passwordTips[
-          Math.floor(Math.random() * language.passwordTips.length)
-        ],
-      );
-    }, 30000);
-  };
-
-  useEffect(() => {
-    if (tips) {
-      generateNewTipper();
-    }
-
-    return () =>
-      intervalId !== null ? clearInterval(intervalId.current) : null;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  useEffect(() => {
-    if (tips) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      setCurrentTip(
-        language.passwordTips[
-          Math.floor(Math.random() * language.passwordTips.length)
-        ],
-      );
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [language]);
+  /**
+   * Start rotating the current tip
+   * @param passwordTips The available tips for the current language
+   */
+  const startTipRotation = useCallback(
+    (passwordTips) => {
+      clearTipInterval();
+
+      if (!passwordTips || passwordTips.length === 0) {
+        return;
+      }
+
+      intervalId.current = setInterval(() => {
+        setTipIndex(getRandomTipIndex(passwordTips.length));
+      }, 30000);
+    },
+    [clearTipInterval],
+  );
 
   useEffect(() => {
-    if (tips) {
-      generateNewTipper();
-    } else {
-      clearInterval(intervalId.current);
+    if (!tips) {
+      clearTipInterval();
+      return clearTipInterval;
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [tips]);
+
+    startTipRotation(language.passwordTips);
+
+    return clearTipInterval;
+  }, [clearTipInterval, language.passwordTips, startTipRotation, tips]);
+
+  const closeTips = () => {
+    setTipsOpen(false);
+    clearTipInterval();
+  };
 
   return (
-    <Collapse in={tipsOpen}>
+    <Collapse in={tips && tipsOpen}>
       <Alert
         severity="info"
         action={
-          <IconButton
-            aria-label="close"
-            color="inherit"
-            onClick={() => {
-              setTipsOpen(false);
-              clearInterval(intervalId.current);
-            }}
-          >
+          <IconButton aria-label="close" color="inherit" onClick={closeTips}>
             <CloseIcon fontSize="inherit" />
           </IconButton>
         }

@@ -16,6 +16,30 @@ import {
   SET_UPDATE,
 } from './actionTypes';
 
+const normalizeErrorMessage = (error) => {
+  if (error === null || error === undefined) {
+    return null;
+  }
+
+  if (typeof error === 'string') {
+    return error;
+  }
+
+  if (error instanceof Error) {
+    return error.message;
+  }
+
+  if (
+    typeof error === 'object' &&
+    'message' in error &&
+    typeof error.message === 'string'
+  ) {
+    return error.message;
+  }
+
+  return String(error);
+};
+
 export const setLanguageIndex = (index) => ({
   type: SET_LANGUAGE_INDEX,
   payload: index,
@@ -62,7 +86,7 @@ export const setUpdate = (update) => ({
 
 export const setError = (error) => ({
   type: SET_ERROR,
-  payload: error,
+  payload: normalizeErrorMessage(error),
 });
 
 export const setLanguageSelector = (value) => ({

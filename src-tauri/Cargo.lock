@@ -14,8 +14,6 @@ version = "2.5.2"
 dependencies = [
  "open",
  "rand 0.10.1",
- "serde",
- "serde_json",
  "tauri",
  "tauri-build",
  "tauri-plugin-clipboard-manager",

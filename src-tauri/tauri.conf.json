@@ -40,7 +40,7 @@
       }
     }
   },
-  "productName": "advanced-passgen",
+  "productName": "Advanced PassGen",
   "mainBinaryName": "advanced-passgen",
   "version": "2.5.2",
   "identifier": "com.codedead.advancedpassgen",

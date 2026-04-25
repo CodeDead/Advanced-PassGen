@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useMemo, useState } from 'react';
 import AddIcon from '@mui/icons-material/Add';
 import CloseIcon from '@mui/icons-material/Close';
 import FileOpenIcon from '@mui/icons-material/FileOpen';
@@ -31,6 +31,23 @@ import {
   setPageIndex,
 } from '../../reducers/MainReducer/Actions';
 import { setPhrase, setVault } from '../../reducers/VaultReducer/Actions';
+
+const decryptVault = (data, decryptionKey) => {
+  const bytes = CryptoJS.AES.decrypt(data, decryptionKey);
+  const originalText = bytes.toString(CryptoJS.enc.Utf8);
+
+  if (!originalText) {
+    throw new Error('Unable to decrypt vault. Check the encryption key.');
+  }
+
+  const parsedVault = JSON.parse(originalText);
+
+  if (!Array.isArray(parsedVault)) {
+    throw new Error('The selected vault file is invalid.');
+  }
+
+  return parsedVault;
+};
 
 const Vault = () => {
   const [state, d1] = useContext(MainContext);
@@ -106,11 +123,7 @@ const Vault = () => {
         });
         if (path && path.length > 0) {
           const res = await invoke('read_string_from_file', { path });
-
-          const bytes = CryptoJS.AES.decrypt(res.toString(), decryptionKey);
-          const originalText = bytes.toString(CryptoJS.enc.Utf8);
-
-          d3(setVault(JSON.parse(originalText)));
+          d3(setVault(decryptVault(String(res), decryptionKey)));
         }
       } else {
         setSelectFileOpen(true);
@@ -128,10 +141,8 @@ const Vault = () => {
   const openVaultFromData = async (data) => {
     if (data && data.length > 0) {
       try {
-        const bytes = CryptoJS.AES.decrypt(data.toString(), phrase);
-        const originalText = bytes.toString(CryptoJS.enc.Utf8);
-
-        d3(setVault(JSON.parse(originalText)));
+        d3(setVault(decryptVault(String(data), phrase)));
+        setSelectFileOpen(false);
       } catch (e) {
         d1(setError(e.toString()));
       }
@@ -156,27 +167,27 @@ const Vault = () => {
    */
   const addPassword = (title, description, url, username, password) => {
     const id = window.crypto.randomUUID();
-    const newVault = JSON.parse(JSON.stringify(vault));
-    newVault.push({
-      id,
-      title,
-      description,
-      url,
-      username,
-      password,
-    });
-    d3(setVault(newVault));
+    d3(
+      setVault([
+        ...(vault ?? []),
+        {
+          id,
+          title,
+          description,
+          url,
+          username,
+          password,
+        },
+      ]),
+    );
   };
 
   /**
    * Delete a password from the vault
    */
   const deletePassword = () => {
-    const newVault = JSON.parse(JSON.stringify(vault)).filter(
-      (p) => p.id !== toDelete,
-    );
-    d3(setVault(newVault));
-
+    d3(setVault((vault ?? []).filter((password) => password.id !== toDelete)));
+    setDeleteOpen(false);
     setToDelete(null);
   };
 
@@ -194,12 +205,18 @@ const Vault = () => {
    * @param id The ID of the password
    */
   const copyToClipboard = async (id) => {
-    const { password } = vault.find((p) => p.id === id);
+    const vaultEntry = (vault ?? []).find((password) => password.id === id);
+
+    if (!vaultEntry) {
+      d1(setError('Password entry not found.'));
+      return;
+    }
+
     try {
       if (window.__TAURI__) {
-        await writeText(password);
+        await writeText(vaultEntry.password);
       } else {
-        await navigator.clipboard.writeText(password);
+        await navigator.clipboard.writeText(vaultEntry.password);
       }
     } catch (e) {
       d1(setError(e.toString()));
@@ -233,17 +250,22 @@ const Vault = () => {
    * @param password The new password
    */
   const editPassword = (id, title, description, url, username, password) => {
-    const newVault = JSON.parse(JSON.stringify(vault));
-    newVault
-      .filter((e) => e.id === id)
-      .forEach((e) => {
-        e.title = title;
-        e.description = description;
-        e.url = url;
-        e.username = username;
-        e.password = password;
-      });
-    d3(setVault(newVault));
+    d3(
+      setVault(
+        (vault ?? []).map((entry) =>
+          entry.id === id
+            ? {
+                ...entry,
+                title,
+                description,
+                url,
+                username,
+                password,
+              }
+            : entry,
+        ),
+      ),
+    );
   };
 
   /**
@@ -301,63 +323,76 @@ const Vault = () => {
    */
   const closeEncryptionKeyDialog = () => {
     setKeyDialogOpen(false);
+    setKeyAction(null);
   };
 
   useEffect(() => {
     d1(setPageIndex(3));
     document.title = 'Password Vault | Advanced PassGen';
-    // eslint-disable-next-line
-  }, []);
+  }, [d1]);
 
-  let gridItems = null;
-  if (vault && vault.length > 0) {
-    const filteredVault =
-      search && search.length > 0
-        ? vault.filter(
-            (e) =>
-              e.title.toLowerCase().includes(search.toLowerCase()) ||
-              e.description.toLowerCase().includes(search.toLowerCase()) ||
-              e.url.toLowerCase().includes(search.toLowerCase()) ||
-              e.username.toLowerCase().includes(search.toLowerCase()) ||
-              e.id.includes(search),
-          )
-        : vault;
+  const filteredVault = useMemo(() => {
+    if (!vault || vault.length === 0) {
+      return [];
+    }
 
-    if (!filteredVault || filteredVault.length === 0) {
-      gridItems = (
+    const normalizedSearch = search.trim().toLowerCase();
+
+    if (!normalizedSearch) {
+      return vault;
+    }
+
+    return vault.filter(
+      (entry) =>
+        entry.title.toLowerCase().includes(normalizedSearch) ||
+        entry.description.toLowerCase().includes(normalizedSearch) ||
+        entry.url.toLowerCase().includes(normalizedSearch) ||
+        entry.username.toLowerCase().includes(normalizedSearch) ||
+        entry.id.includes(search),
+    );
+  }, [search, vault]);
+
+  const gridItems =
+    vault && vault.length > 0 ? (
+      filteredVault.length === 0 ? (
         <Grid size={12}>
           <Typography variant="h6" component="h6" gutterBottom>
             {language.noResults}
           </Typography>
         </Grid>
-      );
-    } else {
-      gridItems = filteredVault.map((item) => (
-        <Grid key={item.id} size={{ xs: 12, md: 6, lg: 4 }}>
-          <VaultCard
-            id={item.id}
-            title={item.title}
-            description={item.description}
-            url={item.url}
-            openLabel={language.open}
-            editLabel={language.edit}
-            deleteLabel={language.delete}
-            copyLabel={language.copy}
-            onClick={openPassword}
-            onEdit={openEditPasswordDialog}
-            onDelete={openDeleteDialog}
-            onCopy={copyToClipboard}
-            themeIndex={themeIndex}
-          />
-        </Grid>
-      ));
-    }
-  }
+      ) : (
+        filteredVault.map((item) => (
+          <Grid key={item.id} size={{ xs: 12, md: 6, lg: 4 }}>
+            <VaultCard
+              id={item.id}
+              title={item.title}
+              description={item.description}
+              url={item.url}
+              openLabel={language.open}
+              editLabel={language.edit}
+              deleteLabel={language.delete}
+              copyLabel={language.copy}
+              onClick={openPassword}
+              onEdit={openEditPasswordDialog}
+              onDelete={openDeleteDialog}
+              onCopy={copyToClipboard}
+              themeIndex={themeIndex}
+            />
+          </Grid>
+        ))
+      )
+    ) : null;
 
-  const toEdit =
-    vault && vault.length > 0
-      ? vault.filter((p) => p.id === editPasswordId)[0]
-      : null;
+  const toEdit = useMemo(
+    () =>
+      (vault ?? []).find((password) => password.id === editPasswordId) ?? null,
+    [editPasswordId, vault],
+  );
+
+  const closeDeleteDialog = () => {
+    setDeleteOpen(false);
+    setToDelete(null);
+  };
 
   return (
     <Container>
@@ -490,8 +525,8 @@ const Vault = () => {
           title={language.confirmation}
           content={language.confirmDelete}
           onOk={deletePassword}
-          onCancel={() => setDeleteOpen(false)}
-          onClose={() => setDeleteOpen(false)}
+          onCancel={closeDeleteDialog}
+          onClose={closeDeleteDialog}
           agreeLabel={language.yes}
           cancelLabel={language.no}
         />

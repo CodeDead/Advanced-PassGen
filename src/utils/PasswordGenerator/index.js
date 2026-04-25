@@ -20,6 +20,16 @@ const getRandomIntInclusive = (min, max) => {
   return Math.floor(randomNumber * (newMax - newMin + 1)) + newMin;
 };
 
+const getMaxUniquePasswordCount = (minLength, maxLength, graphemeCount) => {
+  let maxCount = 0;
+
+  for (let current = minLength; current <= maxLength; current += 1) {
+    maxCount += graphemeCount ** current;
+  }
+
+  return maxCount;
+};
+
 /**
  * Generate an array of passwords
  * @param minLength The minimum length of the password
@@ -39,53 +49,58 @@ export const PasswordGenerator = (
   amount,
   allowDuplicates,
 ) => {
+  const parsedMinLength = Math.ceil(Number(minLength));
+  const parsedMaxLength = Math.floor(Number(maxLength));
+  const parsedAmount = Math.max(0, Math.floor(Number(amount)));
+  const totalCharacterSet = `${characterSet}${includeSymbols}`;
+
+  if (
+    !Number.isFinite(parsedMinLength) ||
+    !Number.isFinite(parsedMaxLength) ||
+    !Number.isFinite(parsedAmount) ||
+    parsedAmount === 0 ||
+    parsedMinLength > parsedMaxLength ||
+    totalCharacterSet.length === 0
+  ) {
+    return [];
+  }
+
   const passwordArray = [];
+  const generatedPasswords = allowDuplicates ? null : new Set();
   const splitter = new GraphemerConstructor();
-  const totalCharacterSet = characterSet + includeSymbols;
-
-  const graphemeCount = splitter.countGraphemes(totalCharacterSet);
   const graphemes = splitter.splitGraphemes(totalCharacterSet);
+  const graphemeCount = graphemes.length;
 
-  let maxCount = 0;
-  if (!allowDuplicates) {
-    let current = parseInt(minLength, 10);
-    while (current <= parseInt(maxLength, 10)) {
-      maxCount += Math.pow(graphemeCount, current);
-      current += 1;
-    }
+  if (graphemeCount === 0) {
+    return [];
   }
 
-  for (let i = 0; i < amount; i += 1) {
-    let canContinue = false;
+  const maxUniquePasswordCount = allowDuplicates
+    ? parsedAmount
+    : getMaxUniquePasswordCount(
+        parsedMinLength,
+        parsedMaxLength,
+        graphemeCount,
+      );
+  const targetAmount = allowDuplicates
+    ? parsedAmount
+    : Math.min(parsedAmount, maxUniquePasswordCount);
 
-    while (!canContinue) {
-      let password = '';
-      const length = getRandomIntInclusive(minLength, maxLength);
-      for (let j = 0; j < length; j += 1) {
-        const randomBuffer = new Uint32Array(1);
-        globalThis.crypto.getRandomValues(randomBuffer);
+  while (passwordArray.length < targetAmount) {
+    let password = '';
+    const length = getRandomIntInclusive(parsedMinLength, parsedMaxLength);
 
-        const randomNumber = randomBuffer[0] / (0xffffffff + 1);
-        password += graphemes[Math.floor(randomNumber * graphemeCount)];
-      }
-
-      if (
-        allowDuplicates === true ||
-        (!allowDuplicates && !passwordArray.includes(password))
-      ) {
-        passwordArray.push(password);
-        canContinue = true;
-      }
-
-      // We've reached the end of the line
-      if (
-        canContinue === false &&
-        allowDuplicates === false &&
-        passwordArray.length === maxCount
-      ) {
-        return passwordArray;
-      }
+    for (let index = 0; index < length; index += 1) {
+      password += graphemes[getRandomIntInclusive(0, graphemeCount - 1)];
     }
+
+    if (generatedPasswords?.has(password)) {
+      continue;
+    }
+
+    generatedPasswords?.add(password);
+    passwordArray.push(password);
   }
+
   return passwordArray;
 };
