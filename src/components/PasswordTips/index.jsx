@@ -16,6 +16,7 @@ const PasswordTips = () => {
   const intervalId = useRef();
   const [currentTip, setCurrentTip] = useState(
     language.passwordTips[
+      // eslint-disable-next-line react-hooks/purity
       Math.floor(Math.random() * language.passwordTips.length)
     ],
   );
@@ -49,6 +50,7 @@ const PasswordTips = () => {
 
   useEffect(() => {
     if (tips) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setCurrentTip(
         language.passwordTips[
           Math.floor(Math.random() * language.passwordTips.length)

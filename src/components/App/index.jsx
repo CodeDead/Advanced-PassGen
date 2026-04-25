@@ -48,7 +48,7 @@ const App = () => {
   } = state;
 
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const [snackOpen, setSnackOpen] = useState(false);
+  const [snackOpen, setSnackOpen] = useState(!window.__TAURI__);
   const language = state.languages[languageIndex];
 
   const color = ThemeSelector(themeIndex);
@@ -112,8 +112,6 @@ const App = () => {
       if (autoUpdate) {
         checkForUpdates();
       }
-    } else {
-      setSnackOpen(true);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
