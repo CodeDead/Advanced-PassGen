@@ -7,6 +7,7 @@ import Snackbar from '@mui/material/Snackbar';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import { platform } from '@tauri-apps/plugin-os';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import packageJson from '../../../package.json';
@@ -47,20 +48,18 @@ const App = () => {
     checkedForUpdates,
   } = state;
 
-  const [drawerOpen, setDrawerOpen] = useState(false);
-  const [snackOpen, setSnackOpen] = useState(
-    !window.__TAURI__ && window.innerWidth > 600,
-  );
-  const language = state.languages[languageIndex];
-
   const color = ThemeSelector(themeIndex);
-
   const theme = createTheme({
     palette: {
       primary: color,
       mode: themeType,
     },
   });
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [snackOpen, setSnackOpen] = useState(!window.__TAURI__ && !isMobile);
+  const language = state.languages[languageIndex];
 
   /**
    * Check for updates

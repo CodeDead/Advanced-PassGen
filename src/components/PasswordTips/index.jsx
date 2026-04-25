@@ -10,6 +10,8 @@ import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
 import Collapse from '@mui/material/Collapse';
 import IconButton from '@mui/material/IconButton';
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import { MainContext } from '../../contexts/MainContextProvider';
 
 const getRandomTipIndex = (length) =>
@@ -17,6 +19,8 @@ const getRandomTipIndex = (length) =>
 
 const PasswordTips = () => {
   const [state] = useContext(MainContext);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   const { languageIndex, tips } = state;
   const language = state.languages[languageIndex];
@@ -75,7 +79,7 @@ const PasswordTips = () => {
   };
 
   return (
-    <Collapse in={tips && tipsOpen}>
+    <Collapse in={tips && tipsOpen && !isMobile}>
       <Alert
         severity="info"
         action={
