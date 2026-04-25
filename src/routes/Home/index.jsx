@@ -305,7 +305,10 @@ const Home = () => {
           </Grid>
         </CardContent>
       </Card>
-      <Accordion sx={{ mt: 2 }} defaultExpanded={!window.__TAURI__}>
+      <Accordion
+        sx={{ mt: 2 }}
+        defaultExpanded={!window.__TAURI__ && window.innerWidth > 600}
+      >
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"

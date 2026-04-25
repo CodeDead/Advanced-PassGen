@@ -48,7 +48,9 @@ const App = () => {
   } = state;
 
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const [snackOpen, setSnackOpen] = useState(!window.__TAURI__);
+  const [snackOpen, setSnackOpen] = useState(
+    !window.__TAURI__ && window.innerWidth > 600
+  );
   const language = state.languages[languageIndex];
 
   const color = ThemeSelector(themeIndex);
