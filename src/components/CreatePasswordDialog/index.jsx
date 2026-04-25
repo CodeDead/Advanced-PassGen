@@ -11,9 +11,9 @@ import Grid from '@mui/material/Grid';
 import IconButton from '@mui/material/IconButton';
 import TextField from '@mui/material/TextField';
 import Tooltip from '@mui/material/Tooltip';
-import { createWorkerFactory, useWorker } from '@shopify/react-web-worker';
 import { MainContext } from '../../contexts/MainContextProvider';
 import { PasswordContext } from '../../contexts/PasswordContextProvider';
+import usePasswordGeneratorWorker from '../../hooks/usePasswordGeneratorWorker';
 import { setError } from '../../reducers/MainReducer/Actions';
 import {
   generatePasswordArray,
@@ -21,10 +21,6 @@ import {
 } from '../../reducers/PasswordReducer/Actions';
 import PasswordStrength from '../../utils/PasswordStrength';
 import LinearProgressWithLabel from '../LinearProgressWithLabel';
-
-const createWorker = createWorkerFactory(
-  () => import('../../utils/PasswordGenerator/index'),
-);
 
 const CreatePasswordDialog = ({ open, onCreate, onClose }) => {
   const [state, d1] = useContext(MainContext);
@@ -66,7 +62,7 @@ const CreatePasswordDialog = ({ open, onCreate, onClose }) => {
     useEmojis,
   );
 
-  const worker = useWorker(createWorker);
+  const worker = usePasswordGeneratorWorker();
 
   const cannotGenerate =
     !simpleCharacterSet ||

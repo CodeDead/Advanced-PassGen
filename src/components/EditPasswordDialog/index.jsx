@@ -12,6 +12,7 @@ import IconButton from '@mui/material/IconButton';
 import TextField from '@mui/material/TextField';
 import { MainContext } from '../../contexts/MainContextProvider';
 import { PasswordContext } from '../../contexts/PasswordContextProvider';
+import usePasswordGeneratorWorker from '../../hooks/usePasswordGeneratorWorker';
 import { setError } from '../../reducers/MainReducer/Actions';
 import {
   generatePasswordArray,
@@ -53,6 +54,7 @@ const EditPasswordDialog = ({ data, open, onSave, onClose }) => {
     data && data.username ? data.username : '',
   );
   const [showPassword, setShowPassword] = useState(false);
+  const worker = usePasswordGeneratorWorker();
 
   const simpleCharacterSet = getFullCharacterSet(
     characterSet,
@@ -116,7 +118,7 @@ const EditPasswordDialog = ({ data, open, onSave, onClose }) => {
       includeSymbols,
       1,
       allowDuplicates,
-      null,
+      worker,
     )
       .then((res) => {
         setPassword(res[0]);

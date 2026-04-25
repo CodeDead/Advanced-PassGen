@@ -9,13 +9,13 @@ import Paper from '@mui/material/Paper';
 import Select from '@mui/material/Select';
 import Snackbar from '@mui/material/Snackbar';
 import { DataGrid } from '@mui/x-data-grid';
-import { createWorkerFactory, useWorker } from '@shopify/react-web-worker';
 import { invoke } from '@tauri-apps/api/core';
 import { save } from '@tauri-apps/plugin-dialog';
 import Graphemer from 'graphemer';
 import LoadingBar from '../../components/LoadingBar';
 import { MainContext } from '../../contexts/MainContextProvider';
 import { PasswordContext } from '../../contexts/PasswordContextProvider';
+import usePasswordGeneratorWorker from '../../hooks/usePasswordGeneratorWorker';
 import {
   setError,
   setLoading,
@@ -28,9 +28,7 @@ import {
 } from '../../reducers/PasswordReducer/Actions';
 import PasswordStrength from '../../utils/PasswordStrength';
 
-const createWorker = createWorkerFactory(
-  () => import('../../utils/PasswordGenerator/index'),
-);
+const GraphemerConstructor = Graphemer.default ?? Graphemer;
 
 const Generate = () => {
   const [state1, d1] = useContext(MainContext);
@@ -60,7 +58,7 @@ const Generate = () => {
     useEmojis,
   } = state2;
 
-  const worker = useWorker(createWorker);
+  const worker = usePasswordGeneratorWorker();
 
   const simpleCharacterSet = getFullCharacterSet(
     characterSet,
@@ -256,7 +254,7 @@ const Generate = () => {
 
   let passwordRows = [];
   if (passwords && passwords.length > 0) {
-    const splitter = new Graphemer();
+    const splitter = new GraphemerConstructor();
     passwords.forEach((e, i) => {
       passwordRows.push(
         createData(

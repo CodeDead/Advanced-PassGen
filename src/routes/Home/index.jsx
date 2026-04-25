@@ -13,12 +13,12 @@ import FormGroup from '@mui/material/FormGroup';
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
-import { createWorkerFactory, useWorker } from '@shopify/react-web-worker';
 import { useNavigate } from 'react-router-dom';
 import LoadingBar from '../../components/LoadingBar';
 import PasswordTips from '../../components/PasswordTips';
 import { MainContext } from '../../contexts/MainContextProvider';
 import { PasswordContext } from '../../contexts/PasswordContextProvider';
+import usePasswordGeneratorWorker from '../../hooks/usePasswordGeneratorWorker';
 import {
   setError,
   setLoading,
@@ -43,10 +43,6 @@ import {
   setUseAdvanced,
   setUseEmojis,
 } from '../../reducers/PasswordReducer/Actions';
-
-const createWorker = createWorkerFactory(
-  () => import('../../utils/PasswordGenerator/index'),
-);
 
 const Home = () => {
   const [state, d1] = useContext(MainContext);
@@ -73,7 +69,7 @@ const Home = () => {
   } = state2;
 
   const navigate = useNavigate();
-  const worker = useWorker(createWorker);
+  const worker = usePasswordGeneratorWorker();
 
   const simpleCharacterSet = getFullCharacterSet(
     characterSet,
