@@ -36,7 +36,7 @@ import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import Select from '@mui/material/Select';
 import Typography from '@mui/material/Typography';
-import { platform } from '@tauri-apps/plugin-os';
+import { arch, platform } from '@tauri-apps/plugin-os';
 import packageJson from '../../../package.json';
 import AlertDialog from '../../components/AlertDialog';
 import GridList from '../../components/GridList';
@@ -125,7 +125,8 @@ const Settings = () => {
 
     try {
       const res = platform();
-      Updater(res.toLowerCase(), packageJson.version)
+      const architecture = arch();
+      Updater(res.toLowerCase(), architecture, packageJson.version)
         .then((up) => {
           d1(setUpdate(up));
           d1(setCheckedForUpdates(true));
@@ -252,7 +253,7 @@ const Settings = () => {
           <Typography>{language.theme}</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <GridList spacing={2} xs={6} md={4} lg={4}>
+          <GridList spacing={2} xs={12} md={6} lg={4}>
             <Theme
               title={language.default}
               description={language.defaultThemeDescription}
