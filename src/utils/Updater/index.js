@@ -1,4 +1,16 @@
-const Updater = (os, currentVersion) => {
+const normalizeVersion = (version) =>
+  typeof version === 'string' ? version.replace(/^[^\d]+/, '') : '';
+
+const normalizeArch = (architecture) => {
+  switch (architecture) {
+    case 'x86_64':
+      return 'x64';
+    default:
+      return architecture;
+  }
+};
+
+const Updater = (os, architecture, currentVersion) => {
   /**
    * Check whether version b is newer than version a
    * @param a Version a
@@ -6,8 +18,8 @@ const Updater = (os, currentVersion) => {
    * @returns {boolean} True if version b is newer than version a, otherwise false
    */
   const isNewer = (a, b) => {
-    const partsA = a.split('.');
-    const partsB = b.split('.');
+    const partsA = normalizeVersion(a).split('.');
+    const partsB = normalizeVersion(b).split('.');
     const numParts =
       partsA.length > partsB.length ? partsA.length : partsB.length;
 
@@ -23,35 +35,50 @@ const Updater = (os, currentVersion) => {
   /**
    * Parse the information inside an external update
    * @param update The update data
-   * @returns {{infoUrl: null, updateUrl: boolean, downloadUrl: null, version: null}}
+   * @returns {{infoUrl: null, updateUrl: null, downloadUrl: null, version: null, updateAvailable: boolean}}
    */
   const parseUpdate = (update) => {
-    const platform = update.platforms[os];
     const data = {
-      updateUrl: false,
+      updateUrl: null,
       downloadUrl: null,
       infoUrl: null,
       version: null,
+      updateAvailable: false,
     };
 
-    if (
-      isNewer(
-        currentVersion,
-        `${platform.version.majorVersion}.${platform.version.minorVersion}.${platform.version.buildVersion}.${platform.version.revisionVersion}`,
-      )
-    ) {
+    if (!update || !Array.isArray(update.platforms)) {
+      return data;
+    }
+
+    const normalizedArchitecture = normalizeArch(architecture);
+    const matchingPlatforms = update.platforms.filter(
+      (platform) => platform.name === os,
+    );
+    const platform = matchingPlatforms.find(
+      (entry) => normalizeArch(entry.arch) === normalizedArchitecture,
+    );
+    const version = normalizeVersion(update.semver);
+
+    if (!platform || !version) {
+      return data;
+    }
+
+    if (isNewer(currentVersion, version)) {
       data.updateAvailable = true;
     }
 
-    data.updateUrl = platform.updateUrl;
+    data.updateUrl = platform.downloadUrl;
+    data.downloadUrl = platform.downloadUrl;
     data.infoUrl = platform.infoUrl;
-    data.version = `${platform.version.majorVersion}.${platform.version.minorVersion}.${platform.version.buildVersion}.${platform.version.revisionVersion}`;
+    data.version = version;
 
     return data;
   };
 
   return new Promise((resolve, reject) => {
-    fetch('https://codedead.com/Software/Advanced%20PassGen/version.json')
+    fetch(
+      'https://api.codedead.com/api/v1/version/38b1f6e7-3274-4405-9eb1-42d47ae8a53e',
+    )
       .then((res) => {
         if (!res.ok) {
           throw Error(res.statusText);

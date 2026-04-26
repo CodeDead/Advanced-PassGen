@@ -8,7 +8,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import { platform } from '@tauri-apps/plugin-os';
+import { arch, platform } from '@tauri-apps/plugin-os';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import packageJson from '../../../package.json';
 import { MainContext } from '../../contexts/MainContextProvider';
@@ -77,7 +77,8 @@ const App = () => {
 
     try {
       const res = platform();
-      Updater(res.toLowerCase(), packageJson.version)
+      const architecture = arch();
+      Updater(res.toLowerCase(), architecture, packageJson.version)
         .then((up) => {
           d1(setUpdate(up));
         })
