@@ -42,7 +42,7 @@
   },
   "productName": "advanced-passgen",
   "mainBinaryName": "advanced-passgen",
-  "version": "2.5.2",
+  "version": "2.6.0",
   "identifier": "com.codedead.advancedpassgen",
   "plugins": {},
   "app": {
