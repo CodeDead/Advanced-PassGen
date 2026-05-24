@@ -10,7 +10,7 @@
     "@mui/icons-material": "^9.0.1",
     "@mui/material": "^9.0.1",
     "@mui/system": "^9.0.1",
-    "@mui/x-data-grid": "^9.1.0",
+    "@mui/x-data-grid": "^9.3.0",
     "@tauri-apps/api": "^2.11.0",
     "@tauri-apps/plugin-clipboard-manager": "^2.3.2",
     "@tauri-apps/plugin-dialog": "^2.7.1",
@@ -19,7 +19,7 @@
     "graphemer": "^1.4.0",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
-    "react-router-dom": "^7.15.0"
+    "react-router-dom": "^7.15.1"
   },
   "scripts": {
     "dev": "vite",
@@ -39,9 +39,9 @@
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@nabla/vite-plugin-eslint": "^3.0.1",
-    "@tauri-apps/cli": "^2.11.1",
-    "@vitejs/plugin-react": "^6.0.1",
-    "eslint": "^10.3.0",
+    "@tauri-apps/cli": "^2.11.2",
+    "@vitejs/plugin-react": "^6.0.2",
+    "eslint": "^10.4.0",
     "eslint-config-react-app": "^7.0.1",
     "eslint-plugin-import-x": "^4.16.2",
     "eslint-plugin-react": "^7.37.5",
@@ -49,8 +49,8 @@
     "eslint-plugin-react-refresh": "^0.5.2",
     "globals": "^17.6.0",
     "prettier": "^3.8.3",
-    "vite": "^8.0.11",
+    "vite": "^8.0.14",
     "vite-plugin-svgr": "^5.2.0"
   },
-  "packageManager": "yarn@4.14.1"
+  "packageManager": "yarn@4.15.0"
 }
