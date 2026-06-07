@@ -7,7 +7,7 @@ license = "GPL-3.0-only"
 repository = "https://github.com/CodeDead/Advanced-PassGen"
 default-run = "advanced-passgen"
 edition = "2024"
-rust-version = "1.95.0"
+rust-version = "1.96.0"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
@@ -18,7 +18,7 @@ tauri-build = { version = "2.6.2", features = [] }
 tauri = { version = "2.11.2", features = [] }
 open = "5.3.5"
 rand = "0.10.1"
-unicode-segmentation = "1.13.2"
+unicode-segmentation = "1.13.3"
 tauri-plugin-dialog = "2.7.1"
 tauri-plugin-clipboard-manager = "2.3.2"
 tauri-plugin-os = "2.3.2"
