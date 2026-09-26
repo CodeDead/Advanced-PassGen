@@ -10,6 +10,26 @@ const normalizeArch = (architecture) => {
   }
 };
 
+/**
+ * Verify that a URL is HTTPS and hosted on a trusted CodeDead domain, to
+ * ensure update/download links from the remote API cannot be tampered with
+ * (e.g. via a compromised or MITM'd API response) to point to an untrusted host.
+ * @param url The URL to validate
+ * @returns {boolean} True if the URL is trusted, otherwise false
+ */
+const isTrustedUrl = (url) => {
+  try {
+    const parsed = new URL(url);
+    return (
+      parsed.protocol === 'https:' &&
+      (parsed.hostname === 'codedead.com' ||
+        parsed.hostname.endsWith('.codedead.com'))
+    );
+  } catch {
+    return false;
+  }
+};
+
 const Updater = (os, architecture, currentVersion) => {
   /**
    * Check whether version b is newer than version a
@@ -59,7 +79,12 @@ const Updater = (os, architecture, currentVersion) => {
     );
     const version = normalizeVersion(update.semver);
 
-    if (!platform || !version) {
+    if (
+      !platform ||
+      !version ||
+      !isTrustedUrl(platform.downloadUrl) ||
+      (platform.infoUrl && !isTrustedUrl(platform.infoUrl))
+    ) {
       return data;
     }
 
