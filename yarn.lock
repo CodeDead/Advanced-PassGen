@@ -1677,14 +1677,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@eslint/config-array@npm:^0.23.5":
-  version: 0.23.5
-  resolution: "@eslint/config-array@npm:0.23.5"
+"@eslint/config-array@npm:^0.23.6":
+  version: 0.23.6
+  resolution: "@eslint/config-array@npm:0.23.6"
   dependencies:
     "@eslint/object-schema": "npm:^3.0.5"
     debug: "npm:^4.3.1"
-    minimatch: "npm:^10.2.4"
-  checksum: 10c0/b24833c4c76e78ee075d306cd3f095db46b2db0f90cc13a6ee6e4275f9889731c05bf5403ab5fefb79c756e07ac9184ed0e04570341382f9eccbccc80e6d1a0c
+    minimatch: "npm:^11.0.5"
+  checksum: 10c0/adf798a55b4f58e1db954347633ca2c07c51d413590f274f77d1d94d3413de3d321e3558e313f616a822cb76d90e9c378ec6dd2f49b3e51a2070e61f4405f2ae
   languageName: node
   linkType: hard
 
@@ -1827,9 +1827,9 @@ __metadata:
   linkType: hard
 
 "@jridgewell/resolve-uri@npm:^3.1.0":
-  version: 3.1.2
-  resolution: "@jridgewell/resolve-uri@npm:3.1.2"
-  checksum: 10c0/d502e6fb516b35032331406d4e962c21fe77cdf1cbdb49c6142bcbd9e30507094b18972778a6e27cbad756209cfe34b1a27729e6fa08a2eb92b33943f680cf1e
+  version: 3.1.3
+  resolution: "@jridgewell/resolve-uri@npm:3.1.3"
+  checksum: 10c0/b1c5b380e425337d6b9ede3174d88827966afd4cb2bcc80f6dfed16de2b199feb87e5fc8431d884a3aa878dfe422c6259241b2e5c8b13973f0c41f9b0ee4f467
   languageName: node
   linkType: hard
 
@@ -2030,15 +2030,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mui/x-data-grid@npm:^9.17.0":
-  version: 9.17.0
-  resolution: "@mui/x-data-grid@npm:9.17.0"
+"@mui/x-data-grid@npm:^9.18.0":
+  version: 9.18.0
+  resolution: "@mui/x-data-grid@npm:9.18.0"
   dependencies:
     "@babel/runtime": "npm:^7.29.7 || ^8.0.0"
     "@base-ui/utils": "npm:^0.5.0"
     "@mui/utils": "npm:^9.5.0"
-    "@mui/x-internals": "npm:9.17.0"
-    "@mui/x-virtualizer": "npm:0.7.5"
+    "@mui/x-internals": "npm:9.18.0"
+    "@mui/x-virtualizer": "npm:0.7.6"
     clsx: "npm:^2.1.1"
     prop-types: "npm:^15.8.1"
     use-sync-external-store: "npm:^1.7.0"
@@ -2054,13 +2054,13 @@ __metadata:
       optional: true
     "@emotion/styled":
       optional: true
-  checksum: 10c0/468e6c01c5d2566cf9c1ab84d5109e12a4942057b83abab598e7bc4fc7b3c428e80ab874a0933fe5dd8eea90eb9717b90168ea1fc9e15cccf6a5e1f27ebe13dc
+  checksum: 10c0/62f0da4e798316491272f13d69988240c227e684c1e5d1eb1672d0552194034ff6e6d0adcf19fb62585f6c120dea89afc8a43c8143d329ae16d73b17d8733b0e
   languageName: node
   linkType: hard
 
-"@mui/x-internals@npm:9.17.0":
-  version: 9.17.0
-  resolution: "@mui/x-internals@npm:9.17.0"
+"@mui/x-internals@npm:9.18.0":
+  version: 9.18.0
+  resolution: "@mui/x-internals@npm:9.18.0"
   dependencies:
     "@babel/runtime": "npm:^7.29.7 || ^8.0.0"
     "@base-ui/utils": "npm:^0.5.0"
@@ -2068,22 +2068,22 @@ __metadata:
   peerDependencies:
     react: ^17.0.0 || ^18.0.0 || ^19.0.0
     react-dom: ^17.0.0 || ^18.0.0 || ^19.0.0
-  checksum: 10c0/3a0104cb50bbf434e1b5e8af4b9a98954cf55951f9665af2a4e605b301c1dca1e8ed0fb19998fe733e4bf03ed871e0a3d4ef66507c8662e97aa0f2397057a2f4
+  checksum: 10c0/0502c274024629f6229a77d03c3aefbcbdc8ba3eab09eb2aefe83604a5d1445996f98b6e16135011944b8884d26d8442d48578d850af15d0c6fed7f25643b5ea
   languageName: node
   linkType: hard
 
-"@mui/x-virtualizer@npm:0.7.5":
-  version: 0.7.5
-  resolution: "@mui/x-virtualizer@npm:0.7.5"
+"@mui/x-virtualizer@npm:0.7.6":
+  version: 0.7.6
+  resolution: "@mui/x-virtualizer@npm:0.7.6"
   dependencies:
     "@babel/runtime": "npm:^7.29.7 || ^8.0.0"
     "@base-ui/utils": "npm:^0.5.0"
     "@mui/utils": "npm:^9.5.0"
-    "@mui/x-internals": "npm:9.17.0"
+    "@mui/x-internals": "npm:9.18.0"
   peerDependencies:
     react: ^17.0.0 || ^18.0.0 || ^19.0.0
     react-dom: ^17.0.0 || ^18.0.0 || ^19.0.0
-  checksum: 10c0/cb3fae51f420c3b6b35af9e94f5bef844d948550537317117fd3ebb9f45188910555e3e62c65a2b8a172ea23127b2bdcf68ea53dd289406d6116eca156bc3289
+  checksum: 10c0/f54bc10aeedaaa0922083d2e4679a468906f550c34e4ac9c6c2731b33b15d5fb8aff7897e622929b7ccaff2b9be11c4ed4df25d5618ee841662c47d0ea576445
   languageName: node
   linkType: hard
 
@@ -2280,9 +2280,9 @@ __metadata:
   linkType: hard
 
 "@rolldown/pluginutils@npm:^1.0.0, @rolldown/pluginutils@npm:^1.0.1":
-  version: 1.1.0
-  resolution: "@rolldown/pluginutils@npm:1.1.0"
-  checksum: 10c0/3c654f40ebce021f83d79fb1d6d312b5225932e79c6989ddeb90cdd3f7fb9b9b4b9ae86d56dd2b17436f80878ad885bec31037e01e5f7d1047219072a981bc07
+  version: 1.1.1
+  resolution: "@rolldown/pluginutils@npm:1.1.1"
+  checksum: 10c0/ee35ab757a5b6cc296a13abfd3b1f998ef141a6bf302f2d25eee53ab9cb1aea265bea0d55495664f02e91c38c3995c79773ea8e14213089d9c31c1821997b606
   languageName: node
   linkType: hard
 
@@ -2443,105 +2443,105 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tauri-apps/api@npm:^2.12.0, @tauri-apps/api@npm:^2.12.4":
-  version: 2.12.4
-  resolution: "@tauri-apps/api@npm:2.12.4"
-  checksum: 10c0/4a5c492d17999dc393be617978aed52c133d999575e251f0166cd9f6838941a207b9302c153104dfe83b0f97a8bdc5fda8574dfee40eed457e551b1c6ca4f061
+"@tauri-apps/api@npm:^2.12.0, @tauri-apps/api@npm:^2.12.5":
+  version: 2.12.5
+  resolution: "@tauri-apps/api@npm:2.12.5"
+  checksum: 10c0/fa35056017c27d1812b246590f09a81b0dde097aa4062c5978f44bcce82363e9e4b7b35c18524d29d96ab63f87a77504d1ef1b851ed7ffd3241bfff27686c1c7
   languageName: node
   linkType: hard
 
-"@tauri-apps/cli-darwin-arm64@npm:2.12.4":
-  version: 2.12.4
-  resolution: "@tauri-apps/cli-darwin-arm64@npm:2.12.4"
+"@tauri-apps/cli-darwin-arm64@npm:2.12.5":
+  version: 2.12.5
+  resolution: "@tauri-apps/cli-darwin-arm64@npm:2.12.5"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
 
-"@tauri-apps/cli-darwin-x64@npm:2.12.4":
-  version: 2.12.4
-  resolution: "@tauri-apps/cli-darwin-x64@npm:2.12.4"
+"@tauri-apps/cli-darwin-x64@npm:2.12.5":
+  version: 2.12.5
+  resolution: "@tauri-apps/cli-darwin-x64@npm:2.12.5"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
 
-"@tauri-apps/cli-linux-arm-gnueabihf@npm:2.12.4":
-  version: 2.12.4
-  resolution: "@tauri-apps/cli-linux-arm-gnueabihf@npm:2.12.4"
+"@tauri-apps/cli-linux-arm-gnueabihf@npm:2.12.5":
+  version: 2.12.5
+  resolution: "@tauri-apps/cli-linux-arm-gnueabihf@npm:2.12.5"
   conditions: os=linux & cpu=arm
   languageName: node
   linkType: hard
 
-"@tauri-apps/cli-linux-arm64-gnu@npm:2.12.4":
-  version: 2.12.4
-  resolution: "@tauri-apps/cli-linux-arm64-gnu@npm:2.12.4"
+"@tauri-apps/cli-linux-arm64-gnu@npm:2.12.5":
+  version: 2.12.5
+  resolution: "@tauri-apps/cli-linux-arm64-gnu@npm:2.12.5"
   conditions: os=linux & cpu=arm64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@tauri-apps/cli-linux-arm64-musl@npm:2.12.4":
-  version: 2.12.4
-  resolution: "@tauri-apps/cli-linux-arm64-musl@npm:2.12.4"
+"@tauri-apps/cli-linux-arm64-musl@npm:2.12.5":
+  version: 2.12.5
+  resolution: "@tauri-apps/cli-linux-arm64-musl@npm:2.12.5"
   conditions: os=linux & cpu=arm64 & libc=musl
   languageName: node
   linkType: hard
 
-"@tauri-apps/cli-linux-riscv64-gnu@npm:2.12.4":
-  version: 2.12.4
-  resolution: "@tauri-apps/cli-linux-riscv64-gnu@npm:2.12.4"
+"@tauri-apps/cli-linux-riscv64-gnu@npm:2.12.5":
+  version: 2.12.5
+  resolution: "@tauri-apps/cli-linux-riscv64-gnu@npm:2.12.5"
   conditions: os=linux & cpu=riscv64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@tauri-apps/cli-linux-x64-gnu@npm:2.12.4":
-  version: 2.12.4
-  resolution: "@tauri-apps/cli-linux-x64-gnu@npm:2.12.4"
+"@tauri-apps/cli-linux-x64-gnu@npm:2.12.5":
+  version: 2.12.5
+  resolution: "@tauri-apps/cli-linux-x64-gnu@npm:2.12.5"
   conditions: os=linux & cpu=x64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@tauri-apps/cli-linux-x64-musl@npm:2.12.4":
-  version: 2.12.4
-  resolution: "@tauri-apps/cli-linux-x64-musl@npm:2.12.4"
+"@tauri-apps/cli-linux-x64-musl@npm:2.12.5":
+  version: 2.12.5
+  resolution: "@tauri-apps/cli-linux-x64-musl@npm:2.12.5"
   conditions: os=linux & cpu=x64 & libc=musl
   languageName: node
   linkType: hard
 
-"@tauri-apps/cli-win32-arm64-msvc@npm:2.12.4":
-  version: 2.12.4
-  resolution: "@tauri-apps/cli-win32-arm64-msvc@npm:2.12.4"
+"@tauri-apps/cli-win32-arm64-msvc@npm:2.12.5":
+  version: 2.12.5
+  resolution: "@tauri-apps/cli-win32-arm64-msvc@npm:2.12.5"
   conditions: os=win32 & cpu=arm64
   languageName: node
   linkType: hard
 
-"@tauri-apps/cli-win32-ia32-msvc@npm:2.12.4":
-  version: 2.12.4
-  resolution: "@tauri-apps/cli-win32-ia32-msvc@npm:2.12.4"
+"@tauri-apps/cli-win32-ia32-msvc@npm:2.12.5":
+  version: 2.12.5
+  resolution: "@tauri-apps/cli-win32-ia32-msvc@npm:2.12.5"
   conditions: os=win32 & cpu=ia32
   languageName: node
   linkType: hard
 
-"@tauri-apps/cli-win32-x64-msvc@npm:2.12.4":
-  version: 2.12.4
-  resolution: "@tauri-apps/cli-win32-x64-msvc@npm:2.12.4"
+"@tauri-apps/cli-win32-x64-msvc@npm:2.12.5":
+  version: 2.12.5
+  resolution: "@tauri-apps/cli-win32-x64-msvc@npm:2.12.5"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
 
-"@tauri-apps/cli@npm:^2.12.4":
-  version: 2.12.4
-  resolution: "@tauri-apps/cli@npm:2.12.4"
+"@tauri-apps/cli@npm:^2.12.5":
+  version: 2.12.5
+  resolution: "@tauri-apps/cli@npm:2.12.5"
   dependencies:
-    "@tauri-apps/cli-darwin-arm64": "npm:2.12.4"
-    "@tauri-apps/cli-darwin-x64": "npm:2.12.4"
-    "@tauri-apps/cli-linux-arm-gnueabihf": "npm:2.12.4"
-    "@tauri-apps/cli-linux-arm64-gnu": "npm:2.12.4"
-    "@tauri-apps/cli-linux-arm64-musl": "npm:2.12.4"
-    "@tauri-apps/cli-linux-riscv64-gnu": "npm:2.12.4"
-    "@tauri-apps/cli-linux-x64-gnu": "npm:2.12.4"
-    "@tauri-apps/cli-linux-x64-musl": "npm:2.12.4"
-    "@tauri-apps/cli-win32-arm64-msvc": "npm:2.12.4"
-    "@tauri-apps/cli-win32-ia32-msvc": "npm:2.12.4"
-    "@tauri-apps/cli-win32-x64-msvc": "npm:2.12.4"
+    "@tauri-apps/cli-darwin-arm64": "npm:2.12.5"
+    "@tauri-apps/cli-darwin-x64": "npm:2.12.5"
+    "@tauri-apps/cli-linux-arm-gnueabihf": "npm:2.12.5"
+    "@tauri-apps/cli-linux-arm64-gnu": "npm:2.12.5"
+    "@tauri-apps/cli-linux-arm64-musl": "npm:2.12.5"
+    "@tauri-apps/cli-linux-riscv64-gnu": "npm:2.12.5"
+    "@tauri-apps/cli-linux-x64-gnu": "npm:2.12.5"
+    "@tauri-apps/cli-linux-x64-musl": "npm:2.12.5"
+    "@tauri-apps/cli-win32-arm64-msvc": "npm:2.12.5"
+    "@tauri-apps/cli-win32-ia32-msvc": "npm:2.12.5"
+    "@tauri-apps/cli-win32-x64-msvc": "npm:2.12.5"
   dependenciesMeta:
     "@tauri-apps/cli-darwin-arm64":
       optional: true
@@ -2567,7 +2567,7 @@ __metadata:
       optional: true
   bin:
     tauri: tauri.js
-  checksum: 10c0/e1043cb0b0ab15ce24d1835bd3fc929ed1479d64d784459153d249ffa34a83c9020c4699520950373830112614bc8b71d9257e7db773481e73f73a8b97b69c45
+  checksum: 10c0/fbe9d7a0d0a5555dd9a8d6b3c9bf0d32d027f31e5c5c7ededb096977a336e0243a65794136c5a757a32b4f02ef7e743bd95be373b32f356c8382d64b1c49db6b
   languageName: node
   linkType: hard
 
@@ -2599,11 +2599,11 @@ __metadata:
   linkType: hard
 
 "@tybys/wasm-util@npm:^0.10.3":
-  version: 0.10.4
-  resolution: "@tybys/wasm-util@npm:0.10.4"
+  version: 0.10.5
+  resolution: "@tybys/wasm-util@npm:0.10.5"
   dependencies:
     tslib: "npm:^2.4.0"
-  checksum: 10c0/27947f254efa3f2bc41f47040f57f41c246200c6439a9fd54c69f50940e320022c320275f138e30b543ee81ce69593905dfa7ba0831577ab636f829aafa70701
+  checksum: 10c0/3734c712e0ccc926f319b8965b93208def4e5faaf0124bb5ae540d9919ebfd28a7183d72792a5b002b01e05b0e8c71c78d9432732dbc7f3f2b1de0c407d85e9a
   languageName: node
   linkType: hard
 
@@ -2762,9 +2762,9 @@ __metadata:
   linkType: hard
 
 "@typescript-eslint/types@npm:^8.56.0":
-  version: 8.72.2
-  resolution: "@typescript-eslint/types@npm:8.72.2"
-  checksum: 10c0/283cbfd02033da3790dde8a613f23bbcb21706281393daf256ea798112124e355679d1f5bdd16ee0d3b9730f4d16acd619504b3bfb25c7979f363c0963b3e1b6
+  version: 8.73.0
+  resolution: "@typescript-eslint/types@npm:8.73.0"
+  checksum: 10c0/42cb589388327e878101f4f208cf85ae3a3518435dc6c27a732c7bd88ffa11d64b822af1e6ec677bad9d0b95b90f5ef0b2a85607258c3b63fec7f0b2f041d51e
   languageName: node
   linkType: hard
 
@@ -3018,21 +3018,21 @@ __metadata:
     "@mui/icons-material": "npm:^9.5.0"
     "@mui/material": "npm:^9.5.0"
     "@mui/system": "npm:^9.5.0"
-    "@mui/x-data-grid": "npm:^9.17.0"
+    "@mui/x-data-grid": "npm:^9.18.0"
     "@nabla/vite-plugin-eslint": "npm:^3.0.1"
-    "@tauri-apps/api": "npm:^2.12.4"
-    "@tauri-apps/cli": "npm:^2.12.4"
+    "@tauri-apps/api": "npm:^2.12.5"
+    "@tauri-apps/cli": "npm:^2.12.5"
     "@tauri-apps/plugin-clipboard-manager": "npm:^2.5.0"
     "@tauri-apps/plugin-dialog": "npm:^2.8.4"
     "@tauri-apps/plugin-os": "npm:^2.4.0"
     "@vitejs/plugin-react": "npm:^6.3.0"
     crypto-js: "npm:^4.2.0"
-    eslint: "npm:^10.14.0"
+    eslint: "npm:^10.15.0"
     eslint-config-react-app: "npm:^7.0.1"
     eslint-plugin-import-x: "npm:^4.18.1"
     eslint-plugin-react: "npm:^7.37.5"
     eslint-plugin-react-hooks: "npm:^7.1.1"
-    eslint-plugin-react-refresh: "npm:^0.5.7"
+    eslint-plugin-react-refresh: "npm:^0.5.8"
     globals: "npm:^17.14.0"
     graphemer: "npm:^1.4.0"
     prettier: "npm:^3.10.1"
@@ -3224,9 +3224,9 @@ __metadata:
   linkType: hard
 
 "axe-core@npm:^4.10.0":
-  version: 4.14.0
-  resolution: "axe-core@npm:4.14.0"
-  checksum: 10c0/8aaa0bf748e0dcf202e8f837951a37b28b4b62d639bed58c07a6890bf035ed6a11ede9f4006db9ca8041db821dc80476c27cff08fd70afa9195ee58fb995a958
+  version: 4.14.1
+  resolution: "axe-core@npm:4.14.1"
+  checksum: 10c0/6b36ab43136ee603ff56f2f3d8a983b67a6d1e973d59ff61c62be4a3d855641f918595ce8b6d2a52c97dee9a80a3925a35d7a812f3ab3bd48d474fb6ad9080ca
   languageName: node
   linkType: hard
 
@@ -3342,12 +3342,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"baseline-browser-mapping@npm:^2.11.33":
-  version: 2.11.37
-  resolution: "baseline-browser-mapping@npm:2.11.37"
+"baseline-browser-mapping@npm:^2.11.37":
+  version: 2.11.38
+  resolution: "baseline-browser-mapping@npm:2.11.38"
   bin:
     baseline-browser-mapping: dist/cli.cjs
-  checksum: 10c0/48322036bee156d700d1511045abcce3be6cd596d4fadd2e383960ba4206ef4f5eb8c1485481443f931e9b972ab5d9a6f91ec19e7e7778c197fcda88bcf27349
+  checksum: 10c0/f9b9576f79e4c15a2e7cd2173380922ec82db65a5815fd7a01dc4081cc25ffb25002c07e25076831adec19bf5dcfe11acd0f73473a308e40bb070bc4a98762cb
   languageName: node
   linkType: hard
 
@@ -3361,7 +3361,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"brace-expansion@npm:^5.0.12, brace-expansion@npm:^5.0.8":
+"brace-expansion@npm:^5.0.12":
   version: 5.0.13
   resolution: "brace-expansion@npm:5.0.13"
   dependencies:
@@ -3380,17 +3380,17 @@ __metadata:
   linkType: hard
 
 "browserslist@npm:^4.24.0, browserslist@npm:^4.29.3":
-  version: 4.29.5
-  resolution: "browserslist@npm:4.29.5"
+  version: 4.29.6
+  resolution: "browserslist@npm:4.29.6"
   dependencies:
-    baseline-browser-mapping: "npm:^2.11.33"
-    caniuse-lite: "npm:^1.0.30001819"
-    electron-to-chromium: "npm:^1.5.464"
-    node-releases: "npm:^2.0.60"
-    update-browserslist-db: "npm:^1.3.4"
+    baseline-browser-mapping: "npm:^2.11.37"
+    caniuse-lite: "npm:^1.0.30001826"
+    electron-to-chromium: "npm:^1.5.486"
+    node-releases: "npm:^2.0.64"
+    update-browserslist-db: "npm:^1.4.0"
   bin:
     browserslist: cli.js
-  checksum: 10c0/a27b0d1dece626af14cad3e0eca07fc17608b4d306a15cf2b2c5dcb30cadcc118d3da7400866287587feb3531ad8907cffc6592d21198269960a0d381f8349bd
+  checksum: 10c0/ee0469b488aa66af1b97bb1042eadcca06f6c4823358a9eb3da8dd567b28aeccf3e5c8e58ebbf0cbada2af98df5f60b37d82ca555a1529216ba94aa8518133ec
   languageName: node
   linkType: hard
 
@@ -3453,7 +3453,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"caniuse-lite@npm:^1.0.30001819":
+"caniuse-lite@npm:^1.0.30001826":
   version: 1.0.30001826
   resolution: "caniuse-lite@npm:1.0.30001826"
   checksum: 10c0/11e9dba4dd105d270f69da022ce6a47be67cd1cc376f74029f99524ba8141a840153aa285f22c9a643a2fe608ffc0879592bcc9b7c20ad6875ad7ede663a1a6d
@@ -3607,9 +3607,9 @@ __metadata:
   linkType: hard
 
 "csstype@npm:^3.0.2, csstype@npm:^3.2.3":
-  version: 3.2.3
-  resolution: "csstype@npm:3.2.3"
-  checksum: 10c0/cd29c51e70fa822f1cecd8641a1445bed7063697469d35633b516e60fe8c1bde04b08f6c5b6022136bb669b64c63d4173af54864510fbb4ee23281801841a3ce
+  version: 3.2.4
+  resolution: "csstype@npm:3.2.4"
+  checksum: 10c0/29568f520e1e47b2e6e88e2cffe3b5369f08c1245c73e69595623cafb38816bd353387e0d665ce4330cfe2c9244f2a4671abe761cbd0b535bc27fab12b6b8a25
   languageName: node
   linkType: hard
 
@@ -3759,10 +3759,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"electron-to-chromium@npm:^1.5.464":
-  version: 1.5.484
-  resolution: "electron-to-chromium@npm:1.5.484"
-  checksum: 10c0/4edcf9a4cd26eb796ac7bbfb5f4f2eeee4cfe325f5a5b91cce7fbe7cf098e8c7a5ceb0198e516f83ee4391093b9505ef945d3e897c98a1f720a04915121991d9
+"electron-to-chromium@npm:^1.5.486":
+  version: 1.5.488
+  resolution: "electron-to-chromium@npm:1.5.488"
+  checksum: 10c0/0bf154d9760aee1e3e03bb7a17003356984bb2f24793c0141528d6517579ab76bbf25695eb24507f64f61ee5a852d32de38aedf9355722a8c9e930bdfcc0dce9
   languageName: node
   linkType: hard
 
@@ -3909,9 +3909,9 @@ __metadata:
   linkType: hard
 
 "es-module-lexer@npm:^3.0.3":
-  version: 3.0.4
-  resolution: "es-module-lexer@npm:3.0.4"
-  checksum: 10c0/6e89027c3ce2e78c577bee234d3cf9e41035b6622cc2d399bffda322556f09735a864b3c7729da8528c96ec8cf00d93d7d418cdedb6765e9e4d228954fbfde3d
+  version: 3.0.5
+  resolution: "es-module-lexer@npm:3.0.5"
+  checksum: 10c0/846a0fbe10fc0bf510995dbfa5bc48d78f9cb15ee3249a03d4c7f4f35e61924bef8602e82f08735e1d172e26df6bc4acc1d7ea2e96666eb654a55436b9b618e3
   languageName: node
   linkType: hard
 
@@ -4172,12 +4172,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-react-refresh@npm:^0.5.7":
-  version: 0.5.7
-  resolution: "eslint-plugin-react-refresh@npm:0.5.7"
+"eslint-plugin-react-refresh@npm:^0.5.8":
+  version: 0.5.8
+  resolution: "eslint-plugin-react-refresh@npm:0.5.8"
   peerDependencies:
     eslint: ^9 || ^10
-  checksum: 10c0/e9de48cd59170e65d0bb3abe4cc6d3a41087ff5d5bd191f87ce8b90fb5a43100ab4ded040dc6b53a6ef175e15945d5586ffca67be68f69e2a6014010f1760cb3
+  checksum: 10c0/bd731e0903b600a16608a9a8ecdbed0e7045f982551defdc275678ba9f8b989c76b155e4ad188c02b6536407f0cfc7c5e170250d7cfaca312056acb8c423a3c7
   languageName: node
   linkType: hard
 
@@ -4263,13 +4263,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint@npm:^10.14.0":
-  version: 10.14.0
-  resolution: "eslint@npm:10.14.0"
+"eslint@npm:^10.15.0":
+  version: 10.15.0
+  resolution: "eslint@npm:10.15.0"
   dependencies:
     "@eslint-community/eslint-utils": "npm:^4.8.0"
     "@eslint-community/regexpp": "npm:^4.12.2"
-    "@eslint/config-array": "npm:^0.23.5"
+    "@eslint/config-array": "npm:^0.23.6"
     "@eslint/config-helpers": "npm:^0.7.0"
     "@eslint/core": "npm:^1.2.1"
     "@eslint/plugin-kit": "npm:^0.7.3"
@@ -4294,7 +4294,7 @@ __metadata:
     imurmurhash: "npm:^0.1.4"
     is-glob: "npm:^4.0.0"
     json-stable-stringify-without-jsonify: "npm:^1.0.1"
-    minimatch: "npm:^10.2.6"
+    minimatch: "npm:^11.0.5"
     natural-compare: "npm:^1.4.0"
     optionator: "npm:^0.9.3"
   peerDependencies:
@@ -4304,7 +4304,7 @@ __metadata:
       optional: true
   bin:
     eslint: bin/eslint.js
-  checksum: 10c0/738cdd0a1aa37b8bddefb5c89206f9f202540e8fce57f7ef82649b5bdf0acd67f7b9f2724f538b11149bd9bfdd14605125568cf73b319baec007866677af72dd
+  checksum: 10c0/81775d3bc273007b3b6f08d114f57b0c83527e8ebbb89674726bbd29b66883a6fef016a0271e05014a067d1c1079514c5523df96b86740fdfe65ef56abacb030
   languageName: node
   linkType: hard
 
@@ -5416,12 +5416,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"minimatch@npm:^10.2.4, minimatch@npm:^10.2.6":
-  version: 10.2.6
-  resolution: "minimatch@npm:10.2.6"
+"minimatch@npm:^11.0.5, minimatch@npm:^9.0.3 || ^10.1.2 || ^11.0.1":
+  version: 11.0.9
+  resolution: "minimatch@npm:11.0.9"
   dependencies:
-    brace-expansion: "npm:^5.0.8"
-  checksum: 10c0/4559a836243b98bd4d17ea9f7edae698717c76399eea7be374f3737f33164e4907f19e9726891ddeb122f750a5a7fa80d2ac43e851d6e5984dc4ff42ec127d3a
+    "@isaacs/nonrecursive-glob-match": "npm:^1.1.0"
+    brace-expansion: "npm:^5.0.12"
+  checksum: 10c0/17c8b5caebaa8c1ecc1c6d58028d192f0e94ebe03976bb9f348920c107cde3185614f74543fe40dfc79ecf0bd74158b816633fc9a8f66da32c0d5327ecbb91e9
   languageName: node
   linkType: hard
 
@@ -5431,16 +5432,6 @@ __metadata:
   dependencies:
     brace-expansion: "npm:^1.1.7"
   checksum: 10c0/2ecbdc0d33f07bddb0315a8b5afbcb761307a8778b48f0b312418ccbced99f104a2d17d8aca7573433c70e8ccd1c56823a441897a45e384ea76ef401a26ace70
-  languageName: node
-  linkType: hard
-
-"minimatch@npm:^9.0.3 || ^10.1.2 || ^11.0.1":
-  version: 11.0.8
-  resolution: "minimatch@npm:11.0.8"
-  dependencies:
-    "@isaacs/nonrecursive-glob-match": "npm:^1.1.0"
-    brace-expansion: "npm:^5.0.12"
-  checksum: 10c0/9f4cfaa792adbd78f3aed1fec74ff9af94bfed6832f31a4f5fa36cf9bb928b2f8fdacbeccc2ea6617e9ec09ce5f5d386eb3efb59b29915b43a1884fc689749c5
   languageName: node
   linkType: hard
 
@@ -5549,10 +5540,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"node-releases@npm:^2.0.60":
-  version: 2.0.63
-  resolution: "node-releases@npm:2.0.63"
-  checksum: 10c0/857ce981b26449a6f369d72f3c9c6d82aa7255a7b16a50ff7bd8ab1baea3754e24a8f9fbbdf9ccf05e97d9525d8ebfb7430b5fd822bc530656b84d70a6660e21
+"node-releases@npm:^2.0.64":
+  version: 2.0.65
+  resolution: "node-releases@npm:2.0.65"
+  checksum: 10c0/80a1f49172b1ac7abee612e4ff4fd707763478a8ea0ffb38f428a925622b6bfe320a1103b30d76ae37df3a2544ada7a63c74ca578b19cc332298960bf4c826c4
   languageName: node
   linkType: hard
 
@@ -5771,13 +5762,13 @@ __metadata:
   linkType: hard
 
 "postcss@npm:^8.5.32":
-  version: 8.5.32
-  resolution: "postcss@npm:8.5.32"
+  version: 8.5.33
+  resolution: "postcss@npm:8.5.33"
   dependencies:
     nanoid: "npm:^3.3.20"
     picocolors: "npm:^1.1.1"
     source-map-js: "npm:^1.2.2"
-  checksum: 10c0/5fa6cad84e277c2ced965dc7e8e7c0b8d7e5b76a6835591b57a43fde46e671d0c8428d365e9141c080abaae5441d495ed77ffd7472c5bd41d6c2154bd03c01d7
+  checksum: 10c0/8711c5ad32a798813ae52dd51024881915ecc6171030f9cc1d3766d1969da20ade4cf71a645d7e54668cb45cb9622eac938dc1ce91fe1f9a0fa5f0bc8cbaa05a
   languageName: node
   linkType: hard
 
@@ -6742,9 +6733,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"update-browserslist-db@npm:^1.3.4":
-  version: 1.3.4
-  resolution: "update-browserslist-db@npm:1.3.4"
+"update-browserslist-db@npm:^1.4.0":
+  version: 1.4.0
+  resolution: "update-browserslist-db@npm:1.4.0"
   dependencies:
     escalade: "npm:^3.2.0"
     picocolors: "npm:^1.1.1"
@@ -6752,7 +6743,7 @@ __metadata:
     browserslist: ">= 4.21.0"
   bin:
     update-browserslist-db: cli.js
-  checksum: 10c0/5c0769472715b57371208c3146cc07a4f0917c1d18cc34f60325bc4234f4a28f332e50b99f675999ff311315231ff19beb22a815dfe04ccc1e798e1d389514d7
+  checksum: 10c0/9ae7bb9d6c830e338e9a5b8e7d197e909467b8906df0cfcfe573da10fc96e4d5756260c3597efb00f7b5f515de5a613051b77b0dc8688d80e4c1b5c6b7ad4595
   languageName: node
   linkType: hard
 
