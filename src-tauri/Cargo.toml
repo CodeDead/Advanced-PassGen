@@ -12,12 +12,12 @@ rust-version = "1.100.0"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [build-dependencies]
-tauri-build = { version = "2.7.4", features = [] }
+tauri-build = { version = "2.7.6", features = [] }
 
 [dependencies]
-tauri = { version = "2.12.5", features = [] }
+tauri = { version = "2.12.7", features = [] }
 open = "5.4.5"
-rand = "0.10.3"
+rand = "0.10.4"
 unicode-segmentation = "1.13.3"
 tauri-plugin-dialog = "2.8.4"
 tauri-plugin-clipboard-manager = "2.5.0"
